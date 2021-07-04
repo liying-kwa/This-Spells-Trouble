@@ -11,6 +11,7 @@ public class BoolArrVariable : ScriptableObject
 #endif
 
     private bool[] _arr = {false, false, false, false};
+    
     // public bool[] Arr{
     //     get{
     //         return _arr;

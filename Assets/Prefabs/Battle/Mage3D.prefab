@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5305990509098352044}
   - component: {fileID: -3900439092745162294}
   m_Layer: 0
-  m_Name: Player3D
+  m_Name: Mage3D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

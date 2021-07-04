@@ -4,14 +4,15 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour
+public class MageController : MonoBehaviour
 {
-    // Buttons
-    PlayerControls controls;
+    // ScriptableObjects
+    public GameConstants gameConstants;
 
     // GameObjects
+    GameObject mageObject;
     GameObject aimObject;
-    public Image imageCooldown;
+    // public Image imageCooldown;
     public GameObject fireballPrefab;
 
     // Physics
@@ -20,12 +21,7 @@ public class PlayerController : MonoBehaviour
     Vector2 aim;
     float aimAngle;
 
-    // Constants
-    float moveSpeed = 1;
-    // float turnSpeed = 0.001f;
-    float fireballCooldown = 3;
-
-    // gameStuff
+    // Game State
     bool fireballReady = true;
     
     private void OnMove(InputValue value) {
@@ -44,8 +40,12 @@ public class PlayerController : MonoBehaviour
     {
         // GameObjects
         foreach (Transform child in transform) {
-            if (child.name == "Aim") {
+            if (child.name == "Mage") {
+                mageObject = child.gameObject;
+                mageObject.SetActive(true);
+            } else if (child.name == "Aim") {
                 aimObject = child.gameObject;
+                aimObject.SetActive(true);
             }
         }
     }
@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // Movement
-        Vector2 movement = new Vector2(move.x, move.y) * moveSpeed * Time.deltaTime;
+        Vector2 movement = new Vector2(move.x, move.y) * gameConstants.moveSpeed * Time.deltaTime;
         transform.Translate(movement, Space.World);
         // moveAngle = Mathf.Atan2(-move.x, move.y) * Mathf.Rad2Deg;
         // Quaternion moveRotation = Quaternion.AngleAxis(moveAngle, Vector3.forward);
@@ -71,10 +71,7 @@ public class PlayerController : MonoBehaviour
 
         // Cooldowns
         if (!fireballReady) {
-            imageCooldown.fillAmount -= 1 / fireballCooldown * Time.deltaTime;
-            //if (imageCooldown.fillAmount >= 1) {
-            //    imageCooldown.fillAmount = 0;
-            //}
+            // imageCooldown.fillAmount -= 1 / gameConstants.fireballCooldown * Time.deltaTime;
         }
     }
 
@@ -92,8 +89,8 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator FireballCooldown() {
         fireballReady = false;
-        imageCooldown.fillAmount = 1;
-        yield return new WaitForSeconds(fireballCooldown);
+        // imageCooldown.fillAmount = 1;
+        yield return new WaitForSeconds(gameConstants.fireballCooldown);
         fireballReady = true;
     }
 

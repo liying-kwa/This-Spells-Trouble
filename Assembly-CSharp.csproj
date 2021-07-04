@@ -42,15 +42,17 @@
      <Compile Include="Assets\ScriptableObjects\CharSelection\BoolArrVariable.cs" />
      <Compile Include="Assets\PlayerControls.cs" />
      <Compile Include="Assets\Scripts\CharacterSelection\OldStuff\LoadCharacter.cs" />
-     <Compile Include="Assets\Scripts\CharacterSelection\SelectionController.cs" />
+     <Compile Include="Assets\Scripts\CharacterSelection\CharSelectionController.cs" />
+     <Compile Include="Assets\ScriptableObjects\General\GameConstants.cs" />
      <Compile Include="Assets\Scripts\Battle\OldStuff\PlayerControllerOld.cs" />
      <Compile Include="Assets\Scripts\CharacterSelection\OldStuff\CharManager.cs" />
      <Compile Include="Assets\Scripts\Battle\FireballController.cs" />
      <Compile Include="Assets\Scripts\Battle\Player3DController.cs" />
-     <Compile Include="Assets\Scripts\Battle\PlayerController.cs" />
-     <Compile Include="Assets\Scripts\Battle\Fireball3DController.cs" />
+     <Compile Include="Assets\Scripts\Battle\MageController.cs" />
+     <Compile Include="Assets\Scripts\Battle\OldStuff\Fireball3DController.cs" />
      <Compile Include="Assets\Scripts\CharacterSelection\CharSelectionManager.cs" />
-     <Compile Include="Assets\ScriptableObjects\GameConstants.cs" />
+     <Compile Include="Assets\ScriptableObjects\General\PlayerInputsArr.cs" />
+     <Compile Include="Assets\Scripts\Battle\SpawnManager.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2021.1.10f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

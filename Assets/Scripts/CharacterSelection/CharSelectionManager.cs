@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CharSelectionManager : MonoBehaviour
 {
@@ -70,5 +71,16 @@ public class CharSelectionManager : MonoBehaviour
         }
         countdownText.text = "Loading...";
         Debug.Log("Loading Scene...");
+        StartCoroutine(ChangeScene("BattleScene"));
+    }
+
+    IEnumerator ChangeScene(string sceneName)
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
+        // Wait until the asynchronous scene fully loads
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
     }
 }

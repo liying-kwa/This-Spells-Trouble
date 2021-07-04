@@ -17,6 +17,7 @@ public class PlayerInputManager : MonoBehaviour
     public Text P4Text;
 
     // ScriptableObjects
+    public PlayerInputsArr playerInputsArr;
     public BoolArrVariable playersJoined;
 
     
@@ -46,26 +47,26 @@ public class PlayerInputManager : MonoBehaviour
             Debug.Log("No more player slots left.");
             return;
         }
-        Debug.Log(playerID);
+        playerInputsArr.SetValue(playerID, playerInput);
         // Pass in GameObjects accordingly
-        GameObject characterObject = playerInput.gameObject;
-        characterObject.GetComponent<SelectionController>().playerID = playerID;
+        GameObject playerObject = playerInput.gameObject;
+        playerObject.GetComponent<CharSelectionController>().playerID = playerID;
         switch (playerID) {
             case 0:
-                characterObject.GetComponent<SelectionController>().characters = P1Characters;
-                characterObject.GetComponent<SelectionController>().text = P1Text;
+                playerObject.GetComponent<CharSelectionController>().characters = P1Characters;
+                playerObject.GetComponent<CharSelectionController>().text = P1Text;
                 break;
             case 1:
-                characterObject.GetComponent<SelectionController>().characters = P2Characters;
-                characterObject.GetComponent<SelectionController>().text = P2Text;
+                playerObject.GetComponent<CharSelectionController>().characters = P2Characters;
+                playerObject.GetComponent<CharSelectionController>().text = P2Text;
                 break;
             case 2:
-                characterObject.GetComponent<SelectionController>().characters = P3Characters;
-                characterObject.GetComponent<SelectionController>().text = P3Text;
+                playerObject.GetComponent<CharSelectionController>().characters = P3Characters;
+                playerObject.GetComponent<CharSelectionController>().text = P3Text;
                 break;
             case 3:
-                characterObject.GetComponent<SelectionController>().characters = P4Characters;
-                characterObject.GetComponent<SelectionController>().text = P4Text;
+                playerObject.GetComponent<CharSelectionController>().characters = P4Characters;
+                playerObject.GetComponent<CharSelectionController>().text = P4Text;
                 break;
         }
     }

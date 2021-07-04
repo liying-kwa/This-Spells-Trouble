@@ -15,7 +15,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     ""name"": ""PlayerControls"",
     ""maps"": [
         {
-            ""name"": ""Gameplay"",
+            ""name"": ""Battle"",
             ""id"": ""0c9baf4d-3251-473b-8367-85632241437b"",
             ""actions"": [
                 {
@@ -80,7 +80,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
             ]
         },
         {
-            ""name"": ""CharacterSelection"",
+            ""name"": ""CharSelection"",
             ""id"": ""ea08e204-2ea7-4349-87fa-b4c9db48ba8c"",
             ""actions"": [
                 {
@@ -92,7 +92,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""DirectionalUp"",
+                    ""name"": ""PreviousCharacter"",
                     ""type"": ""Button"",
                     ""id"": ""c4044925-e2a4-47b0-b2bf-727faf56774b"",
                     ""expectedControlType"": ""Button"",
@@ -100,25 +100,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""AnalogUp"",
-                    ""type"": ""Button"",
-                    ""id"": ""f0a05396-dc83-4ba4-ac88-740257075974"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""DirectionalDown"",
+                    ""name"": ""NextCharacter"",
                     ""type"": ""Button"",
                     ""id"": ""d3d334b7-3d1b-4835-b081-5d3ba031eb79"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""AnalogDown"",
-                    ""type"": ""Button"",
-                    ""id"": ""e47c1ce1-c8ae-4b87-96b1-251e47fd5016"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -151,18 +135,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""DirectionalUp"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""56254b26-64d2-42fe-95a6-c5a10cb5645e"",
-                    ""path"": ""<Gamepad>/leftStick/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""AnalogUp"",
+                    ""action"": ""PreviousCharacter"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -173,18 +146,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""DirectionalDown"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b03106e1-028c-4467-be8a-efdcb8cf858e"",
-                    ""path"": ""<Gamepad>/leftStick/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""AnalogDown"",
+                    ""action"": ""NextCharacter"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -198,25 +160,45 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Ready"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""56254b26-64d2-42fe-95a6-c5a10cb5645e"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PreviousCharacter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b03106e1-028c-4467-be8a-efdcb8cf858e"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextCharacter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
     ],
     ""controlSchemes"": []
 }");
-        // Gameplay
-        m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
-        m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
-        m_Gameplay_Aim = m_Gameplay.FindAction("Aim", throwIfNotFound: true);
-        m_Gameplay_Fire = m_Gameplay.FindAction("Fire", throwIfNotFound: true);
-        // CharacterSelection
-        m_CharacterSelection = asset.FindActionMap("CharacterSelection", throwIfNotFound: true);
-        m_CharacterSelection_JoinPlayer = m_CharacterSelection.FindAction("JoinPlayer", throwIfNotFound: true);
-        m_CharacterSelection_DirectionalUp = m_CharacterSelection.FindAction("DirectionalUp", throwIfNotFound: true);
-        m_CharacterSelection_AnalogUp = m_CharacterSelection.FindAction("AnalogUp", throwIfNotFound: true);
-        m_CharacterSelection_DirectionalDown = m_CharacterSelection.FindAction("DirectionalDown", throwIfNotFound: true);
-        m_CharacterSelection_AnalogDown = m_CharacterSelection.FindAction("AnalogDown", throwIfNotFound: true);
-        m_CharacterSelection_Ready = m_CharacterSelection.FindAction("Ready", throwIfNotFound: true);
+        // Battle
+        m_Battle = asset.FindActionMap("Battle", throwIfNotFound: true);
+        m_Battle_Move = m_Battle.FindAction("Move", throwIfNotFound: true);
+        m_Battle_Aim = m_Battle.FindAction("Aim", throwIfNotFound: true);
+        m_Battle_Fire = m_Battle.FindAction("Fire", throwIfNotFound: true);
+        // CharSelection
+        m_CharSelection = asset.FindActionMap("CharSelection", throwIfNotFound: true);
+        m_CharSelection_JoinPlayer = m_CharSelection.FindAction("JoinPlayer", throwIfNotFound: true);
+        m_CharSelection_PreviousCharacter = m_CharSelection.FindAction("PreviousCharacter", throwIfNotFound: true);
+        m_CharSelection_NextCharacter = m_CharSelection.FindAction("NextCharacter", throwIfNotFound: true);
+        m_CharSelection_Ready = m_CharSelection.FindAction("Ready", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -263,39 +245,39 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         asset.Disable();
     }
 
-    // Gameplay
-    private readonly InputActionMap m_Gameplay;
-    private IGameplayActions m_GameplayActionsCallbackInterface;
-    private readonly InputAction m_Gameplay_Move;
-    private readonly InputAction m_Gameplay_Aim;
-    private readonly InputAction m_Gameplay_Fire;
-    public struct GameplayActions
+    // Battle
+    private readonly InputActionMap m_Battle;
+    private IBattleActions m_BattleActionsCallbackInterface;
+    private readonly InputAction m_Battle_Move;
+    private readonly InputAction m_Battle_Aim;
+    private readonly InputAction m_Battle_Fire;
+    public struct BattleActions
     {
         private @PlayerControls m_Wrapper;
-        public GameplayActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_Gameplay_Move;
-        public InputAction @Aim => m_Wrapper.m_Gameplay_Aim;
-        public InputAction @Fire => m_Wrapper.m_Gameplay_Fire;
-        public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
+        public BattleActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_Battle_Move;
+        public InputAction @Aim => m_Wrapper.m_Battle_Aim;
+        public InputAction @Fire => m_Wrapper.m_Battle_Fire;
+        public InputActionMap Get() { return m_Wrapper.m_Battle; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(GameplayActions set) { return set.Get(); }
-        public void SetCallbacks(IGameplayActions instance)
+        public static implicit operator InputActionMap(BattleActions set) { return set.Get(); }
+        public void SetCallbacks(IBattleActions instance)
         {
-            if (m_Wrapper.m_GameplayActionsCallbackInterface != null)
+            if (m_Wrapper.m_BattleActionsCallbackInterface != null)
             {
-                @Move.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
-                @Move.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
-                @Move.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
-                @Aim.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAim;
-                @Aim.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAim;
-                @Aim.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAim;
-                @Fire.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnFire;
-                @Fire.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnFire;
-                @Fire.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnFire;
+                @Move.started -= m_Wrapper.m_BattleActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_BattleActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_BattleActionsCallbackInterface.OnMove;
+                @Aim.started -= m_Wrapper.m_BattleActionsCallbackInterface.OnAim;
+                @Aim.performed -= m_Wrapper.m_BattleActionsCallbackInterface.OnAim;
+                @Aim.canceled -= m_Wrapper.m_BattleActionsCallbackInterface.OnAim;
+                @Fire.started -= m_Wrapper.m_BattleActionsCallbackInterface.OnFire;
+                @Fire.performed -= m_Wrapper.m_BattleActionsCallbackInterface.OnFire;
+                @Fire.canceled -= m_Wrapper.m_BattleActionsCallbackInterface.OnFire;
             }
-            m_Wrapper.m_GameplayActionsCallbackInterface = instance;
+            m_Wrapper.m_BattleActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @Move.started += instance.OnMove;
@@ -310,93 +292,75 @@ public class @PlayerControls : IInputActionCollection, IDisposable
             }
         }
     }
-    public GameplayActions @Gameplay => new GameplayActions(this);
+    public BattleActions @Battle => new BattleActions(this);
 
-    // CharacterSelection
-    private readonly InputActionMap m_CharacterSelection;
-    private ICharacterSelectionActions m_CharacterSelectionActionsCallbackInterface;
-    private readonly InputAction m_CharacterSelection_JoinPlayer;
-    private readonly InputAction m_CharacterSelection_DirectionalUp;
-    private readonly InputAction m_CharacterSelection_AnalogUp;
-    private readonly InputAction m_CharacterSelection_DirectionalDown;
-    private readonly InputAction m_CharacterSelection_AnalogDown;
-    private readonly InputAction m_CharacterSelection_Ready;
-    public struct CharacterSelectionActions
+    // CharSelection
+    private readonly InputActionMap m_CharSelection;
+    private ICharSelectionActions m_CharSelectionActionsCallbackInterface;
+    private readonly InputAction m_CharSelection_JoinPlayer;
+    private readonly InputAction m_CharSelection_PreviousCharacter;
+    private readonly InputAction m_CharSelection_NextCharacter;
+    private readonly InputAction m_CharSelection_Ready;
+    public struct CharSelectionActions
     {
         private @PlayerControls m_Wrapper;
-        public CharacterSelectionActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @JoinPlayer => m_Wrapper.m_CharacterSelection_JoinPlayer;
-        public InputAction @DirectionalUp => m_Wrapper.m_CharacterSelection_DirectionalUp;
-        public InputAction @AnalogUp => m_Wrapper.m_CharacterSelection_AnalogUp;
-        public InputAction @DirectionalDown => m_Wrapper.m_CharacterSelection_DirectionalDown;
-        public InputAction @AnalogDown => m_Wrapper.m_CharacterSelection_AnalogDown;
-        public InputAction @Ready => m_Wrapper.m_CharacterSelection_Ready;
-        public InputActionMap Get() { return m_Wrapper.m_CharacterSelection; }
+        public CharSelectionActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @JoinPlayer => m_Wrapper.m_CharSelection_JoinPlayer;
+        public InputAction @PreviousCharacter => m_Wrapper.m_CharSelection_PreviousCharacter;
+        public InputAction @NextCharacter => m_Wrapper.m_CharSelection_NextCharacter;
+        public InputAction @Ready => m_Wrapper.m_CharSelection_Ready;
+        public InputActionMap Get() { return m_Wrapper.m_CharSelection; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(CharacterSelectionActions set) { return set.Get(); }
-        public void SetCallbacks(ICharacterSelectionActions instance)
+        public static implicit operator InputActionMap(CharSelectionActions set) { return set.Get(); }
+        public void SetCallbacks(ICharSelectionActions instance)
         {
-            if (m_Wrapper.m_CharacterSelectionActionsCallbackInterface != null)
+            if (m_Wrapper.m_CharSelectionActionsCallbackInterface != null)
             {
-                @JoinPlayer.started -= m_Wrapper.m_CharacterSelectionActionsCallbackInterface.OnJoinPlayer;
-                @JoinPlayer.performed -= m_Wrapper.m_CharacterSelectionActionsCallbackInterface.OnJoinPlayer;
-                @JoinPlayer.canceled -= m_Wrapper.m_CharacterSelectionActionsCallbackInterface.OnJoinPlayer;
-                @DirectionalUp.started -= m_Wrapper.m_CharacterSelectionActionsCallbackInterface.OnDirectionalUp;
-                @DirectionalUp.performed -= m_Wrapper.m_CharacterSelectionActionsCallbackInterface.OnDirectionalUp;
-                @DirectionalUp.canceled -= m_Wrapper.m_CharacterSelectionActionsCallbackInterface.OnDirectionalUp;
-                @AnalogUp.started -= m_Wrapper.m_CharacterSelectionActionsCallbackInterface.OnAnalogUp;
-                @AnalogUp.performed -= m_Wrapper.m_CharacterSelectionActionsCallbackInterface.OnAnalogUp;
-                @AnalogUp.canceled -= m_Wrapper.m_CharacterSelectionActionsCallbackInterface.OnAnalogUp;
-                @DirectionalDown.started -= m_Wrapper.m_CharacterSelectionActionsCallbackInterface.OnDirectionalDown;
-                @DirectionalDown.performed -= m_Wrapper.m_CharacterSelectionActionsCallbackInterface.OnDirectionalDown;
-                @DirectionalDown.canceled -= m_Wrapper.m_CharacterSelectionActionsCallbackInterface.OnDirectionalDown;
-                @AnalogDown.started -= m_Wrapper.m_CharacterSelectionActionsCallbackInterface.OnAnalogDown;
-                @AnalogDown.performed -= m_Wrapper.m_CharacterSelectionActionsCallbackInterface.OnAnalogDown;
-                @AnalogDown.canceled -= m_Wrapper.m_CharacterSelectionActionsCallbackInterface.OnAnalogDown;
-                @Ready.started -= m_Wrapper.m_CharacterSelectionActionsCallbackInterface.OnReady;
-                @Ready.performed -= m_Wrapper.m_CharacterSelectionActionsCallbackInterface.OnReady;
-                @Ready.canceled -= m_Wrapper.m_CharacterSelectionActionsCallbackInterface.OnReady;
+                @JoinPlayer.started -= m_Wrapper.m_CharSelectionActionsCallbackInterface.OnJoinPlayer;
+                @JoinPlayer.performed -= m_Wrapper.m_CharSelectionActionsCallbackInterface.OnJoinPlayer;
+                @JoinPlayer.canceled -= m_Wrapper.m_CharSelectionActionsCallbackInterface.OnJoinPlayer;
+                @PreviousCharacter.started -= m_Wrapper.m_CharSelectionActionsCallbackInterface.OnPreviousCharacter;
+                @PreviousCharacter.performed -= m_Wrapper.m_CharSelectionActionsCallbackInterface.OnPreviousCharacter;
+                @PreviousCharacter.canceled -= m_Wrapper.m_CharSelectionActionsCallbackInterface.OnPreviousCharacter;
+                @NextCharacter.started -= m_Wrapper.m_CharSelectionActionsCallbackInterface.OnNextCharacter;
+                @NextCharacter.performed -= m_Wrapper.m_CharSelectionActionsCallbackInterface.OnNextCharacter;
+                @NextCharacter.canceled -= m_Wrapper.m_CharSelectionActionsCallbackInterface.OnNextCharacter;
+                @Ready.started -= m_Wrapper.m_CharSelectionActionsCallbackInterface.OnReady;
+                @Ready.performed -= m_Wrapper.m_CharSelectionActionsCallbackInterface.OnReady;
+                @Ready.canceled -= m_Wrapper.m_CharSelectionActionsCallbackInterface.OnReady;
             }
-            m_Wrapper.m_CharacterSelectionActionsCallbackInterface = instance;
+            m_Wrapper.m_CharSelectionActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @JoinPlayer.started += instance.OnJoinPlayer;
                 @JoinPlayer.performed += instance.OnJoinPlayer;
                 @JoinPlayer.canceled += instance.OnJoinPlayer;
-                @DirectionalUp.started += instance.OnDirectionalUp;
-                @DirectionalUp.performed += instance.OnDirectionalUp;
-                @DirectionalUp.canceled += instance.OnDirectionalUp;
-                @AnalogUp.started += instance.OnAnalogUp;
-                @AnalogUp.performed += instance.OnAnalogUp;
-                @AnalogUp.canceled += instance.OnAnalogUp;
-                @DirectionalDown.started += instance.OnDirectionalDown;
-                @DirectionalDown.performed += instance.OnDirectionalDown;
-                @DirectionalDown.canceled += instance.OnDirectionalDown;
-                @AnalogDown.started += instance.OnAnalogDown;
-                @AnalogDown.performed += instance.OnAnalogDown;
-                @AnalogDown.canceled += instance.OnAnalogDown;
+                @PreviousCharacter.started += instance.OnPreviousCharacter;
+                @PreviousCharacter.performed += instance.OnPreviousCharacter;
+                @PreviousCharacter.canceled += instance.OnPreviousCharacter;
+                @NextCharacter.started += instance.OnNextCharacter;
+                @NextCharacter.performed += instance.OnNextCharacter;
+                @NextCharacter.canceled += instance.OnNextCharacter;
                 @Ready.started += instance.OnReady;
                 @Ready.performed += instance.OnReady;
                 @Ready.canceled += instance.OnReady;
             }
         }
     }
-    public CharacterSelectionActions @CharacterSelection => new CharacterSelectionActions(this);
-    public interface IGameplayActions
+    public CharSelectionActions @CharSelection => new CharSelectionActions(this);
+    public interface IBattleActions
     {
         void OnMove(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
     }
-    public interface ICharacterSelectionActions
+    public interface ICharSelectionActions
     {
         void OnJoinPlayer(InputAction.CallbackContext context);
-        void OnDirectionalUp(InputAction.CallbackContext context);
-        void OnAnalogUp(InputAction.CallbackContext context);
-        void OnDirectionalDown(InputAction.CallbackContext context);
-        void OnAnalogDown(InputAction.CallbackContext context);
+        void OnPreviousCharacter(InputAction.CallbackContext context);
+        void OnNextCharacter(InputAction.CallbackContext context);
         void OnReady(InputAction.CallbackContext context);
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SelectionController : MonoBehaviour
+public class CharSelectionController : MonoBehaviour
 {
     // ScriptableObjects
     public BoolArrVariable playersReady;
@@ -16,28 +16,13 @@ public class SelectionController : MonoBehaviour
     bool ready = false;
     
 
-    private void OnDirectionalUp() {
+    private void OnPreviousCharacter() {
         characters[selectedChar].SetActive(false);
         selectedChar = (selectedChar + 1) % characters.Length;
         characters[selectedChar].SetActive(true);
     }
 
-    private void OnAnalogUp() {
-        characters[selectedChar].SetActive(false);
-        selectedChar = (selectedChar + 1) % characters.Length;
-        characters[selectedChar].SetActive(true);
-    }
-
-    private void OnDirectionalDown() {
-        characters[selectedChar].SetActive(false);
-        selectedChar-= 1;
-        if (selectedChar < 0){
-            selectedChar += characters.Length;
-        };
-        characters[selectedChar].SetActive(true);
-    }
-
-    private void OnAnalogDown() {
+    private void OnNextCharacter() {
         characters[selectedChar].SetActive(false);
         selectedChar-= 1;
         if (selectedChar < 0){
@@ -58,10 +43,11 @@ public class SelectionController : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         text.text = "";
         characters[selectedChar].SetActive(true);
+        DontDestroyOnLoad(this.gameObject);
     }
 
     // Update is called once per frame

@@ -2,7 +2,7 @@
     "name": "PlayerControls",
     "maps": [
         {
-            "name": "Gameplay",
+            "name": "Battle",
             "id": "0c9baf4d-3251-473b-8367-85632241437b",
             "actions": [
                 {
@@ -67,7 +67,7 @@
             ]
         },
         {
-            "name": "CharacterSelection",
+            "name": "CharSelection",
             "id": "ea08e204-2ea7-4349-87fa-b4c9db48ba8c",
             "actions": [
                 {
@@ -79,7 +79,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "DirectionalUp",
+                    "name": "PreviousCharacter",
                     "type": "Button",
                     "id": "c4044925-e2a4-47b0-b2bf-727faf56774b",
                     "expectedControlType": "Button",
@@ -87,25 +87,9 @@
                     "interactions": ""
                 },
                 {
-                    "name": "AnalogUp",
-                    "type": "Button",
-                    "id": "f0a05396-dc83-4ba4-ac88-740257075974",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "DirectionalDown",
+                    "name": "NextCharacter",
                     "type": "Button",
                     "id": "d3d334b7-3d1b-4835-b081-5d3ba031eb79",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "AnalogDown",
-                    "type": "Button",
-                    "id": "e47c1ce1-c8ae-4b87-96b1-251e47fd5016",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -138,18 +122,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DirectionalUp",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "56254b26-64d2-42fe-95a6-c5a10cb5645e",
-                    "path": "<Gamepad>/leftStick/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "AnalogUp",
+                    "action": "PreviousCharacter",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -160,18 +133,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DirectionalDown",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b03106e1-028c-4467-be8a-efdcb8cf858e",
-                    "path": "<Gamepad>/leftStick/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "AnalogDown",
+                    "action": "NextCharacter",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -183,6 +145,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Ready",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "56254b26-64d2-42fe-95a6-c5a10cb5645e",
+                    "path": "<Gamepad>/leftStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PreviousCharacter",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b03106e1-028c-4467-be8a-efdcb8cf858e",
+                    "path": "<Gamepad>/leftStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NextCharacter",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
