@@ -1,15 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharSelectionManager : MonoBehaviour
 {
+    // UI References
+    public Text countdownText;
+
     // ScriptableObjects
     public BoolArrVariable playersJoined;
     public BoolArrVariable playersReady;
+    public GameConstants gameConstants;
 
     // Game State
     bool allReady = false;
+    IEnumerator countdownCoroutine = null;
 
     // Start is called before the first frame update
     void Start()
@@ -32,18 +38,37 @@ public class CharSelectionManager : MonoBehaviour
             return;
         }
         // Check if all ready, then countdown
+        allReady = true;
         for (int i = 0; i < playersJoined.GetLength(); i++) {
             if (playersJoined.GetValue(i) == true) {
                 if (playersReady.GetValue(i) == false) {
                     allReady = false;
-                    return;
+                    break;
                 }
             }
         }
         if (allReady) {
-            // StartCountdown();
+            // Start coroutine, if not started
+            if (countdownCoroutine == null) {
+                countdownCoroutine = Countdown();
+                StartCoroutine(countdownCoroutine);
+            }
         } else {
             // Stop countdown, if running
+            if (countdownCoroutine != null) {
+                StopCoroutine(countdownCoroutine);
+                countdownCoroutine = null;
+                countdownText.text = "Character Selection";
+            }
         }
+    }
+
+    public IEnumerator Countdown() {
+        for (int i = 0; i < gameConstants.countdownTime+1; i++) {
+            countdownText.text = "" + (gameConstants.countdownTime-i);
+            yield return new WaitForSeconds(1);
+        }
+        countdownText.text = "Loading...";
+        Debug.Log("Loading Scene...");
     }
 }
