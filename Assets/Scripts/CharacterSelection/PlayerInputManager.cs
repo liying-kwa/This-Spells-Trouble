@@ -51,6 +51,7 @@ public class PlayerInputManager : MonoBehaviour
         // Pass in GameObjects accordingly
         GameObject playerObject = playerInput.gameObject;
         playerObject.GetComponent<CharSelectionController>().playerID = playerID;
+        playerObject.GetComponent<BattleController>().playerID = playerID;
         switch (playerID) {
             case 0:
                 playerObject.GetComponent<CharSelectionController>().characters = P1Characters;

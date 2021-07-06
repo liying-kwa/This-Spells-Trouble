@@ -12,4 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34780aeb24c8afc4aabef00fc4c39b1a, type: 3}
   m_Name: GameConstants
   m_EditorClassIdentifier: 
-  countdownTime: 10
+  countdownTime: 3
+  topLeftPosition: {x: -2.71, y: 2.71, z: 0}
+  topRightPosition: {x: 2.71, y: 2.71, z: 0}
+  bottomLeftPosition: {x: -2.71, y: -2.71, z: 0}
+  bottomRightPosition: {x: 2.71, y: -2.71, z: 0}
+  playerSpeed: 0.003
+  fireballCooldown: 3
+  fireballSpeed: 1
+  fireballForce: 5
+  fireballDestroyTime: 1
