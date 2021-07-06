@@ -8,12 +8,18 @@ public class BattleController : MonoBehaviour
 {
     // ScriptableObjects
     public GameConstants gameConstants;
+    public IntArrVariable playersChars;
 
     // GameObjects
     GameObject mageObject;
     GameObject aimObject;
     // public Image imageCooldown;
     public GameObject fireballPrefab;
+
+    // Sprites
+    public Sprite[] sprites;
+    SpriteRenderer spriteRenderer;
+    
 
     // Components
     private  Rigidbody2D rigidBody;
@@ -54,7 +60,11 @@ public class BattleController : MonoBehaviour
         }
 
         // Components
+        spriteRenderer = mageObject.GetComponent<SpriteRenderer>();
         rigidBody = GetComponent<Rigidbody2D>();
+
+        // Render the correct character sprite
+        spriteRenderer.sprite = sprites[playersChars.GetValue(playerID)];
     }
 
     // Update is called once per frame

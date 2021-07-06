@@ -21,4 +21,4 @@ MonoBehaviour:
   fireballCooldown: 3
   fireballSpeed: 1
   fireballForce: 5
-  fireballDestroyTime: 1
+  fireballDestroyTime: 1.5

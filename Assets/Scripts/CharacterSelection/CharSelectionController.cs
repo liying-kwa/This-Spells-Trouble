@@ -7,6 +7,7 @@ public class CharSelectionController : MonoBehaviour
 {
     // ScriptableObjects
     public BoolArrVariable playersReady;
+    public IntArrVariable playersChars;
 
     // Game State
     public int playerID;
@@ -17,18 +18,24 @@ public class CharSelectionController : MonoBehaviour
     
 
     private void OnPreviousCharacter() {
-        characters[selectedChar].SetActive(false);
-        selectedChar = (selectedChar + 1) % characters.Length;
-        characters[selectedChar].SetActive(true);
+        if (!ready) {
+            characters[selectedChar].SetActive(false);
+            selectedChar = (selectedChar + 1) % characters.Length;
+            characters[selectedChar].SetActive(true);
+            playersChars.SetValue(playerID, selectedChar);
+        }
     }
 
     private void OnNextCharacter() {
-        characters[selectedChar].SetActive(false);
-        selectedChar-= 1;
-        if (selectedChar < 0){
-            selectedChar += characters.Length;
-        };
-        characters[selectedChar].SetActive(true);
+        if (!ready) {
+            characters[selectedChar].SetActive(false);
+            selectedChar-= 1;
+            if (selectedChar < 0){
+                selectedChar += characters.Length;
+            };
+            characters[selectedChar].SetActive(true);
+            playersChars.SetValue(playerID, selectedChar);
+        }
     }
 
     private void OnReady() {
@@ -47,6 +54,7 @@ public class CharSelectionController : MonoBehaviour
     {
         text.text = "";
         characters[selectedChar].SetActive(true);
+        playersChars.SetValue(playerID, 0);
         DontDestroyOnLoad(this.gameObject);
     }
 
