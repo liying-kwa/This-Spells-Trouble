@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5af0f00d0dbeb9a4e9467590004bdbe8, type: 3}
   m_Name: PlayersChars
   m_EditorClassIdentifier: 
-  DeveloperDescription: 
+  DeveloperDescription: Indicate which characters players have chosen. -1 if the
+    player has not joined the battle.

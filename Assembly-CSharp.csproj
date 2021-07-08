@@ -39,7 +39,8 @@
      <Compile Include="Assets\Scripts\CharacterSelection\PlayerInputManager.cs" />
      <Compile Include="Assets\Scripts\Battle\OldStuff\Player3DControllerOld.cs" />
      <Compile Include="Assets\Scripts\CharacterSelection\OldStuff\CharacterSelection.cs" />
-     <Compile Include="Assets\ScriptableObjects\CharSelection\BoolArrVariable.cs" />
+     <Compile Include="Assets\ScriptableObjects\BoolArrVariable.cs" />
+     <Compile Include="Assets\ScriptableObjects\IntArrVariable.cs" />
      <Compile Include="Assets\PlayerControls.cs" />
      <Compile Include="Assets\Scripts\CharacterSelection\OldStuff\LoadCharacter.cs" />
      <Compile Include="Assets\Scripts\CharacterSelection\CharSelectionController.cs" />
@@ -48,12 +49,12 @@
      <Compile Include="Assets\Scripts\CharacterSelection\OldStuff\CharManager.cs" />
      <Compile Include="Assets\Scripts\Battle\FireballController.cs" />
      <Compile Include="Assets\Scripts\Battle\SpawnManager.cs" />
-     <Compile Include="Assets\Scripts\Battle\Player3DController.cs" />
+     <Compile Include="Assets\Scripts\Battle\OldStuff\Player3DController.cs" />
      <Compile Include="Assets\Scripts\Battle\BattleController.cs" />
      <Compile Include="Assets\Scripts\Battle\OldStuff\Fireball3DController.cs" />
      <Compile Include="Assets\ScriptableObjects\General\PlayerInputsArr.cs" />
      <Compile Include="Assets\Scripts\CharacterSelection\CharSelectionManager.cs" />
-     <Compile Include="Assets\ScriptableObjects\CharSelection\IntArrVariable.cs" />
+     <Compile Include="Assets\ScriptableObjects\Battle\KnockbackArr.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2021.1.10f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -286,10 +287,10 @@
         <HintPath>C:/Program Files/Unity/Hub/Editor/2021.1.10f1/Editor/Data/Managed/UnityEngine/UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/PackageCache/com.unity.visualscripting@1.6.1/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/PackageCache/com.unity.visualscripting@1.6.1/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0/Runtime/Newtonsoft.Json.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0/Runtime/Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2021.1.10f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -637,124 +638,124 @@
         <HintPath>C:/Program Files/Unity/Hub/Editor/2021.1.10f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Flow.Editor">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.VisualScripting.Flow.Editor.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.VisualScripting.Flow.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Extras">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.2D.Tilemap.Extras.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.2D.Tilemap.Extras.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Animation.Editor">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.2D.Animation.Editor.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.2D.Animation.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.InternalAPIEngineBridge.001">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.InternalAPIEngineBridge.001.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.InternalAPIEngineBridge.001.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.PixelPerfect">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.2D.PixelPerfect.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.2D.PixelPerfect.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="PsdPlugin">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/PsdPlugin.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/PsdPlugin.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core.Editor">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.VisualScripting.Core.Editor.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.VisualScripting.Core.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.State.Editor">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.VisualScripting.State.Editor.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.VisualScripting.State.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.IK.Editor">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.2D.IK.Editor.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.2D.IK.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Psdimporter.Editor">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.2D.Psdimporter.Editor.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.2D.Psdimporter.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Path.Editor">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.2D.Path.Editor.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.2D.Path.Editor.dll</HintPath>
     </Reference>
     <Reference Include="VSSettingsProvider">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/VSSettingsProvider.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/VSSettingsProvider.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Flow">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.VisualScripting.Flow.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.VisualScripting.Flow.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.InputSystem">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.InputSystem.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.InputSystem.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PlasticSCM.Editor">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.PlasticSCM.Editor.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.PlasticSCM.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Extras.Editor">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.2D.Tilemap.Extras.Editor.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.2D.Tilemap.Extras.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.InternalAPIEditorBridge.001">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.001.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.001.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.VisualScripting.Core.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.VisualScripting.Core.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.IK.Runtime">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.2D.IK.Runtime.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.2D.IK.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Animation.Triangle.Runtime">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.2D.Animation.Triangle.Runtime.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.2D.Animation.Triangle.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Animation.Runtime">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.2D.Animation.Runtime.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.2D.Animation.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.PixelPerfect.Editor">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.2D.PixelPerfect.Editor.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.2D.PixelPerfect.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics.Editor">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Common.Runtime">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.2D.Common.Runtime.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.2D.Common.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.SpriteShape.Editor">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.2D.SpriteShape.Editor.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.2D.SpriteShape.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Common.Editor">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.2D.Common.Editor.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.2D.Common.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.SpriteShape.Runtime">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.2D.SpriteShape.Runtime.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.2D.SpriteShape.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.State">
-        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GDD/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.VisualScripting.State.dll</HintPath>
+        <HintPath>C:/Users/liying/Documents/UNI/WORK/Term 8/GAME/Project/ThisSpellsTrouble/Library/ScriptAssemblies/Unity.VisualScripting.State.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

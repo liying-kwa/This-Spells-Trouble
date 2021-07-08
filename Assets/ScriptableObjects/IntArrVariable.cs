@@ -10,19 +10,18 @@ public class IntArrVariable : ScriptableObject
     public string DeveloperDescription = "";
 #endif
 
-    private int[] _arr = {0, 0, 0, 0};
+    private int[] _arr = {-1, -1, -1, -1};
 
     public int GetValue(int index) {
         return _arr[index];
     }
 
-    public void SetValue(int index, int value)
-    {
+    public void SetValue(int index, int value) {
         _arr[index] = value;
     }
+
     // overload
-    public void SetValue(IntArrVariable arr)
-    {
+    public void SetValue(IntArrVariable arr) {
         _arr = arr._arr;
     }
 

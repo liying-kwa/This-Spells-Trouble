@@ -21,6 +21,9 @@ public class CharSelectionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Set frame rate to be 50 FPS
+	    Application.targetFrameRate =  50;
+        
         // Initialise all values to false
         for (int i = 0; i < playersJoined.GetLength(); i++) {
             playersJoined.SetValue(i, false);

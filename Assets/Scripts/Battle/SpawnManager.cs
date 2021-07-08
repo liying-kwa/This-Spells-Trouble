@@ -16,9 +16,11 @@ public class SpawnManager : MonoBehaviour
     GameObject[] mages = {null, null, null, null};
 
 
-    // Start is called before the first frame update
     void Awake()
     {
+        // Set frame rate to be 50 FPS
+	    Application.targetFrameRate =  50;
+
         int currIndex = 0;
         for (int i = 0; i < playerInputsArr.GetLength(); i++) {
             if (playerInputsArr.GetValue(i) != null) {

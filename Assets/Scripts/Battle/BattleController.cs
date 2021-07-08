@@ -9,20 +9,23 @@ public class BattleController : MonoBehaviour
     // ScriptableObjects
     public GameConstants gameConstants;
     public IntArrVariable playersChars;
+    public KnockbackArr playersKnockback;
 
     // GameObjects
     GameObject mageObject;
     GameObject aimObject;
+    GameObject knockbackObject;
+
     // public Image imageCooldown;
     public GameObject fireballPrefab;
 
     // Sprites
-    public Sprite[] sprites;
-    SpriteRenderer spriteRenderer;
+    public Sprite[] mageSprites;
     
-
     // Components
     private  Rigidbody2D rigidBody;
+    SpriteRenderer mageSpriteRenderer;
+    SpriteRenderer knockbackSpriteRenderer;
 
     // Physics
     Vector2 move;
@@ -32,6 +35,7 @@ public class BattleController : MonoBehaviour
 
     // Game State
     public int playerID;
+    float maxXScale;
     bool fireballReady = true;
     
     private void OnMove(InputValue value) {
@@ -46,8 +50,8 @@ public class BattleController : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
+
         // GameObjects
         foreach (Transform child in transform) {
             if (child.name == "Mage") {
@@ -56,15 +60,24 @@ public class BattleController : MonoBehaviour
             } else if (child.name == "Aim") {
                 aimObject = child.gameObject;
                 aimObject.SetActive(true);
+            } else if (child.name == "Knockback") {
+                knockbackObject = child.gameObject;
+                knockbackObject.SetActive(true);
             }
         }
 
         // Components
-        spriteRenderer = mageObject.GetComponent<SpriteRenderer>();
         rigidBody = GetComponent<Rigidbody2D>();
+        mageSpriteRenderer = mageObject.GetComponent<SpriteRenderer>();
+        knockbackSpriteRenderer = knockbackObject.GetComponent<SpriteRenderer>();
 
         // Render the correct character sprite
-        spriteRenderer.sprite = sprites[playersChars.GetValue(playerID)];
+        mageSpriteRenderer.sprite = mageSprites[playersChars.GetValue(playerID)];
+
+        // Initialise values
+        maxXScale = knockbackObject.transform.localScale.x;
+        knockbackObject.transform.localScale = new Vector3(0, knockbackObject.transform.localScale.y, knockbackObject.transform.localScale.z);
+        playersKnockback.SetValue(playerID, 0);
     }
 
     // Update is called once per frame
@@ -88,6 +101,20 @@ public class BattleController : MonoBehaviour
             //Quaternion aimRotation = Quaternion.AngleAxis(aimAngle, Vector3.forward);
             //transform.rotation = Quaternion.Slerp(transform.rotation, aimRotation, turnSpeed * Time.time);
             aimObject.transform.rotation = Quaternion.AngleAxis(aimAngle, Vector3.forward);
+        }
+
+        // Knockback
+        float knockbackFloat = playersKnockback.GetValue(playerID) / 100;
+        knockbackObject.transform.localScale = new Vector3(knockbackFloat * maxXScale, knockbackObject.transform.localScale.y, knockbackObject.transform.localScale.z);
+        if (knockbackFloat < 0.5f) {
+            // gold
+            knockbackSpriteRenderer.color = new Color(1, 0.8f, 0, 1);
+        } else if (knockbackFloat < 0.99f) {
+            // orange
+            knockbackSpriteRenderer.color = new Color(1, 0.4f, 0, 1);
+        } else {
+            // red
+            knockbackSpriteRenderer.color = new Color(1, 0, 0, 1);
         }
 
         // Cooldowns
@@ -115,6 +142,17 @@ public class BattleController : MonoBehaviour
         yield return new WaitForSeconds(gameConstants.fireballCooldown);
         fireballReady = true;
     }
+
+    // void  OnTriggerEnter2D(Collider2D other) {
+    //     if (other.gameObject.tag == "Spell") {
+    //         FireballController spellController = other.gameObject.GetComponent<FireballController>();
+    //         int srcPlayerID = spellController.srcPlayerID;
+    //         if (srcPlayerID != playerID) {
+    //             playersKnockback.ApplyChange(playerID, spellController.damage);
+    //             Debug.Log(playerID + " " + playersKnockback.GetValue(playerID));
+    //         }
+    //     }
+    // }
 
     
 }
