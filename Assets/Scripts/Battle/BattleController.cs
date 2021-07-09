@@ -16,8 +16,7 @@ public class BattleController : MonoBehaviour
     GameObject mageObject;
     GameObject aimObject;
     GameObject knockbackObject;
-
-    // public Image imageCooldown;
+    public Image[] cooldownImages;
     public GameObject fireballPrefab;
 
     // Sprites
@@ -38,7 +37,9 @@ public class BattleController : MonoBehaviour
     public int playerID;
     float maxXScale;
     bool[] spellsReady = {true, true, true, true};
+    float[] cooldownDurations = {-1, -1, -1, -1};
     
+    // Controller functions
     private void OnMove(InputValue value) {
         move = value.Get<Vector2>();
     }
@@ -104,6 +105,16 @@ public class BattleController : MonoBehaviour
         maxXScale = knockbackObject.transform.localScale.x;
         knockbackObject.transform.localScale = new Vector3(0, knockbackObject.transform.localScale.y, knockbackObject.transform.localScale.z);
         playersKnockback.SetValue(playerID, 0);
+        for (int i = 0; i < 4; i++) {
+            switch(playersSpells.GetSpell(playerID, i)) {
+                case Spell.fireball:
+                    cooldownDurations[i] = gameConstants.fireballCooldown;
+                    break;
+                default:
+                    break;
+            }
+        }
+        // Spell images
     }
 
     // Update is called once per frame
@@ -144,9 +155,18 @@ public class BattleController : MonoBehaviour
         }
 
         // Cooldowns
-        // if (!fireballReady) {
-        //     imageCooldown.fillAmount -= 1 / gameConstants.fireballCooldown * Time.deltaTime;
-        // }
+        if (!spellsReady[0]) {
+            cooldownImages[0].fillAmount -= 1 / cooldownDurations[0] * Time.deltaTime;
+        }
+        if (!spellsReady[1]) {
+            cooldownImages[1].fillAmount -= 1 / cooldownDurations[1] * Time.deltaTime;
+        }
+        if (!spellsReady[2]) {
+            cooldownImages[2].fillAmount -= 1 / cooldownDurations[2] * Time.deltaTime;
+        }
+        if (!spellsReady[3]) {
+            cooldownImages[3].fillAmount -= 1 / cooldownDurations[3] * Time.deltaTime;
+        }
     }
 
     // Spells
@@ -164,7 +184,7 @@ public class BattleController : MonoBehaviour
 
     IEnumerator SpellCooldown(int slot, float duration) {
         spellsReady[slot] = false;
-        // imageCooldown.fillAmount = 1;
+        cooldownImages[slot].fillAmount = 1;
         yield return new WaitForSeconds(duration);
         spellsReady[slot] = true;
     }
