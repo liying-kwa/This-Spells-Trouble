@@ -14,6 +14,9 @@ public class CharSelectionManager : MonoBehaviour
     public BoolArrVariable playersReady;
     public GameConstants gameConstants;
 
+    // Components
+    private AudioSource audioSource;
+
     // Game State
     bool allReady = false;
     IEnumerator countdownCoroutine = null;
@@ -23,6 +26,9 @@ public class CharSelectionManager : MonoBehaviour
     {
         // Set frame rate to be 50 FPS
 	    Application.targetFrameRate =  50;
+
+        // Get components
+        audioSource = GetComponent<AudioSource>();
         
         // Initialise all values to false
         for (int i = 0; i < playersJoined.GetLength(); i++) {
@@ -56,10 +62,12 @@ public class CharSelectionManager : MonoBehaviour
             if (countdownCoroutine == null) {
                 countdownCoroutine = Countdown();
                 StartCoroutine(countdownCoroutine);
+                audioSource.Play();
             }
         } else {
             // Stop countdown, if running
             if (countdownCoroutine != null) {
+                audioSource.Stop();
                 StopCoroutine(countdownCoroutine);
                 countdownCoroutine = null;
                 countdownText.text = "Character Selection";

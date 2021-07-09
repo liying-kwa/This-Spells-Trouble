@@ -35,9 +35,33 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Fire"",
+                    ""name"": ""Spell1"",
                     ""type"": ""Button"",
                     ""id"": ""289f9890-0122-4137-b5c0-a01a44cde8fb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Spell2"",
+                    ""type"": ""Button"",
+                    ""id"": ""d0e39c88-96f8-4a14-8af7-6e5a78221df8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Spell3"",
+                    ""type"": ""Button"",
+                    ""id"": ""5051e8dd-5165-4aad-924d-f8775422de2f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Spell4"",
+                    ""type"": ""Button"",
+                    ""id"": ""efd2b622-12e5-4477-a525-2845777aef74"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -73,7 +97,40 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Fire"",
+                    ""action"": ""Spell1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3c929b0f-73f9-43d8-b348-d854bd7a08ec"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Spell2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f253cfda-bfd5-4ebb-a49b-ef48d5900d5c"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Spell3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""92a12828-bc7d-4498-965a-c50da9a16ff4"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Spell4"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -192,7 +249,10 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Battle = asset.FindActionMap("Battle", throwIfNotFound: true);
         m_Battle_Move = m_Battle.FindAction("Move", throwIfNotFound: true);
         m_Battle_Aim = m_Battle.FindAction("Aim", throwIfNotFound: true);
-        m_Battle_Fire = m_Battle.FindAction("Fire", throwIfNotFound: true);
+        m_Battle_Spell1 = m_Battle.FindAction("Spell1", throwIfNotFound: true);
+        m_Battle_Spell2 = m_Battle.FindAction("Spell2", throwIfNotFound: true);
+        m_Battle_Spell3 = m_Battle.FindAction("Spell3", throwIfNotFound: true);
+        m_Battle_Spell4 = m_Battle.FindAction("Spell4", throwIfNotFound: true);
         // CharSelection
         m_CharSelection = asset.FindActionMap("CharSelection", throwIfNotFound: true);
         m_CharSelection_JoinPlayer = m_CharSelection.FindAction("JoinPlayer", throwIfNotFound: true);
@@ -250,14 +310,20 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private IBattleActions m_BattleActionsCallbackInterface;
     private readonly InputAction m_Battle_Move;
     private readonly InputAction m_Battle_Aim;
-    private readonly InputAction m_Battle_Fire;
+    private readonly InputAction m_Battle_Spell1;
+    private readonly InputAction m_Battle_Spell2;
+    private readonly InputAction m_Battle_Spell3;
+    private readonly InputAction m_Battle_Spell4;
     public struct BattleActions
     {
         private @PlayerControls m_Wrapper;
         public BattleActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Battle_Move;
         public InputAction @Aim => m_Wrapper.m_Battle_Aim;
-        public InputAction @Fire => m_Wrapper.m_Battle_Fire;
+        public InputAction @Spell1 => m_Wrapper.m_Battle_Spell1;
+        public InputAction @Spell2 => m_Wrapper.m_Battle_Spell2;
+        public InputAction @Spell3 => m_Wrapper.m_Battle_Spell3;
+        public InputAction @Spell4 => m_Wrapper.m_Battle_Spell4;
         public InputActionMap Get() { return m_Wrapper.m_Battle; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -273,9 +339,18 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Aim.started -= m_Wrapper.m_BattleActionsCallbackInterface.OnAim;
                 @Aim.performed -= m_Wrapper.m_BattleActionsCallbackInterface.OnAim;
                 @Aim.canceled -= m_Wrapper.m_BattleActionsCallbackInterface.OnAim;
-                @Fire.started -= m_Wrapper.m_BattleActionsCallbackInterface.OnFire;
-                @Fire.performed -= m_Wrapper.m_BattleActionsCallbackInterface.OnFire;
-                @Fire.canceled -= m_Wrapper.m_BattleActionsCallbackInterface.OnFire;
+                @Spell1.started -= m_Wrapper.m_BattleActionsCallbackInterface.OnSpell1;
+                @Spell1.performed -= m_Wrapper.m_BattleActionsCallbackInterface.OnSpell1;
+                @Spell1.canceled -= m_Wrapper.m_BattleActionsCallbackInterface.OnSpell1;
+                @Spell2.started -= m_Wrapper.m_BattleActionsCallbackInterface.OnSpell2;
+                @Spell2.performed -= m_Wrapper.m_BattleActionsCallbackInterface.OnSpell2;
+                @Spell2.canceled -= m_Wrapper.m_BattleActionsCallbackInterface.OnSpell2;
+                @Spell3.started -= m_Wrapper.m_BattleActionsCallbackInterface.OnSpell3;
+                @Spell3.performed -= m_Wrapper.m_BattleActionsCallbackInterface.OnSpell3;
+                @Spell3.canceled -= m_Wrapper.m_BattleActionsCallbackInterface.OnSpell3;
+                @Spell4.started -= m_Wrapper.m_BattleActionsCallbackInterface.OnSpell4;
+                @Spell4.performed -= m_Wrapper.m_BattleActionsCallbackInterface.OnSpell4;
+                @Spell4.canceled -= m_Wrapper.m_BattleActionsCallbackInterface.OnSpell4;
             }
             m_Wrapper.m_BattleActionsCallbackInterface = instance;
             if (instance != null)
@@ -286,9 +361,18 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Aim.started += instance.OnAim;
                 @Aim.performed += instance.OnAim;
                 @Aim.canceled += instance.OnAim;
-                @Fire.started += instance.OnFire;
-                @Fire.performed += instance.OnFire;
-                @Fire.canceled += instance.OnFire;
+                @Spell1.started += instance.OnSpell1;
+                @Spell1.performed += instance.OnSpell1;
+                @Spell1.canceled += instance.OnSpell1;
+                @Spell2.started += instance.OnSpell2;
+                @Spell2.performed += instance.OnSpell2;
+                @Spell2.canceled += instance.OnSpell2;
+                @Spell3.started += instance.OnSpell3;
+                @Spell3.performed += instance.OnSpell3;
+                @Spell3.canceled += instance.OnSpell3;
+                @Spell4.started += instance.OnSpell4;
+                @Spell4.performed += instance.OnSpell4;
+                @Spell4.canceled += instance.OnSpell4;
             }
         }
     }
@@ -354,7 +438,10 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
-        void OnFire(InputAction.CallbackContext context);
+        void OnSpell1(InputAction.CallbackContext context);
+        void OnSpell2(InputAction.CallbackContext context);
+        void OnSpell3(InputAction.CallbackContext context);
+        void OnSpell4(InputAction.CallbackContext context);
     }
     public interface ICharSelectionActions
     {

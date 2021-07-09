@@ -136,6 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playersReady: {fileID: 11400000, guid: b342ff068b3b55e44a6f14aa3f0febbc, type: 2}
   playersChars: {fileID: 11400000, guid: 680f5bb198ef26644aa397008c921dae, type: 2}
+  playersSpells: {fileID: 11400000, guid: 3d57aacccfb0dcf4993a190ef3116a50, type: 2}
   scrollAudio: {fileID: 8300000, guid: d2cbf0d8c4d02be4abd88f1ec644cc08, type: 3}
   readyAudio: {fileID: 8300000, guid: 1364594e87f5e944c999a90886217172, type: 3}
   playerID: 0
@@ -186,6 +187,7 @@ MonoBehaviour:
   gameConstants: {fileID: 11400000, guid: fdff1fd733c49bf49a390264049c3495, type: 2}
   playersChars: {fileID: 11400000, guid: 680f5bb198ef26644aa397008c921dae, type: 2}
   playersKnockback: {fileID: 11400000, guid: d46cc8037b6803d4da7ff070dd6d1583, type: 2}
+  playersSpells: {fileID: 11400000, guid: 3d57aacccfb0dcf4993a190ef3116a50, type: 2}
   fireballPrefab: {fileID: 8150370087909342670, guid: 2e6351b28aecf964eb3c48cfa373212e, type: 3}
   mageSprites:
   - {fileID: 6277400204303988758, guid: 4a14298f531abbc4a8c6728672a92e64, type: 3}

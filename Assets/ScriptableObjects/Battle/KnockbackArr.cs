@@ -7,7 +7,7 @@ public class KnockbackArr : ScriptableObject
 {
 #if UNITY_EDITOR
     [Multiline]
-    public string DeveloperDescription = "";
+    public string DeveloperDescription = "Players' knockback percentage. -1 indicates player has not joined the game.";
 #endif
 
     private float[] _arr = {-1, -1, -1, -1};

@@ -8,6 +8,7 @@ public class CharSelectionController : MonoBehaviour
     // ScriptableObjects
     public BoolArrVariable playersReady;
     public IntArrVariable playersChars;
+    public ChosenSpellsArr playersSpells;
 
     // Components
     private AudioSource audioSource;
@@ -63,6 +64,8 @@ public class CharSelectionController : MonoBehaviour
         characters[selectedChar].SetActive(true);
         playersChars.SetValue(playerID, 0);
         DontDestroyOnLoad(this.gameObject);
+        // Maybe shift this to somewhere else in the future
+        playersSpells.SetSpell(playerID, 0, Spell.fireball);
     }
 
     void Start() {

@@ -10,6 +10,7 @@ public class BattleController : MonoBehaviour
     public GameConstants gameConstants;
     public IntArrVariable playersChars;
     public KnockbackArr playersKnockback;
+    public ChosenSpellsArr playersSpells;
 
     // GameObjects
     GameObject mageObject;
@@ -36,7 +37,7 @@ public class BattleController : MonoBehaviour
     // Game State
     public int playerID;
     float maxXScale;
-    bool fireballReady = true;
+    bool[] spellsReady = {true, true, true, true};
     
     private void OnMove(InputValue value) {
         move = value.Get<Vector2>();
@@ -45,8 +46,33 @@ public class BattleController : MonoBehaviour
         aim = value.Get<Vector2>();
     }
     
-    private void OnFire() {
-        ThrowFireball();
+    private void OnSpell1() {
+        executeSpell(0);
+    }
+
+    private void OnSpell2() {
+        executeSpell(1);
+    }
+
+    private void OnSpell3() {
+        executeSpell(2);
+    }
+
+    private void OnSpell4() {
+        executeSpell(3);
+    }
+
+    private void executeSpell(int slot) {
+        Spell spell = playersSpells.GetSpell(playerID, slot);
+        switch (spell) {
+            case Spell.fireball:
+                CastFireball(slot);
+                break;
+            case Spell.teleport:
+                break;
+            default:
+                break;
+        }
     }
 
     // Start is called before the first frame update
@@ -118,29 +144,29 @@ public class BattleController : MonoBehaviour
         }
 
         // Cooldowns
-        if (!fireballReady) {
-            // imageCooldown.fillAmount -= 1 / gameConstants.fireballCooldown * Time.deltaTime;
-        }
+        // if (!fireballReady) {
+        //     imageCooldown.fillAmount -= 1 / gameConstants.fireballCooldown * Time.deltaTime;
+        // }
     }
 
-    // Buttons
-    void ThrowFireball() {
-        if (fireballReady) {
+    // Spells
+    void CastFireball(int slot) {
+        if (spellsReady[slot]) {
             Debug.Log("throwing fireball!");
             GameObject fireballObject = Instantiate(fireballPrefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
             fireballObject.GetComponent<FireballController>().srcPlayerID = playerID;
             fireballObject.GetComponent<FireballController>().aimAngle = aimAngle;
-            StartCoroutine(FireballCooldown());
+            StartCoroutine(SpellCooldown(slot, gameConstants.fireballCooldown));
         } else {
             //Debug.Log("cooling down...");
         }
     }
 
-    IEnumerator FireballCooldown() {
-        fireballReady = false;
+    IEnumerator SpellCooldown(int slot, float duration) {
+        spellsReady[slot] = false;
         // imageCooldown.fillAmount = 1;
-        yield return new WaitForSeconds(gameConstants.fireballCooldown);
-        fireballReady = true;
+        yield return new WaitForSeconds(duration);
+        spellsReady[slot] = true;
     }
 
     // void  OnTriggerEnter2D(Collider2D other) {

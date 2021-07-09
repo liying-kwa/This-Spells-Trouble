@@ -37,7 +37,7 @@ public class PlayerControllerOld : MonoBehaviour
         controls.Battle.Move.canceled += ctx => move = Vector2.zero;
         controls.Battle.Aim.performed += ctx => aim = ctx.ReadValue<Vector2>();
         controls.Battle.Aim.canceled += ctx => aim = Vector2.zero;
-        controls.Battle.Fire.performed += ctx => ThrowFireball();
+        controls.Battle.Spell1.performed += ctx => ThrowFireball();
     }
 
     void OnEnable() {
