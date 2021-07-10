@@ -56,6 +56,10 @@
      <Compile Include="Assets\ScriptableObjects\General\PlayerInputsArr.cs" />
      <Compile Include="Assets\ScriptableObjects\Battle\KnockbackArr.cs" />
      <Compile Include="Assets\Scripts\CharacterSelection\CharSelectionManager.cs" />
+     <Compile Include="Assets\Scripts\Battle\PlatformController.cs" />
+     <Compile Include="Assets\Scripts\Battle\VictoryManager.cs" />
+     <Compile Include="Assets\ScriptableObjects\BoolVariable.cs" />
+     <Compile Include="Assets\ScriptableObjects\IntVariable.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2021.1.10f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

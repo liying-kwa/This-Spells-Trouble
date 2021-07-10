@@ -69,8 +69,8 @@ public class CharSelectionController : MonoBehaviour
     }
 
     void Start() {
-        // Get components
         audioSource = GetComponent<AudioSource>();
+        audioSource.PlayOneShot(scrollAudio);
     }
 
     // Update is called once per frame

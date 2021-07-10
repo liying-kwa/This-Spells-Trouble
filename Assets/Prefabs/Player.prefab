@@ -69,8 +69,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 130198331
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 22c57c9034ab12a49a282af0f4164da1, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
@@ -188,13 +188,22 @@ MonoBehaviour:
   playersChars: {fileID: 11400000, guid: 680f5bb198ef26644aa397008c921dae, type: 2}
   playersKnockback: {fileID: 11400000, guid: d46cc8037b6803d4da7ff070dd6d1583, type: 2}
   playersSpells: {fileID: 11400000, guid: 3d57aacccfb0dcf4993a190ef3116a50, type: 2}
+  playersAreAlive: {fileID: 11400000, guid: dca732caad795cf45a5779f7a02e9058, type: 2}
+  roundEnded: {fileID: 11400000, guid: 8e6e01181cbb6b842bdd4106b8c69da9, type: 2}
+  cooldownImages: []
   fireballPrefab: {fileID: 8150370087909342670, guid: 2e6351b28aecf964eb3c48cfa373212e, type: 3}
   mageSprites:
   - {fileID: 6277400204303988758, guid: 4a14298f531abbc4a8c6728672a92e64, type: 3}
   - {fileID: 8979699791473672764, guid: 4dfd117b17e36084cb64c1e6b20f9232, type: 3}
   - {fileID: 49683156686831173, guid: 3a12399f93eb2c549af9943880bcc333, type: 3}
   - {fileID: 2415412147241076123, guid: e2570320ee5781b4088b622774457cbe, type: 3}
+  deadSprites:
+  - {fileID: -3227486009894794750, guid: 7ad44327edf544941a7218b834c17393, type: 3}
+  - {fileID: -8742357508165110266, guid: 95ffdfb4cd90a7049bc0c7ce3a661d87, type: 3}
+  - {fileID: 1797203182045940087, guid: bf7d7dc95b86dc6418307d8c04ddab7f, type: 3}
+  - {fileID: 8336467737629804386, guid: 40af7f8b124a2f24eba75fc9f3aff768, type: 3}
   playerID: 0
+  onPlatform: 0
 --- !u!61 &8451752079115469057
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -11,6 +11,8 @@ public class BattleController : MonoBehaviour
     public IntArrVariable playersChars;
     public KnockbackArr playersKnockback;
     public ChosenSpellsArr playersSpells;
+    public BoolArrVariable playersAreAlive;
+    public BoolVariable roundEnded;
 
     // GameObjects
     GameObject mageObject;
@@ -21,6 +23,7 @@ public class BattleController : MonoBehaviour
 
     // Sprites
     public Sprite[] mageSprites;
+    public Sprite[] deadSprites;
     
     // Components
     private  Rigidbody2D rigidBody;
@@ -38,6 +41,9 @@ public class BattleController : MonoBehaviour
     float maxXScale;
     bool[] spellsReady = {true, true, true, true};
     float[] cooldownDurations = {-1, -1, -1, -1};
+    float knockback;
+    public bool onPlatform;
+    bool isDead = false;
     
     // Controller functions
     private void OnMove(InputValue value) {
@@ -102,6 +108,7 @@ public class BattleController : MonoBehaviour
         mageSpriteRenderer.sprite = mageSprites[playersChars.GetValue(playerID)];
 
         // Initialise values
+        playersAreAlive.SetValue(playerID, true);
         maxXScale = knockbackObject.transform.localScale.x;
         knockbackObject.transform.localScale = new Vector3(0, knockbackObject.transform.localScale.y, knockbackObject.transform.localScale.z);
         playersKnockback.SetValue(playerID, 0);
@@ -120,6 +127,25 @@ public class BattleController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (roundEnded.Value && !isDead) {
+            rigidBody.velocity = new Vector3(0, 0, 0);
+            return;
+        }
+
+        if (isDead) {
+            rigidBody.velocity = new Vector3(0, 0, 0);
+            mageSpriteRenderer.sprite = deadSprites[playersChars.GetValue(playerID)];
+            playersAreAlive.SetValue(playerID, false);
+            return;
+        }
+
+        // Death if knockback is 100 and not on platform
+        knockback = playersKnockback.GetValue(playerID);
+        if (knockback >= 100 && !onPlatform) {
+            isDead = true;
+            Debug.Log("Player " + (playerID+1) + " has died.");
+        }
+
         // Movement
         if (move.x != 0 && move.y != 0) {
             // Vector2 movement = new Vector2(move.x, move.y) * gameConstants.moveSpeed * Time.deltaTime;
@@ -140,8 +166,8 @@ public class BattleController : MonoBehaviour
             aimObject.transform.rotation = Quaternion.AngleAxis(aimAngle, Vector3.forward);
         }
 
-        // Knockback
-        float knockbackFloat = playersKnockback.GetValue(playerID) / 100;
+        // Knockback bar
+        float knockbackFloat = knockback / 100;
         knockbackObject.transform.localScale = new Vector3(knockbackFloat * maxXScale, knockbackObject.transform.localScale.y, knockbackObject.transform.localScale.z);
         if (knockbackFloat < 0.5f) {
             // gold
@@ -169,19 +195,6 @@ public class BattleController : MonoBehaviour
         }
     }
 
-    // Spells
-    void CastFireball(int slot) {
-        if (spellsReady[slot]) {
-            Debug.Log("throwing fireball!");
-            GameObject fireballObject = Instantiate(fireballPrefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
-            fireballObject.GetComponent<FireballController>().srcPlayerID = playerID;
-            fireballObject.GetComponent<FireballController>().aimAngle = aimAngle;
-            StartCoroutine(SpellCooldown(slot, gameConstants.fireballCooldown));
-        } else {
-            //Debug.Log("cooling down...");
-        }
-    }
-
     IEnumerator SpellCooldown(int slot, float duration) {
         spellsReady[slot] = false;
         cooldownImages[slot].fillAmount = 1;
@@ -189,16 +202,14 @@ public class BattleController : MonoBehaviour
         spellsReady[slot] = true;
     }
 
-    // void  OnTriggerEnter2D(Collider2D other) {
-    //     if (other.gameObject.tag == "Spell") {
-    //         FireballController spellController = other.gameObject.GetComponent<FireballController>();
-    //         int srcPlayerID = spellController.srcPlayerID;
-    //         if (srcPlayerID != playerID) {
-    //             playersKnockback.ApplyChange(playerID, spellController.damage);
-    //             Debug.Log(playerID + " " + playersKnockback.GetValue(playerID));
-    //         }
-    //     }
-    // }
+    // Spells
+    void CastFireball(int slot) {
+        if (spellsReady[slot]) {
+            GameObject fireballObject = Instantiate(fireballPrefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+            fireballObject.GetComponent<FireballController>().srcPlayerID = playerID;
+            fireballObject.GetComponent<FireballController>().aimAngle = aimAngle;
+            StartCoroutine(SpellCooldown(slot, gameConstants.fireballCooldown));
+        }
+    }
 
-    
 }

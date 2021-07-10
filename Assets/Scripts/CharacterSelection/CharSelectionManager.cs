@@ -58,7 +58,7 @@ public class CharSelectionManager : MonoBehaviour
             }
         }
         if (allReady) {
-            // Start coroutine, if not started
+            // Start countdown, if not started
             if (countdownCoroutine == null) {
                 countdownCoroutine = Countdown();
                 StartCoroutine(countdownCoroutine);
@@ -76,7 +76,7 @@ public class CharSelectionManager : MonoBehaviour
     }
 
     public IEnumerator Countdown() {
-        for (int i = 0; i < gameConstants.countdownTime+1; i++) {
+        for (int i = 0; i < gameConstants.countdownTime; i++) {
             countdownText.text = "" + (gameConstants.countdownTime-i);
             yield return new WaitForSeconds(1);
         }
