@@ -37,7 +37,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 {
                     ""name"": ""Spell1"",
                     ""type"": ""Button"",
-                    ""id"": ""289f9890-0122-4137-b5c0-a01a44cde8fb"",
+                    ""id"": ""5051e8dd-5165-4aad-924d-f8775422de2f"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -45,7 +45,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 {
                     ""name"": ""Spell2"",
                     ""type"": ""Button"",
-                    ""id"": ""d0e39c88-96f8-4a14-8af7-6e5a78221df8"",
+                    ""id"": ""289f9890-0122-4137-b5c0-a01a44cde8fb"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -53,7 +53,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 {
                     ""name"": ""Spell3"",
                     ""type"": ""Button"",
-                    ""id"": ""5051e8dd-5165-4aad-924d-f8775422de2f"",
+                    ""id"": ""efd2b622-12e5-4477-a525-2845777aef74"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -61,7 +61,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 {
                     ""name"": ""Spell4"",
                     ""type"": ""Button"",
-                    ""id"": ""efd2b622-12e5-4477-a525-2845777aef74"",
+                    ""id"": ""d0e39c88-96f8-4a14-8af7-6e5a78221df8"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -97,7 +97,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Spell1"",
+                    ""action"": ""Spell2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -108,7 +108,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Spell2"",
+                    ""action"": ""Spell4"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -119,7 +119,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Spell3"",
+                    ""action"": ""Spell1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -130,7 +130,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Spell4"",
+                    ""action"": ""Spell3"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }

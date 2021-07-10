@@ -192,6 +192,7 @@ MonoBehaviour:
   roundEnded: {fileID: 11400000, guid: 8e6e01181cbb6b842bdd4106b8c69da9, type: 2}
   cooldownImages: []
   fireballPrefab: {fileID: 8150370087909342670, guid: 2e6351b28aecf964eb3c48cfa373212e, type: 3}
+  teleportPrefab: {fileID: 7969614253980247559, guid: 01bf4c495303c05468f95287ad1948a0, type: 3}
   mageSprites:
   - {fileID: 6277400204303988758, guid: 4a14298f531abbc4a8c6728672a92e64, type: 3}
   - {fileID: 8979699791473672764, guid: 4dfd117b17e36084cb64c1e6b20f9232, type: 3}
@@ -203,7 +204,7 @@ MonoBehaviour:
   - {fileID: 1797203182045940087, guid: bf7d7dc95b86dc6418307d8c04ddab7f, type: 3}
   - {fileID: 8336467737629804386, guid: 40af7f8b124a2f24eba75fc9f3aff768, type: 3}
   playerID: 0
-  onPlatform: 0
+  onPlatform: 1
 --- !u!61 &8451752079115469057
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -22,4 +22,7 @@ public class GameConstants : ScriptableObject
     public float fireballForce = 5;
     public float fireballDestroyTime = 1.5f;
     public int fireballDamage = 30;
+    public float teleportDistance = 3;
+    public float teleportCooldown = 5;
+    public float teleportDestroyTime = 0.5f;
 }

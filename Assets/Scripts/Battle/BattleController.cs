@@ -20,6 +20,7 @@ public class BattleController : MonoBehaviour
     GameObject knockbackObject;
     public Image[] cooldownImages;
     public GameObject fireballPrefab;
+    public GameObject teleportPrefab;
 
     // Sprites
     public Sprite[] mageSprites;
@@ -42,7 +43,7 @@ public class BattleController : MonoBehaviour
     bool[] spellsReady = {true, true, true, true};
     float[] cooldownDurations = {-1, -1, -1, -1};
     float knockback;
-    public bool onPlatform;
+    public bool onPlatform = true;
     bool isDead = false;
     
     // Controller functions
@@ -76,6 +77,7 @@ public class BattleController : MonoBehaviour
                 CastFireball(slot);
                 break;
             case Spell.teleport:
+                CastTeleport(slot);
                 break;
             default:
                 break;
@@ -116,6 +118,9 @@ public class BattleController : MonoBehaviour
             switch(playersSpells.GetSpell(playerID, i)) {
                 case Spell.fireball:
                     cooldownDurations[i] = gameConstants.fireballCooldown;
+                    break;
+                case Spell.teleport:
+                    cooldownDurations[i] = gameConstants.teleportCooldown;
                     break;
                 default:
                     break;
@@ -209,6 +214,15 @@ public class BattleController : MonoBehaviour
             fireballObject.GetComponent<FireballController>().srcPlayerID = playerID;
             fireballObject.GetComponent<FireballController>().aimAngle = aimAngle;
             StartCoroutine(SpellCooldown(slot, gameConstants.fireballCooldown));
+        }
+    }
+
+    void CastTeleport(int slot) {
+        if (spellsReady[slot]) {
+            GameObject teleportObject = Instantiate(teleportPrefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+            teleportObject.GetComponent<TeleportController>().srcPlayerID = playerID;
+            teleportObject.GetComponent<TeleportController>().aimAngle = aimAngle;
+            StartCoroutine(SpellCooldown(slot, gameConstants.teleportCooldown));
         }
     }
 
