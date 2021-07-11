@@ -83,6 +83,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!95 &6997138686316341479
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6812016318018511552}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ef77b1388b729a942b188cadc0e27c10, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7497866185967414325
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,9 +525,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1514028325809734369, guid: bee509d197321ef42bcacdb8b787983b, type: 3}
+      propertyPath: m_Size.x
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 1514028325809734369, guid: bee509d197321ef42bcacdb8b787983b, type: 3}
+      propertyPath: m_Size.y
+      value: 0.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 1514028325809734369, guid: bee509d197321ef42bcacdb8b787983b, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 6277400204303988758, guid: 4a14298f531abbc4a8c6728672a92e64, type: 3}
+      objectReference: {fileID: -9057283976288295915, guid: d15e8c9d1d7c1764e89721ab8c748971, type: 3}
     - target: {fileID: 1514028325809734369, guid: bee509d197321ef42bcacdb8b787983b, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -537,6 +564,11 @@ PrefabInstance:
     - {fileID: 8957202837866862548, guid: bee509d197321ef42bcacdb8b787983b, type: 3}
     - {fileID: 1514028325809734370, guid: bee509d197321ef42bcacdb8b787983b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bee509d197321ef42bcacdb8b787983b, type: 3}
+--- !u!1 &6812016318018511552 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1514028325809734372, guid: bee509d197321ef42bcacdb8b787983b, type: 3}
+  m_PrefabInstance: {fileID: 5443668885656870948}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6812016318018511556 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1514028325809734368, guid: bee509d197321ef42bcacdb8b787983b, type: 3}

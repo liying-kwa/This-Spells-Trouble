@@ -45,6 +45,7 @@
      <Compile Include="Assets\PlayerControls.cs" />
      <Compile Include="Assets\Scripts\CharacterSelection\OldStuff\LoadCharacter.cs" />
      <Compile Include="Assets\ScriptableObjects\Battle\ChosenSpellsArr.cs" />
+     <Compile Include="Assets\Scripts\Battle\SpellControllers\TeleportController.cs" />
      <Compile Include="Assets\ScriptableObjects\IntVariable.cs" />
      <Compile Include="Assets\Scripts\CharacterSelection\CharSelectionController.cs" />
      <Compile Include="Assets\Scripts\Battle\PlatformController.cs" />
@@ -60,7 +61,6 @@
      <Compile Include="Assets\ScriptableObjects\General\PlayerInputsArr.cs" />
      <Compile Include="Assets\ScriptableObjects\Battle\KnockbackArr.cs" />
      <Compile Include="Assets\Scripts\CharacterSelection\CharSelectionManager.cs" />
-     <Compile Include="Assets\Scripts\Battle\SpellControllers\TeleportController.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2021.1.10f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

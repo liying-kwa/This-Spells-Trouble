@@ -28,8 +28,16 @@ public class BattleController : MonoBehaviour
     
     // Components
     private  Rigidbody2D rigidBody;
-    SpriteRenderer mageSpriteRenderer;
+    // SpriteRenderer mageSpriteRenderer;
+    Animator animator;
     SpriteRenderer knockbackSpriteRenderer;
+
+    // Animation
+    public static readonly string[] staticDirections = {"Static_N", "Static_NW", "Static_W", "Static_SW", "Static_S", "Static_SE", "Static_E", "Static_NE"};
+    public static readonly string[] runDirections = {"Run_N", "Run_NW", "Run_W", "Run_SW", "Run_S", "Run_SE", "Run_E", "Run_NE"};
+    int lastDirection = 0;
+    bool castingSpell = false;
+    IEnumerator spellAnimationCoroutine = null;
 
     // Physics
     Vector2 move;
@@ -72,6 +80,17 @@ public class BattleController : MonoBehaviour
 
     private void executeSpell(int slot) {
         Spell spell = playersSpells.GetSpell(playerID, slot);
+        if (spell == Spell.nullSpell) {
+            return;
+        }
+        // Animation
+        castingSpell = true;
+        if (spellAnimationCoroutine != null) {
+            StopCoroutine(spellAnimationCoroutine);
+        }
+        spellAnimationCoroutine = SpellAnimation();
+        StartCoroutine(spellAnimationCoroutine);
+        // Cast spell
         switch (spell) {
             case Spell.fireball:
                 CastFireball(slot);
@@ -103,11 +122,12 @@ public class BattleController : MonoBehaviour
 
         // Components
         rigidBody = GetComponent<Rigidbody2D>();
-        mageSpriteRenderer = mageObject.GetComponent<SpriteRenderer>();
+        // mageSpriteRenderer = mageObject.GetComponent<SpriteRenderer>();
+        animator = mageObject.GetComponent<Animator>();
         knockbackSpriteRenderer = knockbackObject.GetComponent<SpriteRenderer>();
 
         // Render the correct character sprite
-        mageSpriteRenderer.sprite = mageSprites[playersChars.GetValue(playerID)];
+        // mageSpriteRenderer.sprite = mageSprites[playersChars.GetValue(playerID)];
 
         // Initialise values
         playersAreAlive.SetValue(playerID, true);
@@ -139,7 +159,7 @@ public class BattleController : MonoBehaviour
 
         if (isDead) {
             rigidBody.velocity = new Vector3(0, 0, 0);
-            mageSpriteRenderer.sprite = deadSprites[playersChars.GetValue(playerID)];
+            // mageSpriteRenderer.sprite = deadSprites[playersChars.GetValue(playerID)];
             playersAreAlive.SetValue(playerID, false);
             return;
         }
@@ -149,6 +169,18 @@ public class BattleController : MonoBehaviour
         if (knockback >= 100 && !onPlatform) {
             isDead = true;
             Debug.Log("Player " + (playerID+1) + " has died.");
+        }
+
+        // Animation
+        if (!castingSpell) {
+            string[] directionArray = null;
+            if (move.x == 0 && move.y == 0) {
+                directionArray = staticDirections;
+            } else {
+                directionArray = runDirections;
+                lastDirection = DirectionToIndex(new Vector2(move.x, move.y), 8);
+            }
+            animator.Play(directionArray[lastDirection]);
         }
 
         // Movement
@@ -200,6 +232,40 @@ public class BattleController : MonoBehaviour
         }
     }
 
+    // Animation stuff
+    int DirectionToIndex(Vector2 dir, int sliceCount) {
+        // get the normalized direction
+        Vector2 normDir = dir.normalized;
+        // calculate how many degrees one slice is
+        float step = 360f / sliceCount;
+        // calculate how many degrees half a slice is
+        // we need this to offset the pie, so that the North slice is aligned in the center
+        float halfStep = step / 2;
+        // get the angle from -180 to 180 of the direction vector relative to the Up vector
+        // this will return the angle between dir and North
+        float angle = Vector2.SignedAngle(Vector2.up, normDir);
+        // add the halfslice offset
+        angle += halfStep;
+        // if angle is negative, add the wraparound
+        if (angle < 0) {
+            angle += 360;
+        }
+        // calculate the amount of steps required to reach this angle
+        float stepCount = angle / step;
+        // round it off to get the answer
+        return Mathf.FloorToInt(stepCount);
+    }
+
+    IEnumerator SpellAnimation() {
+        Vector2 aimVector = new Vector2(-Mathf.Sin(Mathf.Deg2Rad * aimAngle), Mathf.Cos(Mathf.Deg2Rad * aimAngle));
+        int aimDirection = DirectionToIndex(aimVector, 8);
+        animator.Play(staticDirections[aimDirection]);
+        yield return new WaitForSeconds(gameConstants.spellAnimationDuration);
+        castingSpell = false;
+        spellAnimationCoroutine = null;
+    }
+
+    // Spell stuff
     IEnumerator SpellCooldown(int slot, float duration) {
         spellsReady[slot] = false;
         cooldownImages[slot].fillAmount = 1;
@@ -207,7 +273,6 @@ public class BattleController : MonoBehaviour
         spellsReady[slot] = true;
     }
 
-    // Spells
     void CastFireball(int slot) {
         if (spellsReady[slot]) {
             GameObject fireballObject = Instantiate(fireballPrefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);

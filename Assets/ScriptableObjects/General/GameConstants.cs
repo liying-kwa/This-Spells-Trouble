@@ -14,6 +14,7 @@ public class GameConstants : ScriptableObject
     public Vector3 bottomLeftPosition = new Vector3(-2.71f, -2.71f, 0);
     public Vector3 bottomRightPosition = new Vector3(2.71f, -2.71f, 0);
     public float playerSpeed = 0.1f;
+    public float spellAnimationDuration = 0.5f;
     // float turnSpeed = 0.001f;
     public float lavaDamage = 10;
     public float lavaDamageInverval = 1;
