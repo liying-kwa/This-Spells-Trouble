@@ -47,6 +47,7 @@ public class FireballController : MonoBehaviour
                 // Debug.Log("Collided with other player!");
                 other.gameObject.GetComponent<Rigidbody2D>().AddForce(movement * gameConstants.fireballSpeed * gameConstants.fireballForce, ForceMode2D.Impulse);
                 playersKnockback.ApplyChange(dstPlayerID, damage);
+                other.gameObject.GetComponent<BattleController>().Hurt();
                 audioSource.Stop();
                 AudioSource.PlayClipAtPoint(hitAudio, new Vector3(0, 0, 0));
                 Destroy(gameObject);

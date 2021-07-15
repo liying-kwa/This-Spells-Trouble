@@ -9,6 +9,7 @@ public class SpawnManager : MonoBehaviour
     // ScriptableObjects
     public GameConstants gameConstants;
     public PlayerInputsArr playerInputsArr;
+    public BoolArrVariable playersAreAlive;
 
     // GameObject References
     // public GameObject playerPrefab;
@@ -30,6 +31,7 @@ public class SpawnManager : MonoBehaviour
         int currIndex = 0;
         for (int i = 0; i < playerInputsArr.GetLength(); i++) {
             if (playerInputsArr.GetValue(i) != null) {
+                playersAreAlive.SetValue(i, true);
                 // Assign mages references
                 mages[currIndex] = playerInputsArr.GetValue(i).gameObject;
                 // Disable previous script and activate current script and relevant components
@@ -40,6 +42,8 @@ public class SpawnManager : MonoBehaviour
                 playerInputsArr.GetValue(i).actions.FindActionMap("CharSelection").Disable();
                 playerInputsArr.GetValue(i).actions.FindActionMap("Battle").Enable();
                 currIndex += 1;
+            } else {
+                playersAreAlive.SetValue(i, false);
             }
         }
         // Set mages active and assign their positions accordingly

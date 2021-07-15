@@ -15,6 +15,7 @@ public class BattleController : MonoBehaviour
     public BoolVariable roundEnded;
 
     // GameObjects
+    MapManager mapManager;
     GameObject mageObject;
     GameObject aimObject;
     GameObject knockbackObject;
@@ -33,11 +34,21 @@ public class BattleController : MonoBehaviour
     SpriteRenderer knockbackSpriteRenderer;
 
     // Animation
-    public static readonly string[] staticDirections = {"Static_N", "Static_NW", "Static_W", "Static_SW", "Static_S", "Static_SE", "Static_E", "Static_NE"};
-    public static readonly string[] runDirections = {"Run_N", "Run_NW", "Run_W", "Run_SW", "Run_S", "Run_SE", "Run_E", "Run_NE"};
+    // public static readonly string[] staticDirections = {"Static_N", "Static_NW", "Static_W", "Static_SW", "Static_S", "Static_SE", "Static_E", "Static_NE"};
+    // public static readonly string[] runDirections = {"Run_N", "Run_NW", "Run_W", "Run_SW", "Run_S", "Run_SE", "Run_E", "Run_NE"};
+    // public static readonly string[] staticDirections = {"Static_N", "Static_W", "Static_S", "Static_E"};
+    // public static readonly string[] runDirections = {"Run_N", "Run_W", "Run_S", "Run_E"};
+    public static readonly string[] idleDirections = {"Idle_N", "Idle_W", "Idle_S", "Idle_E"};
+    public static readonly string[] walkDirections = {"Walk_N", "Walk_W", "Walk_S", "Walk_E"};
+    public static readonly string[] attackDirections = {"Attack_N", "Attack_W", "Attack_S", "Attack_E"};
+    public static readonly string[] hurtDirections = {"Hurt_N", "Hurt_W", "Hurt_S", "Hurt_E"};
+    public static readonly string[] deathDirections = {"Death_N", "Death_W", "Death_S", "Death_E"};
+    
     int lastDirection = 0;
     bool castingSpell = false;
     IEnumerator spellAnimationCoroutine = null;
+    bool hurting = false;
+    IEnumerator hurtAnimationCoroutine = null;
 
     // Physics
     Vector2 move;
@@ -53,6 +64,7 @@ public class BattleController : MonoBehaviour
     float knockback;
     public bool onPlatform = true;
     bool isDead = false;
+    IEnumerator damageCoroutine = null;
     
     // Controller functions
     private void OnMove(InputValue value) {
@@ -63,22 +75,33 @@ public class BattleController : MonoBehaviour
     }
     
     private void OnSpell1() {
-        executeSpell(0);
+        if (!isDead && !roundEnded.Value) {
+            executeSpell(0);
+        }
     }
 
     private void OnSpell2() {
-        executeSpell(1);
+        if (!isDead && !roundEnded.Value) {
+            executeSpell(1);
+        }
     }
 
     private void OnSpell3() {
-        executeSpell(2);
+        if (!isDead && !roundEnded.Value) {
+            executeSpell(2);
+        }
     }
 
     private void OnSpell4() {
-        executeSpell(3);
+        if (!isDead && !roundEnded.Value) {
+            executeSpell(3);
+        }
     }
 
     private void executeSpell(int slot) {
+        if (!spellsReady[slot]) {
+            return;
+        }
         Spell spell = playersSpells.GetSpell(playerID, slot);
         if (spell == Spell.nullSpell) {
             return;
@@ -119,6 +142,7 @@ public class BattleController : MonoBehaviour
                 knockbackObject.SetActive(true);
             }
         }
+        mapManager = FindObjectOfType<MapManager>();
 
         // Components
         rigidBody = GetComponent<Rigidbody2D>();
@@ -130,7 +154,6 @@ public class BattleController : MonoBehaviour
         // mageSpriteRenderer.sprite = mageSprites[playersChars.GetValue(playerID)];
 
         // Initialise values
-        playersAreAlive.SetValue(playerID, true);
         maxXScale = knockbackObject.transform.localScale.x;
         knockbackObject.transform.localScale = new Vector3(0, knockbackObject.transform.localScale.y, knockbackObject.transform.localScale.z);
         playersKnockback.SetValue(playerID, 0);
@@ -160,25 +183,43 @@ public class BattleController : MonoBehaviour
         if (isDead) {
             rigidBody.velocity = new Vector3(0, 0, 0);
             // mageSpriteRenderer.sprite = deadSprites[playersChars.GetValue(playerID)];
-            playersAreAlive.SetValue(playerID, false);
             return;
+        }
+
+        // Damage if outside platform
+        onPlatform = !mapManager.GetTileDealsDamage(transform.position);
+        if (!onPlatform) {
+            // Start damage coroutine, if not started
+            if (damageCoroutine == null) {
+                damageCoroutine = Damage();
+                StartCoroutine(damageCoroutine);
+            } 
+        } else {
+            // Stop damage coroutine, if running
+            if (damageCoroutine != null) {
+                StopCoroutine(damageCoroutine);
+                damageCoroutine = null;
+            }
         }
 
         // Death if knockback is 100 and not on platform
         knockback = playersKnockback.GetValue(playerID);
         if (knockback >= 100 && !onPlatform) {
             isDead = true;
+            playersAreAlive.SetValue(playerID, false);
+            animator.Play(deathDirections[lastDirection]);
             Debug.Log("Player " + (playerID+1) + " has died.");
         }
 
-        // Animation
-        if (!castingSpell) {
+        // Idle/Walk Animation
+        if (!castingSpell && !hurting) {
             string[] directionArray = null;
             if (move.x == 0 && move.y == 0) {
-                directionArray = staticDirections;
+                directionArray = idleDirections;
             } else {
-                directionArray = runDirections;
-                lastDirection = DirectionToIndex(new Vector2(move.x, move.y), 8);
+                directionArray = walkDirections;
+                // lastDirection = DirectionToIndex(new Vector2(move.x, move.y), 8);
+                lastDirection = DirectionToIndex(new Vector2(move.x, move.y), 4);
             }
             animator.Play(directionArray[lastDirection]);
         }
@@ -232,6 +273,14 @@ public class BattleController : MonoBehaviour
         }
     }
 
+    // Platform stuff
+    public IEnumerator Damage() {
+        while (true) {
+            playersKnockback.SetValue(playerID, playersKnockback.GetValue(playerID) + gameConstants.lavaDamage);
+            yield return new WaitForSeconds(gameConstants.lavaDamageInverval);
+        }
+    }
+
     // Animation stuff
     int DirectionToIndex(Vector2 dir, int sliceCount) {
         // get the normalized direction
@@ -258,11 +307,30 @@ public class BattleController : MonoBehaviour
 
     IEnumerator SpellAnimation() {
         Vector2 aimVector = new Vector2(-Mathf.Sin(Mathf.Deg2Rad * aimAngle), Mathf.Cos(Mathf.Deg2Rad * aimAngle));
-        int aimDirection = DirectionToIndex(aimVector, 8);
-        animator.Play(staticDirections[aimDirection]);
+        // int aimDirection = DirectionToIndex(aimVector, 8);
+        int aimDirection = DirectionToIndex(aimVector, 4);
+        string clip = attackDirections[aimDirection];
+        animator.Play(clip);
         yield return new WaitForSeconds(gameConstants.spellAnimationDuration);
         castingSpell = false;
         spellAnimationCoroutine = null;
+    }
+
+    public void Hurt() {
+        hurting = true;
+        if (hurtAnimationCoroutine != null) {
+            StopCoroutine(hurtAnimationCoroutine);
+        }
+        hurtAnimationCoroutine = HurtAnimation();
+        StartCoroutine(hurtAnimationCoroutine);
+    }
+
+    IEnumerator HurtAnimation() {
+        string clip = hurtDirections[lastDirection];
+        animator.Play(clip);
+        yield return new WaitForSeconds(gameConstants.hurtAnimationDuration);
+        hurting = false;
+        hurtAnimationCoroutine = null;
     }
 
     // Spell stuff
@@ -274,21 +342,17 @@ public class BattleController : MonoBehaviour
     }
 
     void CastFireball(int slot) {
-        if (spellsReady[slot]) {
-            GameObject fireballObject = Instantiate(fireballPrefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
-            fireballObject.GetComponent<FireballController>().srcPlayerID = playerID;
-            fireballObject.GetComponent<FireballController>().aimAngle = aimAngle;
-            StartCoroutine(SpellCooldown(slot, gameConstants.fireballCooldown));
-        }
+        GameObject fireballObject = Instantiate(fireballPrefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+        fireballObject.GetComponent<FireballController>().srcPlayerID = playerID;
+        fireballObject.GetComponent<FireballController>().aimAngle = aimAngle;
+        StartCoroutine(SpellCooldown(slot, gameConstants.fireballCooldown));
     }
 
     void CastTeleport(int slot) {
-        if (spellsReady[slot]) {
-            GameObject teleportObject = Instantiate(teleportPrefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
-            teleportObject.GetComponent<TeleportController>().srcPlayerID = playerID;
-            teleportObject.GetComponent<TeleportController>().aimAngle = aimAngle;
-            StartCoroutine(SpellCooldown(slot, gameConstants.teleportCooldown));
-        }
+        GameObject teleportObject = Instantiate(teleportPrefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+        teleportObject.GetComponent<TeleportController>().srcPlayerID = playerID;
+        teleportObject.GetComponent<TeleportController>().aimAngle = aimAngle;
+        StartCoroutine(SpellCooldown(slot, gameConstants.teleportCooldown));
     }
 
 }

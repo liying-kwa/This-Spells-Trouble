@@ -67,7 +67,7 @@ public class CharSelectionController : MonoBehaviour
         // Maybe shift this to somewhere else in the future
         playersSpells.SetSpell(playerID, 1, Spell.fireball);
         // Test spells here
-        // playersSpells.SetSpell(playerID, 0, Spell.teleport);
+        playersSpells.SetSpell(playerID, 0, Spell.teleport);
     }
 
     void Start() {
