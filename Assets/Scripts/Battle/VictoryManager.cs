@@ -10,12 +10,16 @@ public class VictoryManager : MonoBehaviour
     public BoolVariable roundEnded;
 
     // GameObjects
-    public AudioSource backgroundAudio;
-    public AudioClip victoryClip;
+    //public AudioSource backgroundAudio;
+    //public AudioClip victoryClip;
     public Text victoryText;
 
     // Game state
     bool ended = false;
+
+    // Sound Events
+    [Header("Sound Events")]
+    public GameEvent onVictoryPlaySound;
 
     // Start is called before the first frame update
     void Awake()
@@ -37,8 +41,9 @@ public class VictoryManager : MonoBehaviour
                 }
                 ended = true;
                 roundEnded.SetValue(true);
-                backgroundAudio.Stop();
-                backgroundAudio.PlayOneShot(victoryClip);
+                onVictoryPlaySound.Raise();
+                //backgroundAudio.Stop();
+                //backgroundAudio.PlayOneShot(victoryClip);
                 victoryText.text = "Player " + (winnerID+1) + " wins!";
             }
         }

@@ -118,5 +118,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d3d3a4ca22eaac43bb44a139c7ff091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageCooldown: {fileID: 0}
+  gameConstants: {fileID: 0}
+  playersChars: {fileID: 0}
+  playersKnockback: {fileID: 0}
+  playersSpells: {fileID: 0}
+  playersAreAlive: {fileID: 0}
+  roundEnded: {fileID: 0}
+  onLavaPlaySound: {fileID: 11400000, guid: 13482de901e0f412cb39ac89dae1ef6f, type: 2}
+  onPlayerDeathPlaySound: {fileID: 11400000, guid: 24e7fc0b5cb74437db13ad081e35dfc8, type: 2}
+  cooldownImages: []
   fireballPrefab: {fileID: 8150370087909342670, guid: 2e6351b28aecf964eb3c48cfa373212e, type: 3}
+  teleportPrefab: {fileID: 0}
+  mageSprites: []
+  deadSprites: []
+  playerID: 0
+  onPlatform: 1

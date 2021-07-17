@@ -11,9 +11,15 @@ public class CharSelectionController : MonoBehaviour
     public ChosenSpellsArr playersSpells;
 
     // Components
-    private AudioSource audioSource;
-    public AudioClip scrollAudio;
-    public AudioClip readyAudio;
+    //private AudioSource audioSource;
+    //public AudioClip scrollAudio;
+    //public AudioClip readyAudio;
+
+    // Sound Events
+    [Header("Sound Events")]
+    public GameEvent onReadyButtonPlaySound;
+    public GameEvent onJoinButtonPlaySound;
+    public GameEvent onArrowButtonPlaySound;
 
     // Game State
     public int playerID;
@@ -29,7 +35,8 @@ public class CharSelectionController : MonoBehaviour
             selectedChar = (selectedChar + 1) % characters.Length;
             characters[selectedChar].SetActive(true);
             playersChars.SetValue(playerID, selectedChar);
-            audioSource.PlayOneShot(scrollAudio);
+            //audioSource.PlayOneShot(scrollAudio);
+            onArrowButtonPlaySound.Raise();
         }
     }
 
@@ -42,7 +49,8 @@ public class CharSelectionController : MonoBehaviour
             };
             characters[selectedChar].SetActive(true);
             playersChars.SetValue(playerID, selectedChar);
-            audioSource.PlayOneShot(scrollAudio);
+            //audioSource.PlayOneShot(scrollAudio);
+            onArrowButtonPlaySound.Raise();
         }
     }
 
@@ -51,7 +59,8 @@ public class CharSelectionController : MonoBehaviour
         playersReady.SetValue(playerID, ready);
         if (ready) {
             text.text = "Ready";
-            audioSource.PlayOneShot(readyAudio);
+            //audioSource.PlayOneShot(readyAudio);
+            onReadyButtonPlaySound.Raise();
         } else {
             text.text = "";
         }
@@ -68,11 +77,15 @@ public class CharSelectionController : MonoBehaviour
         playersSpells.SetSpell(playerID, 1, Spell.fireball);
         // Test spells here
         playersSpells.SetSpell(playerID, 0, Spell.teleport);
+        onJoinButtonPlaySound.Raise();
+        Debug.Log("onJoinButtonPlaySound played!");
     }
 
     void Start() {
-        audioSource = GetComponent<AudioSource>();
-        audioSource.PlayOneShot(scrollAudio);
+        //audioSource = GetComponent<AudioSource>();
+        //audioSource.PlayOneShot(scrollAudio);
+        //onJoinButtonPlaySound.Raise();
+        //Debug.Log("onJoinButtonPlaySound played!");
     }
 
     // Update is called once per frame

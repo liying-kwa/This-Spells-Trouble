@@ -138,11 +138,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameConstants: {fileID: 11400000, guid: fdff1fd733c49bf49a390264049c3495, type: 2}
   playersKnockback: {fileID: 11400000, guid: d46cc8037b6803d4da7ff070dd6d1583, type: 2}
-  hitAudio: {fileID: 8300000, guid: 8a44b12d3e3f24b1a89dc7f0b66756f4, type: 3}
   aimAngle: 0
   movement: {x: 0, y: 0}
   srcPlayerID: 0
   damage: 0
+  onFireballCastPlaySound: {fileID: 11400000, guid: 9938e7ea7043043cd8a6dff19707abb6, type: 2}
+  onFireballHitPlaySound: {fileID: 11400000, guid: ed35b830687b745e7a9adada6d4a9bf0, type: 2}
 --- !u!82 &-5693771880076488840
 AudioSource:
   m_ObjectHideFlags: 0
@@ -150,7 +151,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8150370087909342670}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 674258a055e994b72bbb15a28eb79838, type: 3}

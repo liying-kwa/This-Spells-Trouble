@@ -156,8 +156,9 @@ MonoBehaviour:
   playersReady: {fileID: 11400000, guid: b342ff068b3b55e44a6f14aa3f0febbc, type: 2}
   playersChars: {fileID: 11400000, guid: 680f5bb198ef26644aa397008c921dae, type: 2}
   playersSpells: {fileID: 11400000, guid: 3d57aacccfb0dcf4993a190ef3116a50, type: 2}
-  scrollAudio: {fileID: 8300000, guid: d2cbf0d8c4d02be4abd88f1ec644cc08, type: 3}
-  readyAudio: {fileID: 8300000, guid: 1364594e87f5e944c999a90886217172, type: 3}
+  onReadyButtonPlaySound: {fileID: 11400000, guid: 215b4421f690b447288344570e87e856, type: 2}
+  onJoinButtonPlaySound: {fileID: 11400000, guid: d38c6e470b3e84bf4ab0dfd9deb562c3, type: 2}
+  onArrowButtonPlaySound: {fileID: 11400000, guid: 1eac82ce80f964f7cb6f0a305a5679de, type: 2}
   playerID: 0
   characters: []
   text: {fileID: 0}
@@ -209,6 +210,8 @@ MonoBehaviour:
   playersSpells: {fileID: 11400000, guid: 3d57aacccfb0dcf4993a190ef3116a50, type: 2}
   playersAreAlive: {fileID: 11400000, guid: dca732caad795cf45a5779f7a02e9058, type: 2}
   roundEnded: {fileID: 11400000, guid: 8e6e01181cbb6b842bdd4106b8c69da9, type: 2}
+  onLavaPlaySound: {fileID: 11400000, guid: 13482de901e0f412cb39ac89dae1ef6f, type: 2}
+  onPlayerDeathPlaySound: {fileID: 11400000, guid: 24e7fc0b5cb74437db13ad081e35dfc8, type: 2}
   cooldownImages: []
   fireballPrefab: {fileID: 8150370087909342670, guid: 2e6351b28aecf964eb3c48cfa373212e, type: 3}
   teleportPrefab: {fileID: 7969614253980247559, guid: 01bf4c495303c05468f95287ad1948a0, type: 3}
@@ -278,7 +281,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7497866185967414325}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}

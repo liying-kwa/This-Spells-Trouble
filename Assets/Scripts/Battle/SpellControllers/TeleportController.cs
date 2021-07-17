@@ -15,6 +15,9 @@ public class TeleportController : MonoBehaviour
     public int srcPlayerID;
     GameObject playerObject;
 
+    // Sound Events
+    public GameEvent onTeleportCastPlaySound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +25,7 @@ public class TeleportController : MonoBehaviour
         playerObject.transform.position = new Vector3(transform.position.x - Mathf.Sin(Mathf.Deg2Rad * aimAngle) * gameConstants.teleportDistance, 
                                                         transform.position.y + Mathf.Cos(Mathf.Deg2Rad * aimAngle) * gameConstants.teleportDistance, 
                                                         transform.position.z);
+        onTeleportCastPlaySound.Raise();
     }
 
     // Update is called once per frame

@@ -14,6 +14,11 @@ public class BattleController : MonoBehaviour
     public BoolArrVariable playersAreAlive;
     public BoolVariable roundEnded;
 
+    // Sound Events
+    [Header("Sound Events")]
+    public GameEvent onLavaPlaySound;
+    public GameEvent onPlayerDeathPlaySound;
+
     // GameObjects
     MapManager mapManager;
     GameObject mageObject;
@@ -193,6 +198,7 @@ public class BattleController : MonoBehaviour
             if (damageCoroutine == null) {
                 damageCoroutine = Damage();
                 StartCoroutine(damageCoroutine);
+                //onLavaPlaySound.Raise();
             } 
         } else {
             // Stop damage coroutine, if running
@@ -209,6 +215,7 @@ public class BattleController : MonoBehaviour
             playersAreAlive.SetValue(playerID, false);
             animator.Play(deathDirections[lastDirection]);
             Debug.Log("Player " + (playerID+1) + " has died.");
+            onPlayerDeathPlaySound.Raise();
         }
 
         // Idle/Walk Animation
@@ -276,6 +283,7 @@ public class BattleController : MonoBehaviour
     // Platform stuff
     public IEnumerator Damage() {
         while (true) {
+            onLavaPlaySound.Raise();
             playersKnockback.SetValue(playerID, playersKnockback.GetValue(playerID) + gameConstants.lavaDamage);
             yield return new WaitForSeconds(gameConstants.lavaDamageInverval);
         }
