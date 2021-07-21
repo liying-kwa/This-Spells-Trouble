@@ -43,9 +43,11 @@
      <Compile Include="Assets\Scripts\CharacterSelection\OldStuff\CharacterSelection.cs" />
      <Compile Include="Assets\ScriptableObjects\BoolArrVariable.cs" />
      <Compile Include="Assets\ScriptableObjects\IntArrVariable.cs" />
+     <Compile Include="Assets\ScriptableObjects\Events\GameEvent.cs" />
      <Compile Include="Assets\ScriptableObjects\Map\Map_Presets.cs" />
      <Compile Include="Assets\PlayerControls.cs" />
      <Compile Include="Assets\ScriptableObjects\Map\TileData.cs" />
+     <Compile Include="Assets\Scripts\EventListeners\GameEventListener.cs" />
      <Compile Include="Assets\Scripts\CharacterSelection\OldStuff\LoadCharacter.cs" />
      <Compile Include="Assets\ScriptableObjects\Battle\ChosenSpellsArr.cs" />
      <Compile Include="Assets\Scripts\Battle\SpellControllers\TeleportController.cs" />
@@ -59,6 +61,8 @@
      <Compile Include="Assets\Scripts\Battle\SpawnManager.cs" />
      <Compile Include="Assets\Scripts\Battle\OldStuff\Player3DController.cs" />
      <Compile Include="Assets\Scripts\Battle\BattleController.cs" />
+     <Compile Include="Assets\Scripts\EventListeners\GameEventListenerRegister.cs" />
+     <Compile Include="Assets\Scripts\Audio\SoundManager.cs" />
      <Compile Include="Assets\Scripts\Battle\OldStuff\MapPlayerController.cs" />
      <Compile Include="Assets\Scripts\Battle\OldStuff\Fireball3DController.cs" />
      <Compile Include="Assets\ScriptableObjects\BoolVariable.cs" />

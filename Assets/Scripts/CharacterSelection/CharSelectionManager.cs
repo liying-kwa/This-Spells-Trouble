@@ -13,7 +13,7 @@ public class CharSelectionManager : MonoBehaviour
     public BoolArrVariable playersJoined;
     public BoolArrVariable playersReady;
     public GameConstants gameConstants;
-
+    
     // Components
     private AudioSource audioSource;
 

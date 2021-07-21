@@ -10,8 +10,8 @@ public class FireballController : MonoBehaviour
 
     // Components
     private Rigidbody2D fireballBody;
-    private AudioSource audioSource;
-    public AudioClip hitAudio;
+    //private AudioSource audioSource;
+    //public AudioClip hitAudio;
 
     // Physics
     public float aimAngle;
@@ -21,17 +21,23 @@ public class FireballController : MonoBehaviour
     public int srcPlayerID;
     public int damage;
 
+    // Sound Events
+    [Header("Sound Events")]
+    public GameEvent onFireballCastPlaySound;
+    public GameEvent onFireballHitPlaySound;
+
     // Start is called before the first frame update
     void Start()
     {
         // Get components
         fireballBody = GetComponent<Rigidbody2D>();
-        audioSource = GetComponent<AudioSource>();
+        //audioSource = GetComponent<AudioSource>();
         // Get constants
         damage = gameConstants.fireballDamage;
         // Fireball movement
         movement = new Vector2(-Mathf.Sin(Mathf.Deg2Rad * aimAngle), Mathf.Cos(Mathf.Deg2Rad * aimAngle));
         fireballBody.AddForce(movement * gameConstants.fireballSpeed, ForceMode2D.Impulse);
+        onFireballCastPlaySound.Raise();
     }
 
     // Update is called once per frame
@@ -48,8 +54,9 @@ public class FireballController : MonoBehaviour
                 other.gameObject.GetComponent<Rigidbody2D>().AddForce(movement * gameConstants.fireballSpeed * gameConstants.fireballForce, ForceMode2D.Impulse);
                 playersKnockback.ApplyChange(dstPlayerID, damage);
                 other.gameObject.GetComponent<BattleController>().Hurt();
-                audioSource.Stop();
-                AudioSource.PlayClipAtPoint(hitAudio, new Vector3(0, 0, 0));
+                //audioSource.Stop();
+                //AudioSource.PlayClipAtPoint(hitAudio, new Vector3(0, 0, 0));
+                onFireballHitPlaySound.Raise();
                 Destroy(gameObject);
             }
         }
