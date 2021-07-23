@@ -27,18 +27,16 @@ public class BattleController : MonoBehaviour
     public Image[] cooldownImages;
     public GameObject fireballPrefab;
     public GameObject teleportPrefab;
-
-    // Sprites
-    public Sprite[] mageSprites;
-    public Sprite[] deadSprites;
     
     // Components
     private  Rigidbody2D rigidBody;
-    // SpriteRenderer mageSpriteRenderer;
     Animator animator;
     SpriteRenderer knockbackSpriteRenderer;
 
     // Animation
+    public RuntimeAnimatorController sorceressAnimatorController;
+    public RuntimeAnimatorController cultistAnimatorController;
+    public RuntimeAnimatorController possessedEnemyAnimatorController;
     // public static readonly string[] staticDirections = {"Static_N", "Static_NW", "Static_W", "Static_SW", "Static_S", "Static_SE", "Static_E", "Static_NE"};
     // public static readonly string[] runDirections = {"Run_N", "Run_NW", "Run_W", "Run_SW", "Run_S", "Run_SE", "Run_E", "Run_NE"};
     // public static readonly string[] staticDirections = {"Static_N", "Static_W", "Static_S", "Static_E"};
@@ -151,12 +149,22 @@ public class BattleController : MonoBehaviour
 
         // Components
         rigidBody = GetComponent<Rigidbody2D>();
-        // mageSpriteRenderer = mageObject.GetComponent<SpriteRenderer>();
         animator = mageObject.GetComponent<Animator>();
         knockbackSpriteRenderer = knockbackObject.GetComponent<SpriteRenderer>();
 
-        // Render the correct character sprite
-        // mageSpriteRenderer.sprite = mageSprites[playersChars.GetValue(playerID)];
+        // Render the correct character sprite & animation
+        switch (playersChars.GetValue(playerID)) {
+            case 0:
+                animator.runtimeAnimatorController = sorceressAnimatorController;
+                break;
+            case 1:
+                animator.runtimeAnimatorController = cultistAnimatorController;
+                break;
+            case 2:
+                animator.runtimeAnimatorController = possessedEnemyAnimatorController;
+                break;
+        }
+        
 
         // Initialise values
         maxXScale = knockbackObject.transform.localScale.x;
@@ -182,12 +190,16 @@ public class BattleController : MonoBehaviour
     {
         if (roundEnded.Value && !isDead) {
             rigidBody.velocity = new Vector3(0, 0, 0);
+            // Stop damage coroutine, if running
+            if (damageCoroutine != null) {
+                StopCoroutine(damageCoroutine);
+                damageCoroutine = null;
+            }
             return;
         }
 
         if (isDead) {
             rigidBody.velocity = new Vector3(0, 0, 0);
-            // mageSpriteRenderer.sprite = deadSprites[playersChars.GetValue(playerID)];
             return;
         }
 
@@ -198,7 +210,6 @@ public class BattleController : MonoBehaviour
             if (damageCoroutine == null) {
                 damageCoroutine = Damage();
                 StartCoroutine(damageCoroutine);
-                //onLavaPlaySound.Raise();
             } 
         } else {
             // Stop damage coroutine, if running
@@ -216,6 +227,11 @@ public class BattleController : MonoBehaviour
             animator.Play(deathDirections[lastDirection]);
             Debug.Log("Player " + (playerID+1) + " has died.");
             onPlayerDeathPlaySound.Raise();
+            // Stop damage coroutine, if running
+            if (damageCoroutine != null) {
+                StopCoroutine(damageCoroutine);
+                damageCoroutine = null;
+            }
         }
 
         // Idle/Walk Animation

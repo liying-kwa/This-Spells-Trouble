@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4521786868723746219}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 1.7, z: 0}
+  m_LocalPosition: {x: -1, y: 1.79, z: 0}
   m_LocalScale: {x: 2, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 7657826092047908873}
@@ -93,7 +93,7 @@ Animator:
   m_GameObject: {fileID: 6812016318018511552}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b1eb48d6571f5134c94ed09d097bef72, type: 2}
+  m_Controller: {fileID: 9100000, guid: 243e01da355f38f46933812f53782243, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -215,16 +215,9 @@ MonoBehaviour:
   cooldownImages: []
   fireballPrefab: {fileID: 8150370087909342670, guid: 2e6351b28aecf964eb3c48cfa373212e, type: 3}
   teleportPrefab: {fileID: 7969614253980247559, guid: 01bf4c495303c05468f95287ad1948a0, type: 3}
-  mageSprites:
-  - {fileID: 6277400204303988758, guid: 4a14298f531abbc4a8c6728672a92e64, type: 3}
-  - {fileID: 8979699791473672764, guid: 4dfd117b17e36084cb64c1e6b20f9232, type: 3}
-  - {fileID: 49683156686831173, guid: 3a12399f93eb2c549af9943880bcc333, type: 3}
-  - {fileID: 2415412147241076123, guid: e2570320ee5781b4088b622774457cbe, type: 3}
-  deadSprites:
-  - {fileID: -3227486009894794750, guid: 7ad44327edf544941a7218b834c17393, type: 3}
-  - {fileID: -8742357508165110266, guid: 95ffdfb4cd90a7049bc0c7ce3a661d87, type: 3}
-  - {fileID: 1797203182045940087, guid: bf7d7dc95b86dc6418307d8c04ddab7f, type: 3}
-  - {fileID: 8336467737629804386, guid: 40af7f8b124a2f24eba75fc9f3aff768, type: 3}
+  sorceressAnimatorController: {fileID: 9100000, guid: 774237fe110c08641b001090839879dc, type: 2}
+  cultistAnimatorController: {fileID: 9100000, guid: 243e01da355f38f46933812f53782243, type: 2}
+  possessedEnemyAnimatorController: {fileID: 9100000, guid: b1eb48d6571f5134c94ed09d097bef72, type: 2}
   playerID: 0
   onPlatform: 1
 --- !u!61 &8451752079115469057
@@ -529,16 +522,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1514028325809734369, guid: bee509d197321ef42bcacdb8b787983b, type: 3}
       propertyPath: m_Size.x
-      value: 0.48
+      value: 0.14
       objectReference: {fileID: 0}
     - target: {fileID: 1514028325809734369, guid: bee509d197321ef42bcacdb8b787983b, type: 3}
       propertyPath: m_Size.y
-      value: 0.51
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 1514028325809734369, guid: bee509d197321ef42bcacdb8b787983b, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 7104230505411489506, guid: c5ee05e8082c12b4e9cadfb42856362b, type: 3}
+      objectReference: {fileID: -6723126826379405151, guid: 9312982ddb2c7884392b44a88dab8ef3, type: 3}
     - target: {fileID: 1514028325809734369, guid: bee509d197321ef42bcacdb8b787983b, type: 3}
       propertyPath: m_Color.b
       value: 1
