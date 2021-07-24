@@ -10,8 +10,8 @@ public class LightningProjectileController : MonoBehaviour
 
     // Components
     private Rigidbody2D lightningProjectileBody;
-    //private AudioSource audioSource;
-    //public AudioClip hitAudio;
+    // private AudioSource audioSource;
+    // public AudioClip hitAudio;
 
     // Physics
     public float aimAngle;
@@ -22,6 +22,9 @@ public class LightningProjectileController : MonoBehaviour
     public float damage;
 
     // Sound Events
+    [Header("Sound Events")]
+    public GameEvent onLightningCastPlaySound;
+    public GameEvent onLightningHitPlaySound;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +37,7 @@ public class LightningProjectileController : MonoBehaviour
         // LightningProjectile movement
         movement = new Vector2(-Mathf.Sin(Mathf.Deg2Rad * aimAngle), Mathf.Cos(Mathf.Deg2Rad * aimAngle));
         lightningProjectileBody.AddForce(movement * gameConstants.lightningProjectileSpeed, ForceMode2D.Impulse);
+        onLightningCastPlaySound.Raise();
     }
 
     // Update is called once per frame
@@ -50,6 +54,7 @@ public class LightningProjectileController : MonoBehaviour
                 other.gameObject.GetComponent<Rigidbody2D>().AddForce(movement * gameConstants.lightningProjectileSpeed * gameConstants.lightningProjectileForce, ForceMode2D.Impulse);
                 playersKnockback.ApplyChange(dstPlayerID, damage);
                 other.gameObject.GetComponent<BattleController>().Hurt();
+                onLightningHitPlaySound.Raise();
                 Destroy(gameObject);
             }
     

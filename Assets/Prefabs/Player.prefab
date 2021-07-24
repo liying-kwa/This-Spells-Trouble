@@ -215,7 +215,7 @@ MonoBehaviour:
   cooldownImages: []
   fireballPrefab: {fileID: 8150370087909342670, guid: 2e6351b28aecf964eb3c48cfa373212e, type: 3}
   teleportPrefab: {fileID: 7969614253980247559, guid: 01bf4c495303c05468f95287ad1948a0, type: 3}
-  lightningPrefab: {fileID: 100002, guid: 7fbef15ee422fe94a9d64d0824e558cf, type: 3}
+  lightningPrefab: {fileID: 100002, guid: 391ec6f1311384e75b4888fd6fc26b7e, type: 3}
   tornadoPrefab: {fileID: 2728521609384493569, guid: 8546022ecffbf45428d05cdfca9351e6, type: 3}
   sorceressAnimatorController: {fileID: 9100000, guid: 774237fe110c08641b001090839879dc, type: 2}
   cultistAnimatorController: {fileID: 9100000, guid: 243e01da355f38f46933812f53782243, type: 2}

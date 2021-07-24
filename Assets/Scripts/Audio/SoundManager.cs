@@ -35,6 +35,11 @@ public class SoundManager : MonoBehaviour
 
     //public AudioClip onTeleportLandClip;
 
+    public AudioClip onLightningCastClip;
+    public AudioClip onLightningHitClip;
+    public AudioClip onTornadoCastClip;
+    public AudioClip onTornadoHitClip;
+
     // UI Clips 
     public AudioClip onArrowButtonClip;
 
@@ -59,7 +64,7 @@ public class SoundManager : MonoBehaviour
 
     // Player Methods
 
-      public void PlayLava()
+    public void PlayLava()
     {
         effectSource.PlayOneShot(onLavaClip);
     }
@@ -99,6 +104,26 @@ public class SoundManager : MonoBehaviour
     // {
     //     effectSource.PlayOneShot(onTeleportLandClip);
     // }
+
+    public void PlayLightningCast()
+    {
+        effectSource.PlayOneShot(onLightningCastClip);
+    }
+
+    public void PlayLightningHit()
+    {
+        effectSource.PlayOneShot(onLightningHitClip);
+    }
+
+    public void PlayTornadoCast()
+    {
+        effectSource.PlayOneShot(onTornadoCastClip);
+    }
+
+    public void PlayTornadoHit()
+    {
+        effectSource.PlayOneShot(onTornadoHitClip);
+    }
     
     // UI Methods
 

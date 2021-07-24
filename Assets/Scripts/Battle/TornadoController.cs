@@ -19,6 +19,11 @@ public class TornadoController : MonoBehaviour
     public int srcPlayerID;
     public float damage;
 
+    // Sound Events
+    [Header("Sound Events")]
+    public GameEvent onTornadoCastPlaySound;
+    public GameEvent onTornadoHitPlaySound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +34,7 @@ public class TornadoController : MonoBehaviour
         // Tornado movement
         movement = new Vector2(-Mathf.Sin(Mathf.Deg2Rad * aimAngle), Mathf.Cos(Mathf.Deg2Rad * aimAngle));
         tornadoBody.AddForce(movement * gameConstants.tornadoSpeed, ForceMode2D.Impulse);
+        onTornadoCastPlaySound.Raise();
     }
 
     // Update is called once per frame
@@ -45,6 +51,7 @@ public class TornadoController : MonoBehaviour
                 playersKnockback.ApplyChange(dstPlayerID, damage);
                 other.gameObject.GetComponent<BattleController>().Hurt();
                 // Tornado doesn't destroy itself when hit with other players
+                onTornadoHitPlaySound.Raise();
                 // Destroy(gameObject);
             }
     
