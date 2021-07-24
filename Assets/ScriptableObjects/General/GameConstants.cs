@@ -27,4 +27,14 @@ public class GameConstants : ScriptableObject
     public float teleportDistance = 3;
     public float teleportCooldown = 5;
     public float teleportDestroyTime = 0.5f;
+    public float lightningProjectileCooldown = 6;
+    public float lightningProjectileSpeed = 2.25f;
+    public float lightningProjectileForce = 2;
+    public float lightningProjectileDestroyTime = 0.75f;
+    public float lightningProjectileDamage = 20;
+    public float tornadoCooldown = 16;
+    public float tornadoSpeed = 0.75f;
+    public float tornadoForce = 4;
+    public float tornadoDestroyTime = 8;
+    public float tornadoDamage = 20;
 }

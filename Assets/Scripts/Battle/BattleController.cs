@@ -27,6 +27,8 @@ public class BattleController : MonoBehaviour
     public Image[] cooldownImages;
     public GameObject fireballPrefab;
     public GameObject teleportPrefab;
+    public GameObject lightningPrefab;
+    public GameObject tornadoPrefab;
     
     // Components
     private  Rigidbody2D rigidBody;
@@ -124,6 +126,12 @@ public class BattleController : MonoBehaviour
             case Spell.teleport:
                 CastTeleport(slot);
                 break;
+            case Spell.lightning:
+                CastLightning(slot);
+                break;
+            case Spell.tornado:
+                CastTornado(slot);
+                break;
             default:
                 break;
         }
@@ -178,6 +186,12 @@ public class BattleController : MonoBehaviour
                 case Spell.teleport:
                     cooldownDurations[i] = gameConstants.teleportCooldown;
                     break;
+                case Spell.lightning:
+                    cooldownDurations[i] = gameConstants.lightningProjectileCooldown;
+                    break;
+                case Spell.tornado:
+                    cooldownDurations[i] = gameConstants.tornadoCooldown;
+                    break;
                 default:
                     break;
             }
@@ -195,6 +209,7 @@ public class BattleController : MonoBehaviour
                 StopCoroutine(damageCoroutine);
                 damageCoroutine = null;
             }
+            // Victory animation
             return;
         }
 
@@ -377,6 +392,20 @@ public class BattleController : MonoBehaviour
         teleportObject.GetComponent<TeleportController>().srcPlayerID = playerID;
         teleportObject.GetComponent<TeleportController>().aimAngle = aimAngle;
         StartCoroutine(SpellCooldown(slot, gameConstants.teleportCooldown));
+    }
+
+    void CastLightning(int slot) {
+        GameObject lightningObject = Instantiate(lightningPrefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+        lightningObject.GetComponent<LightningProjectileController>().srcPlayerID = playerID;
+        lightningObject.GetComponent<LightningProjectileController>().aimAngle = aimAngle;
+        StartCoroutine(SpellCooldown(slot, gameConstants.lightningProjectileCooldown));
+    }
+
+    void CastTornado(int slot) {
+        GameObject lightningObject = Instantiate(tornadoPrefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+        lightningObject.GetComponent<TornadoController>().srcPlayerID = playerID;
+        lightningObject.GetComponent<TornadoController>().aimAngle = aimAngle;
+        StartCoroutine(SpellCooldown(slot, gameConstants.tornadoCooldown));
     }
 
 }

@@ -69,6 +69,8 @@
      <Compile Include="Assets\ScriptableObjects\General\PlayerInputsArr.cs" />
      <Compile Include="Assets\ScriptableObjects\Battle\KnockbackArr.cs" />
      <Compile Include="Assets\Scripts\CharacterSelection\CharSelectionManager.cs" />
+     <Compile Include="Assets\Scripts\Battle\SpellControllers\LightningProjectileController.cs" />
+     <Compile Include="Assets\Scripts\Battle\TornadoController.cs" />
      <None Include="Assets\Sprites\sorceress\Foozle_File_License.txt" />
      <None Include="Assets\Sprites\cultist\Foozle_File_License.txt" />
      <None Include="Assets\Sprites\possessed_enemy\Foozle_File_License.txt" />

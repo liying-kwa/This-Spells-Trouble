@@ -5,7 +5,9 @@ using UnityEngine;
 public enum Spell{
     nullSpell = -1,
 	fireball = 0,
-	teleport = 1
+	teleport = 1,
+    lightning = 2,
+    tornado = 3
 }
 
 [CreateAssetMenu(fileName = "ChosenSpellsArr", menuName = "ScriptableObjects/ChosenSpellsArr", order = 2)]

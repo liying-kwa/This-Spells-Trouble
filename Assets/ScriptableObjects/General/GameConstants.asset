@@ -18,8 +18,20 @@ MonoBehaviour:
   bottomLeftPosition: {x: -2.71, y: -2.71, z: 0}
   bottomRightPosition: {x: 2.71, y: -2.71, z: 0}
   playerSpeed: 0.1
+  spellAnimationDuration: 0.53
+  hurtAnimationDuration: 0.53
+  lavaDamage: 10
+  lavaDamageInverval: 1
   fireballCooldown: 3
   fireballSpeed: 1.5
   fireballForce: 5
   fireballDestroyTime: 1.5
   fireballDamage: 30
+  teleportDistance: 3
+  teleportCooldown: 5
+  teleportDestroyTime: 0.5
+  lightningProjectileCooldown: 6
+  lightningProjectileSpeed: 2.25
+  lightningProjectileForce: 2
+  lightningProjectileDestroyTime: 0.75
+  lightningProjectileDamage: 20

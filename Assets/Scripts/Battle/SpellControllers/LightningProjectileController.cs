@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireballController : MonoBehaviour
+public class LightningProjectileController : MonoBehaviour
 {
     // ScriptableObjects
     public GameConstants gameConstants;
     public KnockbackArr playersKnockback;
 
     // Components
-    private Rigidbody2D fireballBody;
+    private Rigidbody2D lightningProjectileBody;
     //private AudioSource audioSource;
     //public AudioClip hitAudio;
 
@@ -22,28 +22,24 @@ public class FireballController : MonoBehaviour
     public float damage;
 
     // Sound Events
-    [Header("Sound Events")]
-    public GameEvent onFireballCastPlaySound;
-    public GameEvent onFireballHitPlaySound;
 
     // Start is called before the first frame update
     void Start()
     {
         // Get components
-        fireballBody = GetComponent<Rigidbody2D>();
+        lightningProjectileBody = GetComponent<Rigidbody2D>();
         //audioSource = GetComponent<AudioSource>();
         // Get constants
-        damage = gameConstants.fireballDamage;
-        // Fireball movement
+        damage = gameConstants.lightningProjectileDamage;
+        // LightningProjectile movement
         movement = new Vector2(-Mathf.Sin(Mathf.Deg2Rad * aimAngle), Mathf.Cos(Mathf.Deg2Rad * aimAngle));
-        fireballBody.AddForce(movement * gameConstants.fireballSpeed, ForceMode2D.Impulse);
-        onFireballCastPlaySound.Raise();
+        lightningProjectileBody.AddForce(movement * gameConstants.lightningProjectileSpeed, ForceMode2D.Impulse);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Destroy(gameObject, gameConstants.fireballDestroyTime);
+        Destroy(gameObject, gameConstants.lightningProjectileDestroyTime);
     }
 
     void  OnTriggerEnter2D(Collider2D other) {
@@ -51,14 +47,16 @@ public class FireballController : MonoBehaviour
             int dstPlayerID = other.gameObject.GetComponent<BattleController>().playerID;
             if (srcPlayerID != dstPlayerID) {
                 // Debug.Log("Collided with other player!");
-                other.gameObject.GetComponent<Rigidbody2D>().AddForce(movement * gameConstants.fireballSpeed * gameConstants.fireballForce, ForceMode2D.Impulse);
+                other.gameObject.GetComponent<Rigidbody2D>().AddForce(movement * gameConstants.lightningProjectileSpeed * gameConstants.lightningProjectileForce, ForceMode2D.Impulse);
                 playersKnockback.ApplyChange(dstPlayerID, damage);
                 other.gameObject.GetComponent<BattleController>().Hurt();
-                //audioSource.Stop();
-                //AudioSource.PlayClipAtPoint(hitAudio, new Vector3(0, 0, 0));
-                onFireballHitPlaySound.Raise();
                 Destroy(gameObject);
             }
+    
+        }
+        // hits other spells and it destroy sitself
+        if (other.gameObject.tag == "Spell") {
+            Destroy(gameObject);
         }
     }
 }
