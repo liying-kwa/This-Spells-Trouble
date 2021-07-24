@@ -75,18 +75,17 @@ public class CharSelectionManager : MonoBehaviour
         }
     }
 
-    public IEnumerator Countdown() {
+    private IEnumerator Countdown() {
         for (int i = 0; i < gameConstants.countdownTime; i++) {
             countdownText.text = "" + (gameConstants.countdownTime-i);
             yield return new WaitForSeconds(1);
         }
         countdownText.text = "Loading...";
-        Debug.Log("Loading Scene...");
-        StartCoroutine(ChangeScene("BattleScene"));
+        // StartCoroutine(ChangeScene("BattleScene"));
+        StartCoroutine(ChangeScene("SpellShopScene"));
     }
 
-    IEnumerator ChangeScene(string sceneName)
-    {
+    private IEnumerator ChangeScene(string sceneName) {
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
         // Wait until the asynchronous scene fully loads
         while (!asyncLoad.isDone)

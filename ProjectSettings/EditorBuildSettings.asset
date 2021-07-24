@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BattleScene.unity
     guid: abca9750f228ec54aa69e2ec53584871
+  - enabled: 1
+    path: Assets/Scenes/SpellShopScene.unity
+    guid: d1aceddfe538aab45903e7f2ca07db24
   m_configObjects: {}

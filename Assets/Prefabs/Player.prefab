@@ -117,6 +117,7 @@ GameObject:
   - component: {fileID: 8451752079115469057}
   - component: {fileID: 8843067455473779603}
   - component: {fileID: 9076545721826424856}
+  - component: {fileID: -7227229926056812989}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -365,6 +366,31 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-7227229926056812989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7497866185967414325}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c71d9e40aef7104a9007e04ff84b71b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playersSpells: {fileID: 0}
+  offensiveSpells: []
+  defensiveSpells: []
+  emptySprite: {fileID: 3051368437037051611, guid: 0e337840fbf1ecd449e0e699ea079269, type: 3}
+  skillNameText: {fileID: 0}
+  skillCostText: {fileID: 0}
+  skillDescText: {fileID: 0}
+  upgradeText: {fileID: 0}
+  skillStatus1: []
+  skillStatus2: []
+  skillStatus3: []
+  skillStatus4: []
+  playerID: 0
 --- !u!1001 &1895095679628177950
 PrefabInstance:
   m_ObjectHideFlags: 0

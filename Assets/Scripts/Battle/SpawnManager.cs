@@ -36,10 +36,12 @@ public class SpawnManager : MonoBehaviour
                 mages[currIndex] = playerInputsArr.GetValue(i).gameObject;
                 // Disable previous script and activate current script and relevant components
                 mages[currIndex].GetComponent<CharSelectionController>().enabled = false;
+                mages[currIndex].GetComponent<ShopController>().enabled = false;
                 mages[currIndex].GetComponent<BattleController>().enabled = true;
                 mages[currIndex].GetComponent<BoxCollider2D>().enabled = true;
                 // Change default actionmap to gameplay
                 playerInputsArr.GetValue(i).actions.FindActionMap("CharSelection").Disable();
+                playerInputsArr.GetValue(i).actions.FindActionMap("SpellShop").Disable();
                 playerInputsArr.GetValue(i).actions.FindActionMap("Battle").Enable();
                 currIndex += 1;
             } else {

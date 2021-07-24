@@ -241,6 +241,128 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""SpellShop"",
+            ""id"": ""95fdb182-0e67-4cca-ac22-801398c78317"",
+            ""actions"": [
+                {
+                    ""name"": ""PreviousSlot"",
+                    ""type"": ""Button"",
+                    ""id"": ""cd5b168f-caf8-497e-96b3-3f1220450c05"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""NextSlot"",
+                    ""type"": ""Button"",
+                    ""id"": ""fc0125f8-77c5-4b1d-9076-59a8a81d228f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""PreviousSpell"",
+                    ""type"": ""Button"",
+                    ""id"": ""28561bb8-f1b7-466c-8bfe-f5723ed58fd5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""NextSpell"",
+                    ""type"": ""Button"",
+                    ""id"": ""0634a04e-bcc3-41ae-9e24-02598fafc2ea"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""BuySpell"",
+                    ""type"": ""Button"",
+                    ""id"": ""9ad0d885-c664-4749-8235-6b5eaab89ab6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""SellSpell"",
+                    ""type"": ""Button"",
+                    ""id"": ""786d24f3-6454-4ecf-bc13-4c8d106623b6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""f51d1008-a526-4676-b4d0-29753eeb3994"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PreviousSlot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f44fd668-1c68-4281-a7df-9c4c5758182e"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextSlot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3b896870-382d-4132-ae94-13a27b5fd231"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PreviousSpell"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""17ded30a-d294-40f0-aa5b-d449da6bd757"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextSpell"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""50004e6d-03ab-4f96-83df-482b5ffe6389"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""BuySpell"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""51a0c410-881f-4800-bc02-2c92bef31dd6"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SellSpell"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -259,6 +381,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_CharSelection_PreviousCharacter = m_CharSelection.FindAction("PreviousCharacter", throwIfNotFound: true);
         m_CharSelection_NextCharacter = m_CharSelection.FindAction("NextCharacter", throwIfNotFound: true);
         m_CharSelection_Ready = m_CharSelection.FindAction("Ready", throwIfNotFound: true);
+        // SpellShop
+        m_SpellShop = asset.FindActionMap("SpellShop", throwIfNotFound: true);
+        m_SpellShop_PreviousSlot = m_SpellShop.FindAction("PreviousSlot", throwIfNotFound: true);
+        m_SpellShop_NextSlot = m_SpellShop.FindAction("NextSlot", throwIfNotFound: true);
+        m_SpellShop_PreviousSpell = m_SpellShop.FindAction("PreviousSpell", throwIfNotFound: true);
+        m_SpellShop_NextSpell = m_SpellShop.FindAction("NextSpell", throwIfNotFound: true);
+        m_SpellShop_BuySpell = m_SpellShop.FindAction("BuySpell", throwIfNotFound: true);
+        m_SpellShop_SellSpell = m_SpellShop.FindAction("SellSpell", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -434,6 +564,79 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         }
     }
     public CharSelectionActions @CharSelection => new CharSelectionActions(this);
+
+    // SpellShop
+    private readonly InputActionMap m_SpellShop;
+    private ISpellShopActions m_SpellShopActionsCallbackInterface;
+    private readonly InputAction m_SpellShop_PreviousSlot;
+    private readonly InputAction m_SpellShop_NextSlot;
+    private readonly InputAction m_SpellShop_PreviousSpell;
+    private readonly InputAction m_SpellShop_NextSpell;
+    private readonly InputAction m_SpellShop_BuySpell;
+    private readonly InputAction m_SpellShop_SellSpell;
+    public struct SpellShopActions
+    {
+        private @PlayerControls m_Wrapper;
+        public SpellShopActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @PreviousSlot => m_Wrapper.m_SpellShop_PreviousSlot;
+        public InputAction @NextSlot => m_Wrapper.m_SpellShop_NextSlot;
+        public InputAction @PreviousSpell => m_Wrapper.m_SpellShop_PreviousSpell;
+        public InputAction @NextSpell => m_Wrapper.m_SpellShop_NextSpell;
+        public InputAction @BuySpell => m_Wrapper.m_SpellShop_BuySpell;
+        public InputAction @SellSpell => m_Wrapper.m_SpellShop_SellSpell;
+        public InputActionMap Get() { return m_Wrapper.m_SpellShop; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(SpellShopActions set) { return set.Get(); }
+        public void SetCallbacks(ISpellShopActions instance)
+        {
+            if (m_Wrapper.m_SpellShopActionsCallbackInterface != null)
+            {
+                @PreviousSlot.started -= m_Wrapper.m_SpellShopActionsCallbackInterface.OnPreviousSlot;
+                @PreviousSlot.performed -= m_Wrapper.m_SpellShopActionsCallbackInterface.OnPreviousSlot;
+                @PreviousSlot.canceled -= m_Wrapper.m_SpellShopActionsCallbackInterface.OnPreviousSlot;
+                @NextSlot.started -= m_Wrapper.m_SpellShopActionsCallbackInterface.OnNextSlot;
+                @NextSlot.performed -= m_Wrapper.m_SpellShopActionsCallbackInterface.OnNextSlot;
+                @NextSlot.canceled -= m_Wrapper.m_SpellShopActionsCallbackInterface.OnNextSlot;
+                @PreviousSpell.started -= m_Wrapper.m_SpellShopActionsCallbackInterface.OnPreviousSpell;
+                @PreviousSpell.performed -= m_Wrapper.m_SpellShopActionsCallbackInterface.OnPreviousSpell;
+                @PreviousSpell.canceled -= m_Wrapper.m_SpellShopActionsCallbackInterface.OnPreviousSpell;
+                @NextSpell.started -= m_Wrapper.m_SpellShopActionsCallbackInterface.OnNextSpell;
+                @NextSpell.performed -= m_Wrapper.m_SpellShopActionsCallbackInterface.OnNextSpell;
+                @NextSpell.canceled -= m_Wrapper.m_SpellShopActionsCallbackInterface.OnNextSpell;
+                @BuySpell.started -= m_Wrapper.m_SpellShopActionsCallbackInterface.OnBuySpell;
+                @BuySpell.performed -= m_Wrapper.m_SpellShopActionsCallbackInterface.OnBuySpell;
+                @BuySpell.canceled -= m_Wrapper.m_SpellShopActionsCallbackInterface.OnBuySpell;
+                @SellSpell.started -= m_Wrapper.m_SpellShopActionsCallbackInterface.OnSellSpell;
+                @SellSpell.performed -= m_Wrapper.m_SpellShopActionsCallbackInterface.OnSellSpell;
+                @SellSpell.canceled -= m_Wrapper.m_SpellShopActionsCallbackInterface.OnSellSpell;
+            }
+            m_Wrapper.m_SpellShopActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @PreviousSlot.started += instance.OnPreviousSlot;
+                @PreviousSlot.performed += instance.OnPreviousSlot;
+                @PreviousSlot.canceled += instance.OnPreviousSlot;
+                @NextSlot.started += instance.OnNextSlot;
+                @NextSlot.performed += instance.OnNextSlot;
+                @NextSlot.canceled += instance.OnNextSlot;
+                @PreviousSpell.started += instance.OnPreviousSpell;
+                @PreviousSpell.performed += instance.OnPreviousSpell;
+                @PreviousSpell.canceled += instance.OnPreviousSpell;
+                @NextSpell.started += instance.OnNextSpell;
+                @NextSpell.performed += instance.OnNextSpell;
+                @NextSpell.canceled += instance.OnNextSpell;
+                @BuySpell.started += instance.OnBuySpell;
+                @BuySpell.performed += instance.OnBuySpell;
+                @BuySpell.canceled += instance.OnBuySpell;
+                @SellSpell.started += instance.OnSellSpell;
+                @SellSpell.performed += instance.OnSellSpell;
+                @SellSpell.canceled += instance.OnSellSpell;
+            }
+        }
+    }
+    public SpellShopActions @SpellShop => new SpellShopActions(this);
     public interface IBattleActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -449,5 +652,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnPreviousCharacter(InputAction.CallbackContext context);
         void OnNextCharacter(InputAction.CallbackContext context);
         void OnReady(InputAction.CallbackContext context);
+    }
+    public interface ISpellShopActions
+    {
+        void OnPreviousSlot(InputAction.CallbackContext context);
+        void OnNextSlot(InputAction.CallbackContext context);
+        void OnPreviousSpell(InputAction.CallbackContext context);
+        void OnNextSpell(InputAction.CallbackContext context);
+        void OnBuySpell(InputAction.CallbackContext context);
+        void OnSellSpell(InputAction.CallbackContext context);
     }
 }
