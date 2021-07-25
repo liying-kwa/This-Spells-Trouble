@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b85db8b25e491a7449ac3930f421e639, type: 3}
-  m_Name: Lightning
+  m_Name: Fireball
   m_EditorClassIdentifier: 
-  Name: Lightning
-  Description: An instant travelling, short range attack that hits the first target
-    in the line
-  Damage: 3
-  Cost: 2
-  SkillPrefab: {fileID: 5542363073791294671, guid: c5c23cae7bba33d4eb244484f0920f11, type: 3}
-  Upgrade: Decreased Cooldown
+  Name: Fireball
+  Spell: 0
+  Description: The default attack, a medium speed, straight-travelling fireball
+  Icon: {fileID: 2800000, guid: 4867db53aa592a64a851c36645423699, type: 3}
+  Cost: 200
+  Upgrade: Increase Damage

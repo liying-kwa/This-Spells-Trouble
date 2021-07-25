@@ -10,12 +10,12 @@ public enum Spell{
     tornado = 3
 }
 
-[CreateAssetMenu(fileName = "ChosenSpellsArr", menuName = "ScriptableObjects/ChosenSpellsArr", order = 2)]
-public class ChosenSpellsArr : ScriptableObject
+[CreateAssetMenu(fileName = "PlayersSpells", menuName = "ScriptableObjects/PlayersSpells", order = 2)]
+public class PlayersSpells : ScriptableObject
 {
 #if UNITY_EDITOR
     [Multiline]
-    public string DeveloperDescription = "Players' chosen spells. -1 indicates player has not bought any spell / has not tied a spell to that slot.";
+    public string DeveloperDescription = "Players' chosen spells. -1 indicates player has not tied a spell to that slot.";
 #endif
 
     private int[,] _arr = new int[4, 4] { {-1, -1, -1, -1}, 
@@ -34,7 +34,7 @@ public class ChosenSpellsArr : ScriptableObject
     }
 
     // overload
-    public void SetValue(ChosenSpellsArr arr) {
+    public void SetSpell(PlayersSpells arr) {
         _arr = arr._arr;
     }
 }

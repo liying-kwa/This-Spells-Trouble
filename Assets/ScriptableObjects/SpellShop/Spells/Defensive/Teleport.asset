@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b85db8b25e491a7449ac3930f421e639, type: 3}
-  m_Name: Fireball
+  m_Name: Teleport
   m_EditorClassIdentifier: 
-  Name: Fireball
-  Description: The default attack, a medium speed, straight-travelling fireball
-  Damage: 10.5
-  Cost: 2
-  SkillPrefab: {fileID: 6608488365913530418, guid: 7c6874c612f41544099e020c359878cf, type: 3}
-  Upgrade: Increase Damage
-  skillLevel: 0
+  Name: Teleport
+  Spell: 1
+  Description: Teleports a fixed distance in the direction of which the player is
+    moving in.
+  Icon: {fileID: 2800000, guid: 8d41c4d75ffb95449ad8cdbfefa74218, type: 3}
+  Cost: 200
+  Upgrade: Decrease Cooldown

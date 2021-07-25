@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class SkillSelection : MonoBehaviour
 {
-    public SkillModel[] offensiveSpells;
-    public SkillModel[] defensiveSpells;
+    public SpellModel[] offensiveSpells;
+    public SpellModel[] defensiveSpells;
     private List<GameObject> offensiveGameObjectList;
     private List<GameObject> defensiveGameObjectList;
     private List<GameObject> emptyGameObjectList;
@@ -41,19 +41,19 @@ public class SkillSelection : MonoBehaviour
         // Instantiate Offensive Spells
         foreach (var skillModel in offensiveSpells)
         {
-            GameObject skill = Instantiate(skillModel.SkillPrefab, this.transform.position, Quaternion.identity);
-            skill.transform.SetParent(this.transform, true);
-            skill.SetActive(false);
-            offensiveGameObjectList.Add(skill);
+            // GameObject skill = Instantiate(skillModel.SkillPrefab, this.transform.position, Quaternion.identity);
+            // skill.transform.SetParent(this.transform, true);
+            // skill.SetActive(false);
+            // offensiveGameObjectList.Add(skill);
         }
 
         // Instantiate Defensive Spells
         foreach (var skillModel in defensiveSpells)
         {
-            GameObject skill = Instantiate(skillModel.SkillPrefab, this.transform.position, Quaternion.identity);
-            skill.transform.SetParent(this.transform, true);
-            skill.SetActive(false);
-            defensiveGameObjectList.Add(skill);
+            // GameObject skill = Instantiate(skillModel.SkillPrefab, this.transform.position, Quaternion.identity);
+            // skill.transform.SetParent(this.transform, true);
+            // skill.SetActive(false);
+            // defensiveGameObjectList.Add(skill);
         }
 
         // Set empty sprite for Slots 2 to 4

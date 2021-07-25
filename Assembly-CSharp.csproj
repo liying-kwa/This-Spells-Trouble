@@ -42,15 +42,17 @@
      <Compile Include="Assets\Scripts\Battle\MapManager.cs" />
      <Compile Include="Assets\Scripts\CharacterSelection\OldStuff\CharacterSelection.cs" />
      <Compile Include="Assets\Scripts\Battle\SpellControllers\LightningProjectileController.cs" />
+     <Compile Include="Assets\ScriptableObjects\SpellShop\PlayersSpellLevels.cs" />
      <Compile Include="Assets\ScriptableObjects\BoolArrVariable.cs" />
      <Compile Include="Assets\ScriptableObjects\IntArrVariable.cs" />
      <Compile Include="Assets\ScriptableObjects\Events\GameEvent.cs" />
      <Compile Include="Assets\ScriptableObjects\Map\Map_Presets.cs" />
      <Compile Include="Assets\PlayerControls.cs" />
      <Compile Include="Assets\ScriptableObjects\Map\TileData.cs" />
+     <Compile Include="Assets\Scripts\SpellShop\ShopControllerOld.cs" />
      <Compile Include="Assets\Scripts\EventListeners\GameEventListener.cs" />
      <Compile Include="Assets\Scripts\CharacterSelection\OldStuff\LoadCharacter.cs" />
-     <Compile Include="Assets\ScriptableObjects\Battle\ChosenSpellsArr.cs" />
+     <Compile Include="Assets\ScriptableObjects\SpellShop\PlayersSpells.cs" />
      <Compile Include="Assets\Scripts\Battle\SpellControllers\TeleportController.cs" />
      <Compile Include="Assets\Scripts\Battle\TornadoController.cs" />
      <Compile Include="Assets\ScriptableObjects\IntVariable.cs" />
@@ -67,7 +69,7 @@
      <Compile Include="Assets\Scripts\EventListeners\GameEventListenerRegister.cs" />
      <Compile Include="Assets\Scripts\Audio\SoundManager.cs" />
      <Compile Include="Assets\Scripts\Battle\OldStuff\MapPlayerController.cs" />
-     <Compile Include="Assets\ScriptableObjects\SpellShop\SkillModel.cs" />
+     <Compile Include="Assets\ScriptableObjects\SpellShop\Spells\SpellModel.cs" />
      <Compile Include="Assets\Scripts\Battle\OldStuff\Fireball3DController.cs" />
      <Compile Include="Assets\ScriptableObjects\BoolVariable.cs" />
      <Compile Include="Assets\ScriptableObjects\General\PlayerInputsArr.cs" />

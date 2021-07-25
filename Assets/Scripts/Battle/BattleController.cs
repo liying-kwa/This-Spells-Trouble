@@ -10,7 +10,7 @@ public class BattleController : MonoBehaviour
     public GameConstants gameConstants;
     public IntArrVariable playersChars;
     public KnockbackArr playersKnockback;
-    public ChosenSpellsArr playersSpells;
+    public PlayersSpells playersSpells;
     public BoolArrVariable playersAreAlive;
     public BoolVariable roundEnded;
 

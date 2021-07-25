@@ -7,390 +7,266 @@ using UnityEngine.InputSystem;
 public class ShopController : MonoBehaviour
 {
     // ScriptableObjects
-    public ChosenSpellsArr playersSpells;
+    public PlayersSpells playersSpells;
+    public PlayersSpellLevels playersSpellLevels;
+    public IntArrVariable playersGold;
+    public SpellModel[] allSpellModels;
+    public Texture emptyIcon;
 
-    // Others
-    public SkillModel[] offensiveSpells;
-    public SkillModel[] defensiveSpells;
-    private List<GameObject> offensiveGameObjectList;
-    private List<GameObject> defensiveGameObjectList;
-    private List<GameObject> emptyGameObjectList;
-    public GameObject emptySprite;
-    public Text skillNameText;
-    public Text skillCostText;
-    public Text skillDescText;
-    public Text upgradeText;
-    public List<GameObject> skillStatus1;
-    public List<GameObject> skillStatus2;
-    public List<GameObject> skillStatus3;
-    public List<GameObject> skillStatus4;
-    private List<List<GameObject>> skillStatus;
-    private int slotSelected = 0;
-    private int[] skillMapping; // Maps slot to GameObjects
-    private int previousSelection;
-    public GameObject skillsController;
-    public Vector3 initialPosition;
+    // GameObjects
+    public GameObject[] slotIcons;
+    public GameObject spellInfo;
+    public Text spellNameText;
+    public Text spellCostText;
+    public Text spellDescText;
+    public Text spellUpgradeText;
+    public Text goldText;
+
+    // public List<GameObject> skillStatus1;
+    // public List<GameObject> skillStatus2;
+    // public List<GameObject> skillStatus3;
+    // public List<GameObject> skillStatus4;
+    // private List<List<GameObject>> skillStatus;
+    // private int[] skillMapping; // Maps slot to GameObjects
+    // private int previousSelection;
 
     // Game State
     public int playerID;
+    private int selectedSlot = 0;
+    private int selectedSpellInt = -1;  // this is w.r.t. index in either offensiveSpellModels or defensiveSpellModels
+    private Spell selectedSpell = Spell.nullSpell;
+    private Vector3 spellInfoInitialPosition;
+    private bool[] slotTiedToSpell = {false, false, false, false};
+    private List<SpellModel> offensiveSpellModels;
+    private List<SpellModel> defensiveSpellModels;
+    private int goldAmount;
+
 
     private void OnPreviousSlot() {
-        // Reset icon to display skill bought
-        resetSelection();
-        // Decrease slot index selected
-        slotSelected -= 1;
-        if (slotSelected < 0)
-        {
-            slotSelected += skillMapping.Length;
-        };
-        // Shift the gameObject group position
-        // this.transform.localPosition = new Vector3(0, initialPosition.y - slotSelected * 70f, 0);
-        skillsController.transform.localPosition = new Vector3(0, initialPosition.y - slotSelected * 70f, 0);
-        // Keep track of skill bought
-        previousSelection = skillMapping[slotSelected];
-        updateSkillPopup();
-        zoomSelected();
+        if (selectedSlot == 0) {
+            return;
+        }
+        // Render earlier slot icon to be nothing if no spell is bought
+        if (!slotTiedToSpell[selectedSlot]) {
+            renderSpell(Spell.nullSpell, selectedSlot);
+        }
+        selectedSlot -= 1;
+        // Render icon to display spell bought, or empty if nothing
+        if (slotTiedToSpell[selectedSlot] == false) {
+            selectedSpellInt = -1;
+        }
+        Spell spell = playersSpells.GetSpell(playerID, selectedSlot);
+        renderSpell(spell, selectedSlot);
+        // Shift the spellInfo gameobject group position
+        spellInfo.transform.localPosition = new Vector3(0, spellInfoInitialPosition.y - selectedSlot * 70f, 0);
+        // Zoom selected slot and unzoom earlier slot
+        slotIcons[selectedSlot+1].transform.localScale = new Vector3(0.2772619f, 0.2772619f, 0.2772619f);
+        slotIcons[selectedSlot].transform.localScale = new Vector3(0.35f, 0.35f, 0.35f);
+        
     }
 
     private void OnNextSlot() {
-        // Reset icon to display skill bought
-        resetSelection();
-        // Increase slot index selected
-        slotSelected = (slotSelected + 1) % skillMapping.Length;
-        // Shift the gameObject group position
-        // this.transform.localPosition = new Vector3(0, initialPosition.y - slotSelected * 70f, 0);
-        skillsController.transform.localPosition = new Vector3(0, initialPosition.y - slotSelected * 70f, 0);
-        // Keep track of skill bought
-        previousSelection = skillMapping[slotSelected];
-        updateSkillPopup();
-        zoomSelected();
-}
-
-    private void OnPreviousSpell() {
-        int currentIndex = skillMapping[slotSelected];
-        GameObject currentSkill;
-        GameObject newSkill;
-
-        // Fireball slot fixed
-        if (slotSelected == 0)
-        {
+        if (selectedSlot == 3) {
             return;
         }
-
-        // Defensive Spell Slot
-        else if (slotSelected == 3)
-        {
-            if (currentIndex == -1) { currentSkill = emptyGameObjectList[slotSelected - 1]; currentIndex = 0; }
-            else { currentSkill = defensiveGameObjectList[currentIndex]; };
-
-            // Slot is fixed until they sell
-            // if (currentSkill.transform.parent == this.transform.parent)
-            if (currentSkill.transform.parent == skillsController.transform.parent)
-            {
-                return;
-            }
-            currentIndex -= 1;
-            if (currentIndex < 0)
-            {
-                currentIndex += defensiveGameObjectList.Count;
-            };
-            newSkill = defensiveGameObjectList[currentIndex];
-            skillMapping[slotSelected] = currentIndex;
+        // Render earlier slot icon to be nothing if no spell is bought
+        if (!slotTiedToSpell[selectedSlot]) {
+            renderSpell(Spell.nullSpell, selectedSlot);
         }
+        selectedSlot += 1;
+        // Render icon to display skill bought, or empty if nothing
+        if (slotTiedToSpell[selectedSlot] == false) {
+            selectedSpellInt = -1;
+        }
+        Spell spell = playersSpells.GetSpell(playerID, selectedSlot);
+        renderSpell(spell, selectedSlot);
+        // Shift the skillInfo gameobject group position
+        spellInfo.transform.localPosition = new Vector3(0, spellInfoInitialPosition.y - selectedSlot * 70f, 0);
+        // Zoom selected slot and unzoom earlier slot
+        slotIcons[selectedSlot-1].transform.localScale = new Vector3(0.2772619f, 0.2772619f, 0.2772619f);
+        slotIcons[selectedSlot].transform.localScale = new Vector3(0.35f, 0.35f, 0.35f);
+    }
 
-        // Offensive Spell Slots
-        else
-        {
-            if (currentIndex == -1) { currentSkill = emptyGameObjectList[slotSelected - 1]; currentIndex = 0; }
-            else { currentSkill = offensiveGameObjectList[currentIndex]; };
-
-            // Slot is fixed until they sell
-            // if (currentSkill.transform.parent == this.transform.parent)
-            if (currentSkill.transform.parent == skillsController.transform.parent)
-            {
-                return;
+    private void OnPreviousSpell() {
+        // Fireball slot fixed
+        if (selectedSlot == 1) {
+            return;
+        }
+        // If a bought spell is tied to that slot, cannot view other spells in that slot until that spell is sold
+        if (slotTiedToSpell[selectedSlot] == true) {
+            return;
+        }
+        // Otherwise, render the correct offensive/defensive spell
+        selectedSpellInt -= 1;
+        if (selectedSlot == 0) {
+            // Defensive spell slot
+            if (selectedSpellInt < 0) {
+                selectedSpellInt += defensiveSpellModels.Count;
             }
-
-            int prevAvailableSkill = getPrevAvailableSkill(offensiveGameObjectList, currentIndex);
-            newSkill = offensiveGameObjectList[prevAvailableSkill];
-            skillMapping[slotSelected] = prevAvailableSkill;
-        };
-
-        // Display next skill in list
-        currentSkill.SetActive(false);
-        newSkill.SetActive(true);
-        updateSkillPopup();
-        zoomSelected();
+            Spell spell = defensiveSpellModels[selectedSpellInt].Spell;
+            renderSpell(spell, selectedSlot);
+        } else {
+            // Offensive spell slot
+            if (selectedSpellInt < 0) {
+                selectedSpellInt += offensiveSpellModels.Count;
+            }
+            Spell spell = offensiveSpellModels[selectedSpellInt].Spell;
+            renderSpell(spell, selectedSlot);
+        }
     }
 
     private void OnNextSpell() {
-        int currentIndex = skillMapping[slotSelected];
-        GameObject currentSkill;
-        GameObject newSkill;
-
         // Fireball slot fixed
-        if (slotSelected == 0)
-        {
+        if (selectedSlot == 1) {
             return;
         }
-
-        // Defensive Spell Slot
-        else if (slotSelected == 3)
-        {
-            if (currentIndex == -1) { currentSkill = emptyGameObjectList[slotSelected - 1]; }
-            else { currentSkill = defensiveGameObjectList[currentIndex]; };
-
-            // Slot is fixed until they sell
-            // if (currentSkill.transform.parent == this.transform.parent)
-            if (currentSkill.transform.parent == skillsController.transform.parent)
-            {
-                return;
-            }
-
-            newSkill = defensiveGameObjectList[(currentIndex + 1) % defensiveGameObjectList.Count];
-            skillMapping[slotSelected] = (currentIndex + 1) % defensiveGameObjectList.Count;
+        // If a bought spell is tied to that slot, cannot view other spells in that slot until that spell is sold
+        if (slotTiedToSpell[selectedSlot] == true) {
+            return;
         }
-
-        // Offensive Spell Slots
-        else
-        {
-            if (currentIndex == -1) { currentSkill = emptyGameObjectList[slotSelected - 1]; }
-            else { currentSkill = offensiveGameObjectList[currentIndex]; };
-
-            // Slot is fixed until they sell
-            // if (currentSkill.transform.parent == this.transform.parent)
-            if (currentSkill.transform.parent == skillsController.transform.parent)
-            {
-                return;
+        // Otherwise, render the correct offensive/defensive spell
+        selectedSpellInt += 1;
+        if (selectedSlot == 0) {
+            // Defensive spell slot
+            if (selectedSpellInt >= defensiveSpellModels.Count) {
+                selectedSpellInt -= defensiveSpellModels.Count;
             }
-
-            int nextAvailableSkill = getNextAvailableSkill(offensiveGameObjectList, currentIndex);
-            newSkill = offensiveGameObjectList[nextAvailableSkill];
-            skillMapping[slotSelected] = nextAvailableSkill;
-        };
-
-        // Display next skill in list
-        currentSkill.SetActive(false);
-        newSkill.SetActive(true);
-        updateSkillPopup();
-        zoomSelected();
-    }
-
-    private void OnBuySpell() {
-        // Prevent buying on empty slot
-        if (skillMapping[slotSelected] == -1) { return; }
-
-        // Removing the bought skill from the gameObject group so that it is always displayed
-        // if (slotSelected == 3) { defensiveGameObjectList[skillMapping[slotSelected]].transform.parent = this.transform.parent; }
-        // else { offensiveGameObjectList[skillMapping[slotSelected]].transform.parent = this.transform.parent; }
-        if (slotSelected == 3) { defensiveGameObjectList[skillMapping[slotSelected]].transform.parent = skillsController.transform.parent; }
-        else { offensiveGameObjectList[skillMapping[slotSelected]].transform.parent = skillsController.transform.parent; }
-        previousSelection = skillMapping[slotSelected];
-
-        // Update upgrade bar
-        foreach (var skillLevel in skillStatus[slotSelected])
-        {
-            // Set the next skill bar to green
-            if (skillLevel.GetComponent<SpriteRenderer>().color != Color.green){
-                skillLevel.GetComponent<SpriteRenderer>().color = Color.green;
-                return;
+            Spell spell = defensiveSpellModels[selectedSpellInt].Spell;
+            renderSpell(spell, selectedSlot);
+        } else {
+            // Offensive spell slot
+            if (selectedSpellInt >= offensiveSpellModels.Count) {
+                selectedSpellInt -= offensiveSpellModels.Count;
             }
+            Spell spell = offensiveSpellModels[selectedSpellInt].Spell;
+            renderSpell(spell, selectedSlot);
         }
     }
 
-    private void OnSellSpell() {
-        // Prevent buying on empty slot
-        if (skillMapping[slotSelected] == -1 || slotSelected == 0) { return; }
-
-        // Adding the bought skill to the gameObject group so that it can be browsed
-        // if (slotSelected == 3) { defensiveGameObjectList[skillMapping[slotSelected]].transform.parent = this.transform; }
-        // else { offensiveGameObjectList[skillMapping[slotSelected]].transform.parent = this.transform; }
-        if (slotSelected == 3) { defensiveGameObjectList[skillMapping[slotSelected]].transform.parent = skillsController.transform; }
-        else { offensiveGameObjectList[skillMapping[slotSelected]].transform.parent = skillsController.transform; }
-        // Reset to empty sprite
-        previousSelection = -1;
-
-        // Update upgrade bar
-        foreach (var skillLevel in skillStatus[slotSelected])
-        {
-            // Set all skill bar to gray
-            skillLevel.GetComponent<SpriteRenderer>().color = Color.gray;
+    void OnBuySpell() {
+        // Do nothing if a spell is tied to that slot or if it is an empty spell
+        if (slotTiedToSpell[selectedSlot] || selectedSpellInt == -1) {
+            return;
         }
+        // Check if enough gold
+        if (goldAmount < allSpellModels[(int) selectedSpell].Cost) {
+            return;
+        }
+        goldAmount -= allSpellModels[(int) selectedSpell].Cost;
+        goldText.text = "Gold: " + goldAmount;
+        playersGold.SetValue(playerID, goldAmount);
+        slotTiedToSpell[selectedSlot] = true;
+        switch (selectedSpell) {
+            case Spell.fireball:
+                playersSpells.SetSpell(playerID, selectedSlot, Spell.fireball);
+                break;
+            case Spell.teleport:
+                playersSpells.SetSpell(playerID, selectedSlot, Spell.teleport);
+                break;
+            case Spell.lightning:
+                playersSpells.SetSpell(playerID, selectedSlot, Spell.lightning);
+                break;
+            case Spell.tornado:
+                playersSpells.SetSpell(playerID, selectedSlot, Spell.tornado);
+                break;
+            default:
+                break;
+        }
+    }
+
+    void OnSellSpell() {
+        // Do nothing if it is the fireball slot, or not bought
+        if (selectedSlot == 1 || !slotTiedToSpell[selectedSlot]) {
+            return;
+        }
+        // Add gold, sell spell and remove icon
+        Spell soldSpell = playersSpells.GetSpell(playerID, selectedSlot);
+        goldAmount += allSpellModels[(int) soldSpell].Cost;
+        goldText.text = "Gold: " + goldAmount;
+        playersGold.SetValue(playerID, goldAmount);
+        slotTiedToSpell[selectedSlot] = false;
+        playersSpells.SetSpell(playerID, selectedSlot, Spell.nullSpell);
+        renderSpell(Spell.nullSpell, selectedSlot);
+    }
+
+    void renderSpell(Spell spell, int selectedSlot) {
+        SpellModel spellModel;
+        switch (spell) {
+            case Spell.fireball:
+                spellModel = allSpellModels[(int) Spell.fireball];
+                selectedSpell = Spell.fireball;
+                break;
+            case Spell.teleport:
+                spellModel = allSpellModels[(int) Spell.teleport];
+                selectedSpell = Spell.teleport;
+                break;
+            case Spell.lightning:
+                spellModel = allSpellModels[(int) Spell.lightning];
+                selectedSpell = Spell.lightning;
+                break;
+            case Spell.tornado:
+                spellModel = allSpellModels[(int) Spell.tornado];
+                selectedSpell = Spell.tornado;
+                break;
+            default:
+                slotIcons[selectedSlot].GetComponent<RawImage>().texture = emptyIcon;
+                selectedSpell = Spell.nullSpell;
+                // TODO: set spellinfo to inactive?
+                spellNameText.text = "";
+                spellCostText.text = "";
+                spellDescText.text = "";
+                spellUpgradeText.text = "";
+                return;
+        }
+        slotIcons[selectedSlot].GetComponent<RawImage>().texture = spellModel.Icon;
+        spellNameText.text = spellModel.Name;
+        spellCostText.text = spellModel.Cost.ToString();
+        spellDescText.text = spellModel.Description;
+        spellUpgradeText.text = spellModel.Upgrade;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        // Initialise Lists
-        offensiveGameObjectList = new List<GameObject>();
-        defensiveGameObjectList = new List<GameObject>();
-        emptyGameObjectList = new List<GameObject>();
-        skillStatus = new List<List<GameObject>>{skillStatus1, skillStatus2, skillStatus3, skillStatus4};
-        // initialPosition = this.transform.localPosition;
-        initialPosition = skillsController.transform.localPosition;
-
-        // Array containing the index of selected skill
-        skillMapping = new int[4];
-
-        // Instantiate Offensive Spells
-        foreach (var skillModel in offensiveSpells) {
-            // GameObject skill = Instantiate(skillModel.SkillPrefab, this.transform.position, Quaternion.identity);
-            // skill.transform.SetParent(this.transform, true);
-            GameObject skill = Instantiate(skillModel.SkillPrefab, skillsController.transform.position, Quaternion.identity);
-            skill.transform.SetParent(skillsController.transform, true);
-            skill.SetActive(false);
-            offensiveGameObjectList.Add(skill);
+        // Separate into offensive and defensive spells
+        defensiveSpellModels = new List<SpellModel>();
+        offensiveSpellModels = new List<SpellModel>();
+        for (int i = 0; i < allSpellModels.Length; i++) {
+            switch (allSpellModels[i].Spell) {
+                case Spell.teleport:
+                    defensiveSpellModels.Add(allSpellModels[i]);
+                    break;
+                case Spell.fireball:
+                case Spell.lightning:
+                case Spell.tornado:
+                    offensiveSpellModels.Add(allSpellModels[i]);
+                    break;
+            }
         }
 
-        // Instantiate Defensive Spells
-        foreach (var skillModel in defensiveSpells) {
-            // GameObject skill = Instantiate(skillModel.SkillPrefab, this.transform.position, Quaternion.identity);
-            // skill.transform.SetParent(this.transform, true);
-            GameObject skill = Instantiate(skillModel.SkillPrefab, skillsController.transform.position, Quaternion.identity);
-            skill.transform.SetParent(skillsController.transform, true);
-            skill.SetActive(false);
-            defensiveGameObjectList.Add(skill);
+        // Initialise some values
+        spellInfoInitialPosition = spellInfo.transform.localPosition;
+        for (int i = 3; i >= 0; i--) {
+            // Render initial icons. Last one is first spell so no need to re-render.
+            Spell spell = playersSpells.GetSpell(playerID, i);
+            renderSpell(spell, selectedSlot);
+            if ((int) spell == -1) {
+                slotTiedToSpell[i] = false;
+            } else {
+                slotTiedToSpell[i] = true;
+            }
         }
+        goldAmount = playersGold.GetValue(playerID);
+        goldText.text = "Gold: " + goldAmount.ToString();
 
-        // Set empty sprite for Slots 2 to 4
-        for (var i = 1; i < 4; i++) {
-            // GameObject empty = Instantiate(emptySprite, this.transform.position + new Vector3(0f, -1.38f * i, 0f), Quaternion.identity);
-            GameObject empty = Instantiate(emptySprite, skillsController.transform.position + new Vector3(0f, -1.38f * i, 0f), Quaternion.identity);
-            // empty.transform.SetParent(this.transform, true);
-            emptyGameObjectList.Add(empty);
-            skillMapping[i] = -1;
-        }
+        // Zoom into first slot
+        slotIcons[0].transform.localScale = new Vector3(0.35f, 0.35f, 0.35f);
 
-        // Fixed first skill as fireball 
-        skillMapping[slotSelected] = 0;
-        offensiveGameObjectList[skillMapping[slotSelected]].SetActive(true);
-        // offensiveGameObjectList[skillMapping[slotSelected]].transform.parent = this.transform.parent;
-        offensiveGameObjectList[skillMapping[slotSelected]].transform.parent = skillsController.transform.parent;
-        skillStatus[slotSelected][0].GetComponent<SpriteRenderer>().color = Color.green;
-        updateSkillPopup();
-        zoomSelected();
     }
 
     // Update is called once per frame
     void Update()
     {
         
-    }
-
-    void updateSkillPopup()
-    {
-        //  Empty slot
-        if (skillMapping[slotSelected] == -1)
-        {
-            skillCostText.text = "";
-            skillNameText.text = "";
-            skillDescText.text = "";
-            upgradeText.text = "";
-        }
-
-        // Defensive spells
-        else if (slotSelected == 3)
-        {
-            skillCostText.text = defensiveSpells[skillMapping[slotSelected]].Cost.ToString();
-            skillNameText.text = defensiveSpells[skillMapping[slotSelected]].Name;
-            skillDescText.text = defensiveSpells[skillMapping[slotSelected]].Description;
-            upgradeText.text = "Next Upgrade: " + defensiveSpells[skillMapping[slotSelected]].Upgrade;
-        }
-
-        // Offensive spells
-        else
-        {
-            skillCostText.text = offensiveSpells[skillMapping[slotSelected]].Cost.ToString();
-            skillNameText.text = offensiveSpells[skillMapping[slotSelected]].Name;
-            skillDescText.text = offensiveSpells[skillMapping[slotSelected]].Description;
-            upgradeText.text = "Next Upgrade: " + offensiveSpells[skillMapping[slotSelected]].Upgrade;
-        }
-    }
-    void resetSelection()
-    {
-        GameObject currentSkill;
-        GameObject prevSkill;
-        // Set the last known item to be active if no purchase was made
-        if (previousSelection != skillMapping[slotSelected])
-        {
-            if (slotSelected == 3) { currentSkill = defensiveGameObjectList[skillMapping[slotSelected]]; }
-            else { currentSkill = offensiveGameObjectList[skillMapping[slotSelected]]; }
-            currentSkill.SetActive(false);
-
-            if (previousSelection == -1) { prevSkill = emptyGameObjectList[slotSelected - 1]; skillMapping[slotSelected] = -1; }
-            else if (slotSelected == 3) { prevSkill = defensiveGameObjectList[previousSelection]; }
-            else { prevSkill = offensiveGameObjectList[previousSelection]; }
-            prevSkill.SetActive(true);
-        }
-
-    }
-
-    int getNextAvailableSkill(List<GameObject> gameObjects, int currentIndex)
-    {
-        currentIndex = (currentIndex + 1) % gameObjects.Count;
-        for (var i = 0; i < gameObjects.Count; i++)
-        {
-            if (gameObjects[currentIndex].activeSelf) { currentIndex = (currentIndex + 1) % gameObjects.Count; }
-            else { return currentIndex; }
-
-        }
-        return -1;
-    }
-
-    int getPrevAvailableSkill(List<GameObject> gameObjects, int currentIndex)
-    {
-        currentIndex -= 1;
-        if (currentIndex < 0)
-        {
-            currentIndex += gameObjects.Count;
-        };
-        for (var i = 0; i < gameObjects.Count; i++)
-        {
-            if (gameObjects[currentIndex].activeSelf)
-            {
-                currentIndex -= 1;
-                if (currentIndex < 0)
-                {
-                    currentIndex += gameObjects.Count;
-                };
-            }
-            else { return currentIndex; }
-        }
-        return -1;
-    }
-
-    // Zoom into the slot currently
-    void zoomSelected()
-    {
-
-        for (var i = 0; i < 4; i++)
-        {
-            if (i == slotSelected)
-            {
-                GameObject currentSkill;
-                if (skillMapping[i] == -1) { currentSkill = emptyGameObjectList[i - 1]; }
-                else if (i == 3) { currentSkill = defensiveGameObjectList[skillMapping[i]]; }
-                else { currentSkill = offensiveGameObjectList[skillMapping[i]]; };
-
-                // Scale
-                Transform tempTransform = currentSkill.transform.parent;
-                currentSkill.transform.parent = null;
-                currentSkill.transform.localScale = new Vector3(7f, 7f, 7f);
-                currentSkill.transform.parent = tempTransform;
-
-            }
-            else
-            {
-                GameObject currentSkill;
-                if (skillMapping[i] == -1) { currentSkill = emptyGameObjectList[i - 1]; }
-                else if (i == 3) { currentSkill = defensiveGameObjectList[skillMapping[i]]; }
-                else { currentSkill = offensiveGameObjectList[skillMapping[i]]; };
-
-                Transform tempTransform = currentSkill.transform.parent;
-                currentSkill.transform.parent = null;
-                currentSkill.transform.localScale = new Vector3(5f, 5f, 0f);
-                currentSkill.transform.parent = tempTransform;
-            }
-        }
     }
 }

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b85db8b25e491a7449ac3930f421e639, type: 3}
-  m_Name: Tornado
+  m_Name: Lightning
   m_EditorClassIdentifier: 
-  Name: Tornado
-  Description: A spell that travels slowly and hits anyone in the way. It does not
-    get destroyed until its time is up.
-  Damage: 2
-  Cost: 2
-  SkillPrefab: {fileID: 6608488365913530418, guid: ea5d47aafb9d62548b4b5ed4683ed6d9, type: 3}
-  Upgrade: Decrease cooldown
+  Name: Lightning
+  Spell: 2
+  Description: An instant travelling, short range attack that hits the first target
+    in the line
+  Icon: {fileID: 2800000, guid: 29ee0544a9e494645b9cc843ef664252, type: 3}
+  Cost: 200
+  Upgrade: Decreased Cooldown

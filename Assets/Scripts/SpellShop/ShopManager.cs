@@ -12,13 +12,18 @@ public class ShopManager : MonoBehaviour
 
     // GameObjects
     public Text countdownText;
-    public SkillModel[] offensiveSpells;
-    public SkillModel[] defensiveSpells;
-    public GameObject emptySprite;
-    public Text[] skillNameTexts;
-    public Text[] skillCostTexts;
-    public Text[] skillDescTexts;
-    public Text[] upgradeTexts;
+    public GameObject[] P1SlotIcons;
+    public GameObject[] P2SlotIcons;
+    public GameObject[] P3SlotIcons;
+    public GameObject[] P4SlotIcons;
+    public List<GameObject> spellInfos;
+    public Text[] spellNameTexts;
+    public Text[] spellCostTexts;
+    public Text[] spellDescTexts;
+    public Text[] spellUpgradeTexts;
+    public Text[] goldTexts;
+
+
     public List<GameObject> P1SkillStatus1;
     public List<GameObject> P1SkillStatus2;
     public List<GameObject> P1SkillStatus3;
@@ -35,7 +40,6 @@ public class ShopManager : MonoBehaviour
     public List<GameObject> P4SkillStatus2;
     public List<GameObject> P4SkillStatus3;
     public List<GameObject> P4SkillStatus4;
-    public List<GameObject> skillsControllers;
 
     void Awake()
     {
@@ -63,40 +67,58 @@ public class ShopManager : MonoBehaviour
                 playerInputsArr.GetValue(i).actions.FindActionMap("SpellShop").Enable();
                 // Pass in GameObjects accordingly
                 ShopController controller = player.GetComponent<ShopController>();
-                controller.offensiveSpells = offensiveSpells;
-                controller.defensiveSpells = defensiveSpells;
-                controller.emptySprite = emptySprite;
-                controller.skillNameText = skillNameTexts[i];
-                controller.skillCostText = skillCostTexts[i];
-                controller.skillDescText = skillDescTexts[i];
-                controller.upgradeText = upgradeTexts[i];
-                controller.skillsController = skillsControllers[i];
+                controller.spellInfo = spellInfos[i];
+                controller.spellNameText = spellNameTexts[i];
+                controller.spellCostText = spellCostTexts[i];
+                controller.spellDescText = spellDescTexts[i];
+                controller.spellUpgradeText = spellUpgradeTexts[i];
+                controller.goldText = goldTexts[i];
+
+                // controller.skillStatus1 = skillStatus1s[i];
+                // controller.skillStatus2 = skillStatus2s[i];
+                // controller.skillStatus3 = skillStatus3s[i];
+                // controller.skillStatus4 = skillStatus4s[i];
+                
                 switch (i) {
                     case 0:
-                        controller.skillStatus1 = P1SkillStatus1;
-                        controller.skillStatus2 = P1SkillStatus2;
-                        controller.skillStatus3 = P1SkillStatus3;
-                        controller.skillStatus4 = P1SkillStatus4;
+                        controller.slotIcons = P1SlotIcons;
                         break;
                     case 1:
-                        controller.skillStatus1 = P2SkillStatus1;
-                        controller.skillStatus2 = P2SkillStatus2;
-                        controller.skillStatus3 = P2SkillStatus3;
-                        controller.skillStatus4 = P2SkillStatus4;
+                        controller.slotIcons = P2SlotIcons;
                         break;
                     case 2:
-                        controller.skillStatus1 = P3SkillStatus1;
-                        controller.skillStatus2 = P3SkillStatus2;
-                        controller.skillStatus3 = P3SkillStatus3;
-                        controller.skillStatus4 = P3SkillStatus4;
+                        controller.slotIcons = P3SlotIcons;
                         break;
                     case 3:
-                        controller.skillStatus1 = P4SkillStatus1;
-                        controller.skillStatus2 = P4SkillStatus2;
-                        controller.skillStatus3 = P4SkillStatus3;
-                        controller.skillStatus4 = P4SkillStatus4;
+                        controller.slotIcons = P4SlotIcons;
                         break;
                 }
+                // switch (i) {
+                //     case 0:
+                //         controller.skillStatus1 = P1SkillStatus1;
+                //         controller.skillStatus2 = P1SkillStatus2;
+                //         controller.skillStatus3 = P1SkillStatus3;
+                //         controller.skillStatus4 = P1SkillStatus4;
+                //         break;
+                //     case 1:
+                //         controller.skillStatus1 = P2SkillStatus1;
+                //         controller.skillStatus2 = P2SkillStatus2;
+                //         controller.skillStatus3 = P2SkillStatus3;
+                //         controller.skillStatus4 = P2SkillStatus4;
+                //         break;
+                //     case 2:
+                //         controller.skillStatus1 = P3SkillStatus1;
+                //         controller.skillStatus2 = P3SkillStatus2;
+                //         controller.skillStatus3 = P3SkillStatus3;
+                //         controller.skillStatus4 = P3SkillStatus4;
+                //         break;
+                //     case 3:
+                //         controller.skillStatus1 = P4SkillStatus1;
+                //         controller.skillStatus2 = P4SkillStatus2;
+                //         controller.skillStatus3 = P4SkillStatus3;
+                //         controller.skillStatus4 = P4SkillStatus4;
+                //         break;
+                // }
             }
         }
         

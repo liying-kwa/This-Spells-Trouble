@@ -157,6 +157,7 @@ MonoBehaviour:
   playersReady: {fileID: 11400000, guid: b342ff068b3b55e44a6f14aa3f0febbc, type: 2}
   playersChars: {fileID: 11400000, guid: 680f5bb198ef26644aa397008c921dae, type: 2}
   playersSpells: {fileID: 11400000, guid: 3d57aacccfb0dcf4993a190ef3116a50, type: 2}
+  playersGold: {fileID: 11400000, guid: b1b1adeefccd1b941bd7fa1e02cd07fb, type: 2}
   onReadyButtonPlaySound: {fileID: 11400000, guid: 215b4421f690b447288344570e87e856, type: 2}
   onJoinButtonPlaySound: {fileID: 11400000, guid: d38c6e470b3e84bf4ab0dfd9deb562c3, type: 2}
   onArrowButtonPlaySound: {fileID: 11400000, guid: 1eac82ce80f964f7cb6f0a305a5679de, type: 2}
@@ -378,18 +379,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c71d9e40aef7104a9007e04ff84b71b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playersSpells: {fileID: 0}
-  offensiveSpells: []
-  defensiveSpells: []
-  emptySprite: {fileID: 3051368437037051611, guid: 0e337840fbf1ecd449e0e699ea079269, type: 3}
-  skillNameText: {fileID: 0}
-  skillCostText: {fileID: 0}
-  skillDescText: {fileID: 0}
-  upgradeText: {fileID: 0}
-  skillStatus1: []
-  skillStatus2: []
-  skillStatus3: []
-  skillStatus4: []
+  playersSpells: {fileID: 11400000, guid: 3d57aacccfb0dcf4993a190ef3116a50, type: 2}
+  playersSpellLevels: {fileID: 11400000, guid: de08da11687752944a8e0852a8f6d492, type: 2}
+  playersGold: {fileID: 11400000, guid: b1b1adeefccd1b941bd7fa1e02cd07fb, type: 2}
+  allSpellModels:
+  - {fileID: 11400000, guid: 1a6d4d35545aa7545bb3c5c8c68ba8d6, type: 2}
+  - {fileID: 11400000, guid: c18a10a8203bf5b4788f85b828a0970b, type: 2}
+  - {fileID: 11400000, guid: 6fb0099f014e8f642a21e21d93736a70, type: 2}
+  - {fileID: 11400000, guid: 257a4bca26cc4a84aa36eefdd29c45cc, type: 2}
+  emptyIcon: {fileID: 2800000, guid: 22c57c9034ab12a49a282af0f4164da1, type: 3}
+  slotIcons: []
+  spellInfo: {fileID: 0}
+  spellNameText: {fileID: 0}
+  spellCostText: {fileID: 0}
+  spellDescText: {fileID: 0}
+  spellUpgradeText: {fileID: 0}
+  goldText: {fileID: 0}
   playerID: 0
 --- !u!1001 &1895095679628177950
 PrefabInstance:

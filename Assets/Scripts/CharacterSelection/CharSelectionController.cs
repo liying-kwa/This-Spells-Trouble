@@ -8,7 +8,8 @@ public class CharSelectionController : MonoBehaviour
     // ScriptableObjects
     public BoolArrVariable playersReady;
     public IntArrVariable playersChars;
-    public ChosenSpellsArr playersSpells;
+    public PlayersSpells playersSpells;
+    public IntArrVariable playersGold;
 
     // Components
     //private AudioSource audioSource;
@@ -72,13 +73,14 @@ public class CharSelectionController : MonoBehaviour
         text.text = "";
         characters[selectedChar].SetActive(true);
         playersChars.SetValue(playerID, 0);
+        for (int i = 0; i < 4; i++) {
+            playersGold.SetValue(playerID, 300);
+        }
         DontDestroyOnLoad(this.gameObject);
         // Maybe shift this to somewhere else in the future
         playersSpells.SetSpell(playerID, 1, Spell.fireball);
         // Test spells here
-        playersSpells.SetSpell(playerID, 0, Spell.teleport);
-        playersSpells.SetSpell(playerID, 2, Spell.lightning);
-        playersSpells.SetSpell(playerID, 3, Spell.tornado);
+        // playersSpells.SetSpell(playerID, 0, Spell.teleport);
         onJoinButtonPlaySound.Raise();
         Debug.Log("onJoinButtonPlaySound played!");
     }
