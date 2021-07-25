@@ -9,9 +9,21 @@ EditorBuildSettings:
     path: Assets/Scenes/CharSelectionScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/BattleScene.unity
-    guid: abca9750f228ec54aa69e2ec53584871
-  - enabled: 1
     path: Assets/Scenes/SpellShopScene.unity
     guid: d1aceddfe538aab45903e7f2ca07db24
+  - enabled: 1
+    path: Assets/Scenes/BattleScene1.unity
+    guid: a531443654f99404ca528d69f4834ced
+  - enabled: 1
+    path: Assets/Scenes/BattleScene2.unity
+    guid: c6b7ffc3b8d66a6498b37bfae7ef4c1a
+  - enabled: 1
+    path: Assets/Scenes/BattleScene3.unity
+    guid: fb391ef803ccf2e4781d0f6a5ef13647
+  - enabled: 1
+    path: Assets/Scenes/BattleScene4.unity
+    guid: b198508b98fca8d4cb7990abd2773437
+  - enabled: 1
+    path: Assets/Scenes/BattleScene5.unity
+    guid: 51cdff35b1ebac044aeee950f4764ace
   m_configObjects: {}

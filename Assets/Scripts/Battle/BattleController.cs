@@ -39,10 +39,6 @@ public class BattleController : MonoBehaviour
     public RuntimeAnimatorController sorceressAnimatorController;
     public RuntimeAnimatorController cultistAnimatorController;
     public RuntimeAnimatorController possessedEnemyAnimatorController;
-    // public static readonly string[] staticDirections = {"Static_N", "Static_NW", "Static_W", "Static_SW", "Static_S", "Static_SE", "Static_E", "Static_NE"};
-    // public static readonly string[] runDirections = {"Run_N", "Run_NW", "Run_W", "Run_SW", "Run_S", "Run_SE", "Run_E", "Run_NE"};
-    // public static readonly string[] staticDirections = {"Static_N", "Static_W", "Static_S", "Static_E"};
-    // public static readonly string[] runDirections = {"Run_N", "Run_W", "Run_S", "Run_E"};
     public static readonly string[] idleDirections = {"Idle_N", "Idle_W", "Idle_S", "Idle_E"};
     public static readonly string[] walkDirections = {"Walk_N", "Walk_W", "Walk_S", "Walk_E"};
     public static readonly string[] attackDirections = {"Attack_N", "Attack_W", "Attack_S", "Attack_E"};
@@ -103,63 +99,38 @@ public class BattleController : MonoBehaviour
         }
     }
 
-    private void executeSpell(int slot) {
-        if (!spellsReady[slot]) {
-            return;
-        }
-        Spell spell = playersSpells.GetSpell(playerID, slot);
-        if (spell == Spell.nullSpell) {
-            return;
-        }
-        // Animation
-        castingSpell = true;
-        if (spellAnimationCoroutine != null) {
-            StopCoroutine(spellAnimationCoroutine);
-        }
-        spellAnimationCoroutine = SpellAnimation();
-        StartCoroutine(spellAnimationCoroutine);
-        // Cast spell
-        switch (spell) {
-            case Spell.fireball:
-                CastFireball(slot);
-                break;
-            case Spell.teleport:
-                CastTeleport(slot);
-                break;
-            case Spell.lightning:
-                CastLightning(slot);
-                break;
-            case Spell.tornado:
-                CastTornado(slot);
-                break;
-            default:
-                break;
-        }
-    }
-
     // Start is called before the first frame update
-    void Start() {
-
+    void Awake() {
         // GameObjects
         foreach (Transform child in transform) {
             if (child.name == "Mage") {
                 mageObject = child.gameObject;
-                mageObject.SetActive(true);
+                // mageObject.SetActive(true);
             } else if (child.name == "Aim") {
                 aimObject = child.gameObject;
-                aimObject.SetActive(true);
+                // aimObject.SetActive(true);
             } else if (child.name == "Knockback") {
                 knockbackObject = child.gameObject;
-                knockbackObject.SetActive(true);
+                // knockbackObject.SetActive(true);
             }
         }
-        mapManager = FindObjectOfType<MapManager>();
 
         // Components
         rigidBody = GetComponent<Rigidbody2D>();
         animator = mageObject.GetComponent<Animator>();
         knockbackSpriteRenderer = knockbackObject.GetComponent<SpriteRenderer>();
 
+        // Initialise values
+        maxXScale = knockbackObject.transform.localScale.x;
+        // knockbackObject.transform.localScale = new Vector3(0, knockbackObject.transform.localScale.y, knockbackObject.transform.localScale.z);
+        // TODO: Spell images
+    }
+
+    void OnEnable() {
+        refreshBattleController();
+    }
+
+    void Start() {
         // Render the correct character sprite & animation
         switch (playersChars.GetValue(playerID)) {
             case 0:
@@ -172,31 +143,6 @@ public class BattleController : MonoBehaviour
                 animator.runtimeAnimatorController = possessedEnemyAnimatorController;
                 break;
         }
-        
-
-        // Initialise values
-        maxXScale = knockbackObject.transform.localScale.x;
-        knockbackObject.transform.localScale = new Vector3(0, knockbackObject.transform.localScale.y, knockbackObject.transform.localScale.z);
-        playersKnockback.SetValue(playerID, 0);
-        for (int i = 0; i < 4; i++) {
-            switch(playersSpells.GetSpell(playerID, i)) {
-                case Spell.fireball:
-                    cooldownDurations[i] = gameConstants.fireballCooldown;
-                    break;
-                case Spell.teleport:
-                    cooldownDurations[i] = gameConstants.teleportCooldown;
-                    break;
-                case Spell.lightning:
-                    cooldownDurations[i] = gameConstants.lightningProjectileCooldown;
-                    break;
-                case Spell.tornado:
-                    cooldownDurations[i] = gameConstants.tornadoCooldown;
-                    break;
-                default:
-                    break;
-            }
-        }
-        // Spell images
     }
 
     // Update is called once per frame
@@ -209,7 +155,7 @@ public class BattleController : MonoBehaviour
                 StopCoroutine(damageCoroutine);
                 damageCoroutine = null;
             }
-            // Victory animation
+            // TODO: Victory animation
             return;
         }
 
@@ -237,16 +183,16 @@ public class BattleController : MonoBehaviour
         // Death if knockback is 100 and not on platform
         knockback = playersKnockback.GetValue(playerID);
         if (knockback >= 100 && !onPlatform) {
-            isDead = true;
-            playersAreAlive.SetValue(playerID, false);
-            animator.Play(deathDirections[lastDirection]);
-            Debug.Log("Player " + (playerID+1) + " has died.");
-            onPlayerDeathPlaySound.Raise();
             // Stop damage coroutine, if running
             if (damageCoroutine != null) {
                 StopCoroutine(damageCoroutine);
                 damageCoroutine = null;
             }
+            isDead = true;
+            playersAreAlive.SetValue(playerID, false);
+            animator.Play(deathDirections[lastDirection]);
+            Debug.Log("Player " + (playerID+1) + " has died.");
+            onPlayerDeathPlaySound.Raise();
         }
 
         // Idle/Walk Animation
@@ -256,7 +202,6 @@ public class BattleController : MonoBehaviour
                 directionArray = idleDirections;
             } else {
                 directionArray = walkDirections;
-                // lastDirection = DirectionToIndex(new Vector2(move.x, move.y), 8);
                 lastDirection = DirectionToIndex(new Vector2(move.x, move.y), 4);
             }
             animator.Play(directionArray[lastDirection]);
@@ -268,9 +213,6 @@ public class BattleController : MonoBehaviour
             // transform.Translate(movement, Space.World);
             Vector2 movement = new Vector2(move.x, move.y) * gameConstants.playerSpeed;
             rigidBody.AddForce(new Vector2(move.x, move.y) * gameConstants.playerSpeed, ForceMode2D.Impulse);
-            // moveAngle = Mathf.Atan2(-move.x, move.y) * Mathf.Rad2Deg;
-            // Quaternion moveRotation = Quaternion.AngleAxis(moveAngle, Vector3.forward);
-            // transform.rotation = Quaternion.Slerp(transform.rotation, moveRotation, turnSpeed * Time.time);
         }
 
         // Aim
@@ -308,6 +250,71 @@ public class BattleController : MonoBehaviour
         }
         if (!spellsReady[3]) {
             cooldownImages[3].fillAmount -= 1 / cooldownDurations[3] * Time.deltaTime;
+        }
+    }
+
+    // Helper functions
+    void refreshBattleController() {
+        // GameObjects
+        mapManager = FindObjectOfType<MapManager>();
+        mageObject.SetActive(true);
+        aimObject.SetActive(true);
+        knockbackObject.SetActive(true);
+        // Initialise values
+        isDead = false;
+        playersKnockback.SetValue(playerID, 0);
+        knockbackObject.transform.localScale = new Vector3(0, knockbackObject.transform.localScale.y, knockbackObject.transform.localScale.z);
+        for (int i = 0; i < 4; i++) {
+            switch(playersSpells.GetSpell(playerID, i)) {
+                case Spell.fireball:
+                    cooldownDurations[i] = gameConstants.fireballCooldown;
+                    break;
+                case Spell.teleport:
+                    cooldownDurations[i] = gameConstants.teleportCooldown;
+                    break;
+                case Spell.lightning:
+                    cooldownDurations[i] = gameConstants.lightningProjectileCooldown;
+                    break;
+                case Spell.tornado:
+                    cooldownDurations[i] = gameConstants.tornadoCooldown;
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    private void executeSpell(int slot) {
+        if (!spellsReady[slot]) {
+            return;
+        }
+        Spell spell = playersSpells.GetSpell(playerID, slot);
+        if (spell == Spell.nullSpell) {
+            return;
+        }
+        // Animation
+        castingSpell = true;
+        if (spellAnimationCoroutine != null) {
+            StopCoroutine(spellAnimationCoroutine);
+        }
+        spellAnimationCoroutine = SpellAnimation();
+        StartCoroutine(spellAnimationCoroutine);
+        // Cast spell
+        switch (spell) {
+            case Spell.fireball:
+                CastFireball(slot);
+                break;
+            case Spell.teleport:
+                CastTeleport(slot);
+                break;
+            case Spell.lightning:
+                CastLightning(slot);
+                break;
+            case Spell.tornado:
+                CastTornado(slot);
+                break;
+            default:
+                break;
         }
     }
 

@@ -39,5 +39,6 @@ public class GameConstants : ScriptableObject
     public float tornadoDamage = 20;
 
     // SpellShopScene
-    public int shopCountdownTime = 15;
+    public int shopCountdownTime = 30;
+    public int goldIncrement = 300;
 }

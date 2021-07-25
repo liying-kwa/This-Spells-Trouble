@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class ShopController : MonoBehaviour
 {
@@ -10,10 +11,11 @@ public class ShopController : MonoBehaviour
     public PlayersSpells playersSpells;
     public PlayersSpellLevels playersSpellLevels;
     public IntArrVariable playersGold;
-    public SpellModel[] allSpellModels;
-    public Texture emptyIcon;
+    public GameConstants gameConstants;
 
     // GameObjects
+    public SpellModel[] allSpellModels;
+    public Texture emptyIcon;
     public GameObject[] slotIcons;
     public GameObject spellInfo;
     public Text spellNameText;
@@ -189,6 +191,64 @@ public class ShopController : MonoBehaviour
         renderSpell(Spell.nullSpell, selectedSlot);
     }
 
+    void OnEnable() {
+        refreshShopController();
+    }
+
+    void Start() {
+        // Separate into offensive and defensive spells
+        defensiveSpellModels = new List<SpellModel>();
+        offensiveSpellModels = new List<SpellModel>();
+        for (int i = 0; i < allSpellModels.Length; i++) {
+            switch (allSpellModels[i].Spell) {
+                case Spell.teleport:
+                    defensiveSpellModels.Add(allSpellModels[i]);
+                    break;
+                case Spell.fireball:
+                case Spell.lightning:
+                case Spell.tornado:
+                    offensiveSpellModels.Add(allSpellModels[i]);
+                    break;
+            }
+        }
+        // Initialise some values
+        spellInfoInitialPosition = spellInfo.transform.localPosition;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    void refreshShopController() {
+        // Initialise some values
+        for (int i = 3; i >= 0; i--) {
+            Debug.Log("i=" + i);
+            // Render initial icons. Last one is first spell so no need to re-render.
+            Spell spell = playersSpells.GetSpell(playerID, i);
+            // renderSpell(spell, selectedSlot);
+            renderSpell(spell, i);
+            if ((int) spell == -1) {
+                slotTiedToSpell[i] = false;
+            } else {
+                slotTiedToSpell[i] = true;
+            }
+        }
+        // Give gold to players after every round
+        goldAmount = playersGold.GetValue(playerID);
+        goldAmount += gameConstants.goldIncrement;
+        playersGold.SetValue(playerID, goldAmount);
+        goldText.text = "Gold: " + goldAmount.ToString();
+
+        // Zoom into first slot, unzoom the others
+        selectedSlot = 0;
+        slotIcons[0].transform.localScale = new Vector3(0.35f, 0.35f, 0.35f);
+        slotIcons[1].transform.localScale = new Vector3(0.2772619f, 0.2772619f, 0.2772619f);
+        slotIcons[2].transform.localScale = new Vector3(0.2772619f, 0.2772619f, 0.2772619f);
+        slotIcons[3].transform.localScale = new Vector3(0.2772619f, 0.2772619f, 0.2772619f);
+    }
+
     void renderSpell(Spell spell, int selectedSlot) {
         SpellModel spellModel;
         switch (spell) {
@@ -223,50 +283,5 @@ public class ShopController : MonoBehaviour
         spellCostText.text = spellModel.Cost.ToString();
         spellDescText.text = spellModel.Description;
         spellUpgradeText.text = spellModel.Upgrade;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        // Separate into offensive and defensive spells
-        defensiveSpellModels = new List<SpellModel>();
-        offensiveSpellModels = new List<SpellModel>();
-        for (int i = 0; i < allSpellModels.Length; i++) {
-            switch (allSpellModels[i].Spell) {
-                case Spell.teleport:
-                    defensiveSpellModels.Add(allSpellModels[i]);
-                    break;
-                case Spell.fireball:
-                case Spell.lightning:
-                case Spell.tornado:
-                    offensiveSpellModels.Add(allSpellModels[i]);
-                    break;
-            }
-        }
-
-        // Initialise some values
-        spellInfoInitialPosition = spellInfo.transform.localPosition;
-        for (int i = 3; i >= 0; i--) {
-            // Render initial icons. Last one is first spell so no need to re-render.
-            Spell spell = playersSpells.GetSpell(playerID, i);
-            renderSpell(spell, selectedSlot);
-            if ((int) spell == -1) {
-                slotTiedToSpell[i] = false;
-            } else {
-                slotTiedToSpell[i] = true;
-            }
-        }
-        goldAmount = playersGold.GetValue(playerID);
-        goldText.text = "Gold: " + goldAmount.ToString();
-
-        // Zoom into first slot
-        slotIcons[0].transform.localScale = new Vector3(0.35f, 0.35f, 0.35f);
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

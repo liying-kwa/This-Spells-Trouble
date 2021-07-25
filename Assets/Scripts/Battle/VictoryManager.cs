@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class VictoryManager : MonoBehaviour
 {
     // ScriptableObjects
     public BoolArrVariable playersAreAlive;
     public BoolVariable roundEnded;
+    public IntArrVariable playersPoints;
+    public IntVariable currentRound;
 
     // GameObjects
-    //public AudioSource backgroundAudio;
-    //public AudioClip victoryClip;
     public Text victoryText;
 
     // Game state
@@ -41,11 +42,34 @@ public class VictoryManager : MonoBehaviour
                 }
                 ended = true;
                 roundEnded.SetValue(true);
-                onVictoryPlaySound.Raise();
-                //backgroundAudio.Stop();
-                //backgroundAudio.PlayOneShot(victoryClip);
-                victoryText.text = "Player " + (winnerID+1) + " wins!";
+                StartCoroutine(Victory(winnerID));
             }
+        }
+    }
+
+    private IEnumerator Victory(int winnerID) {
+        onVictoryPlaySound.Raise();
+        playersPoints.SetValue(winnerID, playersPoints.GetValue(winnerID) + 1);
+        // victoryText.text = "Player " + (winnerID+1) + " wins!";
+        string toShow = "";
+        for (int i = 0; i < 4; i++) {
+            toShow += "Player " + (i+1) + " score: " + playersPoints.GetValue(i) + "\n";
+        }
+        victoryText.text = toShow;
+        Debug.Log(toShow);
+        if (currentRound.Value < 5) {
+            yield return new WaitForSeconds(10);
+            StartCoroutine(ChangeScene("SpellShopScene"));
+        } else {
+            Debug.Log("Last round has ended.");
+        }
+    }
+
+    private IEnumerator ChangeScene(string sceneName) {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
+        // Wait until the asynchronous scene fully loads
+        while (!asyncLoad.isDone) {
+            yield return null;
         }
     }
 }

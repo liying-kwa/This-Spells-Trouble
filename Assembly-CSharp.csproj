@@ -39,16 +39,16 @@
      <Compile Include="Assets\Scripts\CharacterSelection\PlayerInputManager.cs" />
      <Compile Include="Assets\Scripts\Battle\OldStuff\Player3DControllerOld.cs" />
      <Compile Include="Assets\Scripts\Battle\VictoryManager.cs" />
-     <Compile Include="Assets\Scripts\Battle\MapManager.cs" />
+     <Compile Include="Assets\Scripts\Maps\Map1\MapManager.cs" />
      <Compile Include="Assets\Scripts\CharacterSelection\OldStuff\CharacterSelection.cs" />
      <Compile Include="Assets\Scripts\Battle\SpellControllers\LightningProjectileController.cs" />
      <Compile Include="Assets\ScriptableObjects\SpellShop\PlayersSpellLevels.cs" />
      <Compile Include="Assets\ScriptableObjects\BoolArrVariable.cs" />
      <Compile Include="Assets\ScriptableObjects\IntArrVariable.cs" />
      <Compile Include="Assets\ScriptableObjects\Events\GameEvent.cs" />
-     <Compile Include="Assets\ScriptableObjects\Map\Map_Presets.cs" />
+     <Compile Include="Assets\Scripts\Maps\Map1\Map_Presets.cs" />
      <Compile Include="Assets\PlayerControls.cs" />
-     <Compile Include="Assets\ScriptableObjects\Map\TileData.cs" />
+     <Compile Include="Assets\Scripts\Maps\Map1\TileData.cs" />
      <Compile Include="Assets\Scripts\SpellShop\ShopControllerOld.cs" />
      <Compile Include="Assets\Scripts\EventListeners\GameEventListener.cs" />
      <Compile Include="Assets\Scripts\CharacterSelection\OldStuff\LoadCharacter.cs" />
@@ -77,6 +77,7 @@
      <Compile Include="Assets\ScriptableObjects\Battle\KnockbackArr.cs" />
      <Compile Include="Assets\Scripts\CharacterSelection\CharSelectionManager.cs" />
      <Compile Include="Assets\Scripts\SpellShop\OldStuff\SkillSelection.cs" />
+     <Compile Include="Assets\Scripts\Maps\Map1\AnimatedTile.cs" />
      <None Include="Assets\Sprites\sorceress\Foozle_File_License.txt" />
      <None Include="Assets\Sprites\cultist\Foozle_File_License.txt" />
      <None Include="Assets\Sprites\possessed_enemy\Foozle_File_License.txt" />

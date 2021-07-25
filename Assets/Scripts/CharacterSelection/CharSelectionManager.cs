@@ -13,6 +13,7 @@ public class CharSelectionManager : MonoBehaviour
     public BoolArrVariable playersJoined;
     public BoolArrVariable playersReady;
     public GameConstants gameConstants;
+    public IntVariable currentRound;
     
     // Components
     private AudioSource audioSource;
@@ -81,8 +82,10 @@ public class CharSelectionManager : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
         countdownText.text = "Loading...";
+        currentRound.SetValue(0);
         // StartCoroutine(ChangeScene("BattleScene"));
         StartCoroutine(ChangeScene("SpellShopScene"));
+        // StartCoroutine(ChangeScene("BattleScene5"));
     }
 
     private IEnumerator ChangeScene(string sceneName) {

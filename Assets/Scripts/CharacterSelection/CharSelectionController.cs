@@ -10,6 +10,7 @@ public class CharSelectionController : MonoBehaviour
     public IntArrVariable playersChars;
     public PlayersSpells playersSpells;
     public IntArrVariable playersGold;
+    public IntArrVariable playersPoints;
 
     // Components
     //private AudioSource audioSource;
@@ -67,16 +68,14 @@ public class CharSelectionController : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Awake()
-    {
+    void Awake() {
+        DontDestroyOnLoad(this.gameObject);
         text.text = "";
         characters[selectedChar].SetActive(true);
+        // Initialise some values
         playersChars.SetValue(playerID, 0);
-        for (int i = 0; i < 4; i++) {
-            playersGold.SetValue(playerID, 300);
-        }
-        DontDestroyOnLoad(this.gameObject);
+        playersGold.SetValue(playerID, 0);
+        playersPoints.SetValue(playerID, 0);
         // Maybe shift this to somewhere else in the future
         playersSpells.SetSpell(playerID, 1, Spell.fireball);
         // Test spells here

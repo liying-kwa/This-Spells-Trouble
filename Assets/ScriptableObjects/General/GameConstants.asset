@@ -35,3 +35,10 @@ MonoBehaviour:
   lightningProjectileForce: 2
   lightningProjectileDestroyTime: 0.75
   lightningProjectileDamage: 20
+  tornadoCooldown: 16
+  tornadoSpeed: 0.75
+  tornadoForce: 4
+  tornadoDestroyTime: 8
+  tornadoDamage: 20
+  shopCountdownTime: 15
+  goldIncrement: 300

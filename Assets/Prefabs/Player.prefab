@@ -158,6 +158,8 @@ MonoBehaviour:
   playersChars: {fileID: 11400000, guid: 680f5bb198ef26644aa397008c921dae, type: 2}
   playersSpells: {fileID: 11400000, guid: 3d57aacccfb0dcf4993a190ef3116a50, type: 2}
   playersGold: {fileID: 11400000, guid: b1b1adeefccd1b941bd7fa1e02cd07fb, type: 2}
+  playersPoints: {fileID: 11400000, guid: e0e7b701da0473e4b8efc155081a7a1c, type: 2}
+  gameConstants: {fileID: 11400000, guid: fdff1fd733c49bf49a390264049c3495, type: 2}
   onReadyButtonPlaySound: {fileID: 11400000, guid: 215b4421f690b447288344570e87e856, type: 2}
   onJoinButtonPlaySound: {fileID: 11400000, guid: d38c6e470b3e84bf4ab0dfd9deb562c3, type: 2}
   onArrowButtonPlaySound: {fileID: 11400000, guid: 1eac82ce80f964f7cb6f0a305a5679de, type: 2}
@@ -382,6 +384,7 @@ MonoBehaviour:
   playersSpells: {fileID: 11400000, guid: 3d57aacccfb0dcf4993a190ef3116a50, type: 2}
   playersSpellLevels: {fileID: 11400000, guid: de08da11687752944a8e0852a8f6d492, type: 2}
   playersGold: {fileID: 11400000, guid: b1b1adeefccd1b941bd7fa1e02cd07fb, type: 2}
+  gameConstants: {fileID: 11400000, guid: fdff1fd733c49bf49a390264049c3495, type: 2}
   allSpellModels:
   - {fileID: 11400000, guid: 1a6d4d35545aa7545bb3c5c8c68ba8d6, type: 2}
   - {fileID: 11400000, guid: c18a10a8203bf5b4788f85b828a0970b, type: 2}

@@ -10,6 +10,8 @@ public class ShopManager : MonoBehaviour
     public GameConstants gameConstants;
     public PlayerInputsArr playerInputsArr;
     public IntArrVariable playersChars;
+    public IntVariable currentRound;
+    public IntArrVariable playersGold;
 
     // GameObjects
     public Text countdownText;
@@ -48,8 +50,7 @@ public class ShopManager : MonoBehaviour
     public RuntimeAnimatorController cultistAnimatorController;
     public RuntimeAnimatorController possessedEnemyAnimatorController;
 
-    void Awake()
-    {
+    void Awake() {
         for (int i = 0; i < playerInputsArr.GetLength(); i++) {
             if (playerInputsArr.GetValue(i) == null) {
                 // Set unused UI objects inactive
@@ -80,26 +81,6 @@ public class ShopManager : MonoBehaviour
                 }
                 continue;
             }
-            // Set mages in battle inactive
-            GameObject player = playerInputsArr.GetValue(i).gameObject;
-            foreach (Transform child in player.transform) {
-                if (child.name == "Mage") {
-                    child.gameObject.SetActive(false);
-                } else if (child.name == "Aim") {
-                    child.gameObject.SetActive(false);
-                } else if (child.name == "Knockback") {
-                    child.gameObject.SetActive(false);
-                }
-            }
-            // Disable previous script and activate current script and relevant components
-            player.GetComponent<CharSelectionController>().enabled = false;
-            player.GetComponent<BattleController>().enabled = false;
-            player.GetComponent<BoxCollider2D>().enabled = false;
-            player.GetComponent<ShopController>().enabled = true;
-            // Change default actionmap
-            playerInputsArr.GetValue(i).actions.FindActionMap("CharSelection").Disable();
-            playerInputsArr.GetValue(i).actions.FindActionMap("Battle").Disable();
-            playerInputsArr.GetValue(i).actions.FindActionMap("SpellShop").Enable();
             // Render correct animator for characters
             switch (playersChars.GetValue(i)) {
                 case 0:
@@ -113,6 +94,7 @@ public class ShopManager : MonoBehaviour
                     break;
             }
             // Pass in GameObjects accordingly
+            GameObject player = playerInputsArr.GetValue(i).gameObject;
             ShopController controller = player.GetComponent<ShopController>();
             controller.spellInfo = spellInfos[i];
             controller.spellNameText = spellNameTexts[i];
@@ -165,15 +147,52 @@ public class ShopManager : MonoBehaviour
             //         controller.skillStatus3 = P4SkillStatus3;
             //         controller.skillStatus4 = P4SkillStatus4;
             //         break;
-            // }
+            // }   
         }
-        
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    void OnEnable() {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    } 
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+        Debug.Log("ShopManager OnSceneLoaded");
+        currentRound.ApplyChange(1);
+        for (int i = 0; i < playerInputsArr.GetLength(); i++) {
+            if (playerInputsArr.GetValue(i) == null) {
+                continue;
+            }
+            // Set mages in battle inactive
+            GameObject player = playerInputsArr.GetValue(i).gameObject;
+            foreach (Transform child in player.transform) {
+                if (child.name == "Mage") {
+                    child.gameObject.SetActive(false);
+                } else if (child.name == "Aim") {
+                    child.gameObject.SetActive(false);
+                } else if (child.name == "Knockback") {
+                    child.gameObject.SetActive(false);
+                }
+            }
+            // Disable previous script and activate current script and relevant components
+            player.GetComponent<CharSelectionController>().enabled = false;
+            player.GetComponent<BattleController>().enabled = false;
+            player.GetComponent<BoxCollider2D>().enabled = false;
+            player.GetComponent<ShopController>().enabled = true;
+            // Change default actionmap
+            playerInputsArr.GetValue(i).actions.FindActionMap("CharSelection").Disable();
+            playerInputsArr.GetValue(i).actions.FindActionMap("Battle").Disable();
+            playerInputsArr.GetValue(i).actions.FindActionMap("SpellShop").Enable();
+        }
+        string toShow = "";
+        for (int i = 0; i < 4; i++) {
+            toShow += "Player " + (i+1) + " gold: " + playersGold.GetValue(i) + "\n";
+        }
+        Debug.Log(toShow);
         StartCoroutine(Countdown());
+    }
+
+    void OnDisable() {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     // Update is called once per frame
@@ -188,8 +207,28 @@ public class ShopManager : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
         countdownText.text = "Loading...";
-        StartCoroutine(ChangeScene("BattleScene"));
+        // StartCoroutine(ChangeScene("BattleScene"));
         // StartCoroutine(ChangeScene("SpellShopScene"));
+        switch(currentRound.Value) {
+            case 1:
+                StartCoroutine(ChangeScene("BattleScene1"));
+                break;
+            case 2:
+                StartCoroutine(ChangeScene("BattleScene2"));
+                break;
+            case 3:
+                StartCoroutine(ChangeScene("BattleScene3"));
+                break;
+            case 4:
+                StartCoroutine(ChangeScene("BattleScene4"));
+                break;
+            case 5:
+                StartCoroutine(ChangeScene("BattleScene5"));
+                break;
+            default:
+                Debug.Log("Unknown currentRound=" + currentRound.Value + ". Something is wrong.");
+                break;
+        }
     }
 
     private IEnumerator ChangeScene(string sceneName) {
