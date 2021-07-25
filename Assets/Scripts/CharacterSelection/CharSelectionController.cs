@@ -82,7 +82,6 @@ public class CharSelectionController : MonoBehaviour
         // Test spells here
         // playersSpells.SetSpell(playerID, 0, Spell.teleport);
         onJoinButtonPlaySound.Raise();
-        Debug.Log("onJoinButtonPlaySound played!");
     }
 
     void Start() {
