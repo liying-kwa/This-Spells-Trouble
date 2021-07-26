@@ -25,6 +25,7 @@ public class BattleController : MonoBehaviour
     GameObject aimObject;
     GameObject knockbackObject;
     public Image[] cooldownImages;
+    public GameObject[] spellIcons;
     public GameObject fireballPrefab;
     public GameObject teleportPrefab;
     public GameObject lightningPrefab;
@@ -44,7 +45,6 @@ public class BattleController : MonoBehaviour
     public static readonly string[] attackDirections = {"Attack_N", "Attack_W", "Attack_S", "Attack_E"};
     public static readonly string[] hurtDirections = {"Hurt_N", "Hurt_W", "Hurt_S", "Hurt_E"};
     public static readonly string[] deathDirections = {"Death_N", "Death_W", "Death_S", "Death_E"};
-    
     int lastDirection = 0;
     bool castingSpell = false;
     IEnumerator spellAnimationCoroutine = null;
@@ -66,6 +66,10 @@ public class BattleController : MonoBehaviour
     public bool onPlatform = true;
     bool isDead = false;
     IEnumerator damageCoroutine = null;
+
+    // Others
+    public SpellModel[] allSpellModels;
+    public Texture emptySprite;
     
     // Controller functions
     private void OnMove(InputValue value) {
@@ -123,11 +127,45 @@ public class BattleController : MonoBehaviour
         // Initialise values
         maxXScale = knockbackObject.transform.localScale.x;
         // knockbackObject.transform.localScale = new Vector3(0, knockbackObject.transform.localScale.y, knockbackObject.transform.localScale.z);
-        // TODO: Spell images
     }
 
     void OnEnable() {
         refreshBattleController();
+    }
+
+    void refreshBattleController() {
+        // GameObjects
+        mapManager = FindObjectOfType<MapManager>();
+        mageObject.SetActive(true);
+        aimObject.SetActive(true);
+        knockbackObject.SetActive(true);
+        // Initialise values
+        isDead = false;
+        playersKnockback.SetValue(playerID, 0);
+        knockbackObject.transform.localScale = new Vector3(0, knockbackObject.transform.localScale.y, knockbackObject.transform.localScale.z);
+        for (int i = 0; i < 4; i++) {
+            switch(playersSpells.GetSpell(playerID, i)) {
+                case Spell.fireball:
+                    cooldownDurations[i] = gameConstants.fireballCooldown;
+                    spellIcons[i].GetComponent<RawImage>().texture = allSpellModels[(int) Spell.fireball].Icon;
+                    break;
+                case Spell.teleport:
+                    cooldownDurations[i] = gameConstants.teleportCooldown;
+                    spellIcons[i].GetComponent<RawImage>().texture = allSpellModels[(int) Spell.teleport].Icon;
+                    break;
+                case Spell.lightning:
+                    cooldownDurations[i] = gameConstants.lightningProjectileCooldown;
+                    spellIcons[i].GetComponent<RawImage>().texture = allSpellModels[(int) Spell.lightning].Icon;
+                    break;
+                case Spell.tornado:
+                    cooldownDurations[i] = gameConstants.tornadoCooldown;
+                    spellIcons[i].GetComponent<RawImage>().texture = allSpellModels[(int) Spell.tornado].Icon;
+                    break;
+                default:
+                    spellIcons[i].GetComponent<RawImage>().texture = emptySprite;
+                    break;
+            }
+        }
     }
 
     void Start() {
@@ -146,8 +184,7 @@ public class BattleController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         if (roundEnded.Value && !isDead) {
             rigidBody.velocity = new Vector3(0, 0, 0);
             // Stop damage coroutine, if running
@@ -254,36 +291,6 @@ public class BattleController : MonoBehaviour
     }
 
     // Helper functions
-    void refreshBattleController() {
-        // GameObjects
-        mapManager = FindObjectOfType<MapManager>();
-        mageObject.SetActive(true);
-        aimObject.SetActive(true);
-        knockbackObject.SetActive(true);
-        // Initialise values
-        isDead = false;
-        playersKnockback.SetValue(playerID, 0);
-        knockbackObject.transform.localScale = new Vector3(0, knockbackObject.transform.localScale.y, knockbackObject.transform.localScale.z);
-        for (int i = 0; i < 4; i++) {
-            switch(playersSpells.GetSpell(playerID, i)) {
-                case Spell.fireball:
-                    cooldownDurations[i] = gameConstants.fireballCooldown;
-                    break;
-                case Spell.teleport:
-                    cooldownDurations[i] = gameConstants.teleportCooldown;
-                    break;
-                case Spell.lightning:
-                    cooldownDurations[i] = gameConstants.lightningProjectileCooldown;
-                    break;
-                case Spell.tornado:
-                    cooldownDurations[i] = gameConstants.tornadoCooldown;
-                    break;
-                default:
-                    break;
-            }
-        }
-    }
-
     private void executeSpell(int slot) {
         if (!spellsReady[slot]) {
             return;

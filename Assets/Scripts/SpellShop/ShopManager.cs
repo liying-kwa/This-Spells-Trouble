@@ -51,6 +51,7 @@ public class ShopManager : MonoBehaviour
     public RuntimeAnimatorController possessedEnemyAnimatorController;
 
     void Awake() {
+        currentRound.ApplyChange(1);
         for (int i = 0; i < playerInputsArr.GetLength(); i++) {
             if (playerInputsArr.GetValue(i) == null) {
                 // Set unused UI objects inactive
@@ -81,6 +82,17 @@ public class ShopManager : MonoBehaviour
                 }
                 continue;
             }
+            // Set mages in battle inactive
+            GameObject player = playerInputsArr.GetValue(i).gameObject;
+            foreach (Transform child in player.transform) {
+                if (child.name == "Mage") {
+                    child.gameObject.SetActive(false);
+                } else if (child.name == "Aim") {
+                    child.gameObject.SetActive(false);
+                } else if (child.name == "Knockback") {
+                    child.gameObject.SetActive(false);
+                }
+            }
             // Render correct animator for characters
             switch (playersChars.GetValue(i)) {
                 case 0:
@@ -94,7 +106,6 @@ public class ShopManager : MonoBehaviour
                     break;
             }
             // Pass in GameObjects accordingly
-            GameObject player = playerInputsArr.GetValue(i).gameObject;
             ShopController controller = player.GetComponent<ShopController>();
             controller.spellInfo = spellInfos[i];
             controller.spellNameText = spellNameTexts[i];
@@ -102,12 +113,6 @@ public class ShopManager : MonoBehaviour
             controller.spellDescText = spellDescTexts[i];
             controller.spellUpgradeText = spellUpgradeTexts[i];
             controller.goldText = goldTexts[i];
-
-            // controller.skillStatus1 = skillStatus1s[i];
-            // controller.skillStatus2 = skillStatus2s[i];
-            // controller.skillStatus3 = skillStatus3s[i];
-            // controller.skillStatus4 = skillStatus4s[i];
-            
             switch (i) {
                 case 0:
                     controller.slotIcons = P1SlotIcons;
@@ -122,57 +127,6 @@ public class ShopManager : MonoBehaviour
                     controller.slotIcons = P4SlotIcons;
                     break;
             }
-            // switch (i) {
-            //     case 0:
-            //         controller.skillStatus1 = P1SkillStatus1;
-            //         controller.skillStatus2 = P1SkillStatus2;
-            //         controller.skillStatus3 = P1SkillStatus3;
-            //         controller.skillStatus4 = P1SkillStatus4;
-            //         break;
-            //     case 1:
-            //         controller.skillStatus1 = P2SkillStatus1;
-            //         controller.skillStatus2 = P2SkillStatus2;
-            //         controller.skillStatus3 = P2SkillStatus3;
-            //         controller.skillStatus4 = P2SkillStatus4;
-            //         break;
-            //     case 2:
-            //         controller.skillStatus1 = P3SkillStatus1;
-            //         controller.skillStatus2 = P3SkillStatus2;
-            //         controller.skillStatus3 = P3SkillStatus3;
-            //         controller.skillStatus4 = P3SkillStatus4;
-            //         break;
-            //     case 3:
-            //         controller.skillStatus1 = P4SkillStatus1;
-            //         controller.skillStatus2 = P4SkillStatus2;
-            //         controller.skillStatus3 = P4SkillStatus3;
-            //         controller.skillStatus4 = P4SkillStatus4;
-            //         break;
-            // }   
-        }
-    }
-
-    void OnEnable() {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    } 
-
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-        Debug.Log("ShopManager OnSceneLoaded");
-        currentRound.ApplyChange(1);
-        for (int i = 0; i < playerInputsArr.GetLength(); i++) {
-            if (playerInputsArr.GetValue(i) == null) {
-                continue;
-            }
-            // Set mages in battle inactive
-            GameObject player = playerInputsArr.GetValue(i).gameObject;
-            foreach (Transform child in player.transform) {
-                if (child.name == "Mage") {
-                    child.gameObject.SetActive(false);
-                } else if (child.name == "Aim") {
-                    child.gameObject.SetActive(false);
-                } else if (child.name == "Knockback") {
-                    child.gameObject.SetActive(false);
-                }
-            }
             // Disable previous script and activate current script and relevant components
             player.GetComponent<CharSelectionController>().enabled = false;
             player.GetComponent<BattleController>().enabled = false;
@@ -183,16 +137,12 @@ public class ShopManager : MonoBehaviour
             playerInputsArr.GetValue(i).actions.FindActionMap("Battle").Disable();
             playerInputsArr.GetValue(i).actions.FindActionMap("SpellShop").Enable();
         }
-        string toShow = "";
-        for (int i = 0; i < 4; i++) {
-            toShow += "Player " + (i+1) + " gold: " + playersGold.GetValue(i) + "\n";
-        }
-        Debug.Log(toShow);
+        // string toShow = "";
+        // for (int i = 0; i < 4; i++) {
+        //     toShow += "Player " + (i+1) + " gold: " + playersGold.GetValue(i) + "\n";
+        // }
+        // Debug.Log(toShow);
         StartCoroutine(Countdown());
-    }
-
-    void OnDisable() {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     // Update is called once per frame

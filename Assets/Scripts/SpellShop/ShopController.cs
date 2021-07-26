@@ -102,14 +102,14 @@ public class ShopController : MonoBehaviour
         selectedSpellInt -= 1;
         if (selectedSlot == 0) {
             // Defensive spell slot
-            if (selectedSpellInt < 0) {
+            while (selectedSpellInt < 0) {
                 selectedSpellInt += defensiveSpellModels.Count;
             }
             Spell spell = defensiveSpellModels[selectedSpellInt].Spell;
             renderSpell(spell, selectedSlot);
         } else {
             // Offensive spell slot
-            if (selectedSpellInt < 0) {
+            while (selectedSpellInt < 0) {
                 selectedSpellInt += offensiveSpellModels.Count;
             }
             Spell spell = offensiveSpellModels[selectedSpellInt].Spell;
@@ -195,6 +195,35 @@ public class ShopController : MonoBehaviour
         refreshShopController();
     }
 
+    void refreshShopController() {
+        // Initialise some values
+        for (int i = 3; i >= 0; i--) {
+            // Render initial icons. Last one is first spell so no need to re-render.
+            Spell spell = playersSpells.GetSpell(playerID, i);
+            // renderSpell(spell, selectedSlot);
+            renderSpell(spell, i);
+            if ((int) spell == -1) {
+                slotTiedToSpell[i] = false;
+            } else {
+                slotTiedToSpell[i] = true;
+            }
+        }
+        // Give gold to players after every round
+        goldAmount = playersGold.GetValue(playerID);
+        goldAmount += gameConstants.goldIncrement;
+        playersGold.SetValue(playerID, goldAmount);
+        goldText.text = "Gold: " + goldAmount.ToString();
+
+        // Zoom into first slot, unzoom the others
+        selectedSlot = 0;
+        selectedSpellInt = -1;
+        selectedSpell = Spell.nullSpell;
+        slotIcons[0].transform.localScale = new Vector3(0.35f, 0.35f, 0.35f);
+        slotIcons[1].transform.localScale = new Vector3(0.2772619f, 0.2772619f, 0.2772619f);
+        slotIcons[2].transform.localScale = new Vector3(0.2772619f, 0.2772619f, 0.2772619f);
+        slotIcons[3].transform.localScale = new Vector3(0.2772619f, 0.2772619f, 0.2772619f);
+    }
+
     void Start() {
         // Separate into offensive and defensive spells
         defensiveSpellModels = new List<SpellModel>();
@@ -219,34 +248,6 @@ public class ShopController : MonoBehaviour
     void Update()
     {
         
-    }
-
-    void refreshShopController() {
-        // Initialise some values
-        for (int i = 3; i >= 0; i--) {
-            Debug.Log("i=" + i);
-            // Render initial icons. Last one is first spell so no need to re-render.
-            Spell spell = playersSpells.GetSpell(playerID, i);
-            // renderSpell(spell, selectedSlot);
-            renderSpell(spell, i);
-            if ((int) spell == -1) {
-                slotTiedToSpell[i] = false;
-            } else {
-                slotTiedToSpell[i] = true;
-            }
-        }
-        // Give gold to players after every round
-        goldAmount = playersGold.GetValue(playerID);
-        goldAmount += gameConstants.goldIncrement;
-        playersGold.SetValue(playerID, goldAmount);
-        goldText.text = "Gold: " + goldAmount.ToString();
-
-        // Zoom into first slot, unzoom the others
-        selectedSlot = 0;
-        slotIcons[0].transform.localScale = new Vector3(0.35f, 0.35f, 0.35f);
-        slotIcons[1].transform.localScale = new Vector3(0.2772619f, 0.2772619f, 0.2772619f);
-        slotIcons[2].transform.localScale = new Vector3(0.2772619f, 0.2772619f, 0.2772619f);
-        slotIcons[3].transform.localScale = new Vector3(0.2772619f, 0.2772619f, 0.2772619f);
     }
 
     void renderSpell(Spell spell, int selectedSlot) {
