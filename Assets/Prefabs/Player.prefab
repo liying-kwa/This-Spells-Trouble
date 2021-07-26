@@ -217,7 +217,7 @@ MonoBehaviour:
   onPlayerDeathPlaySound: {fileID: 11400000, guid: 24e7fc0b5cb74437db13ad081e35dfc8, type: 2}
   cooldownImages: []
   spellIcons: []
-  fireballPrefab: {fileID: 8150370087909342670, guid: 2e6351b28aecf964eb3c48cfa373212e, type: 3}
+  fireballPrefab: {fileID: 100004, guid: 6836f5eaa96f845c4ac0909f84272556, type: 3}
   teleportPrefab: {fileID: 4474070891237849878, guid: 7843f8b52370e428f9874399d1553440, type: 3}
   lightningPrefab: {fileID: 100002, guid: 391ec6f1311384e75b4888fd6fc26b7e, type: 3}
   tornadoPrefab: {fileID: 2728521609384493569, guid: 8546022ecffbf45428d05cdfca9351e6, type: 3}
@@ -391,6 +391,8 @@ MonoBehaviour:
   playersSpellLevels: {fileID: 11400000, guid: de08da11687752944a8e0852a8f6d492, type: 2}
   playersGold: {fileID: 11400000, guid: b1b1adeefccd1b941bd7fa1e02cd07fb, type: 2}
   gameConstants: {fileID: 11400000, guid: fdff1fd733c49bf49a390264049c3495, type: 2}
+  onArrowButtonPlaySound: {fileID: 11400000, guid: 1eac82ce80f964f7cb6f0a305a5679de, type: 2}
+  onBuySpellPlaySound: {fileID: 11400000, guid: ffe3f2c32f0231d43bce7b13749bd8ad, type: 2}
   allSpellModels:
   - {fileID: 11400000, guid: 1a6d4d35545aa7545bb3c5c8c68ba8d6, type: 2}
   - {fileID: 11400000, guid: c18a10a8203bf5b4788f85b828a0970b, type: 2}

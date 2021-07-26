@@ -12,11 +12,6 @@ public class CharSelectionController : MonoBehaviour
     public IntArrVariable playersGold;
     public IntArrVariable playersPoints;
 
-    // Components
-    //private AudioSource audioSource;
-    //public AudioClip scrollAudio;
-    //public AudioClip readyAudio;
-
     // Sound Events
     [Header("Sound Events")]
     public GameEvent onReadyButtonPlaySound;
@@ -37,7 +32,6 @@ public class CharSelectionController : MonoBehaviour
             selectedChar = (selectedChar + 1) % characters.Length;
             characters[selectedChar].SetActive(true);
             playersChars.SetValue(playerID, selectedChar);
-            //audioSource.PlayOneShot(scrollAudio);
             onArrowButtonPlaySound.Raise();
         }
     }
@@ -51,7 +45,6 @@ public class CharSelectionController : MonoBehaviour
             };
             characters[selectedChar].SetActive(true);
             playersChars.SetValue(playerID, selectedChar);
-            //audioSource.PlayOneShot(scrollAudio);
             onArrowButtonPlaySound.Raise();
         }
     }

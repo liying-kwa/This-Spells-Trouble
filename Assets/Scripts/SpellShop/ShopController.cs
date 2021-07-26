@@ -13,6 +13,11 @@ public class ShopController : MonoBehaviour
     public IntArrVariable playersGold;
     public GameConstants gameConstants;
 
+    // Sound Events
+    [Header("Sound Events")]
+    public GameEvent onArrowButtonPlaySound;
+    public GameEvent onBuySpellPlaySound;
+
     // GameObjects
     public SpellModel[] allSpellModels;
     public Texture emptyIcon;
@@ -64,6 +69,7 @@ public class ShopController : MonoBehaviour
         // Zoom selected slot and unzoom earlier slot
         slotIcons[selectedSlot+1].transform.localScale = new Vector3(0.2772619f, 0.2772619f, 0.2772619f);
         slotIcons[selectedSlot].transform.localScale = new Vector3(0.35f, 0.35f, 0.35f);
+        onArrowButtonPlaySound.Raise();
         
     }
 
@@ -87,6 +93,7 @@ public class ShopController : MonoBehaviour
         // Zoom selected slot and unzoom earlier slot
         slotIcons[selectedSlot-1].transform.localScale = new Vector3(0.2772619f, 0.2772619f, 0.2772619f);
         slotIcons[selectedSlot].transform.localScale = new Vector3(0.35f, 0.35f, 0.35f);
+        onArrowButtonPlaySound.Raise();
     }
 
     private void OnPreviousSpell() {
@@ -115,6 +122,7 @@ public class ShopController : MonoBehaviour
             Spell spell = offensiveSpellModels[selectedSpellInt].Spell;
             renderSpell(spell, selectedSlot);
         }
+        onArrowButtonPlaySound.Raise();
     }
 
     private void OnNextSpell() {
@@ -143,6 +151,7 @@ public class ShopController : MonoBehaviour
             Spell spell = offensiveSpellModels[selectedSpellInt].Spell;
             renderSpell(spell, selectedSlot);
         }
+        onArrowButtonPlaySound.Raise();
     }
 
     void OnBuySpell() {
@@ -174,6 +183,7 @@ public class ShopController : MonoBehaviour
             default:
                 break;
         }
+        onBuySpellPlaySound.Raise();
     }
 
     void OnSellSpell() {
@@ -189,6 +199,7 @@ public class ShopController : MonoBehaviour
         slotTiedToSpell[selectedSlot] = false;
         playersSpells.SetSpell(playerID, selectedSlot, Spell.nullSpell);
         renderSpell(Spell.nullSpell, selectedSlot);
+        onBuySpellPlaySound.Raise();
     }
 
     void OnEnable() {

@@ -40,5 +40,5 @@ MonoBehaviour:
   tornadoForce: 4
   tornadoDestroyTime: 8
   tornadoDamage: 20
-  shopCountdownTime: 5
+  shopCountdownTime: 30
   goldIncrement: 300

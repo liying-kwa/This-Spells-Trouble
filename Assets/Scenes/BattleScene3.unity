@@ -1341,6 +1341,22 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - Event: {fileID: 11400000, guid: ffe3f2c32f0231d43bce7b13749bd8ad, type: 2}
+    Response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 461813467416393607}
+          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+          m_MethodName: PlayBuySpell
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!82 &461813467416393605
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1480,6 +1496,7 @@ MonoBehaviour:
   onTornadoHitClip: {fileID: 8300000, guid: 89001e92ca492453599bb2bc49326e85, type: 3}
   onArrowButtonClip: {fileID: 8300000, guid: d2cbf0d8c4d02be4abd88f1ec644cc08, type: 3}
   onReadyButtonClip: {fileID: 8300000, guid: 1364594e87f5e944c999a90886217172, type: 3}
+  onBuySpellClip: {fileID: 8300000, guid: c1daa7051b3d0a44cbbf7352083fe0fb, type: 3}
   onClockTickingClip: {fileID: 8300000, guid: 15388bed865068842a45a344c390299d, type: 3}
   onJoinButtonClip: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
 --- !u!82 &461813467416393610
@@ -27014,7 +27031,7 @@ Tilemap:
       - {fileID: 21300018, guid: fa75b484248e86f4cb964126c1d9061b, type: 3}
       - {fileID: 21300020, guid: fa75b484248e86f4cb964126c1d9061b, type: 3}
       - {fileID: 21300022, guid: fa75b484248e86f4cb964126c1d9061b, type: 3}
-      m_AnimationSpeed: 5.0154543
+      m_AnimationSpeed: 5.4314766
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 18, y: 1, z: 0}
@@ -27032,7 +27049,7 @@ Tilemap:
       - {fileID: 21300018, guid: fa75b484248e86f4cb964126c1d9061b, type: 3}
       - {fileID: 21300020, guid: fa75b484248e86f4cb964126c1d9061b, type: 3}
       - {fileID: 21300022, guid: fa75b484248e86f4cb964126c1d9061b, type: 3}
-      m_AnimationSpeed: 6.9106517
+      m_AnimationSpeed: 6.9577003
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -18, y: 4, z: 0}
@@ -27050,7 +27067,7 @@ Tilemap:
       - {fileID: 21300018, guid: fa75b484248e86f4cb964126c1d9061b, type: 3}
       - {fileID: 21300020, guid: fa75b484248e86f4cb964126c1d9061b, type: 3}
       - {fileID: 21300022, guid: fa75b484248e86f4cb964126c1d9061b, type: 3}
-      m_AnimationSpeed: 5.668457
+      m_AnimationSpeed: 5.127769
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:

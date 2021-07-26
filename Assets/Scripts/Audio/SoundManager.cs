@@ -45,10 +45,12 @@ public class SoundManager : MonoBehaviour
 
     public AudioClip onReadyButtonClip;
 
+    public AudioClip onBuySpellClip;
+
     public AudioClip onClockTickingClip;
 
     public AudioClip onJoinButtonClip;
-
+    
     // BGM Methods
 
     public void PlayCharacterSelectionMenu()
@@ -140,6 +142,10 @@ public class SoundManager : MonoBehaviour
     public void PlayJoinButton()
     {
         UISource.PlayOneShot(onJoinButtonClip);
+    }
+
+    public void PlayBuySpell() {
+        UISource.PlayOneShot(onBuySpellClip);
     }
 
     public void PlayClockTicking()
