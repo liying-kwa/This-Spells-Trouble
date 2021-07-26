@@ -37,6 +37,37 @@ public class GameConstants : ScriptableObject
     public float tornadoForce = 4;
     public float tornadoDestroyTime = 8;
     public float tornadoDamage = 20;
+    public float rushDestroyTime = 1;
+    public float rushSpeed = 5;
+    public float rushDistance = 5;
+    public float rushCooldown = 10;
+    public float arcDamage = 40;
+    public float arcForce = 5;
+    public float arcForwardSpeed = 1.5f;
+    public float arcAngle = -60;
+    public float arcCooldown = 5;
+    public float arcDestroyTime = 2;
+    public float arcDistance = 3;
+    public float splitterDamage = 20;
+    public float splitterForce = 3;
+    public float splitterSpeed = 1;
+    public float splitterCooldown = 7;
+    public float splitterDestroyTime = 1;
+    public float splitterNumber = 5;
+    public float splitterStartAngle = -40;
+    public float splitProjDamage = 30;
+    public float splitProjForce = 5;
+    public float splitProjSpeed = 1.5f;
+    public float splitProjDestroyTime = 1.5f;
+    public float boomerangDamage = 20;
+    public float boomerangForce = 2;
+    public float boomerangFastDamage = 40;
+    public float boomerangFastForce = 4;
+    public float boomerangForwardTime = 1;
+    public float boomerangBackwardTime = 2;
+    public float boomerangSpeed = 3;
+    public float boomerangFastSpeed = 6;
+    public float boomerangCooldown = 7;
 
     // SpellShopScene
     public int shopCountdownTime = 30;

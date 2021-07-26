@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b85db8b25e491a7449ac3930f421e639, type: 3}
+  m_Name: Splitter
+  m_EditorClassIdentifier: 
+  Name: Splitter
+  Spell: 6
+  Prefab: {fileID: 6036809372782942058, guid: 81504893b42aa6341998d6d8a1eb755a, type: 3}
+  Icon: {fileID: 2800000, guid: 5ad5f65ee63cb394f80f8ae65efed27c, type: 3}
+  Description: Fires a small projectile which splits into multiple projectiles after
+    a set time
+  Cost: 300
+  Upgrade: More Projectiles; Increase Damage

@@ -7,7 +7,12 @@ public enum Spell{
 	fireball = 0,
 	teleport = 1,
     lightning = 2,
-    tornado = 3
+    tornado = 3,
+    rush = 4,
+    arc = 5,
+    splitter = 6,
+    boomerang = 7
+
 }
 
 [CreateAssetMenu(fileName = "PlayersSpells", menuName = "ScriptableObjects/PlayersSpells", order = 2)]

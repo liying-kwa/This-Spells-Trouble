@@ -6,8 +6,9 @@ public  class SpellModel : ScriptableObject
 	// set your data here
     public string Name;
     public Spell Spell;
-    public string Description;
+    public GameObject Prefab;
     public Texture Icon;
+    public string Description;
     public int Cost;
     public string Upgrade;
 

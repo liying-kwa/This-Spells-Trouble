@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Teleport
   Spell: 1
-  Description: Teleports a fixed distance in the direction of which the player is
-    moving in.
+  Prefab: {fileID: 4474070891237849878, guid: 7843f8b52370e428f9874399d1553440, type: 3}
   Icon: {fileID: 2800000, guid: 8d41c4d75ffb95449ad8cdbfefa74218, type: 3}
+  Description: Instantly teleport a fixed distance. Hold to choose target. Long cooldown.
   Cost: 200
-  Upgrade: Decrease Cooldown
+  Upgrade: 'L2 - Reduced Cooldown; L3 - Reduced Cooldown '

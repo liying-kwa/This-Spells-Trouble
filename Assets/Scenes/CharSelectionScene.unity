@@ -4895,6 +4895,22 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - Event: {fileID: 11400000, guid: b7106ff1a036eb34bbb02429e76d4cb5, type: 2}
+    Response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1895346522}
+          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+          m_MethodName: PlayRushCast
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &1895346522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4922,6 +4938,7 @@ MonoBehaviour:
   onLightningHitClip: {fileID: 8300000, guid: a15c0f3fe74004cf89b51cfd5604f582, type: 3}
   onTornadoCastClip: {fileID: 8300000, guid: 2b26cbea232414fcfab41a84fc7a1c55, type: 3}
   onTornadoHitClip: {fileID: 8300000, guid: 89001e92ca492453599bb2bc49326e85, type: 3}
+  onRushCastClip: {fileID: 8300000, guid: ac4a06b68507a8a41b5cb749b3809949, type: 3}
   onArrowButtonClip: {fileID: 8300000, guid: d2cbf0d8c4d02be4abd88f1ec644cc08, type: 3}
   onReadyButtonClip: {fileID: 8300000, guid: 1364594e87f5e944c999a90886217172, type: 3}
   onBuySpellClip: {fileID: 8300000, guid: c1daa7051b3d0a44cbbf7352083fe0fb, type: 3}

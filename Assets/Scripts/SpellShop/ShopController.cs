@@ -167,22 +167,7 @@ public class ShopController : MonoBehaviour
         goldText.text = "Gold: " + goldAmount;
         playersGold.SetValue(playerID, goldAmount);
         slotTiedToSpell[selectedSlot] = true;
-        switch (selectedSpell) {
-            case Spell.fireball:
-                playersSpells.SetSpell(playerID, selectedSlot, Spell.fireball);
-                break;
-            case Spell.teleport:
-                playersSpells.SetSpell(playerID, selectedSlot, Spell.teleport);
-                break;
-            case Spell.lightning:
-                playersSpells.SetSpell(playerID, selectedSlot, Spell.lightning);
-                break;
-            case Spell.tornado:
-                playersSpells.SetSpell(playerID, selectedSlot, Spell.tornado);
-                break;
-            default:
-                break;
-        }
+        playersSpells.SetSpell(playerID, selectedSlot, selectedSpell);
         onBuySpellPlaySound.Raise();
     }
 
@@ -242,11 +227,15 @@ public class ShopController : MonoBehaviour
         for (int i = 0; i < allSpellModels.Length; i++) {
             switch (allSpellModels[i].Spell) {
                 case Spell.teleport:
+                case Spell.rush:
                     defensiveSpellModels.Add(allSpellModels[i]);
                     break;
                 case Spell.fireball:
                 case Spell.lightning:
                 case Spell.tornado:
+                case Spell.arc:
+                case Spell.splitter:
+                case Spell.boomerang:
                     offensiveSpellModels.Add(allSpellModels[i]);
                     break;
             }
@@ -279,6 +268,22 @@ public class ShopController : MonoBehaviour
             case Spell.tornado:
                 spellModel = allSpellModels[(int) Spell.tornado];
                 selectedSpell = Spell.tornado;
+                break;
+            case Spell.rush:
+                spellModel = allSpellModels[(int) Spell.rush];
+                selectedSpell = Spell.rush;
+                break;
+            case Spell.arc:
+                spellModel = allSpellModels[(int) Spell.arc];
+                selectedSpell = Spell.arc;
+                break;
+            case Spell.splitter:
+                spellModel = allSpellModels[(int) Spell.splitter];
+                selectedSpell = Spell.splitter;
+                break;
+            case Spell.boomerang:
+                spellModel = allSpellModels[(int) Spell.boomerang];
+                selectedSpell = Spell.boomerang;
                 break;
             default:
                 slotIcons[selectedSlot].GetComponent<RawImage>().texture = emptyIcon;

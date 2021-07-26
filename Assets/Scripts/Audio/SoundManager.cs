@@ -39,6 +39,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip onLightningHitClip;
     public AudioClip onTornadoCastClip;
     public AudioClip onTornadoHitClip;
+    public AudioClip onRushCastClip;
 
     // UI Clips 
     public AudioClip onArrowButtonClip;
@@ -125,6 +126,11 @@ public class SoundManager : MonoBehaviour
     public void PlayTornadoHit()
     {
         effectSource.PlayOneShot(onTornadoHitClip);
+    }
+
+    public void PlayRushCast()
+    {
+        effectSource.PlayOneShot(onRushCastClip);
     }
     
     // UI Methods

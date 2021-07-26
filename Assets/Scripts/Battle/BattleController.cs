@@ -26,10 +26,14 @@ public class BattleController : MonoBehaviour
     GameObject knockbackObject;
     public Image[] cooldownImages;
     public GameObject[] spellIcons;
-    public GameObject fireballPrefab;
-    public GameObject teleportPrefab;
-    public GameObject lightningPrefab;
-    public GameObject tornadoPrefab;
+    // public GameObject fireballPrefab;
+    // public GameObject teleportPrefab;
+    // public GameObject lightningPrefab;
+    // public GameObject tornadoPrefab;
+    // public GameObject rushPrefab;
+    // public GameObject arcPrefab;
+    // public GameObject splitterPrefab;
+    // public GameObject boomerangPrefab;
     
     // Components
     private  Rigidbody2D rigidBody;
@@ -160,6 +164,22 @@ public class BattleController : MonoBehaviour
                 case Spell.tornado:
                     cooldownDurations[i] = gameConstants.tornadoCooldown;
                     spellIcons[i].GetComponent<RawImage>().texture = allSpellModels[(int) Spell.tornado].Icon;
+                    break;
+                case Spell.rush:
+                    cooldownDurations[i] = gameConstants.rushCooldown;
+                    spellIcons[i].GetComponent<RawImage>().texture = allSpellModels[(int) Spell.rush].Icon;
+                    break;
+                case Spell.arc:
+                    cooldownDurations[i] = gameConstants.arcCooldown;
+                    spellIcons[i].GetComponent<RawImage>().texture = allSpellModels[(int) Spell.arc].Icon;
+                    break;
+                case Spell.splitter:
+                    cooldownDurations[i] = gameConstants.splitterCooldown;
+                    spellIcons[i].GetComponent<RawImage>().texture = allSpellModels[(int) Spell.splitter].Icon;
+                    break;
+                case Spell.boomerang:
+                    cooldownDurations[i] = gameConstants.boomerangCooldown;
+                    spellIcons[i].GetComponent<RawImage>().texture = allSpellModels[(int) Spell.boomerang].Icon;
                     break;
                 default:
                     spellIcons[i].GetComponent<RawImage>().texture = emptySprite;
@@ -320,6 +340,18 @@ public class BattleController : MonoBehaviour
             case Spell.tornado:
                 CastTornado(slot);
                 break;
+            case Spell.rush:
+                CastRush(slot);
+                break;
+            case Spell.arc:
+                CastArc(slot);
+                break;
+            case Spell.splitter:
+                CastSplitter(slot);
+                break;
+            case Spell.boomerang:
+                CastBoomerang(slot);
+                break;
             default:
                 break;
         }
@@ -395,31 +427,67 @@ public class BattleController : MonoBehaviour
     }
 
     void CastFireball(int slot) {
-        GameObject fireballObject = Instantiate(fireballPrefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+        // GameObject fireballObject = Instantiate(fireballPrefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+        GameObject fireballObject = Instantiate(allSpellModels[(int) Spell.fireball].Prefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
         fireballObject.GetComponent<FireballController>().srcPlayerID = playerID;
         fireballObject.GetComponent<FireballController>().aimAngle = aimAngle;
         StartCoroutine(SpellCooldown(slot, gameConstants.fireballCooldown));
     }
 
     void CastTeleport(int slot) {
-        GameObject teleportObject = Instantiate(teleportPrefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+        // GameObject teleportObject = Instantiate(teleportPrefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+        GameObject teleportObject = Instantiate(allSpellModels[(int) Spell.teleport].Prefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
         teleportObject.GetComponent<TeleportController>().srcPlayerID = playerID;
         teleportObject.GetComponent<TeleportController>().aimAngle = aimAngle;
         StartCoroutine(SpellCooldown(slot, gameConstants.teleportCooldown));
     }
 
     void CastLightning(int slot) {
-        GameObject lightningObject = Instantiate(lightningPrefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+        // GameObject lightningObject = Instantiate(lightningPrefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+        GameObject lightningObject = Instantiate(allSpellModels[(int) Spell.lightning].Prefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
         lightningObject.GetComponent<LightningProjectileController>().srcPlayerID = playerID;
         lightningObject.GetComponent<LightningProjectileController>().aimAngle = aimAngle;
         StartCoroutine(SpellCooldown(slot, gameConstants.lightningProjectileCooldown));
     }
 
     void CastTornado(int slot) {
-        GameObject lightningObject = Instantiate(tornadoPrefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
-        lightningObject.GetComponent<TornadoController>().srcPlayerID = playerID;
-        lightningObject.GetComponent<TornadoController>().aimAngle = aimAngle;
+        // GameObject tornadoObject = Instantiate(tornadoPrefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+        GameObject tornadoObject = Instantiate(allSpellModels[(int) Spell.tornado].Prefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+        tornadoObject.GetComponent<TornadoController>().srcPlayerID = playerID;
+        tornadoObject.GetComponent<TornadoController>().aimAngle = aimAngle;
         StartCoroutine(SpellCooldown(slot, gameConstants.tornadoCooldown));
+    }
+
+    void CastRush(int slot) {
+        // GameObject rushObject = Instantiate(rushPrefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+        GameObject rushObject = Instantiate(allSpellModels[(int) Spell.rush].Prefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+        rushObject.GetComponent<RushController>().srcPlayerID = playerID;
+        rushObject.GetComponent<RushController>().aimAngle = aimAngle;
+        StartCoroutine(SpellCooldown(slot, gameConstants.rushCooldown));
+    }
+
+    void CastArc(int slot) {
+        // GameObject arcObject = Instantiate(arcPrefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+        GameObject arcObject = Instantiate(allSpellModels[(int) Spell.arc].Prefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+        arcObject.GetComponent<ArcController>().srcPlayerID = playerID;
+        arcObject.GetComponent<ArcController>().aimAngle = aimAngle;
+        StartCoroutine(SpellCooldown(slot, gameConstants.arcCooldown));
+    }
+
+    void CastSplitter(int slot) {
+        // GameObject splitterObject = Instantiate(splitterPrefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+        GameObject splitterObject = Instantiate(allSpellModels[(int) Spell.splitter].Prefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+        splitterObject.GetComponent<SplitterController>().srcPlayerID = playerID;
+        splitterObject.GetComponent<SplitterController>().aimAngle = aimAngle;
+        StartCoroutine(SpellCooldown(slot, gameConstants.splitterCooldown));
+    }
+
+    void CastBoomerang(int slot) {
+        // GameObject boomerangObject = Instantiate(boomerangPrefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+        GameObject boomerangObject = Instantiate(allSpellModels[(int) Spell.boomerang].Prefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+        boomerangObject.GetComponent<BoomerangController>().srcPlayerID = playerID;
+        boomerangObject.GetComponent<BoomerangController>().aimAngle = aimAngle;
+        StartCoroutine(SpellCooldown(slot, gameConstants.boomerangCooldown));
     }
 
 }

@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Fireball
   Spell: 0
-  Description: The default attack, a medium speed, straight-travelling fireball
+  Prefab: {fileID: 100004, guid: 6836f5eaa96f845c4ac0909f84272556, type: 3}
   Icon: {fileID: 2800000, guid: 4867db53aa592a64a851c36645423699, type: 3}
+  Description: The default attack, a medium speed, straight-travelling fireball
   Cost: 200
-  Upgrade: Increase Damage
+  Upgrade: 'Increase Damage; Increase Range; Increase Speed '

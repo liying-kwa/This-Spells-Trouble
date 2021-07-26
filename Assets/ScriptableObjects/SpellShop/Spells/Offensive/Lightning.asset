@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Lightning
   Spell: 2
+  Prefab: {fileID: 100002, guid: 391ec6f1311384e75b4888fd6fc26b7e, type: 3}
+  Icon: {fileID: 2800000, guid: 29ee0544a9e494645b9cc843ef664252, type: 3}
   Description: An instant travelling, short range attack that hits the first target
     in the line
-  Icon: {fileID: 2800000, guid: 29ee0544a9e494645b9cc843ef664252, type: 3}
   Cost: 200
-  Upgrade: Decreased Cooldown
+  Upgrade: 'Decreased Cooldown; Increased Range '
