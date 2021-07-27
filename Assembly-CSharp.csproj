@@ -39,6 +39,7 @@
      <Compile Include="Assets\Scripts\CharacterSelection\PlayerInputManager.cs" />
      <Compile Include="Assets\Scripts\Battle\OldStuff\Player3DControllerOld.cs" />
      <Compile Include="Assets\Scripts\Battle\VictoryManager.cs" />
+     <Compile Include="Assets\Scripts\Battle\SpellControllers\RushController.cs" />
      <Compile Include="Assets\Scripts\Maps\Map1\MapManager.cs" />
      <Compile Include="Assets\Scripts\CharacterSelection\OldStuff\CharacterSelection.cs" />
      <Compile Include="Assets\Scripts\Battle\SpellControllers\LightningProjectileController.cs" />
@@ -49,11 +50,14 @@
      <Compile Include="Assets\Scripts\Maps\Map1\Map_Presets.cs" />
      <Compile Include="Assets\PlayerControls.cs" />
      <Compile Include="Assets\Scripts\Maps\Map1\TileData.cs" />
+     <Compile Include="Assets\Scripts\Battle\SpellControllers\ArcController.cs" />
+     <Compile Include="Assets\Scripts\Battle\SpellControllers\SplitterController.cs" />
      <Compile Include="Assets\Scripts\Maps\Map1\AnimatedTile.cs" />
      <Compile Include="Assets\Scripts\SpellShop\ShopControllerOld.cs" />
      <Compile Include="Assets\Scripts\EventListeners\GameEventListener.cs" />
      <Compile Include="Assets\Scripts\CharacterSelection\OldStuff\LoadCharacter.cs" />
      <Compile Include="Assets\ScriptableObjects\SpellShop\PlayersSpells.cs" />
+     <Compile Include="Assets\Scripts\Battle\SpellControllers\SplitProjController.cs" />
      <Compile Include="Assets\Scripts\Battle\SpellControllers\TeleportController.cs" />
      <Compile Include="Assets\Scripts\Battle\TornadoController.cs" />
      <Compile Include="Assets\ScriptableObjects\IntVariable.cs" />
@@ -78,14 +82,11 @@
      <Compile Include="Assets\ScriptableObjects\Battle\KnockbackArr.cs" />
      <Compile Include="Assets\Scripts\CharacterSelection\CharSelectionManager.cs" />
      <Compile Include="Assets\Scripts\SpellShop\OldStuff\SkillSelection.cs" />
-     <Compile Include="Assets\Scripts\Battle\SpellControllers\RushController.cs" />
-     <Compile Include="Assets\Scripts\Battle\SpellControllers\ArcController.cs" />
-     <Compile Include="Assets\Scripts\Battle\SpellControllers\SplitterController.cs" />
-     <Compile Include="Assets\Scripts\Battle\SpellControllers\SplitProjController.cs" />
      <Compile Include="Assets\Scripts\Battle\SpellControllers\BoomerangController.cs" />
      <None Include="Assets\Sprites\sorceress\Foozle_File_License.txt" />
      <None Include="Assets\Sprites\cultist\Foozle_File_License.txt" />
      <None Include="Assets\Sprites\possessed_enemy\Foozle_File_License.txt" />
+     <None Include="Assets\SpellBookPreface\ReadMe.txt" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2021.1.10f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Boomerang
   Spell: 7
   Prefab: {fileID: 838636956441470530, guid: 313024458c7978d44969ce9188f78657, type: 3}
-  Icon: {fileID: 2800000, guid: a0cbb914949943b4e8d357e1fa66eb6e, type: 3}
+  Icon: {fileID: 2800000, guid: e9a8eb5d241ec4447bbf1586eec5ff4d, type: 3}
   Description: Travels in a semi-circle. Bounces directly away from the impact point
     and tries to return to the caster.
   Cost: 200

@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Splitter
   Spell: 6
   Prefab: {fileID: 6036809372782942058, guid: 81504893b42aa6341998d6d8a1eb755a, type: 3}
-  Icon: {fileID: 2800000, guid: 5ad5f65ee63cb394f80f8ae65efed27c, type: 3}
+  Icon: {fileID: 2800000, guid: 81641cc15c5403248b2a9047e7537732, type: 3}
   Description: Fires a small projectile which splits into multiple projectiles after
     a set time
   Cost: 300

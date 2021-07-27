@@ -204,28 +204,6 @@
                     "action": "Ready",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "56254b26-64d2-42fe-95a6-c5a10cb5645e",
-                    "path": "<Gamepad>/leftStick/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "PreviousCharacter",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b03106e1-028c-4467-be8a-efdcb8cf858e",
-                    "path": "<Gamepad>/leftStick/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "NextCharacter",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         },

@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Tornado
   Spell: 3
   Prefab: {fileID: 2728521609384493569, guid: 8546022ecffbf45428d05cdfca9351e6, type: 3}
-  Icon: {fileID: 2800000, guid: fed4337445ffcb6438005f1a27d01035, type: 3}
+  Icon: {fileID: 2800000, guid: 355081665ced371448177f064a3b18e5, type: 3}
   Description: A slow-moving tornado which knocks back anything in its path and absorbs
     all other projectiles.
   Cost: 300

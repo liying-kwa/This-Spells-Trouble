@@ -42,6 +42,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BattleCanvas
+    uniqueID: 732732789
+    locked: 0
   - name: Player
     uniqueID: 130198331
     locked: 0
