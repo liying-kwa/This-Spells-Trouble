@@ -106,17 +106,19 @@ public class ShopController : MonoBehaviour
             return;
         }
         // Otherwise, render the correct offensive/defensive spell
-        selectedSpellInt -= 1;
+        if (selectedSpellInt != -1) {
+            selectedSpellInt -= 1;
+        }
         if (selectedSlot == 0) {
             // Defensive spell slot
-            while (selectedSpellInt < 0) {
+            if (selectedSpellInt < 0) {
                 selectedSpellInt += defensiveSpellModels.Count;
             }
             Spell spell = defensiveSpellModels[selectedSpellInt].Spell;
             renderSpell(spell, selectedSlot);
         } else {
             // Offensive spell slot
-            while (selectedSpellInt < 0) {
+            if (selectedSpellInt < 0) {
                 selectedSpellInt += offensiveSpellModels.Count;
             }
             Spell spell = offensiveSpellModels[selectedSpellInt].Spell;
@@ -176,7 +178,7 @@ public class ShopController : MonoBehaviour
         if (selectedSlot == 1 || !slotTiedToSpell[selectedSlot]) {
             return;
         }
-        // Add gold, sell spell and remove icon
+        // Add gold, sell spell, remove icon and reset selectedSpell
         Spell soldSpell = playersSpells.GetSpell(playerID, selectedSlot);
         goldAmount += allSpellModels[(int) soldSpell].Cost;
         goldText.text = "Gold: " + goldAmount;
@@ -184,6 +186,8 @@ public class ShopController : MonoBehaviour
         slotTiedToSpell[selectedSlot] = false;
         playersSpells.SetSpell(playerID, selectedSlot, Spell.nullSpell);
         renderSpell(Spell.nullSpell, selectedSlot);
+        selectedSpellInt = -1;
+        selectedSpell = Spell.nullSpell;
         onBuySpellPlaySound.Raise();
     }
 
