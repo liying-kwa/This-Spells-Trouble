@@ -21,6 +21,8 @@ public class SoundManager : MonoBehaviour
 
     public AudioClip onLavaClip;
 
+    public AudioClip onRegenClip;
+
     public AudioClip onPlayerDeathClip;
 
     public AudioClip onVictoryClip;
@@ -70,6 +72,11 @@ public class SoundManager : MonoBehaviour
     public void PlayLava()
     {
         effectSource.PlayOneShot(onLavaClip);
+    }
+
+    public void PlayRegen()
+    {
+        effectSource.PlayOneShot(onRegenClip);
     }
 
     public void PlayPlayerDeath()

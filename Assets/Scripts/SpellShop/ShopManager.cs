@@ -82,17 +82,6 @@ public class ShopManager : MonoBehaviour
                 }
                 continue;
             }
-            // Set mages in battle inactive
-            GameObject player = playerInputsArr.GetValue(i).gameObject;
-            foreach (Transform child in player.transform) {
-                if (child.name == "Mage") {
-                    child.gameObject.SetActive(false);
-                } else if (child.name == "Aim") {
-                    child.gameObject.SetActive(false);
-                } else if (child.name == "Knockback") {
-                    child.gameObject.SetActive(false);
-                }
-            }
             // Render correct animator for characters
             switch (playersChars.GetValue(i)) {
                 case 0:
@@ -106,6 +95,7 @@ public class ShopManager : MonoBehaviour
                     break;
             }
             // Pass in GameObjects accordingly
+            GameObject player = playerInputsArr.GetValue(i).gameObject;
             ShopController controller = player.GetComponent<ShopController>();
             controller.spellInfo = spellInfos[i];
             controller.spellNameText = spellNameTexts[i];

@@ -9303,7 +9303,7 @@ Tilemap:
       - {fileID: 21300006, guid: 9420e37349c58f8438d8d0b6d8d41f05, type: 3}
       - {fileID: 21300008, guid: 9420e37349c58f8438d8d0b6d8d41f05, type: 3}
       - {fileID: 21300010, guid: 9420e37349c58f8438d8d0b6d8d41f05, type: 3}
-      m_AnimationSpeed: 3.4597113
+      m_AnimationSpeed: 3.465084
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 8, y: -10, z: 0}
@@ -9318,7 +9318,7 @@ Tilemap:
       - {fileID: 21300012, guid: 3a33586ca1c2bf941850737f227e055f, type: 3}
       - {fileID: 21300014, guid: 3a33586ca1c2bf941850737f227e055f, type: 3}
       - {fileID: 21300016, guid: 3a33586ca1c2bf941850737f227e055f, type: 3}
-      m_AnimationSpeed: 6.413083
+      m_AnimationSpeed: 5.234363
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -14, y: -9, z: 0}
@@ -9333,7 +9333,7 @@ Tilemap:
       - {fileID: 21300012, guid: 3a33586ca1c2bf941850737f227e055f, type: 3}
       - {fileID: 21300014, guid: 3a33586ca1c2bf941850737f227e055f, type: 3}
       - {fileID: 21300016, guid: 3a33586ca1c2bf941850737f227e055f, type: 3}
-      m_AnimationSpeed: 6.137973
+      m_AnimationSpeed: 6.894481
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -9, y: -9, z: 0}
@@ -9348,7 +9348,7 @@ Tilemap:
       - {fileID: 21300012, guid: 3a33586ca1c2bf941850737f227e055f, type: 3}
       - {fileID: 21300014, guid: 3a33586ca1c2bf941850737f227e055f, type: 3}
       - {fileID: 21300016, guid: 3a33586ca1c2bf941850737f227e055f, type: 3}
-      m_AnimationSpeed: 5.729332
+      m_AnimationSpeed: 6.4179754
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 12, y: -9, z: 0}
@@ -9363,7 +9363,7 @@ Tilemap:
       - {fileID: 21300012, guid: 3a33586ca1c2bf941850737f227e055f, type: 3}
       - {fileID: 21300014, guid: 3a33586ca1c2bf941850737f227e055f, type: 3}
       - {fileID: 21300016, guid: 3a33586ca1c2bf941850737f227e055f, type: 3}
-      m_AnimationSpeed: 6.899509
+      m_AnimationSpeed: 5.237759
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 6, y: -5, z: 0}
@@ -9375,7 +9375,7 @@ Tilemap:
       - {fileID: 21300006, guid: d136d24525de28d449a51818a3a034c0, type: 3}
       - {fileID: 21300008, guid: d136d24525de28d449a51818a3a034c0, type: 3}
       - {fileID: 21300010, guid: d136d24525de28d449a51818a3a034c0, type: 3}
-      m_AnimationSpeed: 2.1228147
+      m_AnimationSpeed: 2.8484454
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 17, y: -4, z: 0}
@@ -9390,7 +9390,7 @@ Tilemap:
       - {fileID: 21300012, guid: 3a33586ca1c2bf941850737f227e055f, type: 3}
       - {fileID: 21300014, guid: 3a33586ca1c2bf941850737f227e055f, type: 3}
       - {fileID: 21300016, guid: 3a33586ca1c2bf941850737f227e055f, type: 3}
-      m_AnimationSpeed: 6.908749
+      m_AnimationSpeed: 6.851955
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -17, y: -1, z: 0}
@@ -9405,7 +9405,7 @@ Tilemap:
       - {fileID: 21300012, guid: 3a33586ca1c2bf941850737f227e055f, type: 3}
       - {fileID: 21300014, guid: 3a33586ca1c2bf941850737f227e055f, type: 3}
       - {fileID: 21300016, guid: 3a33586ca1c2bf941850737f227e055f, type: 3}
-      m_AnimationSpeed: 5.55756
+      m_AnimationSpeed: 6.176367
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 16, y: -1, z: 0}
@@ -9420,7 +9420,7 @@ Tilemap:
       - {fileID: 21300012, guid: 3a33586ca1c2bf941850737f227e055f, type: 3}
       - {fileID: 21300014, guid: 3a33586ca1c2bf941850737f227e055f, type: 3}
       - {fileID: 21300016, guid: 3a33586ca1c2bf941850737f227e055f, type: 3}
-      m_AnimationSpeed: 5.612193
+      m_AnimationSpeed: 5.5128946
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -9, y: 0, z: 0}
@@ -9432,7 +9432,7 @@ Tilemap:
       - {fileID: 21300006, guid: 9420e37349c58f8438d8d0b6d8d41f05, type: 3}
       - {fileID: 21300008, guid: 9420e37349c58f8438d8d0b6d8d41f05, type: 3}
       - {fileID: 21300010, guid: 9420e37349c58f8438d8d0b6d8d41f05, type: 3}
-      m_AnimationSpeed: 2.3993647
+      m_AnimationSpeed: 2.6990051
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -18, y: 1, z: 0}
@@ -9447,7 +9447,7 @@ Tilemap:
       - {fileID: 21300012, guid: 3a33586ca1c2bf941850737f227e055f, type: 3}
       - {fileID: 21300014, guid: 3a33586ca1c2bf941850737f227e055f, type: 3}
       - {fileID: 21300016, guid: 3a33586ca1c2bf941850737f227e055f, type: 3}
-      m_AnimationSpeed: 5.0318637
+      m_AnimationSpeed: 6.78947
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 4, y: 5, z: 0}
@@ -9459,7 +9459,7 @@ Tilemap:
       - {fileID: 21300006, guid: 9420e37349c58f8438d8d0b6d8d41f05, type: 3}
       - {fileID: 21300008, guid: 9420e37349c58f8438d8d0b6d8d41f05, type: 3}
       - {fileID: 21300010, guid: 9420e37349c58f8438d8d0b6d8d41f05, type: 3}
-      m_AnimationSpeed: 2.7330685
+      m_AnimationSpeed: 3.6154103
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -13, y: 7, z: 0}
@@ -9474,7 +9474,7 @@ Tilemap:
       - {fileID: 21300012, guid: 3a33586ca1c2bf941850737f227e055f, type: 3}
       - {fileID: 21300014, guid: 3a33586ca1c2bf941850737f227e055f, type: 3}
       - {fileID: 21300016, guid: 3a33586ca1c2bf941850737f227e055f, type: 3}
-      m_AnimationSpeed: 6.42045
+      m_AnimationSpeed: 6.1974573
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 14, y: 7, z: 0}
@@ -9489,7 +9489,7 @@ Tilemap:
       - {fileID: 21300012, guid: 3a33586ca1c2bf941850737f227e055f, type: 3}
       - {fileID: 21300014, guid: 3a33586ca1c2bf941850737f227e055f, type: 3}
       - {fileID: 21300016, guid: 3a33586ca1c2bf941850737f227e055f, type: 3}
-      m_AnimationSpeed: 5.828223
+      m_AnimationSpeed: 5.697891
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 11, y: 8, z: 0}
@@ -9504,7 +9504,7 @@ Tilemap:
       - {fileID: 21300012, guid: 3a33586ca1c2bf941850737f227e055f, type: 3}
       - {fileID: 21300014, guid: 3a33586ca1c2bf941850737f227e055f, type: 3}
       - {fileID: 21300016, guid: 3a33586ca1c2bf941850737f227e055f, type: 3}
-      m_AnimationSpeed: 5.284062
+      m_AnimationSpeed: 5.7205
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
@@ -10910,7 +10910,7 @@ Tilemap:
       - {fileID: 21300006, guid: 9420e37349c58f8438d8d0b6d8d41f05, type: 3}
       - {fileID: 21300008, guid: 9420e37349c58f8438d8d0b6d8d41f05, type: 3}
       - {fileID: 21300010, guid: 9420e37349c58f8438d8d0b6d8d41f05, type: 3}
-      m_AnimationSpeed: 2.2113955
+      m_AnimationSpeed: 2.6030965
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 2, y: -11, z: 0}
@@ -10922,7 +10922,7 @@ Tilemap:
       - {fileID: 21300006, guid: d136d24525de28d449a51818a3a034c0, type: 3}
       - {fileID: 21300008, guid: d136d24525de28d449a51818a3a034c0, type: 3}
       - {fileID: 21300010, guid: d136d24525de28d449a51818a3a034c0, type: 3}
-      m_AnimationSpeed: 3.8323405
+      m_AnimationSpeed: 3.0751662
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 11, y: 10, z: 0}
@@ -10934,7 +10934,7 @@ Tilemap:
       - {fileID: 21300006, guid: 9420e37349c58f8438d8d0b6d8d41f05, type: 3}
       - {fileID: 21300008, guid: 9420e37349c58f8438d8d0b6d8d41f05, type: 3}
       - {fileID: 21300010, guid: 9420e37349c58f8438d8d0b6d8d41f05, type: 3}
-      m_AnimationSpeed: 3.423122
+      m_AnimationSpeed: 2.5394006
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
@@ -22289,109 +22289,61 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!82 &1722731871359471121
-AudioSource:
+--- !u!4 &5781606213466484864
+Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1722731871359471131}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -6320927823182653292, guid: 99f059cddb68645abb0b315182e6b1c7, type: 2}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!114 &1722731871359471124
+  m_GameObject: {fileID: 5781606213466484877}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5781606213466484865
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1722731871359471131}
+  m_GameObject: {fileID: 5781606213466484877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 085281926382c48fe973813a850f577a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  masterSource: {fileID: 5781606213466484867}
+  effectSource: {fileID: 5781606213466484876}
+  UISource: {fileID: 5781606213466484871}
+  onCharacterSelectionMenuClip: {fileID: 8300000, guid: 9791d9332cf0bb247bbf8c26555e8812, type: 3}
+  onStageOneStartClip: {fileID: 8300000, guid: 24eeae0bb19858d4b93cd968c489ecee, type: 3}
+  onLavaClip: {fileID: 8300000, guid: 24f318ad7ee154ca3bf28fa45e23a0e1, type: 3}
+  onRegenClip: {fileID: 8300000, guid: d2d946ccf2b56734bb472da73cdaf226, type: 3}
+  onPlayerDeathClip: {fileID: 8300000, guid: 67023b135174249cf85e070cb310a360, type: 3}
+  onVictoryClip: {fileID: 8300000, guid: 0610fc84337be8847b9aedfbdfa29e26, type: 3}
+  onFireballCastClip: {fileID: 8300000, guid: 674258a055e994b72bbb15a28eb79838, type: 3}
+  onFireballHitClip: {fileID: 8300000, guid: 8a44b12d3e3f24b1a89dc7f0b66756f4, type: 3}
+  onTeleportCastClip: {fileID: 8300000, guid: 87a2e502ddd174591af0e35f76e448a2, type: 3}
+  onLightningCastClip: {fileID: 8300000, guid: 81dbc2b345d4a4d8aa98f60aa04e5145, type: 3}
+  onLightningHitClip: {fileID: 8300000, guid: a15c0f3fe74004cf89b51cfd5604f582, type: 3}
+  onTornadoCastClip: {fileID: 8300000, guid: 2b26cbea232414fcfab41a84fc7a1c55, type: 3}
+  onTornadoHitClip: {fileID: 8300000, guid: 89001e92ca492453599bb2bc49326e85, type: 3}
+  onRushCastClip: {fileID: 8300000, guid: ac4a06b68507a8a41b5cb749b3809949, type: 3}
+  onArrowButtonClip: {fileID: 8300000, guid: d2cbf0d8c4d02be4abd88f1ec644cc08, type: 3}
+  onReadyButtonClip: {fileID: 8300000, guid: 1364594e87f5e944c999a90886217172, type: 3}
+  onBuySpellClip: {fileID: 8300000, guid: c1daa7051b3d0a44cbbf7352083fe0fb, type: 3}
+  onClockTickingClip: {fileID: 8300000, guid: 15388bed865068842a45a344c390299d, type: 3}
+  onJoinButtonClip: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
+--- !u!114 &5781606213466484866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5781606213466484877}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8fe9e46222ed7402ab18bbae3c240b29, type: 3}
@@ -22402,7 +22354,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1722731871359471127}
+        - m_Target: {fileID: 5781606213466484865}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayCharacterSelectionMenu
           m_Mode: 1
@@ -22418,7 +22370,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1722731871359471127}
+        - m_Target: {fileID: 5781606213466484865}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayStageOneTheme
           m_Mode: 1
@@ -22434,7 +22386,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1722731871359471127}
+        - m_Target: {fileID: 5781606213466484865}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayLava
           m_Mode: 1
@@ -22450,7 +22402,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1722731871359471127}
+        - m_Target: {fileID: 5781606213466484865}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayPlayerDeath
           m_Mode: 1
@@ -22466,7 +22418,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1722731871359471127}
+        - m_Target: {fileID: 5781606213466484865}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayVictory
           m_Mode: 1
@@ -22482,7 +22434,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1722731871359471127}
+        - m_Target: {fileID: 5781606213466484865}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayFireballCast
           m_Mode: 1
@@ -22498,7 +22450,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1722731871359471127}
+        - m_Target: {fileID: 5781606213466484865}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayFireballHit
           m_Mode: 1
@@ -22514,7 +22466,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1722731871359471127}
+        - m_Target: {fileID: 5781606213466484865}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayTeleportCast
           m_Mode: 1
@@ -22530,7 +22482,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1722731871359471127}
+        - m_Target: {fileID: 5781606213466484865}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayArrowButton
           m_Mode: 1
@@ -22546,7 +22498,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1722731871359471127}
+        - m_Target: {fileID: 5781606213466484865}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayReadyButton
           m_Mode: 1
@@ -22562,7 +22514,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1722731871359471127}
+        - m_Target: {fileID: 5781606213466484865}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayClockTicking
           m_Mode: 1
@@ -22578,7 +22530,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1722731871359471127}
+        - m_Target: {fileID: 5781606213466484865}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PauseClockTicking
           m_Mode: 1
@@ -22594,7 +22546,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1722731871359471127}
+        - m_Target: {fileID: 5781606213466484865}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: ResumeClockTicking
           m_Mode: 1
@@ -22610,7 +22562,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1722731871359471127}
+        - m_Target: {fileID: 5781606213466484865}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: ResumeClockTicking
           m_Mode: 1
@@ -22626,7 +22578,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1722731871359471127}
+        - m_Target: {fileID: 5781606213466484865}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayLightningCast
           m_Mode: 1
@@ -22642,7 +22594,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1722731871359471127}
+        - m_Target: {fileID: 5781606213466484865}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayLightningHit
           m_Mode: 1
@@ -22658,7 +22610,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1722731871359471127}
+        - m_Target: {fileID: 5781606213466484865}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayTornadoCast
           m_Mode: 1
@@ -22674,7 +22626,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1722731871359471127}
+        - m_Target: {fileID: 5781606213466484865}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayTornadoHit
           m_Mode: 1
@@ -22690,7 +22642,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1722731871359471127}
+        - m_Target: {fileID: 5781606213466484865}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayBuySpell
           m_Mode: 1
@@ -22706,7 +22658,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1722731871359471127}
+        - m_Target: {fileID: 5781606213466484865}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayRushCast
           m_Mode: 1
@@ -22722,7 +22674,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1722731871359471127}
+        - m_Target: {fileID: 5781606213466484865}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayJoinButton
           m_Mode: 1
@@ -22734,13 +22686,29 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!82 &1722731871359471125
+  - Event: {fileID: 11400000, guid: c113746d4a7a19f499e51ac68d443e82, type: 2}
+    Response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5781606213466484865}
+          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+          m_MethodName: PlayRegen
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!82 &5781606213466484867
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1722731871359471131}
+  m_GameObject: {fileID: 5781606213466484877}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 4093433476364510121, guid: 99f059cddb68645abb0b315182e6b1c7, type: 2}
@@ -22830,60 +22798,109 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!4 &1722731871359471126
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1722731871359471131}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1722731871359471127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1722731871359471131}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 085281926382c48fe973813a850f577a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  masterSource: {fileID: 1722731871359471125}
-  effectSource: {fileID: 1722731871359471130}
-  UISource: {fileID: 1722731871359471121}
-  onCharacterSelectionMenuClip: {fileID: 8300000, guid: 9791d9332cf0bb247bbf8c26555e8812, type: 3}
-  onStageOneStartClip: {fileID: 8300000, guid: 24eeae0bb19858d4b93cd968c489ecee, type: 3}
-  onLavaClip: {fileID: 8300000, guid: 24f318ad7ee154ca3bf28fa45e23a0e1, type: 3}
-  onPlayerDeathClip: {fileID: 8300000, guid: 67023b135174249cf85e070cb310a360, type: 3}
-  onVictoryClip: {fileID: 8300000, guid: 0610fc84337be8847b9aedfbdfa29e26, type: 3}
-  onFireballCastClip: {fileID: 8300000, guid: 674258a055e994b72bbb15a28eb79838, type: 3}
-  onFireballHitClip: {fileID: 8300000, guid: 8a44b12d3e3f24b1a89dc7f0b66756f4, type: 3}
-  onTeleportCastClip: {fileID: 8300000, guid: 87a2e502ddd174591af0e35f76e448a2, type: 3}
-  onLightningCastClip: {fileID: 8300000, guid: 81dbc2b345d4a4d8aa98f60aa04e5145, type: 3}
-  onLightningHitClip: {fileID: 8300000, guid: a15c0f3fe74004cf89b51cfd5604f582, type: 3}
-  onTornadoCastClip: {fileID: 8300000, guid: 2b26cbea232414fcfab41a84fc7a1c55, type: 3}
-  onTornadoHitClip: {fileID: 8300000, guid: 89001e92ca492453599bb2bc49326e85, type: 3}
-  onRushCastClip: {fileID: 8300000, guid: ac4a06b68507a8a41b5cb749b3809949, type: 3}
-  onArrowButtonClip: {fileID: 8300000, guid: d2cbf0d8c4d02be4abd88f1ec644cc08, type: 3}
-  onReadyButtonClip: {fileID: 8300000, guid: 1364594e87f5e944c999a90886217172, type: 3}
-  onBuySpellClip: {fileID: 8300000, guid: c1daa7051b3d0a44cbbf7352083fe0fb, type: 3}
-  onClockTickingClip: {fileID: 8300000, guid: 15388bed865068842a45a344c390299d, type: 3}
-  onJoinButtonClip: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
---- !u!82 &1722731871359471130
+--- !u!82 &5781606213466484871
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1722731871359471131}
+  m_GameObject: {fileID: 5781606213466484877}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -6320927823182653292, guid: 99f059cddb68645abb0b315182e6b1c7, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &5781606213466484876
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5781606213466484877}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -3490235611428359061, guid: 99f059cddb68645abb0b315182e6b1c7, type: 2}
@@ -22973,7 +22990,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &1722731871359471131
+--- !u!1 &5781606213466484877
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -22981,12 +22998,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1722731871359471126}
-  - component: {fileID: 1722731871359471127}
-  - component: {fileID: 1722731871359471124}
-  - component: {fileID: 1722731871359471121}
-  - component: {fileID: 1722731871359471130}
-  - component: {fileID: 1722731871359471125}
+  - component: {fileID: 5781606213466484864}
+  - component: {fileID: 5781606213466484865}
+  - component: {fileID: 5781606213466484866}
+  - component: {fileID: 5781606213466484871}
+  - component: {fileID: 5781606213466484876}
+  - component: {fileID: 5781606213466484867}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged

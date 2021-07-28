@@ -7,6 +7,7 @@ public class TornadoController : MonoBehaviour
     // ScriptableObjects
     public GameConstants gameConstants;
     public KnockbackArr playersKnockback;
+    public BoolArrVariable playersAreAlive;
 
     // Components
     private Rigidbody2D tornadoBody;
@@ -47,7 +48,12 @@ public class TornadoController : MonoBehaviour
         if (other.gameObject.tag == "Player") {
             int dstPlayerID = other.gameObject.GetComponent<BattleController>().playerID;
             if (srcPlayerID != dstPlayerID) {
-                other.gameObject.GetComponent<Rigidbody2D>().AddForce(movement * gameConstants.tornadoSpeed * gameConstants.tornadoForce, ForceMode2D.Impulse);
+                if (!playersAreAlive.GetValue(dstPlayerID)) {
+                    return;
+                }
+                float knockback = playersKnockback.GetValue(dstPlayerID);
+                float forceMultiplier = gameConstants.tornadoForce * (gameConstants.knockbackInitial + gameConstants.knockbackMultiplier * Mathf.Log(knockback + 1));
+                other.gameObject.GetComponent<Rigidbody2D>().AddForce(movement * forceMultiplier, ForceMode2D.Impulse);
                 playersKnockback.ApplyChange(dstPlayerID, damage);
                 other.gameObject.GetComponent<BattleController>().Hurt();
                 // Tornado doesn't destroy itself when hit with other players

@@ -9655,6 +9655,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameConstants: {fileID: 11400000, guid: fdff1fd733c49bf49a390264049c3495, type: 2}
   playersKnockback: {fileID: 11400000, guid: d46cc8037b6803d4da7ff070dd6d1583, type: 2}
+  playersAreAlive: {fileID: 11400000, guid: dca732caad795cf45a5779f7a02e9058, type: 2}
   aimAngle: 0
   movement: {x: 0, y: 0}
   srcPlayerID: 0

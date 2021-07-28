@@ -14,6 +14,11 @@ public class GameConstants : ScriptableObject
     public Vector3 bottomLeftPosition = new Vector3(-2.71f, -2.71f, 0);
     public Vector3 bottomRightPosition = new Vector3(2.71f, -2.71f, 0);
     public float playerSpeed = 0.5f;
+    public float knockbackInitial = 1.5f;
+    public float knockbackMultiplier = 0.5f;
+    public float regenWait = 5;
+    public float regenInterval = 1;
+    public float regenValue = 5;
     public float spellAnimationDuration = 0.53f;
     public float hurtAnimationDuration = 0.53f;
     // float turnSpeed = 0.001f;
@@ -21,7 +26,7 @@ public class GameConstants : ScriptableObject
     public float lavaDamageInverval = 1;
     public float fireballCooldown = 3;
     public float fireballSpeed = 1.5f;
-    public float fireballForce = 15;
+    public float fireballForce = 20;
     public float fireballDestroyTime = 1.5f;
     public int fireballDamage = 30;
     public float teleportDistance = 3;
@@ -29,7 +34,7 @@ public class GameConstants : ScriptableObject
     public float teleportDestroyTime = 0.5f;
     public float lightningProjectileCooldown = 6;
     public float lightningProjectileSpeed = 2.25f;
-    public float lightningProjectileForce = 8;
+    public float lightningProjectileForce = 15;
     public float lightningProjectileDestroyTime = 0.75f;
     public float lightningProjectileDamage = 20;
     public float tornadoCooldown = 16;

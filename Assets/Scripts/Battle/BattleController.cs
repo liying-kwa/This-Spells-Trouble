@@ -17,23 +17,17 @@ public class BattleController : MonoBehaviour
     // Sound Events
     [Header("Sound Events")]
     public GameEvent onLavaPlaySound;
+    public GameEvent onRegenPlaySound;
     public GameEvent onPlayerDeathPlaySound;
 
     // GameObjects
     MapManager mapManager;
-    GameObject mageObject;
-    GameObject aimObject;
-    GameObject knockbackObject;
+    public GameObject mageObject;
+    public GameObject aimObject;
+    public GameObject knockbackObject;
+    public Text knockbackText;
     public Image[] cooldownImages;
     public GameObject[] spellIcons;
-    // public GameObject fireballPrefab;
-    // public GameObject teleportPrefab;
-    // public GameObject lightningPrefab;
-    // public GameObject tornadoPrefab;
-    // public GameObject rushPrefab;
-    // public GameObject arcPrefab;
-    // public GameObject splitterPrefab;
-    // public GameObject boomerangPrefab;
     
     // Components
     private  Rigidbody2D rigidBody;
@@ -70,6 +64,8 @@ public class BattleController : MonoBehaviour
     public bool onPlatform = true;
     bool isDead = false;
     IEnumerator damageCoroutine = null;
+    IEnumerator checkRegenCoroutine = null;
+    IEnumerator regenCoroutine = null;
 
     // Others
     public SpellModel[] allSpellModels;
@@ -109,20 +105,6 @@ public class BattleController : MonoBehaviour
 
     // Start is called before the first frame update
     void Awake() {
-        // GameObjects
-        foreach (Transform child in transform) {
-            if (child.name == "Mage") {
-                mageObject = child.gameObject;
-                // mageObject.SetActive(true);
-            } else if (child.name == "Aim") {
-                aimObject = child.gameObject;
-                // aimObject.SetActive(true);
-            } else if (child.name == "Knockback") {
-                knockbackObject = child.gameObject;
-                // knockbackObject.SetActive(true);
-            }
-        }
-
         // Components
         rigidBody = GetComponent<Rigidbody2D>();
         animator = mageObject.GetComponent<Animator>();
@@ -142,7 +124,8 @@ public class BattleController : MonoBehaviour
         mapManager = FindObjectOfType<MapManager>();
         mageObject.SetActive(true);
         aimObject.SetActive(true);
-        knockbackObject.SetActive(true);
+        // knockbackObject.SetActive(true);
+        knockbackText.transform.gameObject.SetActive(true);
         // Initialise values
         isDead = false;
         playersKnockback.SetValue(playerID, 0);
@@ -188,6 +171,13 @@ public class BattleController : MonoBehaviour
         }
     }
 
+    void onDisable() {
+        mageObject.SetActive(true);
+        aimObject.SetActive(true);
+        // knockbackObject.SetActive(true);
+        knockbackText.transform.gameObject.SetActive(true);
+    }
+
     void Start() {
         // Render the correct character sprite & animation
         switch (playersChars.GetValue(playerID)) {
@@ -207,10 +197,18 @@ public class BattleController : MonoBehaviour
     void Update() {
         if (roundEnded.Value && !isDead) {
             rigidBody.velocity = new Vector3(0, 0, 0);
-            // Stop damage coroutine, if running
+            // Stop all coroutine, if running
             if (damageCoroutine != null) {
                 StopCoroutine(damageCoroutine);
                 damageCoroutine = null;
+            }
+            if (checkRegenCoroutine != null) {
+                StopCoroutine(checkRegenCoroutine);
+                checkRegenCoroutine = null;
+            }
+            if (regenCoroutine != null) {
+                StopCoroutine(regenCoroutine);
+                regenCoroutine = null;
             }
             // TODO: Victory animation
             return;
@@ -240,16 +238,44 @@ public class BattleController : MonoBehaviour
         // Death if knockback is 100 and not on platform
         knockback = playersKnockback.GetValue(playerID);
         if (knockback >= 100 && !onPlatform) {
-            // Stop damage coroutine, if running
+            // Stop all coroutine, if running
             if (damageCoroutine != null) {
                 StopCoroutine(damageCoroutine);
                 damageCoroutine = null;
+            }
+            if (checkRegenCoroutine != null) {
+                StopCoroutine(checkRegenCoroutine);
+                checkRegenCoroutine = null;
+            }
+            if (regenCoroutine != null) {
+                StopCoroutine(regenCoroutine);
+                regenCoroutine = null;
             }
             isDead = true;
             playersAreAlive.SetValue(playerID, false);
             animator.Play(deathDirections[lastDirection]);
             Debug.Log("Player " + (playerID+1) + " has died.");
             onPlayerDeathPlaySound.Raise();
+        }
+
+        // Regen
+        if (!hurting && knockback != 0) {
+            // Start checkregen coroutine, if check regen AND regen not running
+            if (checkRegenCoroutine == null && regenCoroutine == null) {
+                checkRegenCoroutine = CheckRegen();
+                StartCoroutine(checkRegenCoroutine);
+            }
+        } else {
+            // Stop checkregen coroutine, if running
+            if (checkRegenCoroutine != null) {
+                StopCoroutine(checkRegenCoroutine);
+                checkRegenCoroutine = null;
+            }
+            // Stop regen coroutine, if running
+            if (regenCoroutine != null) {
+                StopCoroutine(regenCoroutine);
+                regenCoroutine = null;
+            }
         }
 
         // Idle/Walk Animation
@@ -281,18 +307,27 @@ public class BattleController : MonoBehaviour
             aimObject.transform.rotation = Quaternion.AngleAxis(aimAngle, Vector3.forward);
         }
 
-        // Knockback bar
-        float knockbackFloat = knockback / 100;
-        knockbackObject.transform.localScale = new Vector3(knockbackFloat * maxXScale, knockbackObject.transform.localScale.y, knockbackObject.transform.localScale.z);
-        if (knockbackFloat < 0.5f) {
-            // gold
-            knockbackSpriteRenderer.color = new Color(1, 0.8f, 0, 1);
-        } else if (knockbackFloat < 0.99f) {
-            // orange
-            knockbackSpriteRenderer.color = new Color(1, 0.4f, 0, 1);
+        // Knockback bar / percentage
+        // float knockbackFloat = knockback / 100;
+        // knockbackObject.transform.localScale = new Vector3(knockbackFloat * maxXScale, knockbackObject.transform.localScale.y, knockbackObject.transform.localScale.z);
+        // if (knockbackFloat < 0.5f) {
+        //     // gold
+        //     knockbackSpriteRenderer.color = new Color(1, 0.8f, 0, 1);
+        // } else if (knockbackFloat < 0.99f) {
+        //     // orange
+        //     knockbackSpriteRenderer.color = new Color(1, 0.4f, 0, 1);
+        // } else {
+        //     // red
+        //     knockbackSpriteRenderer.color = new Color(1, 0, 0, 1);
+        // }
+        knockbackText.text = "" + knockback + "%";
+        if (knockback < 50) {
+            // gold 
+            knockbackText.color = new Color(1, 0.8f, 0, 1);
+        } else if (knockback < 99) {
+            knockbackText.color = new Color(1, 0.4f, 0, 1);
         } else {
-            // red
-            knockbackSpriteRenderer.color = new Color(1, 0, 0, 1);
+            knockbackText.color = new Color(1, 0, 0, 1);
         }
 
         // Cooldowns
@@ -357,12 +392,28 @@ public class BattleController : MonoBehaviour
         }
     }
 
-    // Platform stuff
+    // Knockback stuff
     public IEnumerator Damage() {
         while (true) {
             onLavaPlaySound.Raise();
-            playersKnockback.SetValue(playerID, playersKnockback.GetValue(playerID) + gameConstants.lavaDamage);
+            playersKnockback.ApplyChange(playerID, gameConstants.lavaDamage);
+            Hurt();
             yield return new WaitForSeconds(gameConstants.lavaDamageInverval);
+        }
+    }
+
+    public IEnumerator CheckRegen() {
+        yield return new WaitForSeconds(gameConstants.regenWait);
+        checkRegenCoroutine = null;
+        regenCoroutine = Regen();
+        StartCoroutine(regenCoroutine);
+    }
+    
+    public IEnumerator Regen() {
+        while (true) {
+            onRegenPlaySound.Raise();
+            playersKnockback.ApplyChange(playerID, -1 * gameConstants.regenValue);
+            yield return new WaitForSeconds(gameConstants.regenInterval);
         }
     }
 
@@ -392,7 +443,6 @@ public class BattleController : MonoBehaviour
 
     IEnumerator SpellAnimation() {
         Vector2 aimVector = new Vector2(-Mathf.Sin(Mathf.Deg2Rad * aimAngle), Mathf.Cos(Mathf.Deg2Rad * aimAngle));
-        // int aimDirection = DirectionToIndex(aimVector, 8);
         int aimDirection = DirectionToIndex(aimVector, 4);
         string clip = attackDirections[aimDirection];
         animator.Play(clip);

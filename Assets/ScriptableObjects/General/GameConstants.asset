@@ -18,13 +18,18 @@ MonoBehaviour:
   bottomLeftPosition: {x: -2.71, y: -2.71, z: 0}
   bottomRightPosition: {x: 2.71, y: -2.71, z: 0}
   playerSpeed: 0.4
+  knockbackInitial: 1.5
+  knockbackMultiplier: 0.5
+  regenWait: 5
+  regenInterval: 1
+  regenValue: 5
   spellAnimationDuration: 0.53
   hurtAnimationDuration: 0.53
   lavaDamage: 10
   lavaDamageInverval: 1
   fireballCooldown: 3
   fireballSpeed: 1.5
-  fireballForce: 15
+  fireballForce: 20
   fireballDestroyTime: 1.5
   fireballDamage: 30
   teleportDistance: 3
@@ -32,7 +37,7 @@ MonoBehaviour:
   teleportDestroyTime: 0.5
   lightningProjectileCooldown: 6
   lightningProjectileSpeed: 2.25
-  lightningProjectileForce: 8
+  lightningProjectileForce: 15
   lightningProjectileDestroyTime: 0.75
   lightningProjectileDamage: 20
   tornadoCooldown: 16
@@ -71,5 +76,5 @@ MonoBehaviour:
   boomerangSpeed: 3
   boomerangFastSpeed: 6
   boomerangCooldown: 7
-  shopCountdownTime: 10
+  shopCountdownTime: 30
   goldIncrement: 300

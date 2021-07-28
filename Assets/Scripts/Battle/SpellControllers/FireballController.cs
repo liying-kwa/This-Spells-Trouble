@@ -7,6 +7,7 @@ public class FireballController : MonoBehaviour
     // ScriptableObjects
     public GameConstants gameConstants;
     public KnockbackArr playersKnockback;
+    public BoolArrVariable playersAreAlive;
 
     // Components
     private Rigidbody2D fireballBody;
@@ -51,7 +52,12 @@ public class FireballController : MonoBehaviour
             int dstPlayerID = other.gameObject.GetComponent<BattleController>().playerID;
             if (srcPlayerID != dstPlayerID) {
                 // Debug.Log("Collided with other player!");
-                other.gameObject.GetComponent<Rigidbody2D>().AddForce(movement * gameConstants.fireballSpeed * gameConstants.fireballForce, ForceMode2D.Impulse);
+                if (!playersAreAlive.GetValue(dstPlayerID)) {
+                    return;
+                }
+                float knockback = playersKnockback.GetValue(dstPlayerID);
+                float forceMultiplier = gameConstants.fireballForce * (gameConstants.knockbackInitial + gameConstants.knockbackMultiplier * Mathf.Log(knockback + 1));
+                other.gameObject.GetComponent<Rigidbody2D>().AddForce(movement * forceMultiplier, ForceMode2D.Impulse);
                 playersKnockback.ApplyChange(dstPlayerID, damage);
                 other.gameObject.GetComponent<BattleController>().Hurt();
                 //audioSource.Stop();

@@ -7,6 +7,7 @@ public class LightningProjectileController : MonoBehaviour
     // ScriptableObjects
     public GameConstants gameConstants;
     public KnockbackArr playersKnockback;
+    public BoolArrVariable playersAreAlive;
 
     // Components
     private Rigidbody2D lightningProjectileBody;
@@ -51,7 +52,12 @@ public class LightningProjectileController : MonoBehaviour
             int dstPlayerID = other.gameObject.GetComponent<BattleController>().playerID;
             if (srcPlayerID != dstPlayerID) {
                 // Debug.Log("Collided with other player!");
-                other.gameObject.GetComponent<Rigidbody2D>().AddForce(movement * gameConstants.lightningProjectileSpeed * gameConstants.lightningProjectileForce, ForceMode2D.Impulse);
+                if (!playersAreAlive.GetValue(dstPlayerID)) {
+                    return;
+                }
+                float knockback = playersKnockback.GetValue(dstPlayerID);
+                float forceMultiplier = gameConstants.lightningProjectileForce * (gameConstants.knockbackInitial + gameConstants.knockbackMultiplier * Mathf.Log(knockback + 1));
+                other.gameObject.GetComponent<Rigidbody2D>().AddForce(movement * forceMultiplier, ForceMode2D.Impulse);
                 playersKnockback.ApplyChange(dstPlayerID, damage);
                 other.gameObject.GetComponent<BattleController>().Hurt();
                 onLightningHitPlaySound.Raise();
