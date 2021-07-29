@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6433072493706748187
+--- !u!1 &2430342945823383341
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,12 +8,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6433072493706748182}
-  - component: {fileID: 6433072493706748183}
-  - component: {fileID: 6433072493706748180}
-  - component: {fileID: 6433072493706748177}
-  - component: {fileID: 6433072493706748186}
-  - component: {fileID: 6433072493706748181}
+  - component: {fileID: 2430342945823383328}
+  - component: {fileID: 2430342945823383329}
+  - component: {fileID: 2430342945823383330}
+  - component: {fileID: 2430342945823383335}
+  - component: {fileID: 2430342945823383340}
+  - component: {fileID: 2430342945823383331}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -21,13 +21,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6433072493706748182
+--- !u!4 &2430342945823383328
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6433072493706748187}
+  m_GameObject: {fileID: 2430342945823383341}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -35,25 +35,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6433072493706748183
+--- !u!114 &2430342945823383329
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6433072493706748187}
+  m_GameObject: {fileID: 2430342945823383341}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 085281926382c48fe973813a850f577a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masterSource: {fileID: 6433072493706748181}
-  effectSource: {fileID: 6433072493706748186}
-  UISource: {fileID: 6433072493706748177}
+  masterSource: {fileID: 2430342945823383331}
+  effectSource: {fileID: 2430342945823383340}
+  UISource: {fileID: 2430342945823383335}
   onCharacterSelectionMenuClip: {fileID: 8300000, guid: 9791d9332cf0bb247bbf8c26555e8812, type: 3}
   onStageOneStartClip: {fileID: 8300000, guid: 24eeae0bb19858d4b93cd968c489ecee, type: 3}
   onLavaClip: {fileID: 8300000, guid: 24f318ad7ee154ca3bf28fa45e23a0e1, type: 3}
-  onRegenClip: {fileID: 8300000, guid: a27ae245f760b4bf191c0234d3b43918, type: 3}
+  onRegenClip: {fileID: 8300000, guid: d2d946ccf2b56734bb472da73cdaf226, type: 3}
   onPlayerDeathClip: {fileID: 8300000, guid: 67023b135174249cf85e070cb310a360, type: 3}
   onVictoryClip: {fileID: 8300000, guid: 0610fc84337be8847b9aedfbdfa29e26, type: 3}
   onFireballCastClip: {fileID: 8300000, guid: 674258a055e994b72bbb15a28eb79838, type: 3}
@@ -69,13 +69,13 @@ MonoBehaviour:
   onBuySpellClip: {fileID: 8300000, guid: c1daa7051b3d0a44cbbf7352083fe0fb, type: 3}
   onClockTickingClip: {fileID: 8300000, guid: 15388bed865068842a45a344c390299d, type: 3}
   onJoinButtonClip: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
---- !u!114 &6433072493706748180
+--- !u!114 &2430342945823383330
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6433072493706748187}
+  m_GameObject: {fileID: 2430342945823383341}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8fe9e46222ed7402ab18bbae3c240b29, type: 3}
@@ -86,7 +86,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6433072493706748183}
+        - m_Target: {fileID: 2430342945823383329}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayCharacterSelectionMenu
           m_Mode: 1
@@ -102,7 +102,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6433072493706748183}
+        - m_Target: {fileID: 2430342945823383329}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayStageOneTheme
           m_Mode: 1
@@ -118,7 +118,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6433072493706748183}
+        - m_Target: {fileID: 2430342945823383329}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayLava
           m_Mode: 1
@@ -134,7 +134,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6433072493706748183}
+        - m_Target: {fileID: 2430342945823383329}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayPlayerDeath
           m_Mode: 1
@@ -150,7 +150,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6433072493706748183}
+        - m_Target: {fileID: 2430342945823383329}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayVictory
           m_Mode: 1
@@ -166,7 +166,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6433072493706748183}
+        - m_Target: {fileID: 2430342945823383329}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayFireballCast
           m_Mode: 1
@@ -182,7 +182,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6433072493706748183}
+        - m_Target: {fileID: 2430342945823383329}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayFireballHit
           m_Mode: 1
@@ -198,7 +198,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6433072493706748183}
+        - m_Target: {fileID: 2430342945823383329}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayTeleportCast
           m_Mode: 1
@@ -214,7 +214,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6433072493706748183}
+        - m_Target: {fileID: 2430342945823383329}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayArrowButton
           m_Mode: 1
@@ -230,7 +230,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6433072493706748183}
+        - m_Target: {fileID: 2430342945823383329}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayReadyButton
           m_Mode: 1
@@ -246,7 +246,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6433072493706748183}
+        - m_Target: {fileID: 2430342945823383329}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayClockTicking
           m_Mode: 1
@@ -262,7 +262,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6433072493706748183}
+        - m_Target: {fileID: 2430342945823383329}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PauseClockTicking
           m_Mode: 1
@@ -278,7 +278,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6433072493706748183}
+        - m_Target: {fileID: 2430342945823383329}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: ResumeClockTicking
           m_Mode: 1
@@ -294,7 +294,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6433072493706748183}
+        - m_Target: {fileID: 2430342945823383329}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: ResumeClockTicking
           m_Mode: 1
@@ -310,7 +310,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6433072493706748183}
+        - m_Target: {fileID: 2430342945823383329}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayLightningCast
           m_Mode: 1
@@ -326,7 +326,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6433072493706748183}
+        - m_Target: {fileID: 2430342945823383329}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayLightningHit
           m_Mode: 1
@@ -342,7 +342,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6433072493706748183}
+        - m_Target: {fileID: 2430342945823383329}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayTornadoCast
           m_Mode: 1
@@ -358,7 +358,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6433072493706748183}
+        - m_Target: {fileID: 2430342945823383329}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayTornadoHit
           m_Mode: 1
@@ -374,7 +374,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6433072493706748183}
+        - m_Target: {fileID: 2430342945823383329}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayBuySpell
           m_Mode: 1
@@ -390,7 +390,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6433072493706748183}
+        - m_Target: {fileID: 2430342945823383329}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayRushCast
           m_Mode: 1
@@ -406,7 +406,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6433072493706748183}
+        - m_Target: {fileID: 2430342945823383329}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayJoinButton
           m_Mode: 1
@@ -422,7 +422,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6433072493706748183}
+        - m_Target: {fileID: 2430342945823383329}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayRegen
           m_Mode: 1
@@ -434,13 +434,13 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!82 &6433072493706748177
+--- !u!82 &2430342945823383335
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6433072493706748187}
+  m_GameObject: {fileID: 2430342945823383341}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -6320927823182653292, guid: 99f059cddb68645abb0b315182e6b1c7, type: 2}
@@ -530,13 +530,13 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &6433072493706748186
+--- !u!82 &2430342945823383340
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6433072493706748187}
+  m_GameObject: {fileID: 2430342945823383341}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -3490235611428359061, guid: 99f059cddb68645abb0b315182e6b1c7, type: 2}
@@ -626,13 +626,13 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &6433072493706748181
+--- !u!82 &2430342945823383331
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6433072493706748187}
+  m_GameObject: {fileID: 2430342945823383341}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 4093433476364510121, guid: 99f059cddb68645abb0b315182e6b1c7, type: 2}

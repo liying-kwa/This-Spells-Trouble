@@ -341,6 +341,71 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""MainMenu"",
+            ""id"": ""f422a7e4-9b7d-4b6a-a69a-83e7014fa3ba"",
+            ""actions"": [
+                {
+                    ""name"": ""PreviousButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""4e1c54c5-2e19-4717-a996-d70dc1f7ece0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""NextButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""f9f9b5b8-c2eb-4670-8c64-116cb18d531c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""ClickButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""9e8c701f-ac07-484a-838b-8f33cfb13e60"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""93d08e9c-a10a-489e-8718-fba391bb0673"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PreviousButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""053fc407-bce5-4d3e-9801-b3313e7d51e8"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""00ca8882-eb9c-4ba7-9380-765b0b86a38c"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ClickButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -367,6 +432,11 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_SpellShop_NextSpell = m_SpellShop.FindAction("NextSpell", throwIfNotFound: true);
         m_SpellShop_BuySpell = m_SpellShop.FindAction("BuySpell", throwIfNotFound: true);
         m_SpellShop_SellSpell = m_SpellShop.FindAction("SellSpell", throwIfNotFound: true);
+        // MainMenu
+        m_MainMenu = asset.FindActionMap("MainMenu", throwIfNotFound: true);
+        m_MainMenu_PreviousButton = m_MainMenu.FindAction("PreviousButton", throwIfNotFound: true);
+        m_MainMenu_NextButton = m_MainMenu.FindAction("NextButton", throwIfNotFound: true);
+        m_MainMenu_ClickButton = m_MainMenu.FindAction("ClickButton", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -615,6 +685,55 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         }
     }
     public SpellShopActions @SpellShop => new SpellShopActions(this);
+
+    // MainMenu
+    private readonly InputActionMap m_MainMenu;
+    private IMainMenuActions m_MainMenuActionsCallbackInterface;
+    private readonly InputAction m_MainMenu_PreviousButton;
+    private readonly InputAction m_MainMenu_NextButton;
+    private readonly InputAction m_MainMenu_ClickButton;
+    public struct MainMenuActions
+    {
+        private @PlayerControls m_Wrapper;
+        public MainMenuActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @PreviousButton => m_Wrapper.m_MainMenu_PreviousButton;
+        public InputAction @NextButton => m_Wrapper.m_MainMenu_NextButton;
+        public InputAction @ClickButton => m_Wrapper.m_MainMenu_ClickButton;
+        public InputActionMap Get() { return m_Wrapper.m_MainMenu; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MainMenuActions set) { return set.Get(); }
+        public void SetCallbacks(IMainMenuActions instance)
+        {
+            if (m_Wrapper.m_MainMenuActionsCallbackInterface != null)
+            {
+                @PreviousButton.started -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnPreviousButton;
+                @PreviousButton.performed -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnPreviousButton;
+                @PreviousButton.canceled -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnPreviousButton;
+                @NextButton.started -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnNextButton;
+                @NextButton.performed -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnNextButton;
+                @NextButton.canceled -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnNextButton;
+                @ClickButton.started -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnClickButton;
+                @ClickButton.performed -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnClickButton;
+                @ClickButton.canceled -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnClickButton;
+            }
+            m_Wrapper.m_MainMenuActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @PreviousButton.started += instance.OnPreviousButton;
+                @PreviousButton.performed += instance.OnPreviousButton;
+                @PreviousButton.canceled += instance.OnPreviousButton;
+                @NextButton.started += instance.OnNextButton;
+                @NextButton.performed += instance.OnNextButton;
+                @NextButton.canceled += instance.OnNextButton;
+                @ClickButton.started += instance.OnClickButton;
+                @ClickButton.performed += instance.OnClickButton;
+                @ClickButton.canceled += instance.OnClickButton;
+            }
+        }
+    }
+    public MainMenuActions @MainMenu => new MainMenuActions(this);
     public interface IBattleActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -639,5 +758,11 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnNextSpell(InputAction.CallbackContext context);
         void OnBuySpell(InputAction.CallbackContext context);
         void OnSellSpell(InputAction.CallbackContext context);
+    }
+    public interface IMainMenuActions
+    {
+        void OnPreviousButton(InputAction.CallbackContext context);
+        void OnNextButton(InputAction.CallbackContext context);
+        void OnClickButton(InputAction.CallbackContext context);
     }
 }
