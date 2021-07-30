@@ -29149,3 +29149,6 @@ MonoBehaviour:
   aimAngle: 0
   srcPlayerID: 0
   onTeleportCastPlaySound: {fileID: 11400000, guid: 495d3a05cea334e328e900f516590d9f, type: 2}
+  collisionLayer:
+    serializedVersion: 2
+    m_Bits: 64

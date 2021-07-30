@@ -21,6 +21,7 @@ public class GameConstants : ScriptableObject
     public float regenValue = 5;
     public float spellAnimationDuration = 0.53f;
     public float hurtAnimationDuration = 0.53f;
+    public float playerOffset = 1f;
     // float turnSpeed = 0.001f;
     public float lavaDamage = 10;
     public float lavaDamageInverval = 1;

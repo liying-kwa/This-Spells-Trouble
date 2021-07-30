@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34780aeb24c8afc4aabef00fc4c39b1a, type: 3}
   m_Name: GameConstants
   m_EditorClassIdentifier: 
-  countdownTime: 3
+  countdownTime: 1
   topLeftPosition: {x: -2.71, y: 2.71, z: 0}
   topRightPosition: {x: 2.71, y: 2.71, z: 0}
   bottomLeftPosition: {x: -2.71, y: -2.71, z: 0}
@@ -33,7 +33,7 @@ MonoBehaviour:
   fireballDestroyTime: 1.5
   fireballDamage: 15
   teleportDistance: 3
-  teleportCooldown: 5
+  teleportCooldown: 1
   teleportDestroyTime: 0.5
   lightningProjectileCooldown: 6
   lightningProjectileSpeed: 2.25
@@ -48,7 +48,7 @@ MonoBehaviour:
   rushDestroyTime: 1
   rushSpeed: 5
   rushDistance: 5
-  rushCooldown: 10
+  rushCooldown: 1
   arcDamage: 40
   arcForce: 15
   arcForwardSpeed: 1.5
@@ -76,5 +76,5 @@ MonoBehaviour:
   boomerangSpeed: 3
   boomerangFastSpeed: 6
   boomerangCooldown: 7
-  shopCountdownTime: 30
+  shopCountdownTime: 10
   goldIncrement: 300

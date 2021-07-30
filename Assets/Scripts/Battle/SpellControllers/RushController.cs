@@ -14,7 +14,7 @@ public class RushController : MonoBehaviour
     // Game state
     public int srcPlayerID;
     GameObject playerObject;
-    public Vector3 newVectorVar;
+    public Vector3 rushVectorVar;
 
     // Sound Events
     [Header("Sound Events")]
@@ -23,26 +23,32 @@ public class RushController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerObject = playerInputsArr.GetValue(srcPlayerID).gameObject;
-        newVectorVar = new Vector3(transform.position.x - Mathf.Sin(Mathf.Deg2Rad * aimAngle) * gameConstants.rushDistance, 
+        playerObject = playerInputsArr.GetValue(srcPlayerID).gameObject; //Get corresponding player Game Object
+        //Get the vector location of where the player is going to rush to
+        rushVectorVar = new Vector3(transform.position.x - Mathf.Sin(Mathf.Deg2Rad * aimAngle) * gameConstants.rushDistance, 
                                                         transform.position.y + Mathf.Cos(Mathf.Deg2Rad * aimAngle) * gameConstants.rushDistance, 
                                                         transform.position.z);
         onRushCastPlaySound.Raise();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    
-        Destroy(gameObject, gameConstants.rushDestroyTime);
-
-    }
     void FixedUpdate()
-    {
-        Vector3 a = transform.position;
-        Vector3 b = newVectorVar;
-        playerObject.transform.position = Vector3.MoveTowards(a, b, gameConstants.rushSpeed * Time.deltaTime);
+    {   
+        // //Get the direction vector of where the player is rushing to
+        // Vector3 dir = playerObject.transform.position - rushVectorVar;
+        // // normalize directional vector
+        // dir = dir.normalized;
+        // //Shoot a raycast from the player to the rush destination, returns the hit if it found one.
+        // if (Physics.Raycast(playerObject.transform.position, dir, out RaycastHit hit))
+        // {
+        //     //Hit obstacle
+        //     rushVectorVar = hit.point + dir * gameConstants.playerOffset;
+        // }
+
+        // rush to the intended position
+        playerObject.transform.position = Vector3.MoveTowards(playerObject.transform.position, rushVectorVar, gameConstants.rushSpeed * Time.deltaTime);
+        
         transform.position = playerObject.transform.position;
+        Destroy(gameObject, gameConstants.rushDestroyTime);
     }
     
 }
