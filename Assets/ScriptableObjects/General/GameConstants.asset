@@ -22,16 +22,16 @@ MonoBehaviour:
   knockbackMultiplier: 0.5
   regenWait: 5
   regenInterval: 1
-  regenValue: 5
+  regenValue: 2
   spellAnimationDuration: 0.53
   hurtAnimationDuration: 0.53
-  lavaDamage: 10
-  lavaDamageInverval: 1
+  lavaDamage: 1
+  lavaDamageInverval: 0.5
   fireballCooldown: 3
   fireballSpeed: 1.5
   fireballForce: 20
   fireballDestroyTime: 1.5
-  fireballDamage: 30
+  fireballDamage: 15
   teleportDistance: 3
   teleportCooldown: 5
   teleportDestroyTime: 0.5
@@ -39,7 +39,7 @@ MonoBehaviour:
   lightningProjectileSpeed: 2.25
   lightningProjectileForce: 15
   lightningProjectileDestroyTime: 0.75
-  lightningProjectileDamage: 20
+  lightningProjectileDamage: 30
   tornadoCooldown: 16
   tornadoSpeed: 0.75
   tornadoForce: 15
@@ -63,7 +63,7 @@ MonoBehaviour:
   splitterDestroyTime: 1
   splitterNumber: 5
   splitterStartAngle: -40
-  splitProjDamage: 30
+  splitProjDamage: 10
   splitProjForce: 8
   splitProjSpeed: 1.5
   splitProjDestroyTime: 1.5

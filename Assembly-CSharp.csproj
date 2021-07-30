@@ -51,6 +51,7 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
      <Compile Include="Assets\ScriptableObjects\SpellShop\PlayersSpellLevels.cs" />
      <Compile Include="Assets\ScriptableObjects\BoolArrVariable.cs" />
+     <Compile Include="Assets\Scripts\MainMenu\MenuManager.cs" />
      <Compile Include="Assets\ScriptableObjects\IntArrVariable.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
@@ -118,7 +119,6 @@
      <Compile Include="Assets\Scripts\SpellShop\OldStuff\SkillSelection.cs" />
      <Compile Include="Assets\Scripts\Battle\SpellControllers\BoomerangController.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
-     <Compile Include="Assets\Scripts\MainMenu\MenuManager.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\Sprites\sorceress\Foozle_File_License.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
