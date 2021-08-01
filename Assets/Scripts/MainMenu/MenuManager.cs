@@ -8,6 +8,12 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    // ScriptableObjects
+    public IntArrVariable playersChars;
+    public PlayersSpells playersSpells;
+    public IntArrVariable playersGold;
+    public IntArrVariable playersPoints;
+
     // GameObjects
     public Button[] buttons;
 
@@ -17,7 +23,7 @@ public class MenuManager : MonoBehaviour
     public GameEvent onArrowButtonPlaySound;
 
     // Game State
-    int selectedButton;
+    int selectedButton = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -25,9 +31,21 @@ public class MenuManager : MonoBehaviour
         // Set frame rate to be 50 FPS
 	    Application.targetFrameRate =  50;
 
-        // Initialise values
+        // Select first button
         buttons[0].Select();
         buttons[0].transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+
+        // Initialise values for all scriptable objects
+        for (int i = 0; i < 4; i++) {
+            playersChars.SetValue(i, -1);
+            playersGold.SetValue(i, -1);
+            playersPoints.SetValue(i, -1);
+            playersSpells.SetSpell(i, 0, Spell.nullSpell);
+            playersSpells.SetSpell(i, 1, Spell.nullSpell);
+            playersSpells.SetSpell(i, 2, Spell.nullSpell);
+            playersSpells.SetSpell(i, 3, Spell.nullSpell);
+            // TODO: spell levels
+        }
     }
 
     // Update is called once per frame
@@ -68,15 +86,13 @@ public class MenuManager : MonoBehaviour
         onReadyButtonPlaySound.Raise();
     }
 
-    public void PlayGame() 
-    {
+    public void PlayGame() {
         // SceneManager.LoadScene("NAME_OF_SCENE_HERE");
         StartCoroutine(ChangeScene("CharSelectionScene"));
         Debug.Log("Loading Scene...");
     }
 
-    public void QuitGame()
-    {
+    public void QuitGame() {
         Application.Quit();
     }
 

@@ -4,13 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class VictoryManager : MonoBehaviour
+public class PointsManager : MonoBehaviour
 {
     // ScriptableObjects
     public BoolArrVariable playersAreAlive;
     public BoolVariable roundEnded;
     public IntArrVariable playersPoints;
     public IntVariable currentRound;
+    public PlayerInputsArr playerInputsArr;
 
     // GameObjects
     public Text victoryText;
@@ -56,12 +57,19 @@ public class VictoryManager : MonoBehaviour
             toShow += "Player " + (i+1) + " score: " + playersPoints.GetValue(i) + "\n";
         }
         victoryText.text = toShow;
-        Debug.Log(toShow);
+        yield return new WaitForSeconds(10);
+        // if (currentRound.Value < 1) {
         if (currentRound.Value < 5) {
-            yield return new WaitForSeconds(10);
             StartCoroutine(ChangeScene("SpellShopScene"));
         } else {
-            Debug.Log("Last round has ended.");
+            // Destroy all playerObjects and move to victory scene
+            for (int i = 0; i < 4; i++) {
+                if (playerInputsArr.GetValue(i) != null) {
+                    Destroy(playerInputsArr.GetValue(i).gameObject);
+                    playerInputsArr.SetValue(i, null);
+                }
+            }
+            StartCoroutine(ChangeScene("VictoryScene"));
         }
     }
 

@@ -346,7 +346,7 @@ GameObject:
   - component: {fileID: 742383926}
   - component: {fileID: 742383927}
   m_Layer: 0
-  m_Name: VictoryManager
+  m_Name: PointsManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -375,13 +375,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 742383925}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9861e7614e5604d4084893ee45994e1a, type: 3}
+  m_Script: {fileID: 11500000, guid: a09b0882d7fc03543bf293a83c4240ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playersAreAlive: {fileID: 11400000, guid: dca732caad795cf45a5779f7a02e9058, type: 2}
   roundEnded: {fileID: 11400000, guid: 8e6e01181cbb6b842bdd4106b8c69da9, type: 2}
   playersPoints: {fileID: 11400000, guid: e0e7b701da0473e4b8efc155081a7a1c, type: 2}
   currentRound: {fileID: 11400000, guid: d258aeab18a75c946b8165143d6fc8da, type: 2}
+  playerInputsArr: {fileID: 11400000, guid: d3c10c56212c6004f9d399dc50351b08, type: 2}
   victoryText: {fileID: 6900938511868418213}
   onVictoryPlaySound: {fileID: 11400000, guid: 7750a3147cacb4f07933cc1da4d5e0c6, type: 2}
 --- !u!1 &960367330
@@ -27081,7 +27082,7 @@ Tilemap:
       - {fileID: 21300018, guid: fa75b484248e86f4cb964126c1d9061b, type: 3}
       - {fileID: 21300020, guid: fa75b484248e86f4cb964126c1d9061b, type: 3}
       - {fileID: 21300022, guid: fa75b484248e86f4cb964126c1d9061b, type: 3}
-      m_AnimationSpeed: 6.4181247
+      m_AnimationSpeed: 5.730053
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 18, y: 1, z: 0}
@@ -27099,7 +27100,7 @@ Tilemap:
       - {fileID: 21300018, guid: fa75b484248e86f4cb964126c1d9061b, type: 3}
       - {fileID: 21300020, guid: fa75b484248e86f4cb964126c1d9061b, type: 3}
       - {fileID: 21300022, guid: fa75b484248e86f4cb964126c1d9061b, type: 3}
-      m_AnimationSpeed: 5.558529
+      m_AnimationSpeed: 5.1845727
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -18, y: 4, z: 0}
@@ -27117,7 +27118,7 @@ Tilemap:
       - {fileID: 21300018, guid: fa75b484248e86f4cb964126c1d9061b, type: 3}
       - {fileID: 21300020, guid: fa75b484248e86f4cb964126c1d9061b, type: 3}
       - {fileID: 21300022, guid: fa75b484248e86f4cb964126c1d9061b, type: 3}
-      m_AnimationSpeed: 5.2405305
+      m_AnimationSpeed: 6.3233166
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:

@@ -38,13 +38,14 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\CharacterSelection\PlayerInputManager.cs" />
      <Compile Include="Assets\Scripts\Battle\OldStuff\Player3DControllerOld.cs" />
+     <Compile Include="Assets\Scripts\Victory\VictoryManager.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
-     <Compile Include="Assets\Scripts\Battle\VictoryManager.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
      <Compile Include="Assets\Scripts\Battle\SpellControllers\RushController.cs" />
      <Compile Include="Assets\Scripts\Maps\Map1\MapManager.cs" />
      <Compile Include="Assets\Scripts\CharacterSelection\OldStuff\CharacterSelection.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
+     <Compile Include="Assets\Scripts\Victory\VictoryController.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
      <Compile Include="Assets\Scripts\Battle\SpellControllers\LightningProjectileController.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
@@ -60,6 +61,7 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
      <Compile Include="Assets\Scripts\Maps\Map1\Map_Presets.cs" />
+     <Compile Include="Assets\Scripts\Battle\PointsManager.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
      <Compile Include="Assets\PlayerControls.cs" />
      <Compile Include="Assets\Scripts\Maps\Map1\TileData.cs" />

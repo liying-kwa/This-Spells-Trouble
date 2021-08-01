@@ -76,5 +76,5 @@ MonoBehaviour:
   boomerangSpeed: 3
   boomerangFastSpeed: 6
   boomerangCooldown: 7
-  shopCountdownTime: 30
+  shopCountdownTime: 10
   goldIncrement: 300

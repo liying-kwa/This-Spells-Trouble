@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -4647656742341367825}
   m_Layer: 0
   m_Name: Boomerang
-  m_TagString: Untagged
+  m_TagString: Spell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -150,7 +150,8 @@ MonoBehaviour:
   aimAngle: 0
   movement: {x: 0, y: 0}
   isBoomerangFast: 0
+  isReturning: 0
   srcPlayerID: 0
   damage: 0
-  onBoomerangCastPlaySound: {fileID: 11400000, guid: efc4960e5daa72b4fb2a955a5f81286a, type: 2}
-  onBoomerangHitPlaySound: {fileID: 11400000, guid: b379325fcdfaed44fa60f18d3e409d3b, type: 2}
+  onBoomerangCastPlaySound: {fileID: 0}
+  onBoomerangHitPlaySound: {fileID: 0}

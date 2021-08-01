@@ -77,4 +77,7 @@ public class GameConstants : ScriptableObject
     // SpellShopScene
     public int shopCountdownTime = 30;
     public int goldIncrement = 300;
+
+    // VictoryScene
+    public int showButtonsDuration = 5;
 }

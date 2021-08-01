@@ -69,10 +69,8 @@ public class CharSelectionController : MonoBehaviour
         playersChars.SetValue(playerID, 0);
         playersGold.SetValue(playerID, 0);
         playersPoints.SetValue(playerID, 0);
-        // Maybe shift this to somewhere else in the future
         playersSpells.SetSpell(playerID, 1, Spell.fireball);
-        // Test spells here
-        // playersSpells.SetSpell(playerID, 0, Spell.teleport);
+        // TODO: fireball spell level
         onJoinButtonPlaySound.Raise();
     }
 
