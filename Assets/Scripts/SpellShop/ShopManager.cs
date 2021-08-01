@@ -147,8 +147,6 @@ public class ShopManager : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
         countdownText.text = "Loading...";
-        // StartCoroutine(ChangeScene("BattleScene"));
-        // StartCoroutine(ChangeScene("SpellShopScene"));
         switch(currentRound.Value) {
             case 1:
                 StartCoroutine(ChangeScene("BattleScene1"));
@@ -166,7 +164,29 @@ public class ShopManager : MonoBehaviour
                 StartCoroutine(ChangeScene("BattleScene5"));
                 break;
             default:
-                Debug.Log("Unknown currentRound=" + currentRound.Value + ". Something is wrong.");
+                Debug.Log("CurrentRound=" + currentRound.Value + ". Tie breaker stage.");
+                // Randomly pick one of the battle scenes
+                int randomInt = Random.Range(1, 6);
+                switch (randomInt) {
+                    case 1:
+                        StartCoroutine(ChangeScene("BattleScene1"));
+                        break;
+                    case 2:
+                        StartCoroutine(ChangeScene("BattleScene2"));
+                        break;
+                    case 3:
+                        StartCoroutine(ChangeScene("BattleScene3"));
+                        break;
+                    case 4:
+                        StartCoroutine(ChangeScene("BattleScene4"));
+                        break;
+                    case 5:
+                        StartCoroutine(ChangeScene("BattleScene5"));
+                        break;
+                    default:
+                        Debug.Log("RandomInt=" + randomInt + ". Something is wrong.");
+                        break;
+                }
                 break;
         }
     }

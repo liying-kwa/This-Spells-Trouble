@@ -43,15 +43,19 @@ public class PointsManager : MonoBehaviour
                 }
                 ended = true;
                 roundEnded.SetValue(true);
-                StartCoroutine(Victory(winnerID));
+                playersPoints.SetValue(winnerID, playersPoints.GetValue(winnerID) + 1);
+                StartCoroutine(Victory());
+            } else if (playersAreAlive.GetNumTrue() == 0) {
+                // No one is awarded points
+                ended = true;
+                roundEnded.SetValue(true);
+                StartCoroutine(Victory());
             }
         }
     }
 
-    private IEnumerator Victory(int winnerID) {
+    private IEnumerator Victory() {
         onVictoryPlaySound.Raise();
-        playersPoints.SetValue(winnerID, playersPoints.GetValue(winnerID) + 1);
-        // victoryText.text = "Player " + (winnerID+1) + " wins!";
         string toShow = "";
         for (int i = 0; i < 4; i++) {
             toShow += "Player " + (i+1) + " score: " + playersPoints.GetValue(i) + "\n";
@@ -62,14 +66,33 @@ public class PointsManager : MonoBehaviour
         if (currentRound.Value < 5) {
             StartCoroutine(ChangeScene("SpellShopScene"));
         } else {
-            // Destroy all playerObjects and move to victory scene
+            // Check if there is a tie at the 1st place
+            int maxPoint = 0;
+            int numWinners = 0;
             for (int i = 0; i < 4; i++) {
-                if (playerInputsArr.GetValue(i) != null) {
-                    Destroy(playerInputsArr.GetValue(i).gameObject);
-                    playerInputsArr.SetValue(i, null);
+                if (playersPoints.GetValue(i) > maxPoint) {
+                    maxPoint = playersPoints.GetValue(i);
                 }
             }
-            StartCoroutine(ChangeScene("VictoryScene"));
+            for (int i = 0; i < 4; i++) {
+                if (playersPoints.GetValue(i) == maxPoint) {
+                    numWinners += 1;
+                }
+            }
+            if (numWinners > 1) {
+                // Tie breaker stage
+                StartCoroutine(ChangeScene("SpellShopScene"));
+            }
+            else {
+                // Destroy all playerObjects and move to victory scene
+                for (int i = 0; i < 4; i++) {
+                    if (playerInputsArr.GetValue(i) != null) {
+                        Destroy(playerInputsArr.GetValue(i).gameObject);
+                        playerInputsArr.SetValue(i, null);
+                    }
+                }
+                StartCoroutine(ChangeScene("VictoryScene"));
+            }
         }
     }
 
