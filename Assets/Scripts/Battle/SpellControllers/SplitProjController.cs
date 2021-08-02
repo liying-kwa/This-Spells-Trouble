@@ -62,5 +62,10 @@ public class SplitProjController : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+        // hits other spells and spells destroys itself
+        // probably need to make the spells not collide with each other on instantation
+        if (other.gameObject.tag == "Obstacle") {
+            Destroy(gameObject);
+        }
     }
 }

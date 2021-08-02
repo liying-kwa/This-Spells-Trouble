@@ -66,5 +66,9 @@ public class FireballController : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+        // hits other spells or obstacles and spells destroys itself
+        if (other.gameObject.tag == "Spell" || other.gameObject.tag == "Obstacle") {
+            Destroy(gameObject);
+        }
     }
 }

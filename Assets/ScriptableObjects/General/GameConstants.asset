@@ -25,6 +25,7 @@ MonoBehaviour:
   regenValue: 2
   spellAnimationDuration: 0.53
   hurtAnimationDuration: 0.53
+  playerOffset: 1
   lavaDamage: 1
   lavaDamageInverval: 0.5
   fireballCooldown: 3
@@ -78,3 +79,4 @@ MonoBehaviour:
   boomerangCooldown: 7
   shopCountdownTime: 10
   goldIncrement: 300
+  showButtonsDuration: 5

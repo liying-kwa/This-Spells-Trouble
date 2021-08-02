@@ -16,7 +16,7 @@ MonoBehaviour:
   Spell: 4
   Prefab: {fileID: 8173699006723731229, guid: ca92400774e2f431880335c4ecc99134, type: 3}
   Icon: {fileID: 2800000, guid: eb8729886059ff84199c473861f352b5, type: 3}
-  Description: Run quickly towards a fixed distance. Invulnerable to casting. Impacting
-    an enemy causes a shockwave and ends the spell.
-  Cost: 300
+  Description: 'Run quickly towards a fixed distance based on player''s aim direction.
+    Invulnerable to casting. '
+  Cost: 100
   Upgrade: 'L2 - Reduced Cooldown; L3 - Increased Knockback '

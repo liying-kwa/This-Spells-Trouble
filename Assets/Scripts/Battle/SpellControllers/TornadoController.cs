@@ -62,7 +62,7 @@ public class TornadoController : MonoBehaviour
             }
     
         }
-        // when tornado hits other spells it destroys other spells but not itself
+        // when tornado hits other spells it destroys other spells but not itself, doesn't destroy itself when hit obstacle
         if (other.gameObject.tag == "Spell") {
             Destroy(other.gameObject);
         }
