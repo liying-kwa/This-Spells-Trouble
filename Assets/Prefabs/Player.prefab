@@ -506,7 +506,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.14, y: 0.28}
+  m_Size: {x: 0.21, y: 0.31}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -522,7 +522,7 @@ Animator:
   m_GameObject: {fileID: 6812016318018511552}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 243e01da355f38f46933812f53782243, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3078456df88fbbf4499eaa781f09d764, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -656,6 +656,7 @@ MonoBehaviour:
   - {fileID: 9100000, guid: 774237fe110c08641b001090839879dc, type: 2}
   - {fileID: 9100000, guid: 243e01da355f38f46933812f53782243, type: 2}
   - {fileID: 9100000, guid: b1eb48d6571f5134c94ed09d097bef72, type: 2}
+  - {fileID: 9100000, guid: 3078456df88fbbf4499eaa781f09d764, type: 2}
   playerID: 0
   onPlatform: 1
   allSpellModels:

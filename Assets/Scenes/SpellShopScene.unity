@@ -4517,25 +4517,11 @@ MonoBehaviour:
   - {fileID: 2628309773472256172}
   - {fileID: 2628309772326267109}
   - {fileID: 2628309772794049437}
-  P1SkillStatus1: []
-  P1SkillStatus2: []
-  P1SkillStatus3: []
-  P1SkillStatus4: []
-  P2SkillStatus1: []
-  P2SkillStatus2: []
-  P2SkillStatus3: []
-  P2SkillStatus4: []
-  P3SkillStatus1: []
-  P3SkillStatus2: []
-  P3SkillStatus3: []
-  P3SkillStatus4: []
-  P4SkillStatus1: []
-  P4SkillStatus2: []
-  P4SkillStatus3: []
-  P4SkillStatus4: []
-  sorceressAnimatorController: {fileID: 9100000, guid: 774237fe110c08641b001090839879dc, type: 2}
-  cultistAnimatorController: {fileID: 9100000, guid: 243e01da355f38f46933812f53782243, type: 2}
-  possessedEnemyAnimatorController: {fileID: 9100000, guid: b1eb48d6571f5134c94ed09d097bef72, type: 2}
+  animatorControllers:
+  - {fileID: 9100000, guid: 774237fe110c08641b001090839879dc, type: 2}
+  - {fileID: 9100000, guid: 243e01da355f38f46933812f53782243, type: 2}
+  - {fileID: 9100000, guid: b1eb48d6571f5134c94ed09d097bef72, type: 2}
+  - {fileID: 9100000, guid: 3078456df88fbbf4499eaa781f09d764, type: 2}
 --- !u!1 &2035751917
 GameObject:
   m_ObjectHideFlags: 0

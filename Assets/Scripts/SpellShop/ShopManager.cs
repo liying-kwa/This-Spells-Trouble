@@ -28,27 +28,28 @@ public class ShopManager : MonoBehaviour
     public Text[] goldTexts;
 
 
-    public List<GameObject> P1SkillStatus1;
-    public List<GameObject> P1SkillStatus2;
-    public List<GameObject> P1SkillStatus3;
-    public List<GameObject> P1SkillStatus4;
-    public List<GameObject> P2SkillStatus1;
-    public List<GameObject> P2SkillStatus2;
-    public List<GameObject> P2SkillStatus3;
-    public List<GameObject> P2SkillStatus4;
-    public List<GameObject> P3SkillStatus1;
-    public List<GameObject> P3SkillStatus2;
-    public List<GameObject> P3SkillStatus3;
-    public List<GameObject> P3SkillStatus4;
-    public List<GameObject> P4SkillStatus1;
-    public List<GameObject> P4SkillStatus2;
-    public List<GameObject> P4SkillStatus3;
-    public List<GameObject> P4SkillStatus4;
+    // public List<GameObject> P1SkillStatus1;
+    // public List<GameObject> P1SkillStatus2;
+    // public List<GameObject> P1SkillStatus3;
+    // public List<GameObject> P1SkillStatus4;
+    // public List<GameObject> P2SkillStatus1;
+    // public List<GameObject> P2SkillStatus2;
+    // public List<GameObject> P2SkillStatus3;
+    // public List<GameObject> P2SkillStatus4;
+    // public List<GameObject> P3SkillStatus1;
+    // public List<GameObject> P3SkillStatus2;
+    // public List<GameObject> P3SkillStatus3;
+    // public List<GameObject> P3SkillStatus4;
+    // public List<GameObject> P4SkillStatus1;
+    // public List<GameObject> P4SkillStatus2;
+    // public List<GameObject> P4SkillStatus3;
+    // public List<GameObject> P4SkillStatus4;
 
     // Animation
-    public RuntimeAnimatorController sorceressAnimatorController;
-    public RuntimeAnimatorController cultistAnimatorController;
-    public RuntimeAnimatorController possessedEnemyAnimatorController;
+    // public RuntimeAnimatorController sorceressAnimatorController;
+    // public RuntimeAnimatorController cultistAnimatorController;
+    // public RuntimeAnimatorController possessedEnemyAnimatorController;
+    public RuntimeAnimatorController[] animatorControllers;
 
     void Awake() {
         currentRound.ApplyChange(1);
@@ -83,17 +84,19 @@ public class ShopManager : MonoBehaviour
                 continue;
             }
             // Render correct animator for characters
-            switch (playersChars.GetValue(i)) {
-                case 0:
-                    characters[i].GetComponent<Animator>().runtimeAnimatorController = sorceressAnimatorController;
-                    break;
-                case 1:
-                    characters[i].GetComponent<Animator>().runtimeAnimatorController = cultistAnimatorController;
-                    break;
-                case 2:
-                    characters[i].GetComponent<Animator>().runtimeAnimatorController = possessedEnemyAnimatorController;
-                    break;
-            }
+            // switch (playersChars.GetValue(i)) {
+            //     case 0:
+            //         characters[i].GetComponent<Animator>().runtimeAnimatorController = sorceressAnimatorController;
+            //         break;
+            //     case 1:
+            //         characters[i].GetComponent<Animator>().runtimeAnimatorController = cultistAnimatorController;
+            //         break;
+            //     case 2:
+            //         characters[i].GetComponent<Animator>().runtimeAnimatorController = possessedEnemyAnimatorController;
+            //         break;
+            // }
+            Animator animator = characters[i].GetComponent<Animator>();
+            animator.runtimeAnimatorController = animatorControllers[playersChars.GetValue(i)];
             // Pass in GameObjects accordingly
             GameObject player = playerInputsArr.GetValue(i).gameObject;
             ShopController controller = player.GetComponent<ShopController>();

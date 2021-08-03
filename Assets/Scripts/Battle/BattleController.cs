@@ -35,9 +35,6 @@ public class BattleController : MonoBehaviour
     SpriteRenderer knockbackSpriteRenderer;
 
     // Animation
-    // public RuntimeAnimatorController sorceressAnimatorController;
-    // public RuntimeAnimatorController cultistAnimatorController;
-    // public RuntimeAnimatorController possessedEnemyAnimatorController;
     public RuntimeAnimatorController[] animatorControllers;
     public static readonly string[] idleDirections = {"Idle_N", "Idle_W", "Idle_S", "Idle_E"};
     public static readonly string[] walkDirections = {"Walk_N", "Walk_W", "Walk_S", "Walk_E"};
@@ -181,17 +178,6 @@ public class BattleController : MonoBehaviour
 
     void Start() {
         // Render the correct character sprite & animation
-        // switch (playersChars.GetValue(playerID)) {
-        //     case 0:
-        //         animator.runtimeAnimatorController = sorceressAnimatorController;
-        //         break;
-        //     case 1:
-        //         animator.runtimeAnimatorController = cultistAnimatorController;
-        //         break;
-        //     case 2:
-        //         animator.runtimeAnimatorController = possessedEnemyAnimatorController;
-        //         break;
-        // }
         animator.runtimeAnimatorController = animatorControllers[playersChars.GetValue(playerID)];
     }
 

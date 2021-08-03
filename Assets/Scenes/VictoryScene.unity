@@ -1821,7 +1821,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameConstants: {fileID: 11400000, guid: fdff1fd733c49bf49a390264049c3495, type: 2}
-  playerInputsArr: {fileID: 11400000, guid: d3c10c56212c6004f9d399dc50351b08, type: 2}
   playersPoints: {fileID: 11400000, guid: e0e7b701da0473e4b8efc155081a7a1c, type: 2}
   playersChars: {fileID: 11400000, guid: 680f5bb198ef26644aa397008c921dae, type: 2}
   buttons:
@@ -1852,6 +1851,7 @@ MonoBehaviour:
   - {fileID: 9100000, guid: 774237fe110c08641b001090839879dc, type: 2}
   - {fileID: 9100000, guid: 243e01da355f38f46933812f53782243, type: 2}
   - {fileID: 9100000, guid: b1eb48d6571f5134c94ed09d097bef72, type: 2}
+  - {fileID: 9100000, guid: 3078456df88fbbf4499eaa781f09d764, type: 2}
 --- !u!114 &1594113343
 MonoBehaviour:
   m_ObjectHideFlags: 0
