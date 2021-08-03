@@ -14,6 +14,7 @@ public class PointsManager : MonoBehaviour
     public PlayerInputsArr playerInputsArr;
 
     // GameObjects
+    public GameObject victoryPanel;
     public Text victoryText;
 
     // Game state
@@ -27,6 +28,7 @@ public class PointsManager : MonoBehaviour
     void Awake()
     {
         roundEnded.SetValue(false);
+        victoryPanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -58,8 +60,15 @@ public class PointsManager : MonoBehaviour
         onVictoryPlaySound.Raise();
         string toShow = "";
         for (int i = 0; i < 4; i++) {
-            toShow += "Player " + (i+1) + " score: " + playersPoints.GetValue(i) + "\n";
+            if (playersPoints.GetValue(i) == -1) {
+                break;
+            }
+            if (i != 0) {
+                toShow += "\n";
+            }
+            toShow += "Player " + (i+1) + " score: " + playersPoints.GetValue(i);
         }
+        victoryPanel.SetActive(true);
         victoryText.text = toShow;
         yield return new WaitForSeconds(10);
         // if (currentRound.Value < 1) {
