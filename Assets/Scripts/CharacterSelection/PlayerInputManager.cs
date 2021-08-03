@@ -11,10 +11,12 @@ public class PlayerInputManager : MonoBehaviour
     public GameObject[] P2Characters;
     public GameObject[] P3Characters;
     public GameObject[] P4Characters;
-    public Text P1Text;
-    public Text P2Text;
-    public Text P3Text;
-    public Text P4Text;
+    // public Text P1Text;
+    // public Text P2Text;
+    // public Text P3Text;
+    // public Text P4Text;
+    public GameObject[] joinTextObjects;
+    public GameObject[] readyPanelObjects;
 
     // ScriptableObjects
     public PlayerInputsArr playerInputsArr;
@@ -56,19 +58,27 @@ public class PlayerInputManager : MonoBehaviour
         switch (playerID) {
             case 0:
                 playerObject.GetComponent<CharSelectionController>().characters = P1Characters;
-                playerObject.GetComponent<CharSelectionController>().text = P1Text;
+                // playerObject.GetComponent<CharSelectionController>().text = P1Text;
+                playerObject.GetComponent<CharSelectionController>().joinTextObject = joinTextObjects[0];
+                playerObject.GetComponent<CharSelectionController>().readyPanelObject = readyPanelObjects[0];
                 break;
             case 1:
                 playerObject.GetComponent<CharSelectionController>().characters = P2Characters;
-                playerObject.GetComponent<CharSelectionController>().text = P2Text;
+                // playerObject.GetComponent<CharSelectionController>().text = P2Text;
+                playerObject.GetComponent<CharSelectionController>().joinTextObject = joinTextObjects[1];
+                playerObject.GetComponent<CharSelectionController>().readyPanelObject = readyPanelObjects[1];
                 break;
             case 2:
                 playerObject.GetComponent<CharSelectionController>().characters = P3Characters;
-                playerObject.GetComponent<CharSelectionController>().text = P3Text;
+                // playerObject.GetComponent<CharSelectionController>().text = P3Text;
+                playerObject.GetComponent<CharSelectionController>().joinTextObject = joinTextObjects[2];
+                playerObject.GetComponent<CharSelectionController>().readyPanelObject = readyPanelObjects[2];
                 break;
             case 3:
                 playerObject.GetComponent<CharSelectionController>().characters = P4Characters;
-                playerObject.GetComponent<CharSelectionController>().text = P4Text;
+                // playerObject.GetComponent<CharSelectionController>().text = P4Text;
+                playerObject.GetComponent<CharSelectionController>().joinTextObject = joinTextObjects[3];
+                playerObject.GetComponent<CharSelectionController>().readyPanelObject = readyPanelObjects[3];
                 break;
         }
     }

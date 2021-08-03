@@ -21,7 +21,9 @@ public class CharSelectionController : MonoBehaviour
     // Game State
     public int playerID;
     public GameObject[] characters;
-    public Text text;
+    // public Text text;
+    public GameObject joinTextObject;
+    public GameObject readyPanelObject;
     int selectedChar = 0;
     bool ready = false;
     
@@ -53,17 +55,19 @@ public class CharSelectionController : MonoBehaviour
         ready = !ready;
         playersReady.SetValue(playerID, ready);
         if (ready) {
-            text.text = "Ready";
-            //audioSource.PlayOneShot(readyAudio);
+            // text.text = "Ready";
+            readyPanelObject.SetActive(true);
             onReadyButtonPlaySound.Raise();
         } else {
-            text.text = "";
+            // text.text = "";
+            readyPanelObject.SetActive(false);
         }
     }
 
     void Awake() {
         DontDestroyOnLoad(this.gameObject);
-        text.text = "";
+        // text.text = "";
+        joinTextObject.SetActive(false);
         characters[selectedChar].SetActive(true);
         // Initialise some values
         playersChars.SetValue(playerID, 0);
