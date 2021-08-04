@@ -342,6 +342,16 @@ public class BattleController : MonoBehaviour
         if (spell == Spell.nullSpell) {
             return;
         }
+        // Stop checkregen coroutine, if running
+        if (checkRegenCoroutine != null) {
+            StopCoroutine(checkRegenCoroutine);
+            checkRegenCoroutine = null;
+        }
+        // Stop regen coroutine, if running
+        if (regenCoroutine != null) {
+            StopCoroutine(regenCoroutine);
+            regenCoroutine = null;
+        }
         // Animation
         castingSpell = true;
         if (spellAnimationCoroutine != null) {
