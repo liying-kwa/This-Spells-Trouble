@@ -1456,11 +1456,11 @@ MonoBehaviour:
   offensiveSpells:
   - {fileID: 11400000, guid: 1a6d4d35545aa7545bb3c5c8c68ba8d6, type: 2}
   - {fileID: 11400000, guid: 6fb0099f014e8f642a21e21d93736a70, type: 2}
-  - {fileID: 11400000, guid: 0ec38bbd67e14cf43aca56403f219844, type: 2}
-  - {fileID: 11400000, guid: 20e3905f19fc72249bb9f02df29a243c, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
   defensiveSpells:
-  - {fileID: 11400000, guid: 0b57f0df8b14e944cbe388785d6d4afa, type: 2}
-  - {fileID: 11400000, guid: 9dfb3e02dbea4bc4ab7ebf2de99dacae, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
   emptySprite: {fileID: 3051368437037051611, guid: 0e337840fbf1ecd449e0e699ea079269, type: 3}
   skillNameText: {fileID: 1760010284}
   skillCostText: {fileID: 483374030}
@@ -7224,11 +7224,11 @@ MonoBehaviour:
   offensiveSpells:
   - {fileID: 11400000, guid: 1a6d4d35545aa7545bb3c5c8c68ba8d6, type: 2}
   - {fileID: 11400000, guid: 6fb0099f014e8f642a21e21d93736a70, type: 2}
-  - {fileID: 11400000, guid: 0ec38bbd67e14cf43aca56403f219844, type: 2}
-  - {fileID: 11400000, guid: 20e3905f19fc72249bb9f02df29a243c, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
   defensiveSpells:
-  - {fileID: 11400000, guid: 0b57f0df8b14e944cbe388785d6d4afa, type: 2}
-  - {fileID: 11400000, guid: 9dfb3e02dbea4bc4ab7ebf2de99dacae, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
   emptySprite: {fileID: 3051368437037051611, guid: 0e337840fbf1ecd449e0e699ea079269, type: 3}
   skillNameText: {fileID: 2628309774032248335}
   skillCostText: {fileID: 2628309772755602925}
@@ -8612,11 +8612,11 @@ MonoBehaviour:
   offensiveSpells:
   - {fileID: 11400000, guid: 1a6d4d35545aa7545bb3c5c8c68ba8d6, type: 2}
   - {fileID: 11400000, guid: 6fb0099f014e8f642a21e21d93736a70, type: 2}
-  - {fileID: 11400000, guid: 0ec38bbd67e14cf43aca56403f219844, type: 2}
-  - {fileID: 11400000, guid: 20e3905f19fc72249bb9f02df29a243c, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
   defensiveSpells:
-  - {fileID: 11400000, guid: 0b57f0df8b14e944cbe388785d6d4afa, type: 2}
-  - {fileID: 11400000, guid: 9dfb3e02dbea4bc4ab7ebf2de99dacae, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
   emptySprite: {fileID: 3051368437037051611, guid: 0e337840fbf1ecd449e0e699ea079269, type: 3}
   skillNameText: {fileID: 2628309774231618935}
   skillCostText: {fileID: 2628309772288087701}
@@ -11316,11 +11316,11 @@ MonoBehaviour:
   offensiveSpells:
   - {fileID: 11400000, guid: 1a6d4d35545aa7545bb3c5c8c68ba8d6, type: 2}
   - {fileID: 11400000, guid: 6fb0099f014e8f642a21e21d93736a70, type: 2}
-  - {fileID: 11400000, guid: 0ec38bbd67e14cf43aca56403f219844, type: 2}
-  - {fileID: 11400000, guid: 20e3905f19fc72249bb9f02df29a243c, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
   defensiveSpells:
-  - {fileID: 11400000, guid: 0b57f0df8b14e944cbe388785d6d4afa, type: 2}
-  - {fileID: 11400000, guid: 9dfb3e02dbea4bc4ab7ebf2de99dacae, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
   emptySprite: {fileID: 3051368437037051611, guid: 0e337840fbf1ecd449e0e699ea079269, type: 3}
   skillNameText: {fileID: 2628309773016147526}
   skillCostText: {fileID: 2628309773756970404}
@@ -13500,7 +13500,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

@@ -9605,6 +9605,8 @@ MonoBehaviour:
   damage: 0
   onFireballCastPlaySound: {fileID: 11400000, guid: 9938e7ea7043043cd8a6dff19707abb6, type: 2}
   onFireballHitPlaySound: {fileID: 11400000, guid: ed35b830687b745e7a9adada6d4a9bf0, type: 2}
+  thrust: 1
+  knockbackPosition: {x: 0, y: 0}
 --- !u!1 &100006
 GameObject:
   m_ObjectHideFlags: 0

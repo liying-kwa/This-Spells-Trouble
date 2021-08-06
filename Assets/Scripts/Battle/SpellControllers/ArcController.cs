@@ -25,9 +25,9 @@ public class ArcController : MonoBehaviour
     public float damage;
 
     // Sound Events
-    // [Header("Sound Events")]
-    // public GameEvent onArcCastPlaySound;
-    // public GameEvent onArcHitPlaySound;
+    [Header("Sound Events")]
+    public GameEvent onArcCastPlaySound;
+    public GameEvent onArcHitPlaySound;
     void Start()
     {
         // Get components
@@ -40,8 +40,8 @@ public class ArcController : MonoBehaviour
         arcBody.AddForce(forwardMovement * gameConstants.arcForwardSpeed, ForceMode2D.Impulse);
         this.transform.Rotate(0f,0f,aimAngle+gameConstants.arcAngle);
         arcBody.angularVelocity = -gameConstants.arcAngle*2/gameConstants.arcDestroyTime;
-        Debug.Log("angular velocity is "+ arcBody.angularVelocity);
-        //onArcCastPlaySound.Raise();
+        // Debug.Log("angular velocity is "+ arcBody.angularVelocity);
+        onArcCastPlaySound.Raise();
     }
 
     // Update is called once per frame
@@ -49,6 +49,7 @@ public class ArcController : MonoBehaviour
     {
         currentDirection = transform.up; 
         arcBody.velocity = currentDirection * arcBody.velocity.magnitude;
+        forwardMovement = arcBody.velocity;
         Destroy(gameObject, gameConstants.arcDestroyTime);
         //Debug.Log("arcBody velocity is " + arcBody.velocity);
     }
@@ -60,17 +61,22 @@ public class ArcController : MonoBehaviour
             if (srcPlayerID != dstPlayerID) {
                 // Debug.Log("Collided with other player!");
                 // TO-DO: the forwardmovement might be wrong but I can't math now - Jo
-                other.gameObject.GetComponent<Rigidbody2D>().AddForce(forwardMovement * gameConstants.arcForwardSpeed * gameConstants.arcForce, ForceMode2D.Impulse);
+                float knockback = playersKnockback.GetValue(dstPlayerID);
+                float forceMultiplier = gameConstants.arcForce * (gameConstants.knockbackInitial + gameConstants.knockbackMultiplier * Mathf.Log(knockback + 1));
+                other.gameObject.GetComponent<Rigidbody2D>().AddForce(forwardMovement * forceMultiplier, ForceMode2D.Impulse);
                 playersKnockback.ApplyChange(dstPlayerID, damage);
                 other.gameObject.GetComponent<BattleController>().Hurt();
                 //audioSource.Stop();
                 //AudioSource.PlayClipAtPoint(hitAudio, new Vector3(0, 0, 0));
-                //onArcHitPlaySound.Raise();
+                onArcHitPlaySound.Raise();
                 Destroy(gameObject);
             }
         }
         // hits other spells or obstacles and spells destroys itself
-        if (other.gameObject.tag == "Spell" || other.gameObject.tag == "Obstacle") {
+        // if (other.gameObject.tag == "Spell" || other.gameObject.tag == "Obstacle") {
+        //     Destroy(gameObject);
+        // }
+        if (other.gameObject.tag == "Obstacle") {
             Destroy(gameObject);
         }
     }

@@ -34,7 +34,7 @@ MonoBehaviour:
   fireballDestroyTime: 1.5
   fireballDamage: 15
   teleportDistance: 3
-  teleportCooldown: 5
+  teleportCooldown: 7
   teleportDestroyTime: 0.5
   lightningProjectileCooldown: 6
   lightningProjectileSpeed: 2.25
@@ -49,7 +49,7 @@ MonoBehaviour:
   rushDestroyTime: 1
   rushSpeed: 5
   rushDistance: 5
-  rushCooldown: 10
+  rushCooldown: 5
   arcDamage: 40
   arcForce: 15
   arcForwardSpeed: 1.5
@@ -77,6 +77,42 @@ MonoBehaviour:
   boomerangSpeed: 3
   boomerangFastSpeed: 6
   boomerangCooldown: 7
+  laserDamage: 5
+  laserForce: 0
+  laserCooldown: 1
+  laserSpeed: 3
+  laserDestroyTime: 4
+  cloudCooldown: 10
+  cloudDestroyTime: 3
+  cloudSpeed: 2
+  mineThrowSpeed: 1.25
+  mineThrowTime: 0.25
+  mineThrowRows: 3
+  mineThrowColumns: 3
+  mineThrowCooldown: 15
+  mineGroundDamage: 10
+  mineGroundForce: 5
+  mineGroundSpeed: 1.5
+  mineGroundDestroyTime: 5
+  groundAttackDamage: 12
+  groundAttackDistance: 6
+  groundAttackDestroyTime: 3
+  groundAttackForce: 8
+  groundAttackCooldown: 5
+  iceAttackDamage: 5
+  iceAttackDistance: 3.5
+  iceAttackDestroyTime: 2.5
+  iceAttackForce: 8
+  iceAttackCooldown: 5
+  shockwaveCooldown: 3
+  shockwaveSpeed: 3.5
+  shockwaveForce: 5
+  shockwaveDestroyTime: 0.5
+  shockwaveDamage: 10
+  wallDistance: 1.3
+  wallDestroyTime: 9
+  wallCooldown: 12
+  wallForce: 0.01
   shopCountdownTime: 30
-  goldIncrement: 300
+  goldIncrement: 500
   showButtonsDuration: 5

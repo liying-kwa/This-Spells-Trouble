@@ -86,7 +86,10 @@ public class SplitterController : MonoBehaviour
             }
         }
         // hits other spells or obstacles and spells destroys itself
-        if (other.gameObject.tag == "Spell" || other.gameObject.tag == "Obstacle") {
+        // if (other.gameObject.tag == "Spell" || other.gameObject.tag == "Obstacle") {
+        //     Destroy(gameObject);
+        // }
+        if (other.gameObject.tag == "Obstacle") {
             Destroy(gameObject);
         }
     }

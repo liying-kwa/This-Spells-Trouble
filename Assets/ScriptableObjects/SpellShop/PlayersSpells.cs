@@ -11,7 +11,14 @@ public enum Spell{
     rush = 4,
     arc = 5,
     splitter = 6,
-    boomerang = 7
+    boomerang = 7,
+    laser = 8,
+    cloud = 9,
+    minethrow = 10,
+    groundattack = 11,
+    iceattack = 12,
+    shockwave = 13,
+    wall = 14
 
 }
 

@@ -232,6 +232,8 @@ public class ShopController : MonoBehaviour
             switch (allSpellModels[i].Spell) {
                 case Spell.teleport:
                 case Spell.rush:
+                case Spell.cloud:
+                case Spell.wall:
                     defensiveSpellModels.Add(allSpellModels[i]);
                     break;
                 case Spell.fireball:
@@ -240,6 +242,11 @@ public class ShopController : MonoBehaviour
                 case Spell.arc:
                 case Spell.splitter:
                 case Spell.boomerang:
+                case Spell.laser:
+                case Spell.minethrow:
+                case Spell.groundattack:
+                case Spell.iceattack:
+                case Spell.shockwave:
                     offensiveSpellModels.Add(allSpellModels[i]);
                     break;
             }
@@ -255,54 +262,72 @@ public class ShopController : MonoBehaviour
     }
 
     void renderSpell(Spell spell, int selectedSlot) {
-        SpellModel spellModel;
-        switch (spell) {
-            case Spell.fireball:
-                spellModel = allSpellModels[(int) Spell.fireball];
-                selectedSpell = Spell.fireball;
-                break;
-            case Spell.teleport:
-                spellModel = allSpellModels[(int) Spell.teleport];
-                selectedSpell = Spell.teleport;
-                break;
-            case Spell.lightning:
-                spellModel = allSpellModels[(int) Spell.lightning];
-                selectedSpell = Spell.lightning;
-                break;
-            case Spell.tornado:
-                spellModel = allSpellModels[(int) Spell.tornado];
-                selectedSpell = Spell.tornado;
-                break;
-            case Spell.rush:
-                spellModel = allSpellModels[(int) Spell.rush];
-                selectedSpell = Spell.rush;
-                break;
-            case Spell.arc:
-                spellModel = allSpellModels[(int) Spell.arc];
-                selectedSpell = Spell.arc;
-                break;
-            case Spell.splitter:
-                spellModel = allSpellModels[(int) Spell.splitter];
-                selectedSpell = Spell.splitter;
-                break;
-            case Spell.boomerang:
-                spellModel = allSpellModels[(int) Spell.boomerang];
-                selectedSpell = Spell.boomerang;
-                break;
-            default:
-                slotIcons[selectedSlot].GetComponent<RawImage>().texture = emptyIcon;
-                selectedSpell = Spell.nullSpell;
-                // TODO: set spellinfo to inactive?
-                spellNameText.text = "";
-                spellCostText.text = "";
-                spellDescText.text = "";
-                spellUpgradeText.text = "";
-                return;
+        // SpellModel spellModel;
+        // switch (spell) {
+        //     case Spell.fireball:
+        //         spellModel = allSpellModels[(int) Spell.fireball];
+        //         selectedSpell = Spell.fireball;
+        //         break;
+        //     case Spell.teleport:
+        //         spellModel = allSpellModels[(int) Spell.teleport];
+        //         selectedSpell = Spell.teleport;
+        //         break;
+        //     case Spell.lightning:
+        //         spellModel = allSpellModels[(int) Spell.lightning];
+        //         selectedSpell = Spell.lightning;
+        //         break;
+        //     case Spell.tornado:
+        //         spellModel = allSpellModels[(int) Spell.tornado];
+        //         selectedSpell = Spell.tornado;
+        //         break;
+        //     case Spell.rush:
+        //         spellModel = allSpellModels[(int) Spell.rush];
+        //         selectedSpell = Spell.rush;
+        //         break;
+        //     case Spell.arc:
+        //         spellModel = allSpellModels[(int) Spell.arc];
+        //         selectedSpell = Spell.arc;
+        //         break;
+        //     case Spell.splitter:
+        //         spellModel = allSpellModels[(int) Spell.splitter];
+        //         selectedSpell = Spell.splitter;
+        //         break;
+        //     case Spell.boomerang:
+        //         spellModel = allSpellModels[(int) Spell.boomerang];
+        //         selectedSpell = Spell.boomerang;
+        //         break;
+        //     default:
+        //         slotIcons[selectedSlot].GetComponent<RawImage>().texture = emptyIcon;
+        //         selectedSpell = Spell.nullSpell;
+        //         // TODO: set spellinfo to inactive?
+        //         spellNameText.text = "";
+        //         spellCostText.text = "";
+        //         spellDescText.text = "";
+        //         spellUpgradeText.text = "";
+        //         return;
+        // }
+        // slotIcons[selectedSlot].GetComponent<RawImage>().texture = spellModel.Icon;
+        // spellNameText.text = spellModel.Name;
+        // spellCostText.text = spellModel.Cost.ToString();
+        // spellDescText.text = spellModel.Description;
+        // spellUpgradeText.text = spellModel.Upgrade;
+
+        if (spell == Spell.nullSpell) {
+            slotIcons[selectedSlot].GetComponent<RawImage>().texture = emptyIcon;
+            selectedSpell = Spell.nullSpell;
+            // TODO: set spellinfo to inactive?
+            spellNameText.text = "";
+            spellCostText.text = "";
+            spellDescText.text = "";
+            spellUpgradeText.text = "";
+        } else {
+            SpellModel spellModel = allSpellModels[(int) spell];
+            selectedSpell = spell;
+            slotIcons[selectedSlot].GetComponent<RawImage>().texture = spellModel.Icon;
+            spellNameText.text = spellModel.Name;
+            spellCostText.text = spellModel.Cost.ToString();
+            spellDescText.text = spellModel.Description;
+            spellUpgradeText.text = spellModel.Upgrade;
         }
-        slotIcons[selectedSlot].GetComponent<RawImage>().texture = spellModel.Icon;
-        spellNameText.text = spellModel.Name;
-        spellCostText.text = spellModel.Cost.ToString();
-        spellDescText.text = spellModel.Description;
-        spellUpgradeText.text = spellModel.Upgrade;
     }
 }

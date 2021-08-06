@@ -162,6 +162,34 @@ public class BattleController : MonoBehaviour
                     cooldownDurations[i] = gameConstants.boomerangCooldown;
                     spellIcons[i].GetComponent<RawImage>().texture = allSpellModels[(int) Spell.boomerang].Icon;
                     break;
+                case Spell.laser:
+                    cooldownDurations[i] = gameConstants.laserCooldown;
+                    spellIcons[i].GetComponent<RawImage>().texture = allSpellModels[(int) Spell.laser].Icon;
+                    break;
+                case Spell.cloud:
+                    cooldownDurations[i] = gameConstants.cloudCooldown;
+                    spellIcons[i].GetComponent<RawImage>().texture = allSpellModels[(int) Spell.cloud].Icon;
+                    break;
+                case Spell.minethrow:
+                    cooldownDurations[i] = gameConstants.mineThrowCooldown;
+                    spellIcons[i].GetComponent<RawImage>().texture = allSpellModels[(int) Spell.minethrow].Icon;
+                    break;
+                case Spell.groundattack:
+                    cooldownDurations[i] = gameConstants.groundAttackCooldown;
+                    spellIcons[i].GetComponent<RawImage>().texture = allSpellModels[(int) Spell.groundattack].Icon;
+                    break;
+                case Spell.iceattack:
+                    cooldownDurations[i] = gameConstants.iceAttackCooldown;
+                    spellIcons[i].GetComponent<RawImage>().texture = allSpellModels[(int) Spell.iceattack].Icon;
+                    break;
+                case Spell.shockwave:
+                    cooldownDurations[i] = gameConstants.shockwaveCooldown;
+                    spellIcons[i].GetComponent<RawImage>().texture = allSpellModels[(int) Spell.shockwave].Icon;
+                    break;
+                case Spell.wall:
+                    cooldownDurations[i] = gameConstants.wallCooldown;
+                    spellIcons[i].GetComponent<RawImage>().texture = allSpellModels[(int) Spell.wall].Icon;
+                    break;
                 default:
                     spellIcons[i].GetComponent<RawImage>().texture = emptySprite;
                     break;
@@ -385,6 +413,27 @@ public class BattleController : MonoBehaviour
             case Spell.boomerang:
                 CastBoomerang(slot);
                 break;
+            case Spell.laser:
+                CastLaser(slot);
+                break;
+            case Spell.cloud:
+                CastCloud(slot);
+                break;
+            case Spell.minethrow:
+                CastMineThrow(slot);
+                break;
+            case Spell.groundattack:
+                CastGroundAttack(slot);
+                break;
+            case Spell.iceattack:
+                CastIceAttack(slot);
+                break;
+            case Spell.shockwave:
+                CastShockwave(slot);
+                break;
+            case Spell.wall:
+                CastWall(slot);
+                break;
             default:
                 break;
         }
@@ -536,6 +585,56 @@ public class BattleController : MonoBehaviour
         boomerangObject.GetComponent<BoomerangController>().srcPlayerID = playerID;
         boomerangObject.GetComponent<BoomerangController>().aimAngle = aimAngle;
         StartCoroutine(SpellCooldown(slot, gameConstants.boomerangCooldown));
+    }
+
+    void CastLaser(int slot) {
+        // GameObject boomerangObject = Instantiate(boomerangPrefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+        GameObject laserObject = Instantiate(allSpellModels[(int) Spell.laser].Prefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+        laserObject.GetComponent<LaserController>().srcPlayerID = playerID;
+        laserObject.GetComponent<LaserController>().aimAngle = aimAngle;
+        StartCoroutine(SpellCooldown(slot, gameConstants.laserCooldown));
+    }
+    void CastCloud(int slot) {
+        // GameObject boomerangObject = Instantiate(boomerangPrefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+        GameObject cloudObject = Instantiate(allSpellModels[(int) Spell.cloud].Prefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+        cloudObject.GetComponent<CloudController>().srcPlayerID = playerID;
+        cloudObject.GetComponent<CloudController>().aimAngle = aimAngle;
+        StartCoroutine(SpellCooldown(slot, gameConstants.cloudCooldown));
+    }
+    void CastMineThrow(int slot) {
+        // GameObject boomerangObject = Instantiate(boomerangPrefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+        GameObject mineObject = Instantiate(allSpellModels[(int) Spell.minethrow].Prefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+        mineObject.GetComponent<MineThrowController>().srcPlayerID = playerID;
+        mineObject.GetComponent<MineThrowController>().aimAngle = aimAngle;
+        StartCoroutine(SpellCooldown(slot, gameConstants.mineThrowCooldown));
+    }
+    void CastGroundAttack(int slot) {
+        // GameObject boomerangObject = Instantiate(boomerangPrefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+        GameObject groundObject = Instantiate(allSpellModels[(int) Spell.groundattack].Prefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+        groundObject.GetComponent<GroundAttackController>().srcPlayerID = playerID;
+        groundObject.GetComponent<GroundAttackController>().aimAngle = aimAngle;
+        StartCoroutine(SpellCooldown(slot, gameConstants.groundAttackCooldown));
+    }
+    void CastIceAttack(int slot) {
+        // GameObject boomerangObject = Instantiate(boomerangPrefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+        GameObject iceObject = Instantiate(allSpellModels[(int) Spell.iceattack].Prefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+        iceObject.GetComponent<IceAttackController>().srcPlayerID = playerID;
+        iceObject.GetComponent<IceAttackController>().aimAngle = aimAngle;
+        StartCoroutine(SpellCooldown(slot, gameConstants.iceAttackCooldown));
+    }
+    void CastShockwave(int slot) {
+        // GameObject boomerangObject = Instantiate(boomerangPrefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+        GameObject shockwaveObject = Instantiate(allSpellModels[(int) Spell.shockwave].Prefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+        shockwaveObject.GetComponent<ShockwaveController>().srcPlayerID = playerID;
+        shockwaveObject.GetComponent<ShockwaveController>().aimAngle = aimAngle;
+        StartCoroutine(SpellCooldown(slot, gameConstants.shockwaveCooldown));
+    }
+    void CastWall(int slot) {
+        // GameObject boomerangObject = Instantiate(boomerangPrefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+        GameObject wallObject = Instantiate(allSpellModels[(int) Spell.wall].Prefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+        wallObject.GetComponent<WallController>().srcPlayerID = playerID;
+        wallObject.GetComponent<WallController>().aimAngle = aimAngle;
+        StartCoroutine(SpellCooldown(slot, gameConstants.wallCooldown));
     }
 
 }
