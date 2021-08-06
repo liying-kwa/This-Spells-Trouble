@@ -69,7 +69,7 @@ public class MineThrowController : MonoBehaviour
         xPos_original = xPos;
         for (int n=0; n<gameConstants.mineThrowColumns;n++){
             for (int m=0;m<gameConstants.mineThrowRows;m++){
-                Debug.Log("vs " +xPos + ", " + yPos);
+                // Debug.Log("vs " +xPos + ", " + yPos);
                 mineGround = Instantiate(mineGround, new Vector3(xPos, yPos,this.transform.position.z), Quaternion.identity);
                 mineGround.GetComponent<MineGroundController>().srcPlayerID = srcPlayerID;
                 mineGround.GetComponent<MineGroundController>().aimAngle = aimAngle;

@@ -49,7 +49,7 @@ public class ArcController : MonoBehaviour
     {
         currentDirection = transform.up; 
         arcBody.velocity = currentDirection * arcBody.velocity.magnitude;
-        forwardMovement = arcBody.velocity;
+        // forwardMovement = arcBody.velocity;
         Destroy(gameObject, gameConstants.arcDestroyTime);
         //Debug.Log("arcBody velocity is " + arcBody.velocity);
     }

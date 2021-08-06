@@ -43,6 +43,23 @@ public class SoundManager : MonoBehaviour
     public AudioClip onTornadoHitClip;
     public AudioClip onRushCastClip;
 
+    public AudioClip onArcCastClip;
+    public AudioClip onArcHitClip;
+    public AudioClip onBoomerangCastClip;
+    public AudioClip onBoomerangHitClip;
+    public AudioClip onCloudCastClip;
+    public AudioClip onGroundAttackCastClip;
+    public AudioClip onGroundAttackHitClip;
+    public AudioClip onIceAttackCastClip;
+    public AudioClip onIceAttackHitClip;
+    public AudioClip onLaserCastClip;
+    public AudioClip onLaserHitClip;
+    public AudioClip onMineCastClip;
+    public AudioClip onMineHitClip;
+    public AudioClip onShockwaveCastClip;
+    public AudioClip onShockwaveHitClip;
+    public AudioClip onWallCastClip;
+
     // UI Clips 
     public AudioClip onArrowButtonClip;
 
@@ -139,7 +156,87 @@ public class SoundManager : MonoBehaviour
     {
         effectSource.PlayOneShot(onRushCastClip);
     }
-    
+
+    public void PlayArcCast()
+    {
+        effectSource.PlayOneShot(onArcCastClip);
+    }
+
+    public void PlayArcHit()
+    {
+        effectSource.PlayOneShot(onArcHitClip);
+    }
+
+    public void PlayBoomerangCast()
+    {
+        effectSource.PlayOneShot(onBoomerangCastClip);
+    }
+
+    public void PlayBoomerangHit()
+    {
+        effectSource.PlayOneShot(onBoomerangHitClip);
+    }
+
+    public void PlayCloudCast()
+    {
+        effectSource.PlayOneShot(onCloudCastClip);
+    }
+
+    public void PlayGroundAttackCast()
+    {
+        effectSource.PlayOneShot(onGroundAttackCastClip);
+    }
+
+    public void PlayGroundAttackHit()
+    {
+        effectSource.PlayOneShot(onGroundAttackHitClip);
+    }
+
+    public void PlayIceAttackCast()
+    {
+        effectSource.PlayOneShot(onIceAttackCastClip);
+    }
+
+    public void PlayIceAttackHit()
+    {
+        effectSource.PlayOneShot(onIceAttackHitClip);
+    }
+
+    public void PlayLaserCast()
+    {
+        effectSource.PlayOneShot(onLaserCastClip);
+    }
+
+    public void PlayLaserHit()
+    {
+        effectSource.PlayOneShot(onLaserHitClip);
+    }
+
+    public void PlayMineCast()
+    {
+        effectSource.PlayOneShot(onMineCastClip);
+    }
+
+    public void PlayMineHit()
+    {
+        effectSource.PlayOneShot(onMineHitClip);
+    }
+
+    public void PlayShockwaveCast()
+    {
+        effectSource.PlayOneShot(onShockwaveCastClip);
+    }
+
+    public void PlayShockwaveHit()
+    {
+        effectSource.PlayOneShot(onShockwaveHitClip);
+    }
+
+    public void PlayWallCast()
+    {
+        effectSource.PlayOneShot(onWallCastClip);
+    }
+
     // UI Methods
 
     public void PlayArrowButton()
