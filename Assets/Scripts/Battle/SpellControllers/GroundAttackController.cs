@@ -16,6 +16,7 @@ public class GroundAttackController : MonoBehaviour
 
     // Components
     private Rigidbody2D infernalBody;
+    private CircleCollider2D attackCollider;
     //private AudioSource audioSource;
     //public AudioClip hitAudio;
 
@@ -34,7 +35,7 @@ public class GroundAttackController : MonoBehaviour
     {
         // Get components
         infernalBody = GetComponent<Rigidbody2D>();
-        //audioSource = GetComponent<AudioSource>();
+        attackCollider = GetComponent<CircleCollider2D>();
         // Get constants
         damage = gameConstants.groundAttackDamage;
         // Fireball movement
@@ -44,6 +45,7 @@ public class GroundAttackController : MonoBehaviour
         infernalBody.transform.position = new Vector3(transform.position.x - Mathf.Sin(Mathf.Deg2Rad * aimAngle) * gameConstants.groundAttackDistance, 
                                                         transform.position.y + Mathf.Cos(Mathf.Deg2Rad * aimAngle) * gameConstants.groundAttackDistance, 
                                                         transform.position.z);
+        StartCoroutine(WaitForAppearance());
         onGroundAttackCastPlaySound.Raise();
     }
 
@@ -77,5 +79,10 @@ public class GroundAttackController : MonoBehaviour
     //     if (other.gameObject.tag == "Spell" || other.gameObject.tag == "Obstacle") {
     //         Destroy(gameObject);
     //     }
+    }
+
+    IEnumerator WaitForAppearance() {
+        yield return new WaitForSeconds(1.5f);
+        attackCollider.enabled = true;
     }
 }

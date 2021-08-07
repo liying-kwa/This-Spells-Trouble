@@ -153,3 +153,4 @@ MonoBehaviour:
   srcPlayerID: 0
   damage: 0
   onMineHitPlaySound: {fileID: 11400000, guid: e8f0f97762ffc45c9a5864f62f81b532, type: 2}
+  onMineLandPlaySound: {fileID: 11400000, guid: 32c7220af3aa746149c103fe130a149e, type: 2}

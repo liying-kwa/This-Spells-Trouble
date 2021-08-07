@@ -22,12 +22,16 @@ public class MineGroundController : MonoBehaviour
     // Sound Events
     [Header("Sound Events")]
     public GameEvent onMineHitPlaySound;
+    public GameEvent onMineLandPlaySound;
+
+
     void Start()
     {
         //GET
         mineGroundBody = GetComponent<Rigidbody2D>();
         damage = gameConstants.mineGroundDamage;
         transform.Rotate(0f,0f,aimAngle);
+        onMineLandPlaySound.Raise();
     }
 
     // Update is called once per frame

@@ -56,9 +56,14 @@ public class SoundManager : MonoBehaviour
     public AudioClip onLaserHitClip;
     public AudioClip onMineCastClip;
     public AudioClip onMineHitClip;
+    public AudioClip onMineLandClip;
     public AudioClip onShockwaveCastClip;
     public AudioClip onShockwaveHitClip;
     public AudioClip onWallCastClip;
+    public AudioClip onSplitterCastClip;
+    public AudioClip onSplitterHitClip;
+    public AudioClip onSplitterSplitClip;
+    public AudioClip onSplitterProjHitClip;
 
     // UI Clips 
     public AudioClip onArrowButtonClip;
@@ -221,6 +226,11 @@ public class SoundManager : MonoBehaviour
     {
         effectSource.PlayOneShot(onMineHitClip);
     }
+    
+    public void PlayMineLand()
+    {
+        effectSource.PlayOneShot(onMineLandClip);
+    }
 
     public void PlayShockwaveCast()
     {
@@ -235,6 +245,26 @@ public class SoundManager : MonoBehaviour
     public void PlayWallCast()
     {
         effectSource.PlayOneShot(onWallCastClip);
+    }
+
+    public void PlaySplitterCast()
+    {
+        effectSource.PlayOneShot(onSplitterCastClip);
+    }
+
+    public void PlaySplitterHit()
+    {
+        effectSource.PlayOneShot(onSplitterHitClip);
+    }
+
+    public void PlaySplitterSplit()
+    {
+        effectSource.PlayOneShot(onSplitterSplitClip);
+    }
+
+    public void PlaySplitterProjHit()
+    {
+        effectSource.PlayOneShot(onSplitterProjHitClip);
     }
 
     // UI Methods

@@ -31,7 +31,7 @@ public class SplitterController : MonoBehaviour
     [Header("Sound Events")]
     public GameEvent onSplitterCastPlaySound;
     public GameEvent onSplitterHitPlaySound;
-    public GameEvent onSplitProjCastPlaySound;
+    //public GameEvent onSplitProjCastPlaySound;
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +45,7 @@ public class SplitterController : MonoBehaviour
         movement = new Vector2(-Mathf.Sin(Mathf.Deg2Rad * aimAngle), Mathf.Cos(Mathf.Deg2Rad * aimAngle));
         splitterBody.AddForce(movement * gameConstants.splitterSpeed, ForceMode2D.Impulse);
         //this.transform.Rotate(0f,0f,aimAngle);
-        //onSplitterCastPlaySound.Raise();
+        onSplitterCastPlaySound.Raise();
         splitCoroutine = waitandSplit(gameConstants.splitterDestroyTime);
         StartCoroutine(splitCoroutine);
     }
@@ -81,7 +81,7 @@ public class SplitterController : MonoBehaviour
                 other.gameObject.GetComponent<BattleController>().Hurt();
                 //audioSource.Stop();
                 //AudioSource.PlayClipAtPoint(hitAudio, new Vector3(0, 0, 0));
-                //onSplitterHitPlaySound.Raise();
+                onSplitterHitPlaySound.Raise();
                 Destroy(gameObject);
             }
         }

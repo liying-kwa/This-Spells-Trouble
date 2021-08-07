@@ -143,6 +143,6 @@ MonoBehaviour:
   splitAngle: 0
   srcPlayerID: 0
   damage: 0
-  onSplitterCastPlaySound: {fileID: 0}
-  onSplitterHitPlaySound: {fileID: 0}
+  onSplitterCastPlaySound: {fileID: 11400000, guid: fd3c429b2ccf54a60b4464b7c03dc520, type: 2}
+  onSplitterHitPlaySound: {fileID: 11400000, guid: a578cfcbf4b8d413c85e83aedabf7764, type: 2}
   onSplitProjCastPlaySound: {fileID: 0}

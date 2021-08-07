@@ -141,5 +141,5 @@ MonoBehaviour:
   movement: {x: 0, y: 0}
   srcPlayerID: 0
   damage: 0
-  onSplitProjCastPlaySound: {fileID: 0}
-  onSplitProjHitPlaySound: {fileID: 0}
+  onSplitProjCastPlaySound: {fileID: 11400000, guid: 97d2ad51a94614cc294371bb4f44d119, type: 2}
+  onSplitProjHitPlaySound: {fileID: 11400000, guid: b47617abe24d74c20b391575c4a31ca3, type: 2}

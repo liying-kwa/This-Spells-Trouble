@@ -40,7 +40,7 @@ public class SplitProjController : MonoBehaviour
         movement = new Vector2(-Mathf.Sin(Mathf.Deg2Rad * startAngle), Mathf.Cos(Mathf.Deg2Rad * startAngle));
         splitterBody.AddForce(movement * gameConstants.splitProjSpeed, ForceMode2D.Impulse);
         //this.transform.Rotate(0f,0f,startAngle);
-        //onSplitProjCastPlaySound.Raise();
+        onSplitProjCastPlaySound.Raise();
     }
 
     // Update is called once per frame
@@ -58,7 +58,7 @@ public class SplitProjController : MonoBehaviour
                 other.gameObject.GetComponent<BattleController>().Hurt();
                 //audioSource.Stop();
                 //AudioSource.PlayClipAtPoint(hitAudio, new Vector3(0, 0, 0));
-                //onSplitProjHitPlaySound.Raise();
+                onSplitProjHitPlaySound.Raise();
                 Destroy(gameObject);
             }
         }
