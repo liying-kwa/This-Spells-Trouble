@@ -13,7 +13,7 @@ EditorBuildSettings:
     guid: 2842eedd4ccf7a4468601bc03380a499
   - enabled: 1
     path: Assets/Scenes/SpellShopScene.unity
-    guid: d1aceddfe538aab45903e7f2ca07db24
+    guid: 4a569c99f14e9da4ba0c44cb352c3b18
   - enabled: 1
     path: Assets/Scenes/BattleScene1.unity
     guid: a531443654f99404ca528d69f4834ced

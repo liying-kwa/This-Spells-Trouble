@@ -15,6 +15,7 @@ public class ShopManager : MonoBehaviour
 
     // GameObjects
     public Text countdownText;
+    public GameObject[] playersGameObjects;
     public GameObject[] characters;
     public GameObject[] P1SlotIcons;
     public GameObject[] P2SlotIcons;
@@ -46,9 +47,6 @@ public class ShopManager : MonoBehaviour
     // public List<GameObject> P4SkillStatus4;
 
     // Animation
-    // public RuntimeAnimatorController sorceressAnimatorController;
-    // public RuntimeAnimatorController cultistAnimatorController;
-    // public RuntimeAnimatorController possessedEnemyAnimatorController;
     public RuntimeAnimatorController[] animatorControllers;
 
     void Awake() {
@@ -56,45 +54,10 @@ public class ShopManager : MonoBehaviour
         for (int i = 0; i < playerInputsArr.GetLength(); i++) {
             if (playerInputsArr.GetValue(i) == null) {
                 // Set unused UI objects inactive
-                characters[i].SetActive(false);
-                spellInfos[i].SetActive(false);
-                goldTexts[i].text = "";
-                switch (i) {
-                    case 0:
-                        for (int j = 0; j < 4; j++) {
-                            P1SlotIcons[j].SetActive(false);
-                        }
-                        break;
-                    case 1:
-                        for (int j = 0; j < 4; j++) {
-                            P2SlotIcons[j].SetActive(false);
-                        }
-                        break;
-                    case 2:
-                        for (int j = 0; j < 4; j++) {
-                            P3SlotIcons[j].SetActive(false);
-                        }
-                        break;
-                    case 3:
-                        for (int j = 0; j < 4; j++) {
-                            P4SlotIcons[j].SetActive(false);
-                        }
-                        break;
-                }
+                playersGameObjects[i].SetActive(false);
                 continue;
             }
             // Render correct animator for characters
-            // switch (playersChars.GetValue(i)) {
-            //     case 0:
-            //         characters[i].GetComponent<Animator>().runtimeAnimatorController = sorceressAnimatorController;
-            //         break;
-            //     case 1:
-            //         characters[i].GetComponent<Animator>().runtimeAnimatorController = cultistAnimatorController;
-            //         break;
-            //     case 2:
-            //         characters[i].GetComponent<Animator>().runtimeAnimatorController = possessedEnemyAnimatorController;
-            //         break;
-            // }
             Animator animator = characters[i].GetComponent<Animator>();
             animator.runtimeAnimatorController = animatorControllers[playersChars.GetValue(i)];
             // Pass in GameObjects accordingly

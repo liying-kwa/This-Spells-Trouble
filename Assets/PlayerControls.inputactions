@@ -212,49 +212,57 @@
             "id": "95fdb182-0e67-4cca-ac22-801398c78317",
             "actions": [
                 {
-                    "name": "PreviousSlot",
+                    "name": "LeftButton",
                     "type": "Button",
-                    "id": "cd5b168f-caf8-497e-96b3-3f1220450c05",
+                    "id": "fd088bca-2309-4e15-a6ed-4130bcf828ef",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 },
                 {
-                    "name": "NextSlot",
+                    "name": "RightButton",
                     "type": "Button",
-                    "id": "fc0125f8-77c5-4b1d-9076-59a8a81d228f",
+                    "id": "fd75c372-7374-43b7-af85-277b1ca2725e",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 },
                 {
-                    "name": "PreviousSpell",
+                    "name": "UpButton",
                     "type": "Button",
-                    "id": "28561bb8-f1b7-466c-8bfe-f5723ed58fd5",
+                    "id": "b69937c3-5939-4609-8173-7dcf7a9d6663",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 },
                 {
-                    "name": "NextSpell",
+                    "name": "DownButton",
                     "type": "Button",
-                    "id": "0634a04e-bcc3-41ae-9e24-02598fafc2ea",
+                    "id": "9c23a2eb-328c-453c-81c0-c47d6ed19733",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 },
                 {
-                    "name": "BuySpell",
+                    "name": "ButtonA",
                     "type": "Button",
-                    "id": "9ad0d885-c664-4749-8235-6b5eaab89ab6",
+                    "id": "f924c55a-c75e-49fb-878e-d8011aa16ecb",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 },
                 {
-                    "name": "SellSpell",
+                    "name": "ButtonB",
                     "type": "Button",
-                    "id": "786d24f3-6454-4ecf-bc13-4c8d106623b6",
+                    "id": "b83b9316-4689-40d2-98a6-306c20c22c5e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "ButtonY",
+                    "type": "Button",
+                    "id": "73a8f3dd-ea07-4e02-be0e-6b971cb0b05b",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -263,67 +271,78 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "f51d1008-a526-4676-b4d0-29753eeb3994",
-                    "path": "<Gamepad>/dpad/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "PreviousSlot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f44fd668-1c68-4281-a7df-9c4c5758182e",
-                    "path": "<Gamepad>/dpad/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "NextSlot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3b896870-382d-4132-ae94-13a27b5fd231",
+                    "id": "e9d715fc-1c87-4a25-b34a-d330c0ca0c9c",
                     "path": "<Gamepad>/dpad/left",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "PreviousSpell",
+                    "action": "LeftButton",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "17ded30a-d294-40f0-aa5b-d449da6bd757",
+                    "id": "28a797f1-1cab-412d-b2e0-1e3484fb0eff",
                     "path": "<Gamepad>/dpad/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "NextSpell",
+                    "action": "RightButton",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "50004e6d-03ab-4f96-83df-482b5ffe6389",
+                    "id": "1c5e1371-7a41-48fd-b7a1-3a5706046f4f",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UpButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "aa2d2449-12e6-421c-a39f-77ea96a16e0f",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DownButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ae7a713c-ac16-439d-ad21-fb88831dbbaa",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "BuySpell",
+                    "action": "ButtonA",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "51a0c410-881f-4800-bc02-2c92bef31dd6",
+                    "id": "19e13ed3-eef9-4b3d-b051-3b883781a7a6",
                     "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SellSpell",
+                    "action": "ButtonB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a2e1950f-ba23-4082-ad4f-b50ef6cc76ed",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ButtonY",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

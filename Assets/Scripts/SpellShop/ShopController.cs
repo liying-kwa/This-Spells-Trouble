@@ -48,117 +48,129 @@ public class ShopController : MonoBehaviour
     private List<SpellModel> defensiveSpellModels;
     private int goldAmount;
 
+    private bool slotIsLocked = false;
 
-    private void OnPreviousSlot() {
-        if (selectedSlot == 0) {
-            return;
-        }
-        // Render earlier slot icon to be nothing if no spell is bought
-        if (!slotTiedToSpell[selectedSlot]) {
-            renderSpell(Spell.nullSpell, selectedSlot);
-        }
-        selectedSlot -= 1;
-        // Render icon to display spell bought, or empty if nothing
-        if (slotTiedToSpell[selectedSlot] == false) {
-            selectedSpellInt = -1;
-        }
-        Spell spell = playersSpells.GetSpell(playerID, selectedSlot);
-        renderSpell(spell, selectedSlot);
-        // Shift the spellInfo gameobject group position
-        spellInfo.transform.localPosition = new Vector3(0, spellInfoInitialPosition.y - selectedSlot * 70f, 0);
-        // Zoom selected slot and unzoom earlier slot
-        slotIcons[selectedSlot+1].transform.localScale = new Vector3(0.2772619f, 0.2772619f, 0.2772619f);
-        slotIcons[selectedSlot].transform.localScale = new Vector3(0.35f, 0.35f, 0.35f);
-        onArrowButtonPlaySound.Raise();
-        
-    }
-
-    private void OnNextSlot() {
-        if (selectedSlot == 3) {
-            return;
-        }
-        // Render earlier slot icon to be nothing if no spell is bought
-        if (!slotTiedToSpell[selectedSlot]) {
-            renderSpell(Spell.nullSpell, selectedSlot);
-        }
-        selectedSlot += 1;
-        // Render icon to display skill bought, or empty if nothing
-        if (slotTiedToSpell[selectedSlot] == false) {
-            selectedSpellInt = -1;
-        }
-        Spell spell = playersSpells.GetSpell(playerID, selectedSlot);
-        renderSpell(spell, selectedSlot);
-        // Shift the skillInfo gameobject group position
-        spellInfo.transform.localPosition = new Vector3(0, spellInfoInitialPosition.y - selectedSlot * 70f, 0);
-        // Zoom selected slot and unzoom earlier slot
-        slotIcons[selectedSlot-1].transform.localScale = new Vector3(0.2772619f, 0.2772619f, 0.2772619f);
-        slotIcons[selectedSlot].transform.localScale = new Vector3(0.35f, 0.35f, 0.35f);
-        onArrowButtonPlaySound.Raise();
-    }
-
-    private void OnPreviousSpell() {
-        // Fireball slot fixed
-        if (selectedSlot == 1) {
-            return;
-        }
-        // If a bought spell is tied to that slot, cannot view other spells in that slot until that spell is sold
-        if (slotTiedToSpell[selectedSlot] == true) {
-            return;
-        }
-        // Otherwise, render the correct offensive/defensive spell
-        if (selectedSpellInt != -1) {
-            selectedSpellInt -= 1;
-        }
-        if (selectedSlot == 0) {
-            // Defensive spell slot
-            if (selectedSpellInt < 0) {
-                selectedSpellInt += defensiveSpellModels.Count;
+    void OnLeftButton() {
+        if (!slotIsLocked) {
+            // SELECT SLOT ON THE LEFT
+            // Do nothing if a left slot is already selected
+            if (selectedSlot == 0 || selectedSlot == 2) {
+                return;
             }
-            Spell spell = defensiveSpellModels[selectedSpellInt].Spell;
-            renderSpell(spell, selectedSlot);
+            // Zoom and render the correct spell icon
+            unrenderAndUnzoom(selectedSlot);
+            selectedSlot -= 1;
+            renderAndZoom(selectedSlot);
+            onArrowButtonPlaySound.Raise();
         } else {
-            // Offensive spell slot
-            if (selectedSpellInt < 0) {
-                selectedSpellInt += offensiveSpellModels.Count;
+            // PREVIOUS SPELL
+            // Do nothing if this is fireball slot OR if a spell is bought and tied to this slot
+            if (selectedSlot == 1 || slotTiedToSpell[selectedSlot]) {
+                return;
             }
-            Spell spell = offensiveSpellModels[selectedSpellInt].Spell;
-            renderSpell(spell, selectedSlot);
+            // Otherwise, render the correct offensive/defensive spell
+            if (selectedSpellInt != -1) {
+                selectedSpellInt -= 1;
+            }
+            if (selectedSlot == 0) {
+                // Defensive spell slot
+                if (selectedSpellInt < 0) {
+                    selectedSpellInt += defensiveSpellModels.Count;
+                }
+                Spell spell = defensiveSpellModels[selectedSpellInt].Spell;
+                renderSpell(spell, selectedSlot);
+            } else {
+                // Offensive spell slot
+                if (selectedSpellInt < 0) {
+                    selectedSpellInt += offensiveSpellModels.Count;
+                }
+                Spell spell = offensiveSpellModels[selectedSpellInt].Spell;
+                renderSpell(spell, selectedSlot);
+            }
+            onArrowButtonPlaySound.Raise();
         }
-        onArrowButtonPlaySound.Raise();
     }
 
-    private void OnNextSpell() {
-        // Fireball slot fixed
-        if (selectedSlot == 1) {
-            return;
-        }
-        // If a bought spell is tied to that slot, cannot view other spells in that slot until that spell is sold
-        if (slotTiedToSpell[selectedSlot] == true) {
-            return;
-        }
-        // Otherwise, render the correct offensive/defensive spell
-        selectedSpellInt += 1;
-        if (selectedSlot == 0) {
-            // Defensive spell slot
-            if (selectedSpellInt >= defensiveSpellModels.Count) {
-                selectedSpellInt -= defensiveSpellModels.Count;
+    void OnRightButton() {
+        if (!slotIsLocked) {
+            // SELECT SLOT ON THE RIGHT
+            // Do nothing if a right slot is already selected
+            if (selectedSlot == 1 || selectedSlot == 3) {
+                return;
             }
-            Spell spell = defensiveSpellModels[selectedSpellInt].Spell;
-            renderSpell(spell, selectedSlot);
+            // Zoom and render the correct spell icon
+            unrenderAndUnzoom(selectedSlot);
+            selectedSlot += 1;
+            renderAndZoom(selectedSlot);
+            onArrowButtonPlaySound.Raise();
         } else {
-            // Offensive spell slot
-            if (selectedSpellInt >= offensiveSpellModels.Count) {
-                selectedSpellInt -= offensiveSpellModels.Count;
+            // Next spell
+            // Do nothing if this is fireball slot OR if a spell is bought for this slot
+            if (selectedSlot == 1 || slotTiedToSpell[selectedSlot]) {
+                return;
             }
-            Spell spell = offensiveSpellModels[selectedSpellInt].Spell;
-            renderSpell(spell, selectedSlot);
+            // Otherwise, render the correct offensive/defensive spell
+            selectedSpellInt += 1;
+            if (selectedSlot == 0) {
+                // Defensive spell slot
+                if (selectedSpellInt >= defensiveSpellModels.Count) {
+                    selectedSpellInt -= defensiveSpellModels.Count;
+                }
+                Spell spell = defensiveSpellModels[selectedSpellInt].Spell;
+                renderSpell(spell, selectedSlot);
+            } else {
+                // Offensive spell slot
+                if (selectedSpellInt >= offensiveSpellModels.Count) {
+                    selectedSpellInt -= offensiveSpellModels.Count;
+                }
+                Spell spell = offensiveSpellModels[selectedSpellInt].Spell;
+                renderSpell(spell, selectedSlot);
+            }
+            onArrowButtonPlaySound.Raise();
         }
+    }
+
+    void OnUpButton() {
+        if (slotIsLocked) {
+            return;
+        }
+        // SELECT SLOT ABOVE
+        // Do nothing if a slot at the top is already selected
+        if (selectedSlot == 0 || selectedSlot == 1) {
+            return;
+        }
+        // Zoom and render the correct spell icon
+        unrenderAndUnzoom(selectedSlot);
+        selectedSlot -= 2;
+        renderAndZoom(selectedSlot);
         onArrowButtonPlaySound.Raise();
     }
 
-    void OnBuySpell() {
-        // Do nothing if a spell is tied to that slot or if it is an empty spell
-        if (slotTiedToSpell[selectedSlot] || selectedSpellInt == -1) {
+    void OnDownButton() {
+        if (slotIsLocked) {
+            return;
+        }
+        // SELECT SLOT BELOW
+        // Do nothing if a slot at the bottom is already selected
+        if (selectedSlot == 2 || selectedSlot == 3) {
+            return;
+        }
+        // Zoom and render the correct spell icon
+        unrenderAndUnzoom(selectedSlot);
+        selectedSlot += 2;
+        renderAndZoom(selectedSlot);
+        onArrowButtonPlaySound.Raise();
+    }
+
+    void OnButtonA() {
+        // Select slot
+        if (!slotIsLocked && selectedSlot != 1) {
+            slotIsLocked = true;
+            return;
+        }
+        // BUY/UPGRADE SPELL
+        // Do nothing if slot is not locked OR if a spell is tied to that slot OR if it is an empty spell
+        if (!slotIsLocked || slotTiedToSpell[selectedSlot] || selectedSpellInt == -1) {
             return;
         }
         // Check if enough gold
@@ -173,9 +185,23 @@ public class ShopController : MonoBehaviour
         onBuySpellPlaySound.Raise();
     }
 
-    void OnSellSpell() {
-        // Do nothing if it is the fireball slot, or not bought
-        if (selectedSlot == 1 || !slotTiedToSpell[selectedSlot]) {
+    void OnButtonB() {
+        // Unselect slot
+        if (slotIsLocked && selectedSlot != 1) {
+            slotIsLocked = false;
+        }
+        // Unrender if nothing is bought
+        if (!slotTiedToSpell[selectedSlot]) {
+            renderSpell(Spell.nullSpell, selectedSlot);
+            selectedSpell = Spell.nullSpell;
+            selectedSpellInt = -1;
+        }
+    }
+
+    void OnButtonY() {
+        // SELL/DOWNGRADE SPELL
+        // Do nothing if slot is not locked OR if it is the fireball slot OR no spell is bought for that slot
+        if (!slotIsLocked || selectedSlot == 1 || !slotTiedToSpell[selectedSlot]) {
             return;
         }
         // Add gold, sell spell, remove icon and reset selectedSpell
@@ -215,6 +241,7 @@ public class ShopController : MonoBehaviour
         goldText.text = "Gold: " + goldAmount.ToString();
 
         // Zoom into first slot, unzoom the others
+        slotIsLocked = false;
         selectedSlot = 0;
         selectedSpellInt = -1;
         selectedSpell = Spell.nullSpell;
@@ -262,56 +289,6 @@ public class ShopController : MonoBehaviour
     }
 
     void renderSpell(Spell spell, int selectedSlot) {
-        // SpellModel spellModel;
-        // switch (spell) {
-        //     case Spell.fireball:
-        //         spellModel = allSpellModels[(int) Spell.fireball];
-        //         selectedSpell = Spell.fireball;
-        //         break;
-        //     case Spell.teleport:
-        //         spellModel = allSpellModels[(int) Spell.teleport];
-        //         selectedSpell = Spell.teleport;
-        //         break;
-        //     case Spell.lightning:
-        //         spellModel = allSpellModels[(int) Spell.lightning];
-        //         selectedSpell = Spell.lightning;
-        //         break;
-        //     case Spell.tornado:
-        //         spellModel = allSpellModels[(int) Spell.tornado];
-        //         selectedSpell = Spell.tornado;
-        //         break;
-        //     case Spell.rush:
-        //         spellModel = allSpellModels[(int) Spell.rush];
-        //         selectedSpell = Spell.rush;
-        //         break;
-        //     case Spell.arc:
-        //         spellModel = allSpellModels[(int) Spell.arc];
-        //         selectedSpell = Spell.arc;
-        //         break;
-        //     case Spell.splitter:
-        //         spellModel = allSpellModels[(int) Spell.splitter];
-        //         selectedSpell = Spell.splitter;
-        //         break;
-        //     case Spell.boomerang:
-        //         spellModel = allSpellModels[(int) Spell.boomerang];
-        //         selectedSpell = Spell.boomerang;
-        //         break;
-        //     default:
-        //         slotIcons[selectedSlot].GetComponent<RawImage>().texture = emptyIcon;
-        //         selectedSpell = Spell.nullSpell;
-        //         // TODO: set spellinfo to inactive?
-        //         spellNameText.text = "";
-        //         spellCostText.text = "";
-        //         spellDescText.text = "";
-        //         spellUpgradeText.text = "";
-        //         return;
-        // }
-        // slotIcons[selectedSlot].GetComponent<RawImage>().texture = spellModel.Icon;
-        // spellNameText.text = spellModel.Name;
-        // spellCostText.text = spellModel.Cost.ToString();
-        // spellDescText.text = spellModel.Description;
-        // spellUpgradeText.text = spellModel.Upgrade;
-
         if (spell == Spell.nullSpell) {
             slotIcons[selectedSlot].GetComponent<RawImage>().texture = emptyIcon;
             selectedSpell = Spell.nullSpell;
@@ -329,5 +306,23 @@ public class ShopController : MonoBehaviour
             spellDescText.text = spellModel.Description;
             spellUpgradeText.text = spellModel.Upgrade;
         }
+    }
+
+    void unrenderAndUnzoom(int slot) {
+        // Render earlier slot icon to be nothing if no spell is bought and unzoom that slot
+        if (!slotTiedToSpell[slot]) {
+            renderSpell(Spell.nullSpell, slot);
+        }
+        slotIcons[slot].transform.localScale = new Vector3(0.2772619f, 0.2772619f, 0.2772619f);
+    }
+
+    void renderAndZoom(int slot) {
+        // Render icon to display spell bought or empty if nothing and zoom chosen slot
+        if (slotTiedToSpell[slot] == false) {
+            selectedSpellInt = -1;
+        }
+        Spell spell = playersSpells.GetSpell(playerID, slot);
+        renderSpell(spell, slot);
+        slotIcons[slot].transform.localScale = new Vector3(0.35f, 0.35f, 0.35f);
     }
 }
