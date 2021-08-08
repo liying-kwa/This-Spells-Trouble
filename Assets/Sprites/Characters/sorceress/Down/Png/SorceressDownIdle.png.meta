@@ -20,6 +20,9 @@ TextureImporter:
   - first:
       213: -7660358883428200563
     second: SorceressDownIdle_5
+  - first:
+      213: -4118346930420814142
+    second: SorceressIcon
   externalObjects: {}
   serializedVersion: 11
   mipmaps:

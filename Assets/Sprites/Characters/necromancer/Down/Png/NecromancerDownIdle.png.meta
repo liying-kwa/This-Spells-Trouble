@@ -20,6 +20,9 @@ TextureImporter:
   - first:
       213: -3008387531481032801
     second: NecromancerDownIdle_5
+  - first:
+      213: 7871638908370237621
+    second: NecromancerIcon
   externalObjects: {}
   serializedVersion: 11
   mipmaps:

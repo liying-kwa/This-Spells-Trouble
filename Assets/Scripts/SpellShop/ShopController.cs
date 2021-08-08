@@ -214,11 +214,12 @@ public class ShopController : MonoBehaviour
         if (ready) {
             return;
         }
-        // Unselect slot
-        if (slotIsLocked && selectedSlot != 1) {
-            slotIsLocked = false;
-            slotIcons[selectedSlot].GetComponent<RawImage>().color = new Color(0.6f, 0.6f, 0.6f, 0.8f);
+        if (!slotIsLocked) {
+            return;
         }
+        // Unselect slot
+        slotIsLocked = false;
+        slotIcons[selectedSlot].GetComponent<RawImage>().color = new Color(0.6f, 0.6f, 0.6f, 0.8f);
         // Unrender if nothing is bought
         if (!slotTiedToSpell[selectedSlot]) {
             renderSpell(Spell.nullSpell, selectedSlot);

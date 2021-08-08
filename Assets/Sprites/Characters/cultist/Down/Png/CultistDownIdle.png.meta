@@ -20,6 +20,9 @@ TextureImporter:
   - first:
       213: -4642364614583547692
     second: CultistDownIdle_5
+  - first:
+      213: 8411069986719046841
+    second: CultistIcon
   externalObjects: {}
   serializedVersion: 11
   mipmaps:

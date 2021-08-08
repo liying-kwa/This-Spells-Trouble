@@ -17,6 +17,9 @@ TextureImporter:
   - first:
       213: 4927448046983309850
     second: PossesedDownIdle_4
+  - first:
+      213: 510531196471333728
+    second: PossesedIcon
   externalObjects: {}
   serializedVersion: 11
   mipmaps:

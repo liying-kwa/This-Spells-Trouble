@@ -5555,7 +5555,6 @@ MonoBehaviour:
   currentRound: {fileID: 11400000, guid: d258aeab18a75c946b8165143d6fc8da, type: 2}
   currentMap: {fileID: 11400000, guid: 76307ad2ba372124a9d07c5239a74184, type: 2}
   playersGold: {fileID: 11400000, guid: b1b1adeefccd1b941bd7fa1e02cd07fb, type: 2}
-  playersJoined: {fileID: 11400000, guid: 77910e1eb5517cf468575325c9b74669, type: 2}
   playersReady: {fileID: 11400000, guid: b342ff068b3b55e44a6f14aa3f0febbc, type: 2}
   countdownText: {fileID: 2934489419846073553}
   playersGameObjects:
@@ -15508,7 +15507,7 @@ MonoBehaviour:
 
     A = Buy/Upgrade Spell
 
-    B
+    Y
     = Sell/Downgrade Spell
 
 

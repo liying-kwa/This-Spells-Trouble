@@ -11,10 +11,11 @@ public class SpawnManager : MonoBehaviour
     public GameConstants gameConstants;
     public PlayerInputsArr playerInputsArr;
     public BoolArrVariable playersAreAlive;
+    public IntArrVariable playersChars;
     public IntVariable currentMap;
 
     // GameObject References
-    // public GameObject playerPrefab;
+    public Texture[] charIcons;
     public Image[] topLeftCooldownImages;
     public Image[] topRightCooldownImages;
     public Image[] bottomLeftCooldownImages;
@@ -23,10 +24,8 @@ public class SpawnManager : MonoBehaviour
     public GameObject[] topRightSpellIcons;
     public GameObject[] bottomLeftSpellIcons;
     public GameObject[] bottomRightSpellIcons;
-    public GameObject[] topLeftSpells;
-    public GameObject[] topRightSpells;
-    public GameObject[] bottomLeftSpells;
-    public GameObject[] bottomRightSpells;
+    public GameObject[] playersObjects;
+    public GameObject[] playersCharIcons;
 
     // Game State
     int numPlayers;
@@ -57,18 +56,12 @@ public class SpawnManager : MonoBehaviour
         switch (numPlayers) {
             case 2:
                 // Set used stuff active and unused stuff inactive
-                foreach (GameObject spellObject in topLeftSpells) {
-                    spellObject.transform.gameObject.SetActive(true);
-                }
-                foreach (GameObject spellObject in topRightSpells) {
-                    spellObject.transform.gameObject.SetActive(true);
-                }
-                foreach (GameObject spellObject in bottomRightSpells) {
-                    spellObject.transform.gameObject.SetActive(false);
-                }
-                foreach (GameObject spellObject in bottomLeftSpells) {
-                    spellObject.transform.gameObject.SetActive(false);
-                }
+                playersObjects[0].SetActive(true);
+                playersObjects[1].SetActive(true);
+                playersObjects[2].SetActive(false);
+                playersObjects[3].SetActive(false);
+                playersCharIcons[0].GetComponent<RawImage>().texture = charIcons[playersChars.GetValue(0)];
+                playersCharIcons[1].GetComponent<RawImage>().texture = charIcons[playersChars.GetValue(1)];
                 mages[0].GetComponent<BattleController>().cooldownImages = topLeftCooldownImages;
                 mages[1].GetComponent<BattleController>().cooldownImages = topRightCooldownImages;
                 mages[0].GetComponent<BattleController>().spellIcons = topLeftSpellIcons;
@@ -86,18 +79,13 @@ public class SpawnManager : MonoBehaviour
                 break;
             case 3:
                 // Set used stuff active and unused stuff inactive
-                foreach (GameObject spellObject in topLeftSpells) {
-                    spellObject.transform.gameObject.SetActive(true);
-                }
-                foreach (GameObject spellObject in topRightSpells) {
-                    spellObject.transform.gameObject.SetActive(true);
-                }
-                foreach (GameObject spellObject in bottomLeftSpells) {
-                    spellObject.transform.gameObject.SetActive(true);
-                }
-                foreach (GameObject spellObject in bottomRightSpells) {
-                    spellObject.transform.gameObject.SetActive(false);
-                }
+                playersObjects[0].SetActive(true);
+                playersObjects[1].SetActive(true);
+                playersObjects[2].SetActive(true);
+                playersObjects[3].SetActive(false);
+                playersCharIcons[0].GetComponent<RawImage>().texture = charIcons[playersChars.GetValue(0)];
+                playersCharIcons[1].GetComponent<RawImage>().texture = charIcons[playersChars.GetValue(1)];
+                playersCharIcons[2].GetComponent<RawImage>().texture = charIcons[playersChars.GetValue(2)];
                 mages[0].GetComponent<BattleController>().cooldownImages = topLeftCooldownImages;
                 mages[1].GetComponent<BattleController>().cooldownImages = topRightCooldownImages;
                 mages[2].GetComponent<BattleController>().cooldownImages = bottomLeftCooldownImages;
@@ -119,18 +107,14 @@ public class SpawnManager : MonoBehaviour
                 break;
             case 4:
                 // Set used stuff active and unused stuff inactive
-                foreach (GameObject spellObject in topLeftSpells) {
-                    spellObject.transform.gameObject.SetActive(true);
-                }
-                foreach (GameObject spellObject in topRightSpells) {
-                    spellObject.transform.gameObject.SetActive(true);
-                }
-                foreach (GameObject spellObject in bottomLeftSpells) {
-                    spellObject.transform.gameObject.SetActive(true);
-                }
-                foreach (GameObject spellObject in bottomRightSpells) {
-                    spellObject.transform.gameObject.SetActive(true);
-                }
+                playersObjects[0].SetActive(true);
+                playersObjects[1].SetActive(true);
+                playersObjects[2].SetActive(true);
+                playersObjects[3].SetActive(true);
+                playersCharIcons[0].GetComponent<RawImage>().texture = charIcons[playersChars.GetValue(0)];
+                playersCharIcons[1].GetComponent<RawImage>().texture = charIcons[playersChars.GetValue(1)];
+                playersCharIcons[2].GetComponent<RawImage>().texture = charIcons[playersChars.GetValue(2)];
+                playersCharIcons[3].GetComponent<RawImage>().texture = charIcons[playersChars.GetValue(3)];
                 mages[0].GetComponent<BattleController>().cooldownImages = topLeftCooldownImages;
                 mages[1].GetComponent<BattleController>().cooldownImages = topRightCooldownImages;
                 mages[2].GetComponent<BattleController>().cooldownImages = bottomLeftCooldownImages;

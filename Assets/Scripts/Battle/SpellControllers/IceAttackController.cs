@@ -85,6 +85,6 @@ public class IceAttackController : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         attackCollider.enabled = true;
         //transform.position = new Vector2 (iceBody.transform.position.x+0.000001f, iceBody.transform.position.y);
-        //transform.position = new Vector2 (transform.position.x+0.000001f, transform.position.y);
+        transform.position = new Vector2 (transform.position.x+0.000001f, transform.position.y);
     }
 }
