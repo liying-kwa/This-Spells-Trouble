@@ -279,6 +279,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""ButtonStart"",
+                    ""type"": ""Button"",
+                    ""id"": ""137a53b9-0737-4027-ad87-ae0991f8fb6c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -356,6 +364,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ButtonY"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""98fbda15-7cf0-4eaa-9ee1-ace44de7577b"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ButtonStart"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -452,6 +471,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_SpellShop_ButtonA = m_SpellShop.FindAction("ButtonA", throwIfNotFound: true);
         m_SpellShop_ButtonB = m_SpellShop.FindAction("ButtonB", throwIfNotFound: true);
         m_SpellShop_ButtonY = m_SpellShop.FindAction("ButtonY", throwIfNotFound: true);
+        m_SpellShop_ButtonStart = m_SpellShop.FindAction("ButtonStart", throwIfNotFound: true);
         // MainMenu
         m_MainMenu = asset.FindActionMap("MainMenu", throwIfNotFound: true);
         m_MainMenu_PreviousButton = m_MainMenu.FindAction("PreviousButton", throwIfNotFound: true);
@@ -643,6 +663,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_SpellShop_ButtonA;
     private readonly InputAction m_SpellShop_ButtonB;
     private readonly InputAction m_SpellShop_ButtonY;
+    private readonly InputAction m_SpellShop_ButtonStart;
     public struct SpellShopActions
     {
         private @PlayerControls m_Wrapper;
@@ -654,6 +675,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @ButtonA => m_Wrapper.m_SpellShop_ButtonA;
         public InputAction @ButtonB => m_Wrapper.m_SpellShop_ButtonB;
         public InputAction @ButtonY => m_Wrapper.m_SpellShop_ButtonY;
+        public InputAction @ButtonStart => m_Wrapper.m_SpellShop_ButtonStart;
         public InputActionMap Get() { return m_Wrapper.m_SpellShop; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -684,6 +706,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @ButtonY.started -= m_Wrapper.m_SpellShopActionsCallbackInterface.OnButtonY;
                 @ButtonY.performed -= m_Wrapper.m_SpellShopActionsCallbackInterface.OnButtonY;
                 @ButtonY.canceled -= m_Wrapper.m_SpellShopActionsCallbackInterface.OnButtonY;
+                @ButtonStart.started -= m_Wrapper.m_SpellShopActionsCallbackInterface.OnButtonStart;
+                @ButtonStart.performed -= m_Wrapper.m_SpellShopActionsCallbackInterface.OnButtonStart;
+                @ButtonStart.canceled -= m_Wrapper.m_SpellShopActionsCallbackInterface.OnButtonStart;
             }
             m_Wrapper.m_SpellShopActionsCallbackInterface = instance;
             if (instance != null)
@@ -709,6 +734,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @ButtonY.started += instance.OnButtonY;
                 @ButtonY.performed += instance.OnButtonY;
                 @ButtonY.canceled += instance.OnButtonY;
+                @ButtonStart.started += instance.OnButtonStart;
+                @ButtonStart.performed += instance.OnButtonStart;
+                @ButtonStart.canceled += instance.OnButtonStart;
             }
         }
     }
@@ -787,6 +815,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnButtonA(InputAction.CallbackContext context);
         void OnButtonB(InputAction.CallbackContext context);
         void OnButtonY(InputAction.CallbackContext context);
+        void OnButtonStart(InputAction.CallbackContext context);
     }
     public interface IMainMenuActions
     {

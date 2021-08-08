@@ -12,11 +12,17 @@ public class ShopController : MonoBehaviour
     public PlayersSpellLevels playersSpellLevels;
     public IntArrVariable playersGold;
     public GameConstants gameConstants;
+    public BoolArrVariable playersReady;
 
     // Sound Events
     [Header("Sound Events")]
     public GameEvent onArrowButtonPlaySound;
     public GameEvent onBuySpellPlaySound;
+    public GameEvent onSellSpellPlaySound;
+    public GameEvent onLockSlotPlaySound;
+    public GameEvent onUnlockSlotPlaySound;
+    public GameEvent onNotAllowedPlaySound;
+    public GameEvent onReadyButtonPlaySound;
 
     // GameObjects
     public SpellModel[] allSpellModels;
@@ -28,6 +34,7 @@ public class ShopController : MonoBehaviour
     public Text spellDescText;
     public Text spellUpgradeText;
     public Text goldText;
+    public GameObject readyPanelObject;
 
     // public List<GameObject> skillStatus1;
     // public List<GameObject> skillStatus2;
@@ -47,10 +54,13 @@ public class ShopController : MonoBehaviour
     private List<SpellModel> offensiveSpellModels;
     private List<SpellModel> defensiveSpellModels;
     private int goldAmount;
-
     private bool slotIsLocked = false;
+    bool ready = false;
 
     void OnLeftButton() {
+        if (ready) {
+            return;
+        }
         if (!slotIsLocked) {
             // SELECT SLOT ON THE LEFT
             // Do nothing if a left slot is already selected
@@ -87,11 +97,14 @@ public class ShopController : MonoBehaviour
                 Spell spell = offensiveSpellModels[selectedSpellInt].Spell;
                 renderSpell(spell, selectedSlot);
             }
-            onArrowButtonPlaySound.Raise();
+            onLockSlotPlaySound.Raise();
         }
     }
 
     void OnRightButton() {
+        if (ready) {
+            return;
+        }
         if (!slotIsLocked) {
             // SELECT SLOT ON THE RIGHT
             // Do nothing if a right slot is already selected
@@ -126,11 +139,14 @@ public class ShopController : MonoBehaviour
                 Spell spell = offensiveSpellModels[selectedSpellInt].Spell;
                 renderSpell(spell, selectedSlot);
             }
-            onArrowButtonPlaySound.Raise();
+            onLockSlotPlaySound.Raise();
         }
     }
 
     void OnUpButton() {
+        if (ready) {
+            return;
+        }
         if (slotIsLocked) {
             return;
         }
@@ -147,6 +163,9 @@ public class ShopController : MonoBehaviour
     }
 
     void OnDownButton() {
+        if (ready) {
+            return;
+        }
         if (slotIsLocked) {
             return;
         }
@@ -163,9 +182,14 @@ public class ShopController : MonoBehaviour
     }
 
     void OnButtonA() {
+        if (ready) {
+            return;
+        }
         // Select slot
         if (!slotIsLocked && selectedSlot != 1) {
             slotIsLocked = true;
+            slotIcons[selectedSlot].GetComponent<RawImage>().color = new Color(1, 1, 1, 1);
+            onLockSlotPlaySound.Raise();
             return;
         }
         // BUY/UPGRADE SPELL
@@ -175,6 +199,7 @@ public class ShopController : MonoBehaviour
         }
         // Check if enough gold
         if (goldAmount < allSpellModels[(int) selectedSpell].Cost) {
+            onNotAllowedPlaySound.Raise();
             return;
         }
         goldAmount -= allSpellModels[(int) selectedSpell].Cost;
@@ -186,9 +211,13 @@ public class ShopController : MonoBehaviour
     }
 
     void OnButtonB() {
+        if (ready) {
+            return;
+        }
         // Unselect slot
         if (slotIsLocked && selectedSlot != 1) {
             slotIsLocked = false;
+            slotIcons[selectedSlot].GetComponent<RawImage>().color = new Color(0.6f, 0.6f, 0.6f, 0.8f);
         }
         // Unrender if nothing is bought
         if (!slotTiedToSpell[selectedSlot]) {
@@ -196,9 +225,13 @@ public class ShopController : MonoBehaviour
             selectedSpell = Spell.nullSpell;
             selectedSpellInt = -1;
         }
+        onUnlockSlotPlaySound.Raise();
     }
 
     void OnButtonY() {
+        if (ready) {
+            return;
+        }
         // SELL/DOWNGRADE SPELL
         // Do nothing if slot is not locked OR if it is the fireball slot OR no spell is bought for that slot
         if (!slotIsLocked || selectedSlot == 1 || !slotTiedToSpell[selectedSlot]) {
@@ -214,7 +247,18 @@ public class ShopController : MonoBehaviour
         renderSpell(Spell.nullSpell, selectedSlot);
         selectedSpellInt = -1;
         selectedSpell = Spell.nullSpell;
-        onBuySpellPlaySound.Raise();
+        onSellSpellPlaySound.Raise();
+    }
+
+    private void OnButtonStart() {
+        ready = !ready;
+        playersReady.SetValue(playerID, ready);
+        if (ready) {
+            readyPanelObject.SetActive(true);
+            onReadyButtonPlaySound.Raise();
+        } else {
+            readyPanelObject.SetActive(false);
+        }
     }
 
     void OnEnable() {
@@ -249,6 +293,10 @@ public class ShopController : MonoBehaviour
         slotIcons[1].transform.localScale = new Vector3(0.2772619f, 0.2772619f, 0.2772619f);
         slotIcons[2].transform.localScale = new Vector3(0.2772619f, 0.2772619f, 0.2772619f);
         slotIcons[3].transform.localScale = new Vector3(0.2772619f, 0.2772619f, 0.2772619f);
+        slotIcons[0].GetComponent<RawImage>().color = new Color(0.6f, 0.6f, 0.6f, 0.8f);
+        slotIcons[1].GetComponent<RawImage>().color = new Color(0.6f, 0.6f, 0.6f, 0.8f);
+        slotIcons[2].GetComponent<RawImage>().color = new Color(0.6f, 0.6f, 0.6f, 0.8f);
+        slotIcons[3].GetComponent<RawImage>().color = new Color(0.6f, 0.6f, 0.6f, 0.8f);
     }
 
     void Start() {

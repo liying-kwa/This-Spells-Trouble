@@ -1199,109 +1199,13 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2018022472}
   m_CullTransparentMesh: 1
---- !u!82 &7040405384567082608
+--- !u!82 &2290927362321253760
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7040405384567082618}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -6320927823182653292, guid: 99f059cddb68645abb0b315182e6b1c7, type: 2}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!82 &7040405384567082612
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7040405384567082618}
+  m_GameObject: {fileID: 2290927362321253774}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 4093433476364510121, guid: 99f059cddb68645abb0b315182e6b1c7, type: 2}
@@ -1391,13 +1295,13 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &7040405384567082613
+--- !u!114 &2290927362321253761
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7040405384567082618}
+  m_GameObject: {fileID: 2290927362321253774}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8fe9e46222ed7402ab18bbae3c240b29, type: 3}
@@ -1408,7 +1312,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayCharacterSelectionMenu
           m_Mode: 1
@@ -1424,7 +1328,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayStageOneTheme
           m_Mode: 1
@@ -1440,7 +1344,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayLava
           m_Mode: 1
@@ -1456,7 +1360,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayPlayerDeath
           m_Mode: 1
@@ -1472,7 +1376,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayVictory
           m_Mode: 1
@@ -1488,7 +1392,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayFireballCast
           m_Mode: 1
@@ -1504,7 +1408,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayFireballHit
           m_Mode: 1
@@ -1520,7 +1424,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayTeleportCast
           m_Mode: 1
@@ -1536,7 +1440,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayArrowButton
           m_Mode: 1
@@ -1552,7 +1456,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayReadyButton
           m_Mode: 1
@@ -1568,7 +1472,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayClockTicking
           m_Mode: 1
@@ -1584,7 +1488,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PauseClockTicking
           m_Mode: 1
@@ -1600,7 +1504,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: ResumeClockTicking
           m_Mode: 1
@@ -1616,7 +1520,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: ResumeClockTicking
           m_Mode: 1
@@ -1632,7 +1536,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayLightningCast
           m_Mode: 1
@@ -1648,7 +1552,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayLightningHit
           m_Mode: 1
@@ -1664,7 +1568,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayTornadoCast
           m_Mode: 1
@@ -1680,7 +1584,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayTornadoHit
           m_Mode: 1
@@ -1696,7 +1600,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayBuySpell
           m_Mode: 1
@@ -1712,7 +1616,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayRushCast
           m_Mode: 1
@@ -1728,7 +1632,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayJoinButton
           m_Mode: 1
@@ -1744,7 +1648,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayRegen
           m_Mode: 1
@@ -1760,7 +1664,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayArcCast
           m_Mode: 1
@@ -1776,7 +1680,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayArcHit
           m_Mode: 1
@@ -1792,7 +1696,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayBoomerangCast
           m_Mode: 1
@@ -1808,7 +1712,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayBoomerangHit
           m_Mode: 1
@@ -1824,7 +1728,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayCloudCast
           m_Mode: 1
@@ -1840,7 +1744,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayGroundAttackCast
           m_Mode: 1
@@ -1856,7 +1760,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayGroundAttackHit
           m_Mode: 1
@@ -1872,7 +1776,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayIceAttackCast
           m_Mode: 1
@@ -1888,7 +1792,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayIceAttackHit
           m_Mode: 1
@@ -1904,7 +1808,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayLaserCast
           m_Mode: 1
@@ -1920,7 +1824,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayLaserHit
           m_Mode: 1
@@ -1936,7 +1840,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayMineCast
           m_Mode: 1
@@ -1952,7 +1856,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayMineHit
           m_Mode: 1
@@ -1968,7 +1872,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayShockwaveCast
           m_Mode: 1
@@ -1984,7 +1888,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayShockwaveHit
           m_Mode: 1
@@ -2000,7 +1904,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayWallCast
           m_Mode: 1
@@ -2016,7 +1920,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlayMineLand
           m_Mode: 1
@@ -2032,7 +1936,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlaySplitterCast
           m_Mode: 1
@@ -2048,7 +1952,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlaySplitterHit
           m_Mode: 1
@@ -2064,7 +1968,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlaySplitterSplit
           m_Mode: 1
@@ -2080,7 +1984,7 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7040405384567082614}
+        - m_Target: {fileID: 2290927362321253762}
           m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
           m_MethodName: PlaySplitterProjHit
           m_Mode: 1
@@ -2092,21 +1996,85 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &7040405384567082614
+  - Event: {fileID: 11400000, guid: c843d3693812d834c8198cd824fc7154, type: 2}
+    Response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2290927362321253762}
+          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+          m_MethodName: PlayLockSlot
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - Event: {fileID: 11400000, guid: 0e4e33af95a852141bb97e0c5bd1cc14, type: 2}
+    Response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2290927362321253762}
+          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+          m_MethodName: PlayUnlockSlot
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - Event: {fileID: 11400000, guid: dd3db7bf4e243df41900543e3dccc7bb, type: 2}
+    Response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2290927362321253762}
+          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+          m_MethodName: PlaySellSpell
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - Event: {fileID: 11400000, guid: 4002cd5b014354a40871c1257e1ac99c, type: 2}
+    Response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2290927362321253762}
+          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+          m_MethodName: PlayNotAllowed
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &2290927362321253762
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7040405384567082618}
+  m_GameObject: {fileID: 2290927362321253774}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 085281926382c48fe973813a850f577a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masterSource: {fileID: 7040405384567082612}
-  effectSource: {fileID: 7040405384567082619}
-  UISource: {fileID: 7040405384567082608}
+  masterSource: {fileID: 2290927362321253760}
+  effectSource: {fileID: 2290927362321253775}
+  UISource: {fileID: 2290927362321253764}
   onCharacterSelectionMenuClip: {fileID: 8300000, guid: 9791d9332cf0bb247bbf8c26555e8812, type: 3}
   onStageOneStartClip: {fileID: 8300000, guid: 24eeae0bb19858d4b93cd968c489ecee, type: 3}
   onLavaClip: {fileID: 8300000, guid: 24f318ad7ee154ca3bf28fa45e23a0e1, type: 3}
@@ -2145,15 +2113,19 @@ MonoBehaviour:
   onArrowButtonClip: {fileID: 8300000, guid: d2cbf0d8c4d02be4abd88f1ec644cc08, type: 3}
   onReadyButtonClip: {fileID: 8300000, guid: 1364594e87f5e944c999a90886217172, type: 3}
   onBuySpellClip: {fileID: 8300000, guid: c1daa7051b3d0a44cbbf7352083fe0fb, type: 3}
+  onSellSpellClip: {fileID: 8300000, guid: 994a00c1849884945bd11aff576db1aa, type: 3}
   onClockTickingClip: {fileID: 8300000, guid: 15388bed865068842a45a344c390299d, type: 3}
   onJoinButtonClip: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
---- !u!4 &7040405384567082615
+  onLockSlotClip: {fileID: 8300000, guid: 708bff6ce80434947871da0044fe337b, type: 3}
+  onUnlockSlotClip: {fileID: 8300000, guid: 0cef3158fe48446489ae5ba50d2af22d, type: 3}
+  onNotAllowedClip: {fileID: 8300000, guid: 2dbc34fb198914b449ca7762436b90d8, type: 3}
+--- !u!4 &2290927362321253763
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7040405384567082618}
+  m_GameObject: {fileID: 2290927362321253774}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -2161,7 +2133,103 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &7040405384567082618
+--- !u!82 &2290927362321253764
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2290927362321253774}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -6320927823182653292, guid: 99f059cddb68645abb0b315182e6b1c7, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!1 &2290927362321253774
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2169,12 +2237,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7040405384567082615}
-  - component: {fileID: 7040405384567082614}
-  - component: {fileID: 7040405384567082613}
-  - component: {fileID: 7040405384567082608}
-  - component: {fileID: 7040405384567082619}
-  - component: {fileID: 7040405384567082612}
+  - component: {fileID: 2290927362321253763}
+  - component: {fileID: 2290927362321253762}
+  - component: {fileID: 2290927362321253761}
+  - component: {fileID: 2290927362321253764}
+  - component: {fileID: 2290927362321253775}
+  - component: {fileID: 2290927362321253760}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -2182,13 +2250,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!82 &7040405384567082619
+--- !u!82 &2290927362321253775
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7040405384567082618}
+  m_GameObject: {fileID: 2290927362321253774}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -3490235611428359061, guid: 99f059cddb68645abb0b315182e6b1c7, type: 2}

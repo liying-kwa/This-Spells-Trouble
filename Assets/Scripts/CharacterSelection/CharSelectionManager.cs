@@ -83,9 +83,7 @@ public class CharSelectionManager : MonoBehaviour
         }
         countdownText.text = "Loading...";
         currentRound.SetValue(0);
-        // StartCoroutine(ChangeScene("BattleScene"));
         StartCoroutine(ChangeScene("SpellShopScene"));
-        // StartCoroutine(ChangeScene("BattleScene5"));
     }
 
     private IEnumerator ChangeScene(string sceneName) {

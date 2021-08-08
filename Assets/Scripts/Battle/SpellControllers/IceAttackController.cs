@@ -16,6 +16,7 @@ public class IceAttackController : MonoBehaviour
 
     // Components
     private Rigidbody2D iceBody;
+    private BoxCollider2D attackCollider;
 
     // Physics
     public float aimAngle;
@@ -32,6 +33,7 @@ public class IceAttackController : MonoBehaviour
     {
         // Get components
         iceBody = GetComponent<Rigidbody2D>();
+        attackCollider = GetComponent<BoxCollider2D>();
         //audioSource = GetComponent<AudioSource>();
         // Get constants
         damage = gameConstants.iceAttackDamage;
@@ -43,6 +45,7 @@ public class IceAttackController : MonoBehaviour
                                                         transform.position.y + Mathf.Cos(Mathf.Deg2Rad * aimAngle) * gameConstants.iceAttackDistance, 
                                                         transform.position.z);
         transform.Rotate(0f,0f,aimAngle+90f);
+        StartCoroutine(WaitForAppearance());
         onIceAttackCastPlaySound.Raise();
     }
 
@@ -76,6 +79,12 @@ public class IceAttackController : MonoBehaviour
         // if (other.gameObject.tag == "Obstacle") {
         //     Destroy(gameObject);
         // }
-    
-}
+   
+        }
+    IEnumerator WaitForAppearance() {
+        yield return new WaitForSeconds(1.5f);
+        attackCollider.enabled = true;
+        //transform.position = new Vector2 (iceBody.transform.position.x+0.000001f, iceBody.transform.position.y);
+        //transform.position = new Vector2 (transform.position.x+0.000001f, transform.position.y);
+    }
 }

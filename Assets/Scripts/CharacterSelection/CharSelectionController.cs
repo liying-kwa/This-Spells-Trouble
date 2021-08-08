@@ -29,44 +29,43 @@ public class CharSelectionController : MonoBehaviour
     
 
     private void OnNextCharacter() {
-        if (!ready) {
-            characters[selectedChar].SetActive(false);
-            selectedChar = (selectedChar + 1) % characters.Length;
-            characters[selectedChar].SetActive(true);
-            playersChars.SetValue(playerID, selectedChar);
-            onArrowButtonPlaySound.Raise();
+        if (ready) {
+            return;
         }
+        characters[selectedChar].SetActive(false);
+        selectedChar = (selectedChar + 1) % characters.Length;
+        characters[selectedChar].SetActive(true);
+        playersChars.SetValue(playerID, selectedChar);
+        onArrowButtonPlaySound.Raise();
     }
 
     private void OnPreviousCharacter() {
-        if (!ready) {
-            characters[selectedChar].SetActive(false);
-            selectedChar-= 1;
-            if (selectedChar < 0){
-                selectedChar += characters.Length;
-            };
-            characters[selectedChar].SetActive(true);
-            playersChars.SetValue(playerID, selectedChar);
-            onArrowButtonPlaySound.Raise();
+        if (ready) {
+            return;
         }
+        characters[selectedChar].SetActive(false);
+        selectedChar-= 1;
+        if (selectedChar < 0){
+            selectedChar += characters.Length;
+        };
+        characters[selectedChar].SetActive(true);
+        playersChars.SetValue(playerID, selectedChar);
+        onArrowButtonPlaySound.Raise();
     }
 
     private void OnReady() {
         ready = !ready;
         playersReady.SetValue(playerID, ready);
         if (ready) {
-            // text.text = "Ready";
             readyPanelObject.SetActive(true);
             onReadyButtonPlaySound.Raise();
         } else {
-            // text.text = "";
             readyPanelObject.SetActive(false);
         }
     }
 
     void Awake() {
         DontDestroyOnLoad(this.gameObject);
-        // text.text = "";
         joinTextObject.SetActive(false);
         characters[selectedChar].SetActive(true);
         // Initialise some values

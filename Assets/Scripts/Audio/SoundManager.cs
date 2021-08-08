@@ -71,10 +71,17 @@ public class SoundManager : MonoBehaviour
     public AudioClip onReadyButtonClip;
 
     public AudioClip onBuySpellClip;
+    
+    public AudioClip onSellSpellClip;
 
     public AudioClip onClockTickingClip;
 
     public AudioClip onJoinButtonClip;
+
+    public AudioClip onLockSlotClip;
+    public AudioClip onUnlockSlotClip;
+
+    public AudioClip onNotAllowedClip;
     
     // BGM Methods
 
@@ -288,6 +295,10 @@ public class SoundManager : MonoBehaviour
         UISource.PlayOneShot(onBuySpellClip);
     }
 
+    public void PlaySellSpell() {
+        UISource.PlayOneShot(onSellSpellClip);
+    }
+
     public void PlayClockTicking()
     {   
         UISource.PlayOneShot(onClockTickingClip);
@@ -301,6 +312,21 @@ public class SoundManager : MonoBehaviour
     public void ResumeClockTicking()
     {
         UISource.UnPause();
+    }
+
+    public void PlayLockSlot()
+    {
+        UISource.PlayOneShot(onLockSlotClip);
+    }
+
+    public void PlayUnlockSlot()
+    {
+        UISource.PlayOneShot(onUnlockSlotClip);
+    }
+
+    public void PlayNotAllowed()
+    {
+        UISource.PlayOneShot(onNotAllowedClip);
     }
 
 

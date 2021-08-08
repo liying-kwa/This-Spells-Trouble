@@ -12,6 +12,11 @@ public class ShopManager : MonoBehaviour
     public IntArrVariable playersChars;
     public IntVariable currentRound;
     public IntArrVariable playersGold;
+    public BoolArrVariable playersJoined;
+    public BoolArrVariable playersReady;
+
+    // Components
+    private AudioSource audioSource;
 
     // GameObjects
     public Text countdownText;
@@ -27,6 +32,7 @@ public class ShopManager : MonoBehaviour
     public Text[] spellDescTexts;
     public Text[] spellUpgradeTexts;
     public Text[] goldTexts;
+    public GameObject[] readyPanelObjects;
 
 
     // public List<GameObject> P1SkillStatus1;
@@ -49,7 +55,17 @@ public class ShopManager : MonoBehaviour
     // Animation
     public RuntimeAnimatorController[] animatorControllers;
 
+    // Game State
+    bool allReady = false;
+    IEnumerator countdownCoroutine = null;
+
     void Awake() {
+        // Set frame rate to be 50 FPS
+	    Application.targetFrameRate =  50;
+        
+        // Get components
+        audioSource = GetComponent<AudioSource>();
+
         currentRound.ApplyChange(1);
         for (int i = 0; i < playerInputsArr.GetLength(); i++) {
             if (playerInputsArr.GetValue(i) == null) {
@@ -69,6 +85,7 @@ public class ShopManager : MonoBehaviour
             controller.spellDescText = spellDescTexts[i];
             controller.spellUpgradeText = spellUpgradeTexts[i];
             controller.goldText = goldTexts[i];
+            controller.readyPanelObject = readyPanelObjects[i];
             switch (i) {
                 case 0:
                     controller.slotIcons = P1SlotIcons;
@@ -98,18 +115,51 @@ public class ShopManager : MonoBehaviour
         //     toShow += "Player " + (i+1) + " gold: " + playersGold.GetValue(i) + "\n";
         // }
         // Debug.Log(toShow);
-        StartCoroutine(Countdown());
+
+        // Initialise all values to false
+        for (int i = 0; i < playersReady.GetLength(); i++) {
+            playersReady.SetValue(i, false);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        // Check if all ready, then countdown
+        allReady = true;
+        for (int i = 0; i < playersJoined.GetLength(); i++) {
+            if (playersJoined.GetValue(i) == true) {
+                if (playersReady.GetValue(i) == false) {
+                    allReady = false;
+                    break;
+                }
+            }
+        }
+        if (allReady) {
+            // Start countdown, if not started
+            if (countdownCoroutine == null) {
+                countdownCoroutine = Countdown();
+                StartCoroutine(countdownCoroutine);
+                audioSource.Play();
+            }
+        } else {
+            // Stop countdown, if running
+            if (countdownCoroutine != null) {
+                audioSource.Stop();
+                StopCoroutine(countdownCoroutine);
+                countdownCoroutine = null;
+                countdownText.text = "Spell Shop";
+            }
+        }
     }
 
     private IEnumerator Countdown() {
-        for (int i = 0; i < gameConstants.shopCountdownTime; i++) {
-            countdownText.text = "" + (gameConstants.shopCountdownTime-i);
+        // for (int i = 0; i < gameConstants.shopCountdownTime; i++) {
+        //     countdownText.text = "" + (gameConstants.shopCountdownTime-i);
+        //     yield return new WaitForSeconds(1);
+        // }
+        for (int i = 0; i < gameConstants.countdownTime; i++) {
+            countdownText.text = "" + (gameConstants.countdownTime-i);
             yield return new WaitForSeconds(1);
         }
         countdownText.text = "Loading...";
