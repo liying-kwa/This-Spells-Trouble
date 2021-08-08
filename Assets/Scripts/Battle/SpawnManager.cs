@@ -11,6 +11,7 @@ public class SpawnManager : MonoBehaviour
     public GameConstants gameConstants;
     public PlayerInputsArr playerInputsArr;
     public BoolArrVariable playersAreAlive;
+    public IntVariable currentMap;
 
     // GameObject References
     // public GameObject playerPrefab;
@@ -59,21 +60,29 @@ public class SpawnManager : MonoBehaviour
                 foreach (GameObject spellObject in topLeftSpells) {
                     spellObject.transform.gameObject.SetActive(true);
                 }
-                foreach (GameObject spellObject in bottomRightSpells) {
+                foreach (GameObject spellObject in topRightSpells) {
                     spellObject.transform.gameObject.SetActive(true);
+                }
+                foreach (GameObject spellObject in bottomRightSpells) {
+                    spellObject.transform.gameObject.SetActive(false);
                 }
                 foreach (GameObject spellObject in bottomLeftSpells) {
                     spellObject.transform.gameObject.SetActive(false);
                 }
-                foreach (GameObject spellObject in topRightSpells) {
-                    spellObject.transform.gameObject.SetActive(false);
-                }
-                mages[0].transform.position = gameConstants.topLeftPosition;
-                mages[1].transform.position = gameConstants.bottomRightPosition;
                 mages[0].GetComponent<BattleController>().cooldownImages = topLeftCooldownImages;
-                mages[1].GetComponent<BattleController>().cooldownImages = bottomRightCooldownImages;
+                mages[1].GetComponent<BattleController>().cooldownImages = topRightCooldownImages;
                 mages[0].GetComponent<BattleController>().spellIcons = topLeftSpellIcons;
-                mages[1].GetComponent<BattleController>().spellIcons = bottomRightSpellIcons;
+                mages[1].GetComponent<BattleController>().spellIcons = topRightSpellIcons;
+                switch (currentMap.Value) {
+                    case 2:
+                        mages[0].transform.position = gameConstants.Map2P4Position;
+                        mages[1].transform.position = gameConstants.Map2P2Position;
+                        break;
+                    default:
+                        mages[0].transform.position = gameConstants.topLeftPosition;
+                        mages[1].transform.position = gameConstants.topRightPosition;
+                        break;
+                }
                 break;
             case 3:
                 // Set used stuff active and unused stuff inactive
@@ -89,15 +98,24 @@ public class SpawnManager : MonoBehaviour
                 foreach (GameObject spellObject in bottomRightSpells) {
                     spellObject.transform.gameObject.SetActive(false);
                 }
-                mages[0].transform.position = gameConstants.topLeftPosition;
-                mages[1].transform.position = gameConstants.topRightPosition;
-                mages[2].transform.position = gameConstants.bottomLeftPosition;
                 mages[0].GetComponent<BattleController>().cooldownImages = topLeftCooldownImages;
                 mages[1].GetComponent<BattleController>().cooldownImages = topRightCooldownImages;
                 mages[2].GetComponent<BattleController>().cooldownImages = bottomLeftCooldownImages;
                 mages[0].GetComponent<BattleController>().spellIcons = topLeftSpellIcons;
                 mages[1].GetComponent<BattleController>().spellIcons = topRightSpellIcons;
                 mages[2].GetComponent<BattleController>().spellIcons = bottomLeftSpellIcons;
+                switch (currentMap.Value) {
+                    case 2:
+                        mages[0].transform.position = gameConstants.Map2P1Position;
+                        mages[1].transform.position = gameConstants.Map2P2Position;
+                        mages[2].transform.position = gameConstants.Map2P3Position;
+                        break;
+                    default:
+                        mages[0].transform.position = gameConstants.topLeftPosition;
+                        mages[1].transform.position = gameConstants.topRightPosition;
+                        mages[2].transform.position = gameConstants.bottomLeftPosition;
+                        break;
+                }
                 break;
             case 4:
                 // Set used stuff active and unused stuff inactive
@@ -113,10 +131,6 @@ public class SpawnManager : MonoBehaviour
                 foreach (GameObject spellObject in bottomRightSpells) {
                     spellObject.transform.gameObject.SetActive(true);
                 }
-                mages[0].transform.position = gameConstants.topLeftPosition;
-                mages[1].transform.position = gameConstants.topRightPosition;
-                mages[2].transform.position = gameConstants.bottomLeftPosition;
-                mages[3].transform.position = gameConstants.bottomRightPosition;
                 mages[0].GetComponent<BattleController>().cooldownImages = topLeftCooldownImages;
                 mages[1].GetComponent<BattleController>().cooldownImages = topRightCooldownImages;
                 mages[2].GetComponent<BattleController>().cooldownImages = bottomLeftCooldownImages;
@@ -125,6 +139,20 @@ public class SpawnManager : MonoBehaviour
                 mages[1].GetComponent<BattleController>().spellIcons = topRightSpellIcons;
                 mages[2].GetComponent<BattleController>().spellIcons = bottomLeftSpellIcons;
                 mages[3].GetComponent<BattleController>().spellIcons = bottomRightSpellIcons;
+                switch (currentMap.Value) {
+                    case 2:
+                        mages[0].transform.position = gameConstants.Map2P1Position;
+                        mages[1].transform.position = gameConstants.Map2P2Position;
+                        mages[2].transform.position = gameConstants.Map2P3Position;
+                        mages[3].transform.position = gameConstants.Map2P4Position;
+                        break;
+                    default:
+                        mages[0].transform.position = gameConstants.topLeftPosition;
+                        mages[1].transform.position = gameConstants.topRightPosition;
+                        mages[2].transform.position = gameConstants.bottomLeftPosition;
+                        mages[3].transform.position = gameConstants.bottomRightPosition;
+                        break;
+                }
                 break;
         }
         for (int i = 0; i < 4; i++) {

@@ -285,6 +285,7 @@ public class ShopController : MonoBehaviour
         goldText.text = "Gold: " + goldAmount.ToString();
 
         // Zoom into first slot, unzoom the others
+        ready = false;
         slotIsLocked = false;
         selectedSlot = 0;
         selectedSpellInt = -1;

@@ -45,6 +45,7 @@ public class MenuManager : MonoBehaviour
             playersSpells.SetSpell(i, 2, Spell.nullSpell);
             playersSpells.SetSpell(i, 3, Spell.nullSpell);
             // TODO: spell levels
+            // TODO: Maybe move currentRound and currentMap from CharSelectionManager into here?
         }
     }
 

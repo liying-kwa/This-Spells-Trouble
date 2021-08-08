@@ -9,29 +9,33 @@ public class GameConstants : ScriptableObject
     public int countdownTime = 3;
 
     // BattleScene
-    public Vector3 topLeftPosition = new Vector3(-2.71f, 2.71f, 0);
-    public Vector3 topRightPosition = new Vector3(2.71f, 2.71f, 0);
-    public Vector3 bottomLeftPosition = new Vector3(-2.71f, -2.71f, 0);
-    public Vector3 bottomRightPosition = new Vector3(2.71f, -2.71f, 0);
-    public float playerSpeed = 0.5f;
+    public float playerSpeed = 0.4f;
     public float knockbackInitial = 1.5f;
     public float knockbackMultiplier = 0.5f;
     public float regenWait = 5;
     public float regenInterval = 1;
-    public float regenValue = 5;
+    public float regenValue = 2;
     public float spellAnimationDuration = 0.53f;
     public float hurtAnimationDuration = 0.53f;
-    public float playerOffset = 1f;
+    public float playerOffset = 1;
+    public Vector3 topLeftPosition = new Vector3(-2.71f, 2.71f, 0);
+    public Vector3 topRightPosition = new Vector3(2.71f, 2.71f, 0);
+    public Vector3 bottomLeftPosition = new Vector3(-2.71f, -2.71f, 0);
+    public Vector3 bottomRightPosition = new Vector3(2.71f, -2.71f, 0);
+    public Vector3 Map2P1Position = new Vector3(0, 5.4f, 0);
+    public Vector3 Map2P2Position = new Vector3(12.5f, -0.6f, 0);
+    public Vector3 Map2P3Position = new Vector3(0, -5.4f, 0);
+    public Vector3 Map2P4Position = new Vector3(-12.5f, -0.6f, 0);
     // float turnSpeed = 0.001f;
-    public float lavaDamage = 10;
-    public float lavaDamageInverval = 1;
+    public float lavaDamage = 1;
+    public float lavaDamageInverval = 0.5f;
     public float fireballCooldown = 3;
     public float fireballSpeed = 1.5f;
     public float fireballForce = 20;
     public float fireballDestroyTime = 1.5f;
-    public int fireballDamage = 30;
+    public int fireballDamage = 15;
     public float teleportDistance = 3;
-    public float teleportCooldown = 5;
+    public float teleportCooldown = 7;
     public float teleportDestroyTime = 0.5f;
     public float lightningProjectileCooldown = 6;
     public float lightningProjectileSpeed = 2.25f;
@@ -46,7 +50,7 @@ public class GameConstants : ScriptableObject
     public float rushDestroyTime = 1;
     public float rushSpeed = 5;
     public float rushDistance = 5;
-    public float rushCooldown = 10;
+    public float rushCooldown = 5;
     public float arcDamage = 40;
     public float arcForce = 15;
     public float arcForwardSpeed = 1.5f;
@@ -61,7 +65,7 @@ public class GameConstants : ScriptableObject
     public float splitterDestroyTime = 1;
     public float splitterNumber = 5;
     public float splitterStartAngle = -40;
-    public float splitProjDamage = 30;
+    public float splitProjDamage = 10;
     public float splitProjForce = 8;
     public float splitProjSpeed = 1.5f;
     public float splitProjDestroyTime = 1.5f;
@@ -87,33 +91,33 @@ public class GameConstants : ScriptableObject
     public int mineThrowRows = 3;
     public int mineThrowColumns = 3;
     public float mineThrowCooldown = 15;
-    public int mineGroundDamage = 15;
-    public float mineGroundForce = 10;
+    public int mineGroundDamage = 10;
+    public float mineGroundForce = 5;
     public float mineGroundSpeed = 1.5f; //this is only used to detemine knockback
     public float mineGroundDestroyTime = 5;
     public float groundAttackDamage = 12;
     public float groundAttackDistance = 6;
     public float groundAttackDestroyTime = 3;
     public float groundAttackForce = 8;
-    public float groundAttackCooldown = 1;
+    public float groundAttackCooldown = 5;
     public float iceAttackDamage = 5;
     public float iceAttackDistance = 3.5f;
     public float iceAttackDestroyTime = 2.5f;
     public float iceAttackForce = 8;
-    public float iceAttackCooldown = 1;
-    public float shockwaveCooldown = 1;
+    public float iceAttackCooldown = 5;
+    public float shockwaveCooldown = 3;
     public float shockwaveSpeed = 3.5f;
     public float shockwaveForce = 5;
     public float shockwaveDestroyTime = 0.5f;
     public float shockwaveDamage = 10;
     public float wallDistance = 1.3f;
     public float wallDestroyTime = 9;
-    public float wallCooldown = 1;
+    public float wallCooldown = 12;
     public float wallForce = 0.01f;
 
     // SpellShopScene
     public int shopCountdownTime = 30;
-    public int goldIncrement = 300;
+    public int goldIncrement = 500;
 
     // VictoryScene
     public int showButtonsDuration = 5;

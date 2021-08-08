@@ -14,6 +14,7 @@ public class CharSelectionManager : MonoBehaviour
     public BoolArrVariable playersReady;
     public GameConstants gameConstants;
     public IntVariable currentRound;
+    public IntVariable currentMap;
     
     // Components
     private AudioSource audioSource;
@@ -83,6 +84,7 @@ public class CharSelectionManager : MonoBehaviour
         }
         countdownText.text = "Loading...";
         currentRound.SetValue(0);
+        currentMap.SetValue(0);
         StartCoroutine(ChangeScene("SpellShopScene"));
     }
 

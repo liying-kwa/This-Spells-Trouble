@@ -11,8 +11,8 @@ public class ShopManager : MonoBehaviour
     public PlayerInputsArr playerInputsArr;
     public IntArrVariable playersChars;
     public IntVariable currentRound;
+    public IntVariable currentMap;
     public IntArrVariable playersGold;
-    public BoolArrVariable playersJoined;
     public BoolArrVariable playersReady;
 
     // Components
@@ -127,8 +127,8 @@ public class ShopManager : MonoBehaviour
     {
         // Check if all ready, then countdown
         allReady = true;
-        for (int i = 0; i < playersJoined.GetLength(); i++) {
-            if (playersJoined.GetValue(i) == true) {
+        for (int i = 0; i < playerInputsArr.GetLength(); i++) {
+            if (playerInputsArr.GetValue(i) != null) {
                 if (playersReady.GetValue(i) == false) {
                     allReady = false;
                     break;
@@ -165,18 +165,23 @@ public class ShopManager : MonoBehaviour
         countdownText.text = "Loading...";
         switch(currentRound.Value) {
             case 1:
+                currentMap.SetValue(1);
                 StartCoroutine(ChangeScene("BattleScene1"));
                 break;
             case 2:
+                currentMap.SetValue(2);
                 StartCoroutine(ChangeScene("BattleScene2"));
                 break;
             case 3:
+                currentMap.SetValue(3);
                 StartCoroutine(ChangeScene("BattleScene3"));
                 break;
             case 4:
+                currentMap.SetValue(4);
                 StartCoroutine(ChangeScene("BattleScene4"));
                 break;
             case 5:
+                currentMap.SetValue(5);
                 StartCoroutine(ChangeScene("BattleScene5"));
                 break;
             default:
@@ -185,18 +190,23 @@ public class ShopManager : MonoBehaviour
                 int randomInt = Random.Range(1, 6);
                 switch (randomInt) {
                     case 1:
+                        currentMap.SetValue(1);
                         StartCoroutine(ChangeScene("BattleScene1"));
                         break;
                     case 2:
+                        currentMap.SetValue(2);
                         StartCoroutine(ChangeScene("BattleScene2"));
                         break;
                     case 3:
+                        currentMap.SetValue(3);
                         StartCoroutine(ChangeScene("BattleScene3"));
                         break;
                     case 4:
+                        currentMap.SetValue(4);
                         StartCoroutine(ChangeScene("BattleScene4"));
                         break;
                     case 5:
+                        currentMap.SetValue(5);
                         StartCoroutine(ChangeScene("BattleScene5"));
                         break;
                     default:
