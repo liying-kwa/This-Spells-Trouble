@@ -587,6 +587,7 @@ MonoBehaviour:
   playersReady: {fileID: 11400000, guid: b342ff068b3b55e44a6f14aa3f0febbc, type: 2}
   playersChars: {fileID: 11400000, guid: 680f5bb198ef26644aa397008c921dae, type: 2}
   playersSpells: {fileID: 11400000, guid: 3d57aacccfb0dcf4993a190ef3116a50, type: 2}
+  playersSpellLevels: {fileID: 11400000, guid: de08da11687752944a8e0852a8f6d492, type: 2}
   playersGold: {fileID: 11400000, guid: b1b1adeefccd1b941bd7fa1e02cd07fb, type: 2}
   playersPoints: {fileID: 11400000, guid: e0e7b701da0473e4b8efc155081a7a1c, type: 2}
   onReadyButtonPlaySound: {fileID: 11400000, guid: 215b4421f690b447288344570e87e856, type: 2}
@@ -642,6 +643,7 @@ MonoBehaviour:
   playersChars: {fileID: 11400000, guid: 680f5bb198ef26644aa397008c921dae, type: 2}
   playersKnockback: {fileID: 11400000, guid: d46cc8037b6803d4da7ff070dd6d1583, type: 2}
   playersSpells: {fileID: 11400000, guid: 3d57aacccfb0dcf4993a190ef3116a50, type: 2}
+  playersSpellLevels: {fileID: 11400000, guid: de08da11687752944a8e0852a8f6d492, type: 2}
   playersAreAlive: {fileID: 11400000, guid: dca732caad795cf45a5779f7a02e9058, type: 2}
   roundEnded: {fileID: 11400000, guid: 8e6e01181cbb6b842bdd4106b8c69da9, type: 2}
   onLavaPlaySound: {fileID: 11400000, guid: 13482de901e0f412cb39ac89dae1ef6f, type: 2}
@@ -765,12 +767,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e08dcaa5623394764a6483d631245421, type: 2}
   - {fileID: 11400000, guid: 576c39827ae7d4c49b06c771e08139b1, type: 2}
   emptyIcon: {fileID: 2800000, guid: 22c57c9034ab12a49a282af0f4164da1, type: 3}
-  readyPanelObject: {fileID: 0}
   slotIcons: []
-  spellInfo: {fileID: 0}
   spellNameText: {fileID: 0}
   spellCostText: {fileID: 0}
   spellDescText: {fileID: 0}
   spellUpgradeText: {fileID: 0}
   goldText: {fileID: 0}
+  readyPanelObject: {fileID: 0}
+  s1Levels: []
+  s2Levels: []
+  s3Levels: []
+  s4Levels: []
   playerID: 0

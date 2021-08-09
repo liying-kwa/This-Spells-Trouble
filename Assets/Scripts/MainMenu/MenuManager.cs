@@ -11,6 +11,7 @@ public class MenuManager : MonoBehaviour
     // ScriptableObjects
     public IntArrVariable playersChars;
     public PlayersSpells playersSpells;
+    public PlayersSpellLevels playersSpellLevels;
     public IntArrVariable playersGold;
     public IntArrVariable playersPoints;
 
@@ -36,15 +37,17 @@ public class MenuManager : MonoBehaviour
         buttons[0].transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
 
         // Initialise values for all scriptable objects
-        for (int i = 0; i < 4; i++) {
-            playersChars.SetValue(i, -1);
-            playersGold.SetValue(i, -1);
-            playersPoints.SetValue(i, -1);
-            playersSpells.SetSpell(i, 0, Spell.nullSpell);
-            playersSpells.SetSpell(i, 1, Spell.nullSpell);
-            playersSpells.SetSpell(i, 2, Spell.nullSpell);
-            playersSpells.SetSpell(i, 3, Spell.nullSpell);
-            // TODO: spell levels
+        for (int playerID = 0; playerID < 4; playerID++) {
+            playersChars.SetValue(playerID, -1);
+            playersGold.SetValue(playerID, -1);
+            playersPoints.SetValue(playerID, -1);
+            for (int slot = 0; slot < 4; slot++) {
+                playersSpells.SetSpell(playerID, slot, Spell.nullSpell);
+            }
+            int numSpells = playersSpells.GetNumSpells();
+            for (int spellInt = 0; spellInt < numSpells; spellInt++) {
+                playersSpellLevels.SetSpellLevel(playerID, (Spell) spellInt, -1);
+            }
             // TODO: Maybe move currentRound and currentMap from CharSelectionManager into here?
         }
     }

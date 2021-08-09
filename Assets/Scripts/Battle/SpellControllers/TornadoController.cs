@@ -18,6 +18,7 @@ public class TornadoController : MonoBehaviour
 
     // Game state
     public int srcPlayerID;
+    public int spellLevel;
     public float damage;
 
     // Sound Events

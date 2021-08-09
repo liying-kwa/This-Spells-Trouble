@@ -17,8 +17,6 @@ public class GroundAttackController : MonoBehaviour
     // Components
     private Rigidbody2D infernalBody;
     private CircleCollider2D attackCollider;
-    //private AudioSource audioSource;
-    //public AudioClip hitAudio;
 
     // Physics
     public float aimAngle;
@@ -26,6 +24,7 @@ public class GroundAttackController : MonoBehaviour
 
     // Game state
     public int srcPlayerID;
+    public int spellLevel;
     public float damage;
 
     public Vector2 knockbackPosition;
@@ -84,5 +83,6 @@ public class GroundAttackController : MonoBehaviour
     IEnumerator WaitForAppearance() {
         yield return new WaitForSeconds(1.5f);
         attackCollider.enabled = true;
+        transform.position = new Vector2 (transform.position.x+0.000001f, transform.position.y);
     }
 }

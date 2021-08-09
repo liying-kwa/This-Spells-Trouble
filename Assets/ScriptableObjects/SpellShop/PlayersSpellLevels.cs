@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "PlayersSpellLevels", menuName = "ScriptableObjects/PlayersSpellLevels", order = 2)]
+[CreateAssetMenu(fileName = "PlayersSpellLevels", menuName = "ScriptableObjects/PlayersSpellLevels", order = 3)]
 public class PlayersSpellLevels : ScriptableObject
 {
 #if UNITY_EDITOR
@@ -10,11 +10,16 @@ public class PlayersSpellLevels : ScriptableObject
     public string DeveloperDescription = "Players' spell levels. -1 indicates player has not bought that spell.";
 #endif
 
-    private int[,] _arr;
+    private int[,] _arr = new int[4, System.Enum.GetValues(typeof(Spell)).Length - 1];
 
     public int GetSpellLevel(int playerID, Spell spell) {
         int spellInt = (int) spell;
-        int spellLevel = _arr[playerID, spellInt];
+        int spellLevel;
+        if (spellInt < 0) {
+            spellLevel = -1;
+        } else {
+            spellLevel = _arr[playerID, spellInt];
+        }
         return spellLevel;
     }
 
@@ -28,13 +33,4 @@ public class PlayersSpellLevels : ScriptableObject
         _arr = arr._arr;
     }
 
-    void Awake() {
-        int maxSpellInt = System.Enum.GetValues(typeof(Spell)).Length;
-        _arr = new int[4, maxSpellInt];
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < maxSpellInt; j++) {
-                _arr[i, j] = -1;
-            }
-        }
-    }
 }

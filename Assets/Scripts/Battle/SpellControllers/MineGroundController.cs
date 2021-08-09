@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MineGroundController : MonoBehaviour
 {
-    // Start is called before the first frame update
     // ScriptableObjects
     public GameConstants gameConstants;
     public KnockbackArr playersKnockback;
@@ -12,13 +11,17 @@ public class MineGroundController : MonoBehaviour
     // Components
     private Rigidbody2D mineGroundBody;
     public GameObject explosion;
+
     // Physics
     public float aimAngle;
     public Vector2 movement;
 
     // Game state
     public int srcPlayerID;
+    public int spellLevel;
+
     public float damage;
+
     // Sound Events
     [Header("Sound Events")]
     public GameEvent onMineHitPlaySound;
@@ -44,7 +47,6 @@ public class MineGroundController : MonoBehaviour
         if (other.gameObject.tag == "Player") {
             int dstPlayerID = other.gameObject.GetComponent<BattleController>().playerID;
             if (srcPlayerID != dstPlayerID) {
-                // Debug.Log("Collided with other player!");
                 float knockback = playersKnockback.GetValue(dstPlayerID);
                 float forceMultiplier = gameConstants.mineGroundForce * (gameConstants.knockbackInitial + gameConstants.knockbackMultiplier * Mathf.Log(knockback + 1));
                 other.gameObject.GetComponent<Rigidbody2D>().AddForce(movement * forceMultiplier, ForceMode2D.Impulse);

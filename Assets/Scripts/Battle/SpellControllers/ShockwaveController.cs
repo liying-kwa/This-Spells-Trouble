@@ -24,6 +24,7 @@ public class ShockwaveController : MonoBehaviour
 
     // Game state
     public int srcPlayerID;
+    public int spellLevel;
     public float damage;
 
     // Start is called before the first frame update
@@ -53,7 +54,6 @@ public class ShockwaveController : MonoBehaviour
         if (other.gameObject.tag == "Player") {
             int dstPlayerID = other.gameObject.GetComponent<BattleController>().playerID;
             if (srcPlayerID != dstPlayerID) {
-                // Debug.Log("Collided with other player!");
                 if (!playersAreAlive.GetValue(dstPlayerID)) {
                     return;
                 }

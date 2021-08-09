@@ -12,8 +12,6 @@ public class ArcController : MonoBehaviour
 
     // Components
     private Rigidbody2D arcBody;
-    //private AudioSource audioSource;
-    //public AudioClip hitAudio;
 
     // Physics
     public float aimAngle;
@@ -22,6 +20,7 @@ public class ArcController : MonoBehaviour
 
     // Game state
     public int srcPlayerID;
+    public int spellLevel;
     public float damage;
 
     // Sound Events
@@ -32,7 +31,6 @@ public class ArcController : MonoBehaviour
     {
         // Get components
         arcBody = GetComponent<Rigidbody2D>();
-        //audioSource = GetComponent<AudioSource>();
         // Get constants
         damage = gameConstants.arcDamage;
         // Arc movement
@@ -66,8 +64,6 @@ public class ArcController : MonoBehaviour
                 other.gameObject.GetComponent<Rigidbody2D>().AddForce(forwardMovement * forceMultiplier, ForceMode2D.Impulse);
                 playersKnockback.ApplyChange(dstPlayerID, damage);
                 other.gameObject.GetComponent<BattleController>().Hurt();
-                //audioSource.Stop();
-                //AudioSource.PlayClipAtPoint(hitAudio, new Vector3(0, 0, 0));
                 onArcHitPlaySound.Raise();
                 Destroy(gameObject);
             }

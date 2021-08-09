@@ -13,8 +13,6 @@ public class SplitterController : MonoBehaviour
 
     // Components
     private Rigidbody2D splitterBody;
-    //private AudioSource audioSource;
-    //public AudioClip hitAudio;
 
     // Physics
     public float aimAngle;
@@ -23,6 +21,7 @@ public class SplitterController : MonoBehaviour
 
     // Game state
     public int srcPlayerID;
+    public int spellLevel;
     public float damage;
 
     private IEnumerator splitCoroutine;
@@ -38,7 +37,6 @@ public class SplitterController : MonoBehaviour
     {
         // Get components
         splitterBody = GetComponent<Rigidbody2D>();
-        //audioSource = GetComponent<AudioSource>();
         // Get constants
         damage = gameConstants.splitterDamage;
         // Splitter movement
@@ -63,6 +61,7 @@ public class SplitterController : MonoBehaviour
             splitProj = Instantiate(splitProj, transform.position, transform.rotation);
             splitProj.GetComponent<SplitProjController>().srcPlayerID = this.srcPlayerID;
             splitProj.GetComponent<SplitProjController>().startAngle = splitAngle;
+            splitProj.GetComponent<SplitProjController>().spellLevel = spellLevel;
             splitAngle += -gameConstants.splitterStartAngle*2/(gameConstants.splitterNumber-1);
             yield return null;
         //onSplitProjCastPlaySound.Raise();
@@ -74,13 +73,10 @@ public class SplitterController : MonoBehaviour
         if (other.gameObject.tag == "Player") {
             int dstPlayerID = other.gameObject.GetComponent<BattleController>().playerID;
             if (srcPlayerID != dstPlayerID) {
-                // Debug.Log("Collided with other player!");
                 StopCoroutine(splitCoroutine);
                 other.gameObject.GetComponent<Rigidbody2D>().AddForce(movement * gameConstants.splitterSpeed * gameConstants.splitterForce, ForceMode2D.Impulse);
                 playersKnockback.ApplyChange(dstPlayerID, damage);
                 other.gameObject.GetComponent<BattleController>().Hurt();
-                //audioSource.Stop();
-                //AudioSource.PlayClipAtPoint(hitAudio, new Vector3(0, 0, 0));
                 onSplitterHitPlaySound.Raise();
                 Destroy(gameObject);
             }

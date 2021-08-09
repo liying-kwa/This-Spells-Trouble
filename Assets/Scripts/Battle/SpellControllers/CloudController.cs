@@ -9,14 +9,14 @@ public class CloudController : MonoBehaviour
     public GameConstants gameConstants;
     // Components
     private Rigidbody2D cloudBody;
-    //private AudioSource audioSource;
-    //public AudioClip hitAudio;
 
     // Physics
     public float aimAngle;
     public Vector2 movement;
     // Game state
     public int srcPlayerID; //it shouldn't delete own player's spells but whatever
+    public int spellLevel;
+
     //Game events
     public GameEvent onCloudCastPlaySound;
     // public GameEvent onCloudHitPlaySound;

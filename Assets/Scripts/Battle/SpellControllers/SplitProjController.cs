@@ -10,8 +10,6 @@ public class SplitProjController : MonoBehaviour
 
     // Components
     private Rigidbody2D splitterBody;
-    //private AudioSource audioSource;
-    //public AudioClip hitAudio;
 
     // Physics
     public float startAngle;
@@ -19,6 +17,7 @@ public class SplitProjController : MonoBehaviour
 
     // Game state
     public int srcPlayerID;
+    public int spellLevel;
     public float damage;
 
     private IEnumerator splitCoroutine;
@@ -33,7 +32,6 @@ public class SplitProjController : MonoBehaviour
     {
         // Get components
         splitterBody = GetComponent<Rigidbody2D>();
-        //audioSource = GetComponent<AudioSource>();
         // Get constants
         damage = gameConstants.splitProjDamage;
         // SplitProj movement
@@ -52,12 +50,9 @@ public class SplitProjController : MonoBehaviour
         if (other.gameObject.tag == "Player") {
             int dstPlayerID = other.gameObject.GetComponent<BattleController>().playerID;
             if (srcPlayerID != dstPlayerID) {
-                // Debug.Log("Collided with other player!");
                 other.gameObject.GetComponent<Rigidbody2D>().AddForce(movement * gameConstants.splitProjSpeed * gameConstants.splitProjForce, ForceMode2D.Impulse);
                 playersKnockback.ApplyChange(dstPlayerID, damage);
                 other.gameObject.GetComponent<BattleController>().Hurt();
-                //audioSource.Stop();
-                //AudioSource.PlayClipAtPoint(hitAudio, new Vector3(0, 0, 0));
                 onSplitProjHitPlaySound.Raise();
                 Destroy(gameObject);
             }

@@ -49,4 +49,9 @@ public class PlayersSpells : ScriptableObject
     public void SetSpell(PlayersSpells arr) {
         _arr = arr._arr;
     }
+
+    public int GetNumSpells() {
+        int numSpells = System.Enum.GetValues(typeof(Spell)).Length - 1;
+        return numSpells;
+    }
 }

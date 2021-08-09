@@ -11,8 +11,6 @@ public class BoomerangController : MonoBehaviour
 
     // Components
     private Rigidbody2D boomerangBody;
-    //private AudioSource audioSource;
-    //public AudioClip hitAudio;
 
     // Physics
     public float aimAngle;
@@ -22,6 +20,7 @@ public class BoomerangController : MonoBehaviour
 
     // Game state
     public int srcPlayerID;
+    public int spellLevel;
     public float damage;
     public IEnumerator checkBoomerangFast;
     //Reference to same object
@@ -38,7 +37,6 @@ public class BoomerangController : MonoBehaviour
     {
         // Get components
         boomerangBody = GetComponent<Rigidbody2D>();
-        //audioSource = GetComponent<AudioSource>();
         // Get constants
         damage = gameConstants.boomerangDamage;
         isBoomerangFast = false;
@@ -73,7 +71,6 @@ public class BoomerangController : MonoBehaviour
             StopAllCoroutines();
             int dstPlayerID = other.gameObject.GetComponent<BattleController>().playerID;
             if (srcPlayerID != dstPlayerID) {
-                // Debug.Log("Collided with other player!");
                 float knockback = playersKnockback.GetValue(dstPlayerID);
                 if (isBoomerangFast){
                     float forceMultiplier = gameConstants.boomerangFastForce * (gameConstants.knockbackInitial + gameConstants.knockbackMultiplier * Mathf.Log(knockback + 1));
@@ -90,8 +87,6 @@ public class BoomerangController : MonoBehaviour
                 }
                 playersKnockback.ApplyChange(dstPlayerID, damage);
                 other.gameObject.GetComponent<BattleController>().Hurt();
-                //audioSource.Stop();
-                //AudioSource.PlayClipAtPoint(hitAudio, new Vector3(0, 0, 0));
                 onBoomerangHitPlaySound.Raise();
                 Destroy(gameObject);
             }
@@ -101,8 +96,8 @@ public class BoomerangController : MonoBehaviour
                 Boomerang = Instantiate(Boomerang, transform.position, transform.rotation);
                 Boomerang.GetComponent<BoomerangController>().srcPlayerID = srcPlayerID;
                 //TODO: Get current aim angle. remove band-aid fix
-                //Boomerang.GetComponent<BoomerangController>().aimAngle = srcPlayerID.
                 Boomerang.GetComponent<BoomerangController>().aimAngle = aimAngle;
+                Boomerang.GetComponent<BoomerangController>().spellLevel = spellLevel;
                 Destroy(gameObject);
             }
         }

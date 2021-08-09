@@ -28,28 +28,22 @@ public class ShopController : MonoBehaviour
     public SpellModel[] allSpellModels;
     public Texture emptyIcon;
     public GameObject[] slotIcons;
-    public GameObject spellInfo;
     public Text spellNameText;
     public Text spellCostText;
     public Text spellDescText;
     public Text spellUpgradeText;
     public Text goldText;
     public GameObject readyPanelObject;
-
-    // public List<GameObject> skillStatus1;
-    // public List<GameObject> skillStatus2;
-    // public List<GameObject> skillStatus3;
-    // public List<GameObject> skillStatus4;
-    // private List<List<GameObject>> skillStatus;
-    // private int[] skillMapping; // Maps slot to GameObjects
-    // private int previousSelection;
+    public GameObject[] s1Levels;
+    public GameObject[] s2Levels;
+    public GameObject[] s3Levels;
+    public GameObject[] s4Levels;
 
     // Game State
     public int playerID;
     private int selectedSlot = 0;
     private int selectedSpellInt = -1;  // this is w.r.t. index in either offensiveSpellModels or defensiveSpellModels
     private Spell selectedSpell = Spell.nullSpell;
-    private Vector3 spellInfoInitialPosition;
     private bool[] slotTiedToSpell = {false, false, false, false};
     private List<SpellModel> offensiveSpellModels;
     private List<SpellModel> defensiveSpellModels;
@@ -95,6 +89,18 @@ public class ShopController : MonoBehaviour
                     selectedSpellInt += offensiveSpellModels.Count;
                 }
                 Spell spell = offensiveSpellModels[selectedSpellInt].Spell;
+                // CHECK IF SPELL IS ALREADY BOUGHT. IF SO, SKIP THIS SPELL
+                bool bought = false;
+                for (int i = 1; i < 4; i++) {
+                    if (spell == playersSpells.GetSpell(playerID, i) && spell != Spell.nullSpell) {
+                        bought = true;
+                        break;
+                    }
+                }
+                if (bought) {
+                    OnLeftButton();
+                    return;
+                }
                 renderSpell(spell, selectedSlot);
             }
             onLockSlotPlaySound.Raise();
@@ -137,6 +143,18 @@ public class ShopController : MonoBehaviour
                     selectedSpellInt -= offensiveSpellModels.Count;
                 }
                 Spell spell = offensiveSpellModels[selectedSpellInt].Spell;
+                // CHECK IF SPELL IS ALREADY BOUGHT. IF SO, SKIP THIS SPELL
+                bool bought = false;
+                for (int i = 1; i < 4; i++) {
+                    if (spell == playersSpells.GetSpell(playerID, i) && spell != Spell.nullSpell) {
+                        bought = true;
+                        break;
+                    }
+                }
+                if (bought) {
+                    OnRightButton();
+                    return;
+                }
                 renderSpell(spell, selectedSlot);
             }
             onLockSlotPlaySound.Raise();
@@ -186,15 +204,15 @@ public class ShopController : MonoBehaviour
             return;
         }
         // Select slot
-        if (!slotIsLocked && selectedSlot != 1) {
+        if (!slotIsLocked) {
             slotIsLocked = true;
             slotIcons[selectedSlot].GetComponent<RawImage>().color = new Color(1, 1, 1, 1);
             onLockSlotPlaySound.Raise();
             return;
         }
         // BUY/UPGRADE SPELL
-        // Do nothing if slot is not locked OR if a spell is tied to that slot OR if it is an empty spell
-        if (!slotIsLocked || slotTiedToSpell[selectedSlot] || selectedSpellInt == -1) {
+        // Do nothing if slot is not locked OR if it is an empty spell
+        if (!slotIsLocked || selectedSpell == Spell.nullSpell) {
             return;
         }
         // Check if enough gold
@@ -202,11 +220,24 @@ public class ShopController : MonoBehaviour
             onNotAllowedPlaySound.Raise();
             return;
         }
+        int currSpellLevel = playersSpellLevels.GetSpellLevel(playerID, selectedSpell);
+        if (slotTiedToSpell[selectedSlot]) {
+            // Upgrade
+            if (currSpellLevel >= 3) {
+                // Spell level is maxed out
+                onNotAllowedPlaySound.Raise();
+                return;
+            }
+        } else {
+            // Buy
+            slotTiedToSpell[selectedSlot] = true;
+            playersSpells.SetSpell(playerID, selectedSlot, selectedSpell);
+        }
+        playersSpellLevels.SetSpellLevel(playerID, selectedSpell, currSpellLevel + 1);
+        renderSpellLevel(selectedSlot, currSpellLevel + 1);
         goldAmount -= allSpellModels[(int) selectedSpell].Cost;
         goldText.text = "Gold: " + goldAmount;
         playersGold.SetValue(playerID, goldAmount);
-        slotTiedToSpell[selectedSlot] = true;
-        playersSpells.SetSpell(playerID, selectedSlot, selectedSpell);
         onBuySpellPlaySound.Raise();
     }
 
@@ -234,20 +265,31 @@ public class ShopController : MonoBehaviour
             return;
         }
         // SELL/DOWNGRADE SPELL
-        // Do nothing if slot is not locked OR if it is the fireball slot OR no spell is bought for that slot
-        if (!slotIsLocked || selectedSlot == 1 || !slotTiedToSpell[selectedSlot]) {
+        // Do nothing if slot is not locked OR no spell is bought for that slot
+        if (!slotIsLocked || !slotTiedToSpell[selectedSlot]) {
             return;
         }
-        // Add gold, sell spell, remove icon and reset selectedSpell
-        Spell soldSpell = playersSpells.GetSpell(playerID, selectedSlot);
+        Spell soldSpell = selectedSpell;
+        int currSpellLevel = playersSpellLevels.GetSpellLevel(playerID, soldSpell);
+        if (currSpellLevel > 1) {
+            // Downgrade
+        } else {
+            // Sell
+            if (selectedSlot == 1) {
+                // Cannot sell if fireball
+                onNotAllowedPlaySound.Raise();
+                return;
+            }
+            slotTiedToSpell[selectedSlot] = false;
+            playersSpells.SetSpell(playerID, selectedSlot, Spell.nullSpell);
+            renderSpell(Spell.nullSpell, selectedSlot);
+        }
+        // Add gold, reduce spell level and remove icon
+        playersSpellLevels.SetSpellLevel(playerID, soldSpell, currSpellLevel - 1);
+        renderSpellLevel(selectedSlot, currSpellLevel - 1);
         goldAmount += allSpellModels[(int) soldSpell].Cost;
         goldText.text = "Gold: " + goldAmount;
         playersGold.SetValue(playerID, goldAmount);
-        slotTiedToSpell[selectedSlot] = false;
-        playersSpells.SetSpell(playerID, selectedSlot, Spell.nullSpell);
-        renderSpell(Spell.nullSpell, selectedSlot);
-        selectedSpellInt = -1;
-        selectedSpell = Spell.nullSpell;
         onSellSpellPlaySound.Raise();
     }
 
@@ -268,15 +310,16 @@ public class ShopController : MonoBehaviour
 
     void refreshShopController() {
         // Initialise some values
-        for (int i = 3; i >= 0; i--) {
+        for (int slot = 3; slot >= 0; slot--) {
             // Render initial icons. Last one is first spell so no need to re-render.
-            Spell spell = playersSpells.GetSpell(playerID, i);
-            // renderSpell(spell, selectedSlot);
-            renderSpell(spell, i);
+            Spell spell = playersSpells.GetSpell(playerID, slot);
+            renderSpell(spell, slot);
+            int spellLevel = playersSpellLevels.GetSpellLevel(playerID, spell);
+            renderSpellLevel(slot, spellLevel);
             if ((int) spell == -1) {
-                slotTiedToSpell[i] = false;
+                slotTiedToSpell[slot] = false;
             } else {
-                slotTiedToSpell[i] = true;
+                slotTiedToSpell[slot] = true;
             }
         }
         // Give gold to players after every round
@@ -328,8 +371,6 @@ public class ShopController : MonoBehaviour
                     break;
             }
         }
-        // Initialise some values
-        spellInfoInitialPosition = spellInfo.transform.localPosition;
     }
 
     // Update is called once per frame
@@ -342,7 +383,6 @@ public class ShopController : MonoBehaviour
         if (spell == Spell.nullSpell) {
             slotIcons[selectedSlot].GetComponent<RawImage>().texture = emptyIcon;
             selectedSpell = Spell.nullSpell;
-            // TODO: set spellinfo to inactive?
             spellNameText.text = "";
             spellCostText.text = "";
             spellDescText.text = "";
@@ -358,6 +398,107 @@ public class ShopController : MonoBehaviour
         }
     }
 
+    void renderSpellLevel(int slot, int spellLevel) {
+        switch (slot) {
+            case 0:
+                switch (spellLevel) {
+                    case 1:
+                        s1Levels[0].GetComponent<SpriteRenderer>().color = Color.gray;
+                        s1Levels[1].GetComponent<SpriteRenderer>().color = Color.gray;
+                        s1Levels[2].GetComponent<SpriteRenderer>().color = Color.green;
+                        break;
+                    case 2:
+                        s1Levels[0].GetComponent<SpriteRenderer>().color = Color.gray;
+                        s1Levels[1].GetComponent<SpriteRenderer>().color = Color.green;
+                        s1Levels[2].GetComponent<SpriteRenderer>().color = Color.green;
+                        break;
+                    case 3:
+                        s1Levels[0].GetComponent<SpriteRenderer>().color = Color.green;
+                        s1Levels[1].GetComponent<SpriteRenderer>().color = Color.green;
+                        s1Levels[2].GetComponent<SpriteRenderer>().color = Color.green;
+                        break;
+                    default:
+                        s1Levels[0].GetComponent<SpriteRenderer>().color = Color.gray;
+                        s1Levels[1].GetComponent<SpriteRenderer>().color = Color.gray;
+                        s1Levels[2].GetComponent<SpriteRenderer>().color = Color.gray;
+                        break;
+                }
+                break;
+            case 1:
+                switch (spellLevel) {
+                    case 1:
+                        s2Levels[0].GetComponent<SpriteRenderer>().color = Color.gray;
+                        s2Levels[1].GetComponent<SpriteRenderer>().color = Color.gray;
+                        s2Levels[2].GetComponent<SpriteRenderer>().color = Color.green;
+                        break;
+                    case 2:
+                        s2Levels[0].GetComponent<SpriteRenderer>().color = Color.gray;
+                        s2Levels[1].GetComponent<SpriteRenderer>().color = Color.green;
+                        s2Levels[2].GetComponent<SpriteRenderer>().color = Color.green;
+                        break;
+                    case 3:
+                        s2Levels[0].GetComponent<SpriteRenderer>().color = Color.green;
+                        s2Levels[1].GetComponent<SpriteRenderer>().color = Color.green;
+                        s2Levels[2].GetComponent<SpriteRenderer>().color = Color.green;
+                        break;
+                    default:
+                        s2Levels[0].GetComponent<SpriteRenderer>().color = Color.gray;
+                        s2Levels[1].GetComponent<SpriteRenderer>().color = Color.gray;
+                        s2Levels[2].GetComponent<SpriteRenderer>().color = Color.gray;
+                        break;
+                }
+                break;
+            case 2:
+                switch (spellLevel) {
+                    case 1:
+                        s3Levels[0].GetComponent<SpriteRenderer>().color = Color.gray;
+                        s3Levels[1].GetComponent<SpriteRenderer>().color = Color.gray;
+                        s3Levels[2].GetComponent<SpriteRenderer>().color = Color.green;
+                        break;
+                    case 2:
+                        s3Levels[0].GetComponent<SpriteRenderer>().color = Color.gray;
+                        s3Levels[1].GetComponent<SpriteRenderer>().color = Color.green;
+                        s3Levels[2].GetComponent<SpriteRenderer>().color = Color.green;
+                        break;
+                    case 3:
+                        s3Levels[0].GetComponent<SpriteRenderer>().color = Color.green;
+                        s3Levels[1].GetComponent<SpriteRenderer>().color = Color.green;
+                        s3Levels[2].GetComponent<SpriteRenderer>().color = Color.green;
+                        break;
+                    default:
+                        s3Levels[0].GetComponent<SpriteRenderer>().color = Color.gray;
+                        s3Levels[1].GetComponent<SpriteRenderer>().color = Color.gray;
+                        s3Levels[2].GetComponent<SpriteRenderer>().color = Color.gray;
+                        break;
+                }
+                break;
+            case 3:
+                switch (spellLevel) {
+                    case 1:
+                        s4Levels[0].GetComponent<SpriteRenderer>().color = Color.gray;
+                        s4Levels[1].GetComponent<SpriteRenderer>().color = Color.gray;
+                        s4Levels[2].GetComponent<SpriteRenderer>().color = Color.green;
+                        break;
+                    case 2:
+                        s4Levels[0].GetComponent<SpriteRenderer>().color = Color.gray;
+                        s4Levels[1].GetComponent<SpriteRenderer>().color = Color.green;
+                        s4Levels[2].GetComponent<SpriteRenderer>().color = Color.green;
+                        break;
+                    case 3:
+                        s4Levels[0].GetComponent<SpriteRenderer>().color = Color.green;
+                        s4Levels[1].GetComponent<SpriteRenderer>().color = Color.green;
+                        s4Levels[2].GetComponent<SpriteRenderer>().color = Color.green;
+                        break;
+                    default:
+                        s4Levels[0].GetComponent<SpriteRenderer>().color = Color.gray;
+                        s4Levels[1].GetComponent<SpriteRenderer>().color = Color.gray;
+                        s4Levels[2].GetComponent<SpriteRenderer>().color = Color.gray;
+                        break;
+                }
+                break;
+        }
+    }
+
     void unrenderAndUnzoom(int slot) {
         // Render earlier slot icon to be nothing if no spell is bought and unzoom that slot
         if (!slotTiedToSpell[slot]) {
@@ -367,12 +508,15 @@ public class ShopController : MonoBehaviour
     }
 
     void renderAndZoom(int slot) {
-        // Render icon to display spell bought or empty if nothing and zoom chosen slot
+        // Note: I only care about selectedSpellInt if nothing is bought on that slot (so need to choose spells). 
+        // (cont'd) Do not determine selectedSpellInt based on selectedSpell because selectedSpellInt is wrt defensive/offensive spell indexes
+        // (cont'd) BUT I need selectedSpell even if a spell is bought, so that this can be used for upgrading spells
         if (slotTiedToSpell[slot] == false) {
             selectedSpellInt = -1;
         }
-        Spell spell = playersSpells.GetSpell(playerID, slot);
-        renderSpell(spell, slot);
+        selectedSpell = playersSpells.GetSpell(playerID, slot);
+        // Render icon to display spell bought or empty if nothing and zoom chosen slot
+        renderSpell(selectedSpell, slot);
         slotIcons[slot].transform.localScale = new Vector3(0.35f, 0.35f, 0.35f);
     }
 }

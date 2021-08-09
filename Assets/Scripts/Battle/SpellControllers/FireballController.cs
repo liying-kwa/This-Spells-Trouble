@@ -11,8 +11,6 @@ public class FireballController : MonoBehaviour
 
     // Components
     private Rigidbody2D fireballBody;
-    //private AudioSource audioSource;
-    //public AudioClip hitAudio;
 
     // Physics
     public float aimAngle;
@@ -20,6 +18,7 @@ public class FireballController : MonoBehaviour
 
     // Game state
     public int srcPlayerID;
+    public int spellLevel;
     public float damage;
 
     // Sound Events
@@ -32,7 +31,6 @@ public class FireballController : MonoBehaviour
     {
         // Get components
         fireballBody = GetComponent<Rigidbody2D>();
-        //audioSource = GetComponent<AudioSource>();
         // Get constants
         damage = gameConstants.fireballDamage;
         // Fireball movement
@@ -51,7 +49,6 @@ public class FireballController : MonoBehaviour
         if (other.gameObject.tag == "Player") {
             int dstPlayerID = other.gameObject.GetComponent<BattleController>().playerID;
             if (srcPlayerID != dstPlayerID) {
-                // Debug.Log("Collided with other player!");
                 if (!playersAreAlive.GetValue(dstPlayerID)) {
                     return;
                 }
@@ -60,8 +57,6 @@ public class FireballController : MonoBehaviour
                 other.gameObject.GetComponent<Rigidbody2D>().AddForce(movement * forceMultiplier, ForceMode2D.Impulse);
                 playersKnockback.ApplyChange(dstPlayerID, damage);
                 other.gameObject.GetComponent<BattleController>().Hurt();
-                //audioSource.Stop();
-                //AudioSource.PlayClipAtPoint(hitAudio, new Vector3(0, 0, 0));
                 onFireballHitPlaySound.Raise();
                 Destroy(gameObject);
             }

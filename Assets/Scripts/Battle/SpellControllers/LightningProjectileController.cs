@@ -11,8 +11,6 @@ public class LightningProjectileController : MonoBehaviour
 
     // Components
     private Rigidbody2D lightningProjectileBody;
-    // private AudioSource audioSource;
-    // public AudioClip hitAudio;
 
     // Physics
     public float aimAngle;
@@ -20,6 +18,7 @@ public class LightningProjectileController : MonoBehaviour
 
     // Game state
     public int srcPlayerID;
+    public int spellLevel;
     public float damage;
 
     // Sound Events
@@ -32,7 +31,6 @@ public class LightningProjectileController : MonoBehaviour
     {
         // Get components
         lightningProjectileBody = GetComponent<Rigidbody2D>();
-        //audioSource = GetComponent<AudioSource>();
         // Get constants
         damage = gameConstants.lightningProjectileDamage;
         // LightningProjectile movement
@@ -51,7 +49,6 @@ public class LightningProjectileController : MonoBehaviour
         if (other.gameObject.tag == "Player") {
             int dstPlayerID = other.gameObject.GetComponent<BattleController>().playerID;
             if (srcPlayerID != dstPlayerID) {
-                // Debug.Log("Collided with other player!");
                 if (!playersAreAlive.GetValue(dstPlayerID)) {
                     return;
                 }

@@ -26,14 +26,29 @@ public class ShopManager : MonoBehaviour
     public GameObject[] P2SlotIcons;
     public GameObject[] P3SlotIcons;
     public GameObject[] P4SlotIcons;
-    public List<GameObject> spellInfos;
+    // public List<GameObject> spellInfos;
     public Text[] spellNameTexts;
     public Text[] spellCostTexts;
     public Text[] spellDescTexts;
     public Text[] spellUpgradeTexts;
     public Text[] goldTexts;
     public GameObject[] readyPanelObjects;
-
+    public GameObject[] p1S1Levels;
+    public GameObject[] p1S2Levels;
+    public GameObject[] p1S3Levels;
+    public GameObject[] p1S4Levels;
+    public GameObject[] p2S1Levels;
+    public GameObject[] p2S2Levels;
+    public GameObject[] p2S3Levels;
+    public GameObject[] p2S4Levels;
+    public GameObject[] p3S1Levels;
+    public GameObject[] p3S2Levels;
+    public GameObject[] p3S3Levels;
+    public GameObject[] p3S4Levels;
+    public GameObject[] p4S1Levels;
+    public GameObject[] p4S2Levels;
+    public GameObject[] p4S3Levels;
+    public GameObject[] p4S4Levels;
 
     // public List<GameObject> P1SkillStatus1;
     // public List<GameObject> P1SkillStatus2;
@@ -79,7 +94,7 @@ public class ShopManager : MonoBehaviour
             // Pass in GameObjects accordingly
             GameObject player = playerInputsArr.GetValue(i).gameObject;
             ShopController controller = player.GetComponent<ShopController>();
-            controller.spellInfo = spellInfos[i];
+            // controller.spellInfo = spellInfos[i];
             controller.spellNameText = spellNameTexts[i];
             controller.spellCostText = spellCostTexts[i];
             controller.spellDescText = spellDescTexts[i];
@@ -89,15 +104,31 @@ public class ShopManager : MonoBehaviour
             switch (i) {
                 case 0:
                     controller.slotIcons = P1SlotIcons;
+                    controller.s1Levels = p1S1Levels;
+                    controller.s2Levels = p1S2Levels;
+                    controller.s3Levels = p1S3Levels;
+                    controller.s4Levels = p1S4Levels;
                     break;
                 case 1:
                     controller.slotIcons = P2SlotIcons;
+                    controller.s1Levels = p2S1Levels;
+                    controller.s2Levels = p2S2Levels;
+                    controller.s3Levels = p2S3Levels;
+                    controller.s4Levels = p2S4Levels;
                     break;
                 case 2:
                     controller.slotIcons = P3SlotIcons;
+                    controller.s1Levels = p3S1Levels;
+                    controller.s2Levels = p3S2Levels;
+                    controller.s3Levels = p3S3Levels;
+                    controller.s4Levels = p3S4Levels;
                     break;
                 case 3:
                     controller.slotIcons = P4SlotIcons;
+                    controller.s1Levels = p4S1Levels;
+                    controller.s2Levels = p4S2Levels;
+                    controller.s3Levels = p4S3Levels;
+                    controller.s4Levels = p4S4Levels;
                     break;
             }
             // Disable previous script and activate current script and relevant components

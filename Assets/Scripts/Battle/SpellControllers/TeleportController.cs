@@ -13,6 +13,7 @@ public class TeleportController : MonoBehaviour
 
     // Game state
     public int srcPlayerID;
+    public int spellLevel;
     GameObject playerObject;
 
     // Sound Events

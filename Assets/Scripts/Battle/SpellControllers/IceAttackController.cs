@@ -24,6 +24,7 @@ public class IceAttackController : MonoBehaviour
 
     // Game state
     public int srcPlayerID;
+    public int spellLevel;
     public float damage;
 
     public Vector2 knockbackPosition;

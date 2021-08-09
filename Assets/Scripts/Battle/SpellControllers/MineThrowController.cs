@@ -10,6 +10,7 @@ public class MineThrowController : MonoBehaviour
     // Components
     private Rigidbody2D mineThrowBody;
     public GameObject mineGround;
+
     // Physics
     public float aimAngle;
     public Vector2 movement;
@@ -19,8 +20,11 @@ public class MineThrowController : MonoBehaviour
     private float xPos;
     private float yPos;
     private float xPos_original;
+
     // Game state
     public int srcPlayerID;
+    public int spellLevel;
+
     // Sound Events
     [Header("Sound Events")]
     public GameEvent onMineCastPlaySound;
@@ -74,6 +78,7 @@ public class MineThrowController : MonoBehaviour
                 mineGround.GetComponent<MineGroundController>().srcPlayerID = srcPlayerID;
                 mineGround.GetComponent<MineGroundController>().aimAngle = aimAngle;
                 mineGround.GetComponent<MineGroundController>().movement = movement;
+                mineGround.GetComponent<MineGroundController>().spellLevel = spellLevel;
                 xPos+=1f;
             }
             xPos = xPos_original;

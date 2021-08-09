@@ -9,6 +9,7 @@ public class CharSelectionController : MonoBehaviour
     public BoolArrVariable playersReady;
     public IntArrVariable playersChars;
     public PlayersSpells playersSpells;
+    public PlayersSpellLevels playersSpellLevels;
     public IntArrVariable playersGold;
     public IntArrVariable playersPoints;
 
@@ -73,20 +74,23 @@ public class CharSelectionController : MonoBehaviour
         playersGold.SetValue(playerID, 0);
         playersPoints.SetValue(playerID, 0);
         playersSpells.SetSpell(playerID, 1, Spell.fireball);
-        // TODO: fireball spell level
+        int numSpells = playersSpells.GetNumSpells();
+        for (int spellInt = 0; spellInt < numSpells; spellInt++) {
+            if ((Spell) spellInt == Spell.fireball) {
+                playersSpellLevels.SetSpellLevel(playerID, (Spell) spellInt, 1);
+            } else {
+                playersSpellLevels.SetSpellLevel(playerID, (Spell) spellInt, 0);
+            }
+        }
         onJoinButtonPlaySound.Raise();
     }
 
     void Start() {
-        //audioSource = GetComponent<AudioSource>();
-        //audioSource.PlayOneShot(scrollAudio);
-        //onJoinButtonPlaySound.Raise();
-        //Debug.Log("onJoinButtonPlaySound played!");
+
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         
     }
 }

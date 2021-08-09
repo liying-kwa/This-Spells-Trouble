@@ -13,6 +13,7 @@ public class RushController : MonoBehaviour
 
     // Game state
     public int srcPlayerID;
+    public int spellLevel;
     GameObject playerObject;
     public Vector3 rushVectorVar;
 
