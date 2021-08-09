@@ -33,8 +33,8 @@ public class KnockbackArr : ScriptableObject
 
     public void ApplyChange(int index, float value) {
         float temp = _arr[index] + value;
-        if (temp > 100) {
-            _arr[index] = 100;
+        if (temp > 300) {
+            _arr[index] = 300;
         } else if (temp < 0) {
             _arr[index] = 0;
         } else {

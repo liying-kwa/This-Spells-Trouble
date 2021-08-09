@@ -25,8 +25,9 @@ public class BattleController : MonoBehaviour
     MapManager mapManager;
     public GameObject mageObject;
     public GameObject aimObject;
-    public GameObject knockbackObject;
+    // public GameObject knockbackObject;
     public Text knockbackText;
+    public Text playerText;
     public Image[] cooldownImages;
     public GameObject[] spellIcons;
     
@@ -56,7 +57,7 @@ public class BattleController : MonoBehaviour
 
     // Game State
     public int playerID;
-    float maxXScale;
+    // float maxXScale;
     bool[] spellsReady = {true, true, true, true};
     float[] cooldownDurations = {-1, -1, -1, -1};
     float knockback;
@@ -107,10 +108,10 @@ public class BattleController : MonoBehaviour
         // Components
         rigidBody = GetComponent<Rigidbody2D>();
         animator = mageObject.GetComponent<Animator>();
-        knockbackSpriteRenderer = knockbackObject.GetComponent<SpriteRenderer>();
+        // knockbackSpriteRenderer = knockbackObject.GetComponent<SpriteRenderer>();
 
         // Initialise values
-        maxXScale = knockbackObject.transform.localScale.x;
+        // maxXScale = knockbackObject.transform.localScale.x;
         // knockbackObject.transform.localScale = new Vector3(0, knockbackObject.transform.localScale.y, knockbackObject.transform.localScale.z);
     }
 
@@ -128,7 +129,7 @@ public class BattleController : MonoBehaviour
         // Initialise values
         isDead = false;
         playersKnockback.SetValue(playerID, 0);
-        knockbackObject.transform.localScale = new Vector3(0, knockbackObject.transform.localScale.y, knockbackObject.transform.localScale.z);
+        // knockbackObject.transform.localScale = new Vector3(0, knockbackObject.transform.localScale.y, knockbackObject.transform.localScale.z);
         for (int i = 0; i < 4; i++) {
             switch(playersSpells.GetSpell(playerID, i)) {
                 case Spell.fireball:
@@ -220,6 +221,22 @@ public class BattleController : MonoBehaviour
     void Start() {
         // Render the correct character sprite & animation
         animator.runtimeAnimatorController = animatorControllers[playersChars.GetValue(playerID)];
+        // Render correct player text number and color
+        playerText.text = "P" + (playerID + 1);
+        switch (playerID) {
+            case 0:
+                playerText.color = new Color(0.96875f, 0.82422f, 0.47656f, 1);
+                break;
+            case 1:
+                playerText.color = new Color(0.51563f, 0.87891f, 0.99216f, 1);
+                break;
+            case 2:
+                playerText.color = new Color(0.99216f, 0.51563f, 0.91406f, 1);
+                break;
+            case 3:
+                playerText.color = new Color(0.54297f, 0.99216f, 0.51563f, 1);
+                break;
+        }
     }
 
     // Update is called once per frame
@@ -351,12 +368,18 @@ public class BattleController : MonoBehaviour
         //     knockbackSpriteRenderer.color = new Color(1, 0, 0, 1);
         // }
         knockbackText.text = "" + knockback + "%";
-        if (knockback < 50) {
+        if (knockback == 0) {
+            // white
+            knockbackText.color = new Color(1, 1, 1, 1);
+        }
+        else if (knockback < 50) {
             // gold 
             knockbackText.color = new Color(1, 0.8f, 0, 1);
-        } else if (knockback < 99) {
+        } else if (knockback <= 99) {
+            // orange
             knockbackText.color = new Color(1, 0.4f, 0, 1);
         } else {
+            // red
             knockbackText.color = new Color(1, 0, 0, 1);
         }
 

@@ -24,7 +24,7 @@ public class GameConstants : ScriptableObject
     public Vector3 bottomRightPosition = new Vector3(2.71f, -2.71f, 0);
     public Vector3 Map2P1Position = new Vector3(0, 5.4f, 0);
     public Vector3 Map2P2Position = new Vector3(12.5f, -0.6f, 0);
-    public Vector3 Map2P3Position = new Vector3(0, -5.4f, 0);
+    public Vector3 Map2P3Position = new Vector3(0, -6.6f, 0);
     public Vector3 Map2P4Position = new Vector3(-12.5f, -0.6f, 0);
     // float turnSpeed = 0.001f;
     public float lavaDamage = 1;

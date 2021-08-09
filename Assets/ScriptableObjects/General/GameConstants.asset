@@ -28,7 +28,7 @@ MonoBehaviour:
   bottomRightPosition: {x: 2.71, y: -2.71, z: 0}
   Map2P1Position: {x: 0, y: 5.4, z: 0}
   Map2P2Position: {x: 12.5, y: -0.6, z: 0}
-  Map2P3Position: {x: 0, y: -5.4, z: 0}
+  Map2P3Position: {x: 0, y: -6.6, z: 0}
   Map2P4Position: {x: -12.5, y: -0.6, z: 0}
   lavaDamage: 1
   lavaDamageInverval: 0.5
@@ -51,10 +51,12 @@ MonoBehaviour:
   lightningProjectileDestroyTime: 0.75
   lightningProjectileDamageL1: 15
   lightningProjectileDamageL2L3: 25
-  tornadoCooldown: 16
+  tornadoCooldownL1L2: 16
+  tornadoCooldownL3: 10
   tornadoSpeed: 0.75
   tornadoForce: 15
-  tornadoDestroyTime: 8
+  tornadoDestroyTimeL1: 5
+  tornadoDestroyTimeL2L3: 10
   tornadoDamage: 20
   rushDestroyTime: 1
   rushSpeed: 5
