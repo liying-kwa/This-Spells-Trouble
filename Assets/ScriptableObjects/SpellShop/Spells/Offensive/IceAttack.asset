@@ -19,4 +19,4 @@ MonoBehaviour:
   Description: A single line of ice beam rapidly extends from the player and hits
     the ground in a straight line.
   Cost: 300
-  Upgrade: Increase Damage; Increase Knockback; Reduce Cooldown
+  Upgrade: L2 - Increased Damage\nL3 - Decreased Cooldown

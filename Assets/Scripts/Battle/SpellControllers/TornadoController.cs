@@ -19,7 +19,8 @@ public class TornadoController : MonoBehaviour
     // Game state
     public int srcPlayerID;
     public int spellLevel;
-    public float damage;
+    float damage;
+    float destroyTime;
 
     // Sound Events
     [Header("Sound Events")]
@@ -31,8 +32,21 @@ public class TornadoController : MonoBehaviour
     {
         // Get components
         tornadoBody = GetComponent<Rigidbody2D>();
+
         // Get constants
         damage = gameConstants.tornadoDamage;
+        switch (spellLevel) {
+            case 2:
+                destroyTime = gameConstants.tornadoDestroyTimeL2L3;
+                break;
+            case 3:
+                destroyTime = gameConstants.tornadoDestroyTimeL2L3;
+                break;
+            default:
+                destroyTime = gameConstants.tornadoDestroyTimeL1;
+                break;
+        }
+
         // Tornado movement
         movement = new Vector2(-Mathf.Sin(Mathf.Deg2Rad * aimAngle), Mathf.Cos(Mathf.Deg2Rad * aimAngle));
         tornadoBody.AddForce(movement * gameConstants.tornadoSpeed, ForceMode2D.Impulse);
@@ -42,7 +56,7 @@ public class TornadoController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Destroy(gameObject, gameConstants.tornadoDestroyTime);
+        Destroy(gameObject, destroyTime);
     }
 
     void  OnTriggerEnter2D(Collider2D other) {

@@ -19,7 +19,8 @@ public class FireballController : MonoBehaviour
     // Game state
     public int srcPlayerID;
     public int spellLevel;
-    public float damage;
+    float speed;
+    float damage;
 
     // Sound Events
     [Header("Sound Events")]
@@ -31,11 +32,27 @@ public class FireballController : MonoBehaviour
     {
         // Get components
         fireballBody = GetComponent<Rigidbody2D>();
+
         // Get constants
-        damage = gameConstants.fireballDamage;
+        switch (spellLevel) {
+            case 2:
+                speed = gameConstants.fireballSpeedL1L2;
+                damage = gameConstants.fireballDamageL2L3;
+                break;
+            case 3:
+                speed = gameConstants.fireballSpeedL3;
+                damage = gameConstants.fireballDamageL2L3;
+                break;
+            default:
+                speed = gameConstants.fireballSpeedL1L2;
+                damage = gameConstants.fireballDamageL1;
+                break;
+        }
+        
         // Fireball movement
         movement = new Vector2(-Mathf.Sin(Mathf.Deg2Rad * aimAngle), Mathf.Cos(Mathf.Deg2Rad * aimAngle));
-        fireballBody.AddForce(movement * gameConstants.fireballSpeed, ForceMode2D.Impulse);
+        // fireballBody.AddForce(movement * gameConstants.fireballSpeed, ForceMode2D.Impulse);
+        fireballBody.AddForce(movement * speed, ForceMode2D.Impulse);
         onFireballCastPlaySound.Raise();
     }
 

@@ -18,4 +18,4 @@ MonoBehaviour:
   Icon: {fileID: 2800000, guid: 8ec5b52b09d90074a83d61c1334190f9, type: 3}
   Description: Invokes a ground explosion a fixed distance from the player.
   Cost: 300
-  Upgrade: Increase Damage; Decrease Cooldown; Increase Knockback
+  Upgrade: L2 - Increased Damage\nL3 - Decreased Cooldown

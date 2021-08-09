@@ -19,4 +19,4 @@ MonoBehaviour:
   Description: Shoots a mine that becomes a row of 3 by 3 small mines, which detonate
     upon collision and knock back players in the direction it was thrown from.
   Cost: 300
-  Upgrade: Increase Knockback; Reduce Cooldown; Increase Mine Number
+  Upgrade: L2 - Increased Damage\nL3 - Decreased Cooldown

@@ -394,7 +394,7 @@ public class ShopController : MonoBehaviour
             spellNameText.text = spellModel.Name;
             spellCostText.text = spellModel.Cost.ToString();
             spellDescText.text = spellModel.Description;
-            spellUpgradeText.text = spellModel.Upgrade;
+            spellUpgradeText.text = spellModel.Upgrade.Replace("\\n", "\n");
         }
     }
 

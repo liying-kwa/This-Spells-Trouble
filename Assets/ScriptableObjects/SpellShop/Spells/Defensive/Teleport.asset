@@ -18,4 +18,4 @@ MonoBehaviour:
   Icon: {fileID: 2800000, guid: b40094d475ad2a545977b133c7e1e728, type: 3}
   Description: Instantly teleport a fixed distance. Hold to choose target. Long cooldown.
   Cost: 200
-  Upgrade: 'L2 - Reduced Cooldown; L3 - Reduced Cooldown '
+  Upgrade: L2 - Increased Distance\nL3 - Decreased Cooldown

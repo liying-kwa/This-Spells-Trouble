@@ -18,4 +18,4 @@ MonoBehaviour:
   Icon: {fileID: 2800000, guid: 91debaf65ee5746b6b7bd0a3c715e85f, type: 3}
   Description: Summons a cloud that blocks projectiles.
   Cost: 200
-  Upgrade: 'Increase Lifetime; Reduce Cooldown; '
+  Upgrade: L2 - Increased Lifetime\nL3 - Decreased Cooldown

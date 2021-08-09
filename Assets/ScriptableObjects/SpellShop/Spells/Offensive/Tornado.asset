@@ -19,4 +19,4 @@ MonoBehaviour:
   Description: A slow-moving tornado which knocks back anything in its path and absorbs
     all other projectiles.
   Cost: 300
-  Upgrade: Increase Damage; Increase Range; Decrease Cooldown
+  Upgrade: L2 - Increased Lifetime\nL3 - Decreased Cooldown

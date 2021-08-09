@@ -19,7 +19,7 @@ public class LightningProjectileController : MonoBehaviour
     // Game state
     public int srcPlayerID;
     public int spellLevel;
-    public float damage;
+    float damage;
 
     // Sound Events
     [Header("Sound Events")]
@@ -32,7 +32,17 @@ public class LightningProjectileController : MonoBehaviour
         // Get components
         lightningProjectileBody = GetComponent<Rigidbody2D>();
         // Get constants
-        damage = gameConstants.lightningProjectileDamage;
+        switch (spellLevel) {
+            case 2:
+                damage = gameConstants.lightningProjectileDamageL2L3;
+                break;
+            case 3:
+                damage = gameConstants.lightningProjectileDamageL2L3;
+                break;
+            default:
+                damage = gameConstants.lightningProjectileDamageL1;
+                break;
+        }
         // LightningProjectile movement
         movement = new Vector2(-Mathf.Sin(Mathf.Deg2Rad * aimAngle), Mathf.Cos(Mathf.Deg2Rad * aimAngle));
         lightningProjectileBody.AddForce(movement * gameConstants.lightningProjectileSpeed, ForceMode2D.Impulse);

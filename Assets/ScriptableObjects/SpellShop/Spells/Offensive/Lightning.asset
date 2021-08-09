@@ -19,4 +19,4 @@ MonoBehaviour:
   Description: An instant travelling, short range attack that hits the first target
     in the line
   Cost: 200
-  Upgrade: 'Decreased Cooldown; Increased Range '
+  Upgrade: L2 - Increased Range\nL3 - Decreased Cooldown

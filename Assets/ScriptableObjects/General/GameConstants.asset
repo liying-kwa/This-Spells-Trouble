@@ -13,10 +13,6 @@ MonoBehaviour:
   m_Name: GameConstants
   m_EditorClassIdentifier: 
   countdownTime: 3
-  topLeftPosition: {x: -2.71, y: 2.71, z: 0}
-  topRightPosition: {x: 2.71, y: 2.71, z: 0}
-  bottomLeftPosition: {x: -2.71, y: -2.71, z: 0}
-  bottomRightPosition: {x: 2.71, y: -2.71, z: 0}
   playerSpeed: 0.4
   knockbackInitial: 1.5
   knockbackMultiplier: 0.5
@@ -26,21 +22,35 @@ MonoBehaviour:
   spellAnimationDuration: 0.53
   hurtAnimationDuration: 0.53
   playerOffset: 1
+  topLeftPosition: {x: -2.71, y: 2.71, z: 0}
+  topRightPosition: {x: 2.71, y: 2.71, z: 0}
+  bottomLeftPosition: {x: -2.71, y: -2.71, z: 0}
+  bottomRightPosition: {x: 2.71, y: -2.71, z: 0}
+  Map2P1Position: {x: 0, y: 5.4, z: 0}
+  Map2P2Position: {x: 12.5, y: -0.6, z: 0}
+  Map2P3Position: {x: 0, y: -5.4, z: 0}
+  Map2P4Position: {x: -12.5, y: -0.6, z: 0}
   lavaDamage: 1
   lavaDamageInverval: 0.5
   fireballCooldown: 3
-  fireballSpeed: 1.5
+  fireballSpeedL1L2: 1.5
+  fireballSpeedL3: 2
   fireballForce: 20
   fireballDestroyTime: 1.5
-  fireballDamage: 15
-  teleportDistance: 3
-  teleportCooldown: 7
+  fireballDamageL1: 10
+  fireballDamageL2L3: 20
+  teleportDistanceL1: 2
+  teleportDistanceL2L3: 4
+  teleportCooldownL1L2: 7
+  teleportCooldownL3: 5
   teleportDestroyTime: 0.5
-  lightningProjectileCooldown: 6
+  lightningProjectileCooldownL1L2: 6
+  lightningProjectileCooldownL3: 4
   lightningProjectileSpeed: 2.25
   lightningProjectileForce: 15
   lightningProjectileDestroyTime: 0.75
-  lightningProjectileDamage: 30
+  lightningProjectileDamageL1: 15
+  lightningProjectileDamageL2L3: 25
   tornadoCooldown: 16
   tornadoSpeed: 0.75
   tornadoForce: 15
@@ -114,5 +124,5 @@ MonoBehaviour:
   wallCooldown: 12
   wallForce: 0.01
   shopCountdownTime: 30
-  goldIncrement: 500
+  goldIncrement: 1000
   showButtonsDuration: 5

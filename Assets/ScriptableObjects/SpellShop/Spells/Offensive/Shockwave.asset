@@ -19,4 +19,4 @@ MonoBehaviour:
   Description: A wave of force that ripples out from the player, causing damage in
     a line.
   Cost: 200
-  Upgrade: Increase Speed; Increase Damage; Reduce Cooldown
+  Upgrade: L2 - Increased Damage\nL3 - Decreased Cooldown

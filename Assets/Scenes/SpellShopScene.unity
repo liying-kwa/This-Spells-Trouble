@@ -5587,11 +5587,6 @@ MonoBehaviour:
   - {fileID: 1216743969}
   - {fileID: 1845562740}
   - {fileID: 1574775928}
-  spellInfos:
-  - {fileID: 602329418}
-  - {fileID: 2628309774006081312}
-  - {fileID: 2628309772874575721}
-  - {fileID: 2628309773342356497}
   spellNameTexts:
   - {fileID: 1760010284}
   - {fileID: 2628309773016147526}
@@ -5956,11 +5951,11 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 300
-    m_Alignment: 0
+    m_Alignment: 6
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 'Next Upgrade: '
 --- !u!222 &2072180326
@@ -11042,11 +11037,11 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 300
-    m_Alignment: 0
+    m_Alignment: 6
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 'Next Upgrade: '
 --- !u!4 &2628309773342356496
@@ -13899,11 +13894,11 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 300
-    m_Alignment: 0
+    m_Alignment: 6
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 'Next Upgrade: '
 --- !u!223 &2628309774011601727
@@ -15132,11 +15127,11 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 300
-    m_Alignment: 0
+    m_Alignment: 6
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 'Next Upgrade: '
 --- !u!223 &2628309774344931399

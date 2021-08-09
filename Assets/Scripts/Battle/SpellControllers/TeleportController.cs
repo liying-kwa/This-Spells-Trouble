@@ -15,6 +15,7 @@ public class TeleportController : MonoBehaviour
     public int srcPlayerID;
     public int spellLevel;
     GameObject playerObject;
+    float distance;
 
     // Sound Events
     public GameEvent onTeleportCastPlaySound;
@@ -22,9 +23,23 @@ public class TeleportController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Get constants
+        switch (spellLevel) {
+            case 2:
+                distance = gameConstants.teleportDistanceL2L3;
+                break;
+            case 3:
+                distance = gameConstants.teleportDistanceL2L3;
+                break;
+            default:
+                distance = gameConstants.teleportDistanceL1;
+                break;
+        }
+
+        // Move player
         playerObject = playerInputsArr.GetValue(srcPlayerID).gameObject;
-        playerObject.transform.position = new Vector3(transform.position.x - Mathf.Sin(Mathf.Deg2Rad * aimAngle) * gameConstants.teleportDistance, 
-                                                        transform.position.y + Mathf.Cos(Mathf.Deg2Rad * aimAngle) * gameConstants.teleportDistance, 
+        playerObject.transform.position = new Vector3(transform.position.x - Mathf.Sin(Mathf.Deg2Rad * aimAngle) * distance, 
+                                                        transform.position.y + Mathf.Cos(Mathf.Deg2Rad * aimAngle) * distance, 
                                                         transform.position.z);
         onTeleportCastPlaySound.Raise();
     }

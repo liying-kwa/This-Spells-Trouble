@@ -19,4 +19,4 @@ MonoBehaviour:
   Description: Travels in a semi-circle. Bounces directly away from the impact point
     and tries to return to the caster.
   Cost: 200
-  Upgrade: 'Increase Speed; Increase Range '
+  Upgrade: L2 - Increased Speed\nL3 - Increased Range

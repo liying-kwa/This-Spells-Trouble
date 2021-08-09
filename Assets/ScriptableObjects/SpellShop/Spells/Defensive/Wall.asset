@@ -18,4 +18,4 @@ MonoBehaviour:
   Icon: {fileID: 2800000, guid: ca6299f192d72b047a99c160e51a72d0, type: 3}
   Description: Summons a wall that blocks any projectiles.
   Cost: 400
-  Upgrade: Increase Destroy Time; Increase Destroy Time; Increase Destroy Time
+  Upgrade: L2 - Increased Lifetime\nL3 - Decreased Cooldown

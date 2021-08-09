@@ -18,4 +18,4 @@ MonoBehaviour:
   Icon: {fileID: 2800000, guid: 7e4f77cb87b0acf46b76be12270f4e29, type: 3}
   Description: 'A fast, precise projectile that travels in an arc-shaped to the target. '
   Cost: 300
-  Upgrade: 'Increase Damage; Increase Range; Decrease Cooldown '
+  Upgrade: L2 - Increased Damage\nL3 - Decreased Cooldown

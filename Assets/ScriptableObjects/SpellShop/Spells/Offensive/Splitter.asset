@@ -19,4 +19,4 @@ MonoBehaviour:
   Description: Fires a small projectile which splits into multiple projectiles after
     a set time
   Cost: 300
-  Upgrade: More Projectiles; Increase Damage
+  Upgrade: L2 - More Projectiles\nL3 - Increased Damage

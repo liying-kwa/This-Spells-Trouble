@@ -136,15 +136,27 @@ public class BattleController : MonoBehaviour
                     spellIcons[i].GetComponent<RawImage>().texture = allSpellModels[(int) Spell.fireball].Icon;
                     break;
                 case Spell.teleport:
-                    cooldownDurations[i] = gameConstants.teleportCooldown;
+                    if (playersSpellLevels.GetSpellLevel(playerID, Spell.teleport) >= 3) {
+                        cooldownDurations[i] = gameConstants.teleportCooldownL3;
+                    } else {
+                        cooldownDurations[i] = gameConstants.teleportCooldownL1L2;
+                    }
                     spellIcons[i].GetComponent<RawImage>().texture = allSpellModels[(int) Spell.teleport].Icon;
                     break;
                 case Spell.lightning:
-                    cooldownDurations[i] = gameConstants.lightningProjectileCooldown;
+                    if (playersSpellLevels.GetSpellLevel(playerID, Spell.lightning) >= 3) {
+                        cooldownDurations[i] = gameConstants.lightningProjectileCooldownL3;
+                    } else {
+                        cooldownDurations[i] = gameConstants.lightningProjectileCooldownL1L2;
+                    }
                     spellIcons[i].GetComponent<RawImage>().texture = allSpellModels[(int) Spell.lightning].Icon;
                     break;
                 case Spell.tornado:
-                    cooldownDurations[i] = gameConstants.tornadoCooldown;
+                    if (playersSpellLevels.GetSpellLevel(playerID, Spell.tornado) >= 3) {
+                        cooldownDurations[i] = gameConstants.tornadoCooldownL3;
+                    } else {
+                        cooldownDurations[i] = gameConstants.tornadoCooldownL1L2;
+                    }
                     spellIcons[i].GetComponent<RawImage>().texture = allSpellModels[(int) Spell.tornado].Icon;
                     break;
                 case Spell.rush:
@@ -530,7 +542,7 @@ public class BattleController : MonoBehaviour
         fireballObject.GetComponent<FireballController>().srcPlayerID = playerID;
         fireballObject.GetComponent<FireballController>().aimAngle = aimAngle;
         fireballObject.GetComponent<FireballController>().spellLevel = playersSpellLevels.GetSpellLevel(playerID, Spell.fireball);
-        StartCoroutine(SpellCooldown(slot, gameConstants.fireballCooldown));
+        StartCoroutine(SpellCooldown(slot, cooldownDurations[slot]));
     }
 
     void CastTeleport(int slot) {
@@ -539,7 +551,7 @@ public class BattleController : MonoBehaviour
         // teleportObject.GetComponent<TeleportController>().aimAngle = aimAngle;
         teleportObject.GetComponent<TeleportController>().aimAngle = moveAngle;
         teleportObject.GetComponent<TeleportController>().spellLevel = playersSpellLevels.GetSpellLevel(playerID, Spell.teleport);
-        StartCoroutine(SpellCooldown(slot, gameConstants.teleportCooldown));
+        StartCoroutine(SpellCooldown(slot, cooldownDurations[slot]));
     }
 
     void CastLightning(int slot) {
@@ -547,7 +559,7 @@ public class BattleController : MonoBehaviour
         lightningObject.GetComponent<LightningProjectileController>().srcPlayerID = playerID;
         lightningObject.GetComponent<LightningProjectileController>().aimAngle = aimAngle;
         lightningObject.GetComponent<LightningProjectileController>().spellLevel = playersSpellLevels.GetSpellLevel(playerID, Spell.lightning);
-        StartCoroutine(SpellCooldown(slot, gameConstants.lightningProjectileCooldown));
+        StartCoroutine(SpellCooldown(slot, cooldownDurations[slot]));
     }
 
     void CastTornado(int slot) {
@@ -555,7 +567,7 @@ public class BattleController : MonoBehaviour
         tornadoObject.GetComponent<TornadoController>().srcPlayerID = playerID;
         tornadoObject.GetComponent<TornadoController>().aimAngle = aimAngle;
         tornadoObject.GetComponent<TornadoController>().spellLevel = playersSpellLevels.GetSpellLevel(playerID, Spell.tornado);
-        StartCoroutine(SpellCooldown(slot, gameConstants.tornadoCooldown));
+        StartCoroutine(SpellCooldown(slot, cooldownDurations[slot]));
     }
 
     void CastRush(int slot) {
@@ -564,7 +576,7 @@ public class BattleController : MonoBehaviour
         // rushObject.GetComponent<RushController>().aimAngle = aimAngle;
         rushObject.GetComponent<RushController>().aimAngle = moveAngle;
         rushObject.GetComponent<RushController>().spellLevel = playersSpellLevels.GetSpellLevel(playerID, Spell.rush);
-        StartCoroutine(SpellCooldown(slot, gameConstants.rushCooldown));
+        StartCoroutine(SpellCooldown(slot, cooldownDurations[slot]));
     }
 
     void CastArc(int slot) {
@@ -572,7 +584,7 @@ public class BattleController : MonoBehaviour
         arcObject.GetComponent<ArcController>().srcPlayerID = playerID;
         arcObject.GetComponent<ArcController>().aimAngle = aimAngle;
         arcObject.GetComponent<ArcController>().spellLevel = playersSpellLevels.GetSpellLevel(playerID, Spell.arc);
-        StartCoroutine(SpellCooldown(slot, gameConstants.arcCooldown));
+        StartCoroutine(SpellCooldown(slot, cooldownDurations[slot]));
     }
 
     void CastSplitter(int slot) {
@@ -580,7 +592,7 @@ public class BattleController : MonoBehaviour
         splitterObject.GetComponent<SplitterController>().srcPlayerID = playerID;
         splitterObject.GetComponent<SplitterController>().aimAngle = aimAngle;
         splitterObject.GetComponent<SplitterController>().spellLevel = playersSpellLevels.GetSpellLevel(playerID, Spell.splitter);
-        StartCoroutine(SpellCooldown(slot, gameConstants.splitterCooldown));
+        StartCoroutine(SpellCooldown(slot, cooldownDurations[slot]));
     }
 
     void CastBoomerang(int slot) {
@@ -588,7 +600,7 @@ public class BattleController : MonoBehaviour
         boomerangObject.GetComponent<BoomerangController>().srcPlayerID = playerID;
         boomerangObject.GetComponent<BoomerangController>().aimAngle = aimAngle;
         boomerangObject.GetComponent<BoomerangController>().spellLevel = playersSpellLevels.GetSpellLevel(playerID, Spell.boomerang);
-        StartCoroutine(SpellCooldown(slot, gameConstants.boomerangCooldown));
+        StartCoroutine(SpellCooldown(slot, cooldownDurations[slot]));
     }
 
     void CastLaser(int slot) {
@@ -596,49 +608,49 @@ public class BattleController : MonoBehaviour
         laserObject.GetComponent<LaserController>().srcPlayerID = playerID;
         laserObject.GetComponent<LaserController>().aimAngle = aimAngle;
         laserObject.GetComponent<LaserController>().spellLevel = playersSpellLevels.GetSpellLevel(playerID, Spell.laser);
-        StartCoroutine(SpellCooldown(slot, gameConstants.laserCooldown));
+        StartCoroutine(SpellCooldown(slot, cooldownDurations[slot]));
     }
     void CastCloud(int slot) {
         GameObject cloudObject = Instantiate(allSpellModels[(int) Spell.cloud].Prefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
         cloudObject.GetComponent<CloudController>().srcPlayerID = playerID;
         cloudObject.GetComponent<CloudController>().aimAngle = aimAngle;
         cloudObject.GetComponent<CloudController>().spellLevel = playersSpellLevels.GetSpellLevel(playerID, Spell.cloud);
-        StartCoroutine(SpellCooldown(slot, gameConstants.cloudCooldown));
+        StartCoroutine(SpellCooldown(slot, cooldownDurations[slot]));
     }
     void CastMineThrow(int slot) {
         GameObject mineObject = Instantiate(allSpellModels[(int) Spell.minethrow].Prefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
         mineObject.GetComponent<MineThrowController>().srcPlayerID = playerID;
         mineObject.GetComponent<MineThrowController>().aimAngle = aimAngle;
         mineObject.GetComponent<MineThrowController>().spellLevel = playersSpellLevels.GetSpellLevel(playerID, Spell.minethrow);
-        StartCoroutine(SpellCooldown(slot, gameConstants.mineThrowCooldown));
+        StartCoroutine(SpellCooldown(slot, cooldownDurations[slot]));
     }
     void CastGroundAttack(int slot) {
         GameObject groundObject = Instantiate(allSpellModels[(int) Spell.groundattack].Prefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
         groundObject.GetComponent<GroundAttackController>().srcPlayerID = playerID;
         groundObject.GetComponent<GroundAttackController>().aimAngle = aimAngle;
         groundObject.GetComponent<GroundAttackController>().spellLevel = playersSpellLevels.GetSpellLevel(playerID, Spell.groundattack);
-        StartCoroutine(SpellCooldown(slot, gameConstants.groundAttackCooldown));
+        StartCoroutine(SpellCooldown(slot, cooldownDurations[slot]));
     }
     void CastIceAttack(int slot) {
         GameObject iceObject = Instantiate(allSpellModels[(int) Spell.iceattack].Prefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
         iceObject.GetComponent<IceAttackController>().srcPlayerID = playerID;
         iceObject.GetComponent<IceAttackController>().aimAngle = aimAngle;
         iceObject.GetComponent<IceAttackController>().spellLevel = playersSpellLevels.GetSpellLevel(playerID, Spell.iceattack);
-        StartCoroutine(SpellCooldown(slot, gameConstants.iceAttackCooldown));
+        StartCoroutine(SpellCooldown(slot, cooldownDurations[slot]));
     }
     void CastShockwave(int slot) {
         GameObject shockwaveObject = Instantiate(allSpellModels[(int) Spell.shockwave].Prefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
         shockwaveObject.GetComponent<ShockwaveController>().srcPlayerID = playerID;
         shockwaveObject.GetComponent<ShockwaveController>().aimAngle = aimAngle;
         shockwaveObject.GetComponent<ShockwaveController>().spellLevel = playersSpellLevels.GetSpellLevel(playerID, Spell.shockwave);
-        StartCoroutine(SpellCooldown(slot, gameConstants.shockwaveCooldown));
+        StartCoroutine(SpellCooldown(slot, cooldownDurations[slot]));
     }
     void CastWall(int slot) {
         GameObject wallObject = Instantiate(allSpellModels[(int) Spell.wall].Prefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
         wallObject.GetComponent<WallController>().srcPlayerID = playerID;
         wallObject.GetComponent<WallController>().aimAngle = aimAngle;
         wallObject.GetComponent<WallController>().spellLevel = playersSpellLevels.GetSpellLevel(playerID, Spell.wall);
-        StartCoroutine(SpellCooldown(slot, gameConstants.wallCooldown));
+        StartCoroutine(SpellCooldown(slot, cooldownDurations[slot]));
     }
 
 }

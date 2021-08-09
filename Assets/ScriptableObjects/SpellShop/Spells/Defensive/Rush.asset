@@ -19,4 +19,4 @@ MonoBehaviour:
   Description: 'Run quickly towards a fixed distance based on player''s aim direction.
     Invulnerable to casting. '
   Cost: 100
-  Upgrade: 'L2 - Reduced Cooldown; L3 - Increased Knockback '
+  Upgrade: L2 - Increased Distance\nL3 - Decreased Cooldown

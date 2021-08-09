@@ -18,4 +18,4 @@ MonoBehaviour:
   Icon: {fileID: 2800000, guid: 4029a9cfeb86f134c9c5af05993eaac8, type: 3}
   Description: Fast moving beam of projectile.
   Cost: 200
-  Upgrade: Increase Damage; Increase Range; Reduce Cooldown
+  Upgrade: L2 - Increased Damage\nL3 - Slight Knockback Effect
