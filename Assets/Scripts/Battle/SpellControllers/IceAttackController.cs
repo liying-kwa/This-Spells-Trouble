@@ -25,7 +25,7 @@ public class IceAttackController : MonoBehaviour
     // Game state
     public int srcPlayerID;
     public int spellLevel;
-    public float damage;
+    float damage;
 
     public Vector2 knockbackPosition;
 
@@ -35,9 +35,20 @@ public class IceAttackController : MonoBehaviour
         // Get components
         iceBody = GetComponent<Rigidbody2D>();
         attackCollider = GetComponent<BoxCollider2D>();
-        //audioSource = GetComponent<AudioSource>();
+
         // Get constants
-        damage = gameConstants.iceAttackDamage;
+        switch (spellLevel) {
+            case 2:
+                damage = gameConstants.iceAttackDamageL2L3;
+                break;
+            case 3:
+                damage = gameConstants.iceAttackDamageL2L3;
+                break;
+            default:
+                damage = gameConstants.iceAttackDamageL1;
+                break;
+        }
+
         // Fireball movement
         //movement = new Vector2(-Mathf.Sin(Mathf.Deg2Rad * aimAngle) * gameConstants.fireballDistance, Mathf.Cos(Mathf.Deg2Rad * aimAngle) * gameConstants.fireballDistance);
         //fireballBody.AddForce(movement * gameConstants.fireballSpeed, ForceMode2D.Impulse);
@@ -61,7 +72,6 @@ public class IceAttackController : MonoBehaviour
         if (other.gameObject.tag == "Player") {
             int dstPlayerID = other.gameObject.GetComponent<BattleController>().playerID;
             if (srcPlayerID != dstPlayerID) {
-                // Debug.Log("Collided with other player!");
                 if (!playersAreAlive.GetValue(dstPlayerID)) {
                     return;
                 }
@@ -83,7 +93,7 @@ public class IceAttackController : MonoBehaviour
    
         }
     IEnumerator WaitForAppearance() {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.5f);
         attackCollider.enabled = true;
         //transform.position = new Vector2 (iceBody.transform.position.x+0.000001f, iceBody.transform.position.y);
         transform.position = new Vector2 (transform.position.x+0.000001f, transform.position.y);

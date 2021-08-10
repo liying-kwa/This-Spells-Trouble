@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MineThrowController : MonoBehaviour
+public class MineThrowController : MonoBehaviour, SpellController
 {
     // ScriptableObjects
     public GameConstants gameConstants;
@@ -22,7 +22,7 @@ public class MineThrowController : MonoBehaviour
     private float xPos_original;
 
     // Game state
-    public int srcPlayerID;
+    public int srcPlayerID { get; set; }
     public int spellLevel;
     int rows;
     int columns;
@@ -80,29 +80,24 @@ public class MineThrowController : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<Rigidbody2D>().isKinematic = true;
-        Debug.Log(transform.position.x + "," + transform.position.y);
-        xPos = transform.position.x - (1-movement.x)*(rows/2);
-        yPos = transform.position.y + (1-movement.y)*(columns/2);
-        if (rows%2 == 0){
-            xPos = transform.position.x + (1-movement.x)*(rows/2-0.5f);
-        }
-        if (columns%2 == 0){
-            yPos = transform.position.y + (1-movement.y)*(columns/2-0.5f);
-        }
-        xPos_original = xPos;
-        for (int n=0; n<columns;n++){
-            for (int m=0;m<rows;m++){
-                // Debug.Log("vs " +xPos + ", " + yPos);
+        // Debug.Log(transform.position.x + "," + transform.position.y);
+        float topRightX = transform.position.x + ((float) rows - 1) / 2 ;
+        float topRightY = transform.position.y + ((float) columns - 1) / 2;
+        float xPos = topRightX;
+        float yPos = topRightY;
+        for (int i = 0; i < columns; i++) {
+            for (int j = 0; j < rows; j++) {
                 mineGround = Instantiate(mineGround, new Vector3(xPos, yPos,this.transform.position.z), Quaternion.identity);
                 mineGround.GetComponent<MineGroundController>().srcPlayerID = srcPlayerID;
                 mineGround.GetComponent<MineGroundController>().aimAngle = aimAngle;
                 mineGround.GetComponent<MineGroundController>().movement = movement;
                 mineGround.GetComponent<MineGroundController>().spellLevel = spellLevel;
-                xPos+=1f;
+                xPos -= 1;
             }
-            xPos = xPos_original;
-            yPos -= 1f;
+            yPos -= 1;
+            xPos = topRightX;
         }
+
         yield return new WaitForSeconds(0.1f);
         Destroy(gameObject);
     }

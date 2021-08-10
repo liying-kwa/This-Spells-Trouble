@@ -205,19 +205,35 @@ public class BattleController : MonoBehaviour
                     spellIcons[i].GetComponent<RawImage>().texture = allSpellModels[(int) Spell.minethrow].Icon;
                     break;
                 case Spell.groundattack:
-                    cooldownDurations[i] = gameConstants.groundAttackCooldown;
+                    if (playersSpellLevels.GetSpellLevel(playerID, Spell.groundattack) >= 3) {
+                        cooldownDurations[i] = gameConstants.groundAttackCooldownL3;
+                    } else {
+                        cooldownDurations[i] = gameConstants.groundAttackCooldownL1L2;
+                    }
                     spellIcons[i].GetComponent<RawImage>().texture = allSpellModels[(int) Spell.groundattack].Icon;
                     break;
                 case Spell.iceattack:
-                    cooldownDurations[i] = gameConstants.iceAttackCooldown;
+                    if (playersSpellLevels.GetSpellLevel(playerID, Spell.iceattack) >= 3) {
+                        cooldownDurations[i] = gameConstants.iceAttackCooldownL3;
+                    } else {
+                        cooldownDurations[i] = gameConstants.iceAttackCooldownL1L2;
+                    }
                     spellIcons[i].GetComponent<RawImage>().texture = allSpellModels[(int) Spell.iceattack].Icon;
                     break;
                 case Spell.shockwave:
-                    cooldownDurations[i] = gameConstants.shockwaveCooldown;
+                    if (playersSpellLevels.GetSpellLevel(playerID, Spell.shockwave) >= 3) {
+                        cooldownDurations[i] = gameConstants.shockwaveCooldownL3;
+                    } else {
+                        cooldownDurations[i] = gameConstants.shockwaveCooldownL1L2;
+                    }
                     spellIcons[i].GetComponent<RawImage>().texture = allSpellModels[(int) Spell.shockwave].Icon;
                     break;
                 case Spell.wall:
-                    cooldownDurations[i] = gameConstants.wallCooldown;
+                    if (playersSpellLevels.GetSpellLevel(playerID, Spell.wall) >= 3) {
+                        cooldownDurations[i] = gameConstants.wallCooldownL3;
+                    } else {
+                        cooldownDurations[i] = gameConstants.wallCooldownL1L2;
+                    }
                     spellIcons[i].GetComponent<RawImage>().texture = allSpellModels[(int) Spell.wall].Icon;
                     break;
                 default:
@@ -511,7 +527,7 @@ public class BattleController : MonoBehaviour
     
     public IEnumerator Regen() {
         while (true) {
-            onRegenPlaySound.Raise();
+            // onRegenPlaySound.Raise();
             playersKnockback.ApplyChange(playerID, -1 * gameConstants.regenValue);
             yield return new WaitForSeconds(gameConstants.regenInterval);
         }

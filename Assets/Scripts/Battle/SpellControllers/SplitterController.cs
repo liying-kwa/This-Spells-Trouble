@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SplitterController : MonoBehaviour
+public class SplitterController : MonoBehaviour, SpellController
 {
     //Split Projectile
     public GameObject splitProj;
@@ -21,7 +21,7 @@ public class SplitterController : MonoBehaviour
     public float splitAngle;
 
     // Game state
-    public int srcPlayerID;
+    public int srcPlayerID { get; set; }
     public int spellLevel;
     float damage;
     int numProjectiles;

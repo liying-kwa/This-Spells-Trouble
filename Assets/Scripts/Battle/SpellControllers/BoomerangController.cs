@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoomerangController : MonoBehaviour
+public class BoomerangController : MonoBehaviour, SpellController
 {
     // ScriptableObjects
     public GameConstants gameConstants;
@@ -20,7 +20,7 @@ public class BoomerangController : MonoBehaviour
     public bool isReturning = false;
 
     // Game state
-    public int srcPlayerID;
+    public int srcPlayerID { get; set; }
     public int spellLevel;
     float damage;
     public IEnumerator checkBoomerangFast;

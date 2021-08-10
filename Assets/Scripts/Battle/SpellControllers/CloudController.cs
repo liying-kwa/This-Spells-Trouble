@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CloudController : MonoBehaviour
+public class CloudController : MonoBehaviour, SpellController
 {
     // Start is called before the first frame update
     // ScriptableObjects
@@ -15,7 +15,7 @@ public class CloudController : MonoBehaviour
     public Vector2 movement;
 
     // Game state
-    public int srcPlayerID; //it shouldn't delete own player's spells but whatever
+    public int srcPlayerID { get; set; }
     public int spellLevel;
     float destroyTime;
 
@@ -56,8 +56,11 @@ public class CloudController : MonoBehaviour
     }
     void  OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.tag == "Spell") {
-            // onCloudHitPlaySound.Raise();
-            Destroy(other.gameObject);
+            int spellPlayerID = other.gameObject.GetComponent<SpellController>().srcPlayerID;
+            if (spellPlayerID != srcPlayerID) {
+                // onCloudHitPlaySound.Raise();
+                Destroy(other.gameObject);
+            }
         }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 //Jo's first spell, heavily based on ly's fireball :)
 
-public class ArcController : MonoBehaviour
+public class ArcController : MonoBehaviour, SpellController
 {
     // ScriptableObjects
     public GameConstants gameConstants;
@@ -20,7 +20,7 @@ public class ArcController : MonoBehaviour
     public Vector2 currentDirection;
 
     // Game state
-    public int srcPlayerID;
+    public int srcPlayerID { get; set; }
     public int spellLevel;
     float damage;
 
@@ -60,7 +60,8 @@ public class ArcController : MonoBehaviour
     {
         currentDirection = transform.up; 
         arcBody.velocity = currentDirection * arcBody.velocity.magnitude;
-        // forwardMovement = arcBody.velocity;
+        forwardMovement = arcBody.velocity;
+        forwardMovement = forwardMovement.normalized;
         Destroy(gameObject, gameConstants.arcDestroyTime);
         //Debug.Log("arcBody velocity is " + arcBody.velocity);
     }

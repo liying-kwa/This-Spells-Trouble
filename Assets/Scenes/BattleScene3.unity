@@ -27868,7 +27868,7 @@ Tilemap:
       - {fileID: 21300018, guid: fa75b484248e86f4cb964126c1d9061b, type: 3}
       - {fileID: 21300020, guid: fa75b484248e86f4cb964126c1d9061b, type: 3}
       - {fileID: 21300022, guid: fa75b484248e86f4cb964126c1d9061b, type: 3}
-      m_AnimationSpeed: 5.519478
+      m_AnimationSpeed: 5.858922
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 18, y: 1, z: 0}
@@ -27886,7 +27886,7 @@ Tilemap:
       - {fileID: 21300018, guid: fa75b484248e86f4cb964126c1d9061b, type: 3}
       - {fileID: 21300020, guid: fa75b484248e86f4cb964126c1d9061b, type: 3}
       - {fileID: 21300022, guid: fa75b484248e86f4cb964126c1d9061b, type: 3}
-      m_AnimationSpeed: 5.4283185
+      m_AnimationSpeed: 5.0929317
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -18, y: 4, z: 0}
@@ -27904,7 +27904,7 @@ Tilemap:
       - {fileID: 21300018, guid: fa75b484248e86f4cb964126c1d9061b, type: 3}
       - {fileID: 21300020, guid: fa75b484248e86f4cb964126c1d9061b, type: 3}
       - {fileID: 21300022, guid: fa75b484248e86f4cb964126c1d9061b, type: 3}
-      m_AnimationSpeed: 6.6398287
+      m_AnimationSpeed: 5.13241
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
@@ -38837,7 +38837,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: LS
+  m_Text: LB
 --- !u!222 &6900938511944577053
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -38988,7 +38988,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: RS
+  m_Text: RB
 --- !u!222 &6900938511978274493
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -39104,7 +39104,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: LS
+  m_Text: LB
 --- !u!222 &6900938511981574039
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -39380,7 +39380,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: RS
+  m_Text: RB
 --- !u!222 &6900938512167759709
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -39612,7 +39612,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: RS
+  m_Text: RB
 --- !u!222 &6900938512240732947
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -42417,7 +42417,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: LS
+  m_Text: LB
 --- !u!222 &6900938513180601175
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -42459,7 +42459,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: RS
+  m_Text: RB
 --- !u!222 &6900938513223110043
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -42977,7 +42977,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: LS
+  m_Text: LB
 --- !u!222 &6900938513433724439
 CanvasRenderer:
   m_ObjectHideFlags: 0

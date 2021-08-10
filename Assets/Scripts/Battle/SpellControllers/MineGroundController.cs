@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MineGroundController : MonoBehaviour
+public class MineGroundController : MonoBehaviour, SpellController
 {
     // ScriptableObjects
     public GameConstants gameConstants;
@@ -18,7 +18,7 @@ public class MineGroundController : MonoBehaviour
     public Vector2 movement;
 
     // Game state
-    public int srcPlayerID;
+    public int srcPlayerID { get; set; }
     public int spellLevel;
 
     public float damage;

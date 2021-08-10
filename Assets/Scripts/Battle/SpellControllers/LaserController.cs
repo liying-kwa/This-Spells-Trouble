@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LaserController : MonoBehaviour
+public class LaserController : MonoBehaviour, SpellController
 {
     // ScriptableObjects
     public GameConstants gameConstants;
@@ -17,7 +17,7 @@ public class LaserController : MonoBehaviour
     public Vector2 movement;
 
     // Game state
-    public int srcPlayerID;
+    public int srcPlayerID { get; set; }
     public int spellLevel;
     float damage;
     float force;

@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 2783197396664524120}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.119014, y: 2.602728, z: -0.7632433}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -142,6 +142,5 @@ MonoBehaviour:
   movement: {x: 0, y: 0}
   srcPlayerID: 0
   spellLevel: 0
-  damage: 0
   onSplitProjCastPlaySound: {fileID: 11400000, guid: 97d2ad51a94614cc294371bb4f44d119, type: 2}
   onSplitProjHitPlaySound: {fileID: 11400000, guid: b47617abe24d74c20b391575c4a31ca3, type: 2}

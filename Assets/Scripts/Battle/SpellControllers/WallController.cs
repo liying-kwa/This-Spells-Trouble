@@ -19,7 +19,7 @@ public class WallController : MonoBehaviour
     // Game state
     public int srcPlayerID;
     public int spellLevel;
-    public float damage;
+    float destroyTime;
 
     public Vector2 knockbackPosition;
 
@@ -28,8 +28,20 @@ public class WallController : MonoBehaviour
     {
         // Get components
         wallBody = GetComponent<Rigidbody2D>();
+
         // Get constants
-        //damage = gameConstants.iceDamage;
+        switch (spellLevel) {
+            case 2:
+                destroyTime = gameConstants.wallDestroyTimeL2L3;
+                break;
+            case 3:
+                destroyTime = gameConstants.wallDestroyTimeL2L3;
+                break;
+            default:
+                destroyTime = gameConstants.wallDestroyTimeL1;
+                break;
+        }
+
         // Wall position
         //movement = new Vector2(-Mathf.Sin(Mathf.Deg2Rad * aimAngle) * gameConstants.fireballDistance, Mathf.Cos(Mathf.Deg2Rad * aimAngle) * gameConstants.fireballDistance);
         //fireballBody.AddForce(movement * gameConstants.fireballSpeed, ForceMode2D.Impulse);
@@ -38,7 +50,7 @@ public class WallController : MonoBehaviour
                                                         transform.position.y + Mathf.Cos(Mathf.Deg2Rad * aimAngle) * gameConstants.wallDistance, 
                                                         transform.position.z);
         //transform.Rotate(0f,0f,aimAngle);
-        Destroy(gameObject, gameConstants.wallDestroyTime);
+        Destroy(gameObject, destroyTime);
     }
 
     // Update is called once per frame

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShockwaveController : MonoBehaviour
+public class ShockwaveController : MonoBehaviour, SpellController
 {
     // ScriptableObjects
     public GameConstants gameConstants;
@@ -23,9 +23,9 @@ public class ShockwaveController : MonoBehaviour
     public Vector2 movement;
 
     // Game state
-    public int srcPlayerID;
+    public int srcPlayerID { get; set; }
     public int spellLevel;
-    public float damage;
+    float damage;
 
     // Start is called before the first frame update
     void Start()
@@ -33,8 +33,20 @@ public class ShockwaveController : MonoBehaviour
         // Get components
         shockwaveBody = GetComponent<Rigidbody2D>();
         //ps = GetComponent<ParticleSystem>();
+
         // Get constants
-        damage = gameConstants.shockwaveDamage;
+        switch (spellLevel) {
+            case 2:
+                damage = gameConstants.shockwaveDamageL2L3;
+                break;
+            case 3:
+                damage = gameConstants.shockwaveDamageL2L3;
+                break;
+            default:
+                damage = gameConstants.shockwaveDamageL1;
+                break;
+        }
+
         // Shockwave movement
         movement = new Vector2(-Mathf.Sin(Mathf.Deg2Rad * aimAngle), Mathf.Cos(Mathf.Deg2Rad * aimAngle));
         shockwaveBody.AddForce(movement * gameConstants.shockwaveSpeed, ForceMode2D.Impulse);
@@ -72,7 +84,10 @@ public class ShockwaveController : MonoBehaviour
             Destroy(gameObject);
         }
         if (other.gameObject.tag == "Spell") {
-            Destroy(other.gameObject);
+            int spellPlayerID = other.gameObject.GetComponent<SpellController>().srcPlayerID;
+            if (spellPlayerID != srcPlayerID) {
+                Destroy(other.gameObject);
+            }
         }
     }
 }

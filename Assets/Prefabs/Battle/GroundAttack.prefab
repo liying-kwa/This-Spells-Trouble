@@ -40,7 +40,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2710760035120829286}
   serializedVersion: 8
-  lengthInSec: 8.5
+  lengthInSec: 8
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -55,7 +55,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 1.5
+    scalar: 1
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -5096,7 +5096,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4959354056171036012}
   serializedVersion: 8
-  lengthInSec: 1.5
+  lengthInSec: 1
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -5171,7 +5171,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.5
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -9902,7 +9902,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5254991525732799076}
   serializedVersion: 8
-  lengthInSec: 8.5
+  lengthInSec: 8
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -9917,7 +9917,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 1.5
+    scalar: 1
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -14967,7 +14967,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6544297609915138140}
   serializedVersion: 8
-  lengthInSec: 8.5
+  lengthInSec: 8
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -14982,7 +14982,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 1.5
+    scalar: 1
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -20023,7 +20023,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8444114837499529386}
   serializedVersion: 8
-  lengthInSec: 8.5
+  lengthInSec: 8
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -20038,7 +20038,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 1.5
+    scalar: 1
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -25088,7 +25088,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8931980962177288068}
   serializedVersion: 8
-  lengthInSec: 8.5
+  lengthInSec: 8
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -25103,7 +25103,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 1.5
+    scalar: 1
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -30089,7 +30089,7 @@ MonoBehaviour:
   aimAngle: 0
   movement: {x: 0, y: 0}
   srcPlayerID: 0
-  damage: 0
+  spellLevel: 0
   knockbackPosition: {x: 0, y: 0}
 --- !u!58 &1787743396319330235
 CircleCollider2D:
@@ -30168,7 +30168,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8931980962845472281}
   serializedVersion: 8
-  lengthInSec: 8.5
+  lengthInSec: 8
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -30183,7 +30183,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 1.5
+    scalar: 1
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -35340,7 +35340,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8931980963373268598}
   serializedVersion: 8
-  lengthInSec: 8.5
+  lengthInSec: 8
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -35355,7 +35355,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 1.5
+    scalar: 1
     minScalar: 0
     maxCurve:
       serializedVersion: 2

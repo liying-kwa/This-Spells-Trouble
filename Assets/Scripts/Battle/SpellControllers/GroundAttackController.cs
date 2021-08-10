@@ -25,7 +25,7 @@ public class GroundAttackController : MonoBehaviour
     // Game state
     public int srcPlayerID;
     public int spellLevel;
-    public float damage;
+    float damage;
 
     public Vector2 knockbackPosition;
 
@@ -35,8 +35,20 @@ public class GroundAttackController : MonoBehaviour
         // Get components
         infernalBody = GetComponent<Rigidbody2D>();
         attackCollider = GetComponent<CircleCollider2D>();
+
         // Get constants
-        damage = gameConstants.groundAttackDamage;
+        switch (spellLevel) {
+            case 2:
+                damage = gameConstants.groundAttackDamageL2L3;
+                break;
+            case 3:
+                damage = gameConstants.groundAttackDamageL2L3;
+                break;
+            default:
+                damage = gameConstants.groundAttackDamageL1;
+                break;
+        }
+
         // Fireball movement
         //movement = new Vector2(-Mathf.Sin(Mathf.Deg2Rad * aimAngle) * gameConstants.fireballDistance, Mathf.Cos(Mathf.Deg2Rad * aimAngle) * gameConstants.fireballDistance);
         //fireballBody.AddForce(movement * gameConstants.fireballSpeed, ForceMode2D.Impulse);
@@ -81,7 +93,7 @@ public class GroundAttackController : MonoBehaviour
     }
 
     IEnumerator WaitForAppearance() {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         attackCollider.enabled = true;
         transform.position = new Vector2 (transform.position.x+0.000001f, transform.position.y);
     }

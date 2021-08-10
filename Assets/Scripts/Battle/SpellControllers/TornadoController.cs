@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TornadoController : MonoBehaviour
+public class TornadoController : MonoBehaviour, SpellController
 {
     // ScriptableObjects
     public GameConstants gameConstants;
@@ -17,7 +17,7 @@ public class TornadoController : MonoBehaviour
     public Vector2 movement;
 
     // Game state
-    public int srcPlayerID;
+    public int srcPlayerID { get; set; }
     public int spellLevel;
     float damage;
     float destroyTime;
@@ -79,7 +79,10 @@ public class TornadoController : MonoBehaviour
         }
         // when tornado hits other spells it destroys other spells but not itself, doesn't destroy itself when hit obstacle
         if (other.gameObject.tag == "Spell") {
-            Destroy(other.gameObject);
+            int spellPlayerID = other.gameObject.GetComponent<SpellController>().srcPlayerID;
+            if (spellPlayerID != srcPlayerID) {
+                Destroy(other.gameObject);
+            }
         }
     }
 }
