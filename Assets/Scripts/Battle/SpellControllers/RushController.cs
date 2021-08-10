@@ -16,6 +16,7 @@ public class RushController : MonoBehaviour
     public int spellLevel;
     GameObject playerObject;
     public Vector3 rushVectorVar;
+    float distance;
 
     // Sound Events
     [Header("Sound Events")]
@@ -24,10 +25,23 @@ public class RushController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Get constants
+        switch (spellLevel) {
+            case 2:
+                distance = gameConstants.rushDistanceL2L3;
+                break;
+            case 3:
+                distance = gameConstants.rushDistanceL2L3;
+                break;
+            default:
+                distance = gameConstants.rushDistanceL1;
+                break;
+        }
+
         playerObject = playerInputsArr.GetValue(srcPlayerID).gameObject; //Get corresponding player Game Object
         //Get the vector location of where the player is going to rush to
-        rushVectorVar = new Vector3(transform.position.x - Mathf.Sin(Mathf.Deg2Rad * aimAngle) * gameConstants.rushDistance, 
-                                                        transform.position.y + Mathf.Cos(Mathf.Deg2Rad * aimAngle) * gameConstants.rushDistance, 
+        rushVectorVar = new Vector3(transform.position.x - Mathf.Sin(Mathf.Deg2Rad * aimAngle) * distance, 
+                                                        transform.position.y + Mathf.Cos(Mathf.Deg2Rad * aimAngle) * distance, 
                                                         transform.position.z);
         onRushCastPlaySound.Raise();
     }

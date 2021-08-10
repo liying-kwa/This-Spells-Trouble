@@ -24,6 +24,8 @@ public class MineThrowController : MonoBehaviour
     // Game state
     public int srcPlayerID;
     public int spellLevel;
+    int rows;
+    int columns;
 
     // Sound Events
     [Header("Sound Events")]
@@ -34,6 +36,23 @@ public class MineThrowController : MonoBehaviour
     {
         // Get components
         mineThrowBody = GetComponent<Rigidbody2D>();
+
+        // Get constants
+        switch (spellLevel) {
+            case 2:
+                rows = gameConstants.mineThrowRowsL2L3;
+                columns = gameConstants.mineThrowColumnsL2L3;
+                break;
+            case 3:
+                rows = gameConstants.mineThrowRowsL2L3;
+                columns = gameConstants.mineThrowColumnsL2L3;
+                break;
+            default:
+                rows = gameConstants.mineThrowRowsL1;
+                columns = gameConstants.mineThrowColumnsL1;
+                break;
+        }
+
         // mineThrow movement
         movement = new Vector2(-Mathf.Sin(Mathf.Deg2Rad * aimAngle), Mathf.Cos(Mathf.Deg2Rad * aimAngle));
         mineThrowBody.AddForce(movement * gameConstants.mineThrowSpeed, ForceMode2D.Impulse);
@@ -62,17 +81,17 @@ public class MineThrowController : MonoBehaviour
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<Rigidbody2D>().isKinematic = true;
         Debug.Log(transform.position.x + "," + transform.position.y);
-        xPos = transform.position.x - (1-movement.x)*(gameConstants.mineThrowRows/2);
-        yPos = transform.position.y + (1-movement.y)*(gameConstants.mineThrowColumns/2);
-        if (gameConstants.mineThrowRows%2 == 0){
-            xPos = transform.position.x + (1-movement.x)*(gameConstants.mineThrowRows/2-0.5f);
+        xPos = transform.position.x - (1-movement.x)*(rows/2);
+        yPos = transform.position.y + (1-movement.y)*(columns/2);
+        if (rows%2 == 0){
+            xPos = transform.position.x + (1-movement.x)*(rows/2-0.5f);
         }
-        if (gameConstants.mineThrowColumns%2 == 0){
-            yPos = transform.position.y + (1-movement.y)*(gameConstants.mineThrowColumns/2-0.5f);
+        if (columns%2 == 0){
+            yPos = transform.position.y + (1-movement.y)*(columns/2-0.5f);
         }
         xPos_original = xPos;
-        for (int n=0; n<gameConstants.mineThrowColumns;n++){
-            for (int m=0;m<gameConstants.mineThrowRows;m++){
+        for (int n=0; n<columns;n++){
+            for (int m=0;m<rows;m++){
                 // Debug.Log("vs " +xPos + ", " + yPos);
                 mineGround = Instantiate(mineGround, new Vector3(xPos, yPos,this.transform.position.z), Quaternion.identity);
                 mineGround.GetComponent<MineGroundController>().srcPlayerID = srcPlayerID;

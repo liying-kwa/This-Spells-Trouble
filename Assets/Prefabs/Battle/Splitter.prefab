@@ -138,11 +138,11 @@ MonoBehaviour:
   splitProj: {fileID: 2783197396664524120, guid: 70d663a9f06249541b50a1ab4e07489f, type: 3}
   gameConstants: {fileID: 11400000, guid: fdff1fd733c49bf49a390264049c3495, type: 2}
   playersKnockback: {fileID: 11400000, guid: d46cc8037b6803d4da7ff070dd6d1583, type: 2}
+  playersAreAlive: {fileID: 11400000, guid: dca732caad795cf45a5779f7a02e9058, type: 2}
   aimAngle: 0
   movement: {x: 0, y: 0}
   splitAngle: 0
   srcPlayerID: 0
-  damage: 0
+  spellLevel: 0
   onSplitterCastPlaySound: {fileID: 11400000, guid: fd3c429b2ccf54a60b4464b7c03dc520, type: 2}
   onSplitterHitPlaySound: {fileID: 11400000, guid: a578cfcbf4b8d413c85e83aedabf7764, type: 2}
-  onSplitProjCastPlaySound: {fileID: 0}

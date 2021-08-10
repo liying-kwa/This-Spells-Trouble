@@ -10,6 +10,7 @@ public class SplitterController : MonoBehaviour
     // ScriptableObjects
     public GameConstants gameConstants;
     public KnockbackArr playersKnockback;
+    public BoolArrVariable playersAreAlive;
 
     // Components
     private Rigidbody2D splitterBody;
@@ -22,7 +23,8 @@ public class SplitterController : MonoBehaviour
     // Game state
     public int srcPlayerID;
     public int spellLevel;
-    public float damage;
+    float damage;
+    int numProjectiles;
 
     private IEnumerator splitCoroutine;
 
@@ -37,8 +39,23 @@ public class SplitterController : MonoBehaviour
     {
         // Get components
         splitterBody = GetComponent<Rigidbody2D>();
+
         // Get constants
-        damage = gameConstants.splitterDamage;
+        switch (spellLevel) {
+            case 2:
+                numProjectiles = gameConstants.splitterNumberL2L3;
+                damage = gameConstants.splitterDamageL1L2;
+                break;
+            case 3:
+                numProjectiles = gameConstants.splitterNumberL2L3;
+                damage = gameConstants.splitterDamageL3;
+                break;
+            default:
+                numProjectiles = gameConstants.splitterNumberL1;
+                damage = gameConstants.splitterDamageL1L2;
+                break;
+        }
+
         // Splitter movement
         movement = new Vector2(-Mathf.Sin(Mathf.Deg2Rad * aimAngle), Mathf.Cos(Mathf.Deg2Rad * aimAngle));
         splitterBody.AddForce(movement * gameConstants.splitterSpeed, ForceMode2D.Impulse);
@@ -56,13 +73,13 @@ public class SplitterController : MonoBehaviour
         GetComponent<Rigidbody2D>().isKinematic = true;
         //this.transform.Rotate(0f,0f,gameConstants.splitterStartAngle);
         splitAngle = aimAngle + gameConstants.splitterStartAngle;
-        for (int i = 0; i < gameConstants.splitterNumber; i++){
-            Debug.Log("i = "+splitAngle);
+        for (int i = 0; i < numProjectiles; i++){
+            // Debug.Log("i = "+splitAngle);
             splitProj = Instantiate(splitProj, transform.position, transform.rotation);
             splitProj.GetComponent<SplitProjController>().srcPlayerID = this.srcPlayerID;
             splitProj.GetComponent<SplitProjController>().startAngle = splitAngle;
             splitProj.GetComponent<SplitProjController>().spellLevel = spellLevel;
-            splitAngle += -gameConstants.splitterStartAngle*2/(gameConstants.splitterNumber-1);
+            splitAngle += -gameConstants.splitterStartAngle*2/(numProjectiles-1);
             yield return null;
         //onSplitProjCastPlaySound.Raise();
         Destroy(gameObject, 1f);
@@ -73,6 +90,9 @@ public class SplitterController : MonoBehaviour
         if (other.gameObject.tag == "Player") {
             int dstPlayerID = other.gameObject.GetComponent<BattleController>().playerID;
             if (srcPlayerID != dstPlayerID) {
+                if (!playersAreAlive.GetValue(dstPlayerID)) {
+                    return;
+                }
                 StopCoroutine(splitCoroutine);
                 other.gameObject.GetComponent<Rigidbody2D>().AddForce(movement * gameConstants.splitterSpeed * gameConstants.splitterForce, ForceMode2D.Impulse);
                 playersKnockback.ApplyChange(dstPlayerID, damage);

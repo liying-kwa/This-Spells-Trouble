@@ -13,9 +13,11 @@ public class CloudController : MonoBehaviour
     // Physics
     public float aimAngle;
     public Vector2 movement;
+
     // Game state
     public int srcPlayerID; //it shouldn't delete own player's spells but whatever
     public int spellLevel;
+    float destroyTime;
 
     //Game events
     public GameEvent onCloudCastPlaySound;
@@ -23,20 +25,34 @@ public class CloudController : MonoBehaviour
     
     void Start()
     {
-        //GET
+        // Get Components
         cloudBody = GetComponent<Rigidbody2D>();
-        //Movement
+
+        // Get constants
+        switch (spellLevel) {
+            case 2:
+                destroyTime = gameConstants.cloudDestroyTimeL2L3;
+                break;
+            case 3:
+                destroyTime = gameConstants.cloudDestroyTimeL2L3;
+                break;
+            default:
+                destroyTime = gameConstants.cloudDestroyTimeL1;
+                break;
+        }
+
+        // Movement
         movement = new Vector2(-Mathf.Sin(Mathf.Deg2Rad * aimAngle), Mathf.Cos(Mathf.Deg2Rad * aimAngle));
         cloudBody.AddForce(movement * gameConstants.cloudSpeed, ForceMode2D.Impulse);
         onCloudCastPlaySound.Raise();
-        //rotate projectile accordingly top aim angle
+        // Rotate projectile accordingly top aim angle
         transform.Rotate(0f,0f,aimAngle);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Destroy(gameObject, gameConstants.cloudDestroyTime);
+        Destroy(gameObject, destroyTime);
     }
     void  OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.tag == "Spell") {

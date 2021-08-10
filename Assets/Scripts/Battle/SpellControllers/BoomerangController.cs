@@ -8,6 +8,7 @@ public class BoomerangController : MonoBehaviour
     public GameConstants gameConstants;
     public KnockbackArr playersKnockback;
     public PlayerInputsArr playerInputsArr;
+    public BoolArrVariable playersAreAlive;
 
     // Components
     private Rigidbody2D boomerangBody;
@@ -21,11 +22,12 @@ public class BoomerangController : MonoBehaviour
     // Game state
     public int srcPlayerID;
     public int spellLevel;
-    public float damage;
+    float damage;
     public IEnumerator checkBoomerangFast;
+
     //Reference to same object
-    public GameObject Boomerang;
-    GameObject playerObject;
+    //public GameObject Boomerang;
+    //GameObject playerObject;
 
     // Sound Events
     [Header("Sound Events")]
@@ -50,16 +52,21 @@ public class BoomerangController : MonoBehaviour
     }
 
     public IEnumerator boomerangFast(){
-        yield return new WaitForSeconds(gameConstants.boomerangForwardTime-0.1f);
+        yield return new WaitForSeconds(gameConstants.boomerangForwardTime);
         isReturning = true;
-        yield return new WaitForSeconds(gameConstants.boomerangForwardTime-0.1f);
+        //Debug.Log("Returning: " + isReturning);
+        yield return new WaitForSeconds(gameConstants.boomerangForwardTime);
         isBoomerangFast = true;
+        //Debug.Log("Fast: " + isBoomerangFast);
+        yield return new WaitForSeconds(gameConstants.boomerangForwardTime);
+        Destroy(gameObject);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Destroy(gameObject, gameConstants.boomerangForwardTime + gameConstants.boomerangBackwardTime);
+        //Destroy moved to coroutine.
+        //Destroy(gameObject, gameConstants.boomerangForwardTime + gameConstants.boomerangBackwardTime);
     }
 
     void FixedUpdate(){
@@ -68,9 +75,11 @@ public class BoomerangController : MonoBehaviour
 
     void  OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.tag == "Player") {
-            StopAllCoroutines();
             int dstPlayerID = other.gameObject.GetComponent<BattleController>().playerID;
             if (srcPlayerID != dstPlayerID) {
+                if (!playersAreAlive.GetValue(dstPlayerID)) {
+                    return;
+                }
                 float knockback = playersKnockback.GetValue(dstPlayerID);
                 if (isBoomerangFast){
                     float forceMultiplier = gameConstants.boomerangFastForce * (gameConstants.knockbackInitial + gameConstants.knockbackMultiplier * Mathf.Log(knockback + 1));
@@ -91,15 +100,28 @@ public class BoomerangController : MonoBehaviour
                 Destroy(gameObject);
             }
             if (srcPlayerID == dstPlayerID && isReturning){
-                Debug.Log("Caught and thrown Boomerang");
-                playerObject = playerInputsArr.GetValue(srcPlayerID).gameObject;
-                Boomerang = Instantiate(Boomerang, transform.position, transform.rotation);
-                Boomerang.GetComponent<BoomerangController>().srcPlayerID = srcPlayerID;
-                //TODO: Get current aim angle. remove band-aid fix
-                Boomerang.GetComponent<BoomerangController>().aimAngle = aimAngle;
-                Boomerang.GetComponent<BoomerangController>().spellLevel = spellLevel;
-                Destroy(gameObject);
+                //Debug.Log("Caught and thrown Boomerang");
+                StopAllCoroutines();
+                boomerangBody.velocity = Vector3.zero;
+                isReturning = false;
+                isBoomerangFast = false;
+                boomerangBody.AddForce(movement * gameConstants.boomerangSpeed, ForceMode2D.Impulse);
+                boomerangBody.angularVelocity = 360f;
+                checkBoomerangFast = boomerangFast();
+                StartCoroutine(checkBoomerangFast);
+
+                //TODO: Get current aim angle to Remove above band-aid fix
+                ////Boomerang.GetComponent<BoomerangController>().aimAngle = aimAngle;
+                //Boomerang = Instantiate(Boomerang, transform.position, transform.rotation);
+                //Boomerang.GetComponent<BoomerangController>().srcPlayerID = srcPlayerID;
+                //Boomerang.GetComponent<BoomerangController>().aimAngle = srcPlayerID.
+                //Destroy(gameObject);
             }
+            
+            //Should Boomerang Destroy on contact with a regular spell?
+            // if (other.gameObject.tag == "Spell") {
+            // Destroy(gameObject);
+            // }
         }
     }
 }

@@ -19,7 +19,8 @@ public class LaserController : MonoBehaviour
     // Game state
     public int srcPlayerID;
     public int spellLevel;
-    public float damage;
+    float damage;
+    float force;
 
     // Sound Events
     [Header("Sound Events")]
@@ -31,8 +32,23 @@ public class LaserController : MonoBehaviour
     {
         // Get components
         laserBody = GetComponent<Rigidbody2D>();
+
         // Get constants
-        damage = gameConstants.laserDamage;
+        switch (spellLevel) {
+            case 2:
+                damage = gameConstants.laserDamageL2L3;
+                force = gameConstants.laserForceL1L2;
+                break;
+            case 3:
+                damage = gameConstants.laserDamageL2L3;
+                force = gameConstants.laserForceL3;
+                break;
+            default:
+                damage = gameConstants.laserDamageL1;
+                force = gameConstants.laserForceL1L2;
+                break;
+        }
+
         // Laser movement
         movement = new Vector2(-Mathf.Sin(Mathf.Deg2Rad * aimAngle), Mathf.Cos(Mathf.Deg2Rad * aimAngle));
         laserBody.AddForce(movement * gameConstants.laserSpeed, ForceMode2D.Impulse);
@@ -54,7 +70,7 @@ public class LaserController : MonoBehaviour
                     return;
                 }
                 float knockback = playersKnockback.GetValue(dstPlayerID);
-                float forceMultiplier = gameConstants.laserForce * (gameConstants.knockbackInitial + gameConstants.knockbackMultiplier * Mathf.Log(knockback + 1));
+                float forceMultiplier = force * (gameConstants.knockbackInitial + gameConstants.knockbackMultiplier * Mathf.Log(knockback + 1));
                 other.gameObject.GetComponent<Rigidbody2D>().AddForce(movement * forceMultiplier, ForceMode2D.Impulse);
                 playersKnockback.ApplyChange(dstPlayerID, damage);
                 other.gameObject.GetComponent<BattleController>().Hurt();

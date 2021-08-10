@@ -9,6 +9,7 @@ public class ArcController : MonoBehaviour
     // ScriptableObjects
     public GameConstants gameConstants;
     public KnockbackArr playersKnockback;
+    public BoolArrVariable playersAreAlive;
 
     // Components
     private Rigidbody2D arcBody;
@@ -21,7 +22,7 @@ public class ArcController : MonoBehaviour
     // Game state
     public int srcPlayerID;
     public int spellLevel;
-    public float damage;
+    float damage;
 
     // Sound Events
     [Header("Sound Events")]
@@ -31,8 +32,20 @@ public class ArcController : MonoBehaviour
     {
         // Get components
         arcBody = GetComponent<Rigidbody2D>();
+
         // Get constants
-        damage = gameConstants.arcDamage;
+        switch (spellLevel) {
+            case 2:
+                damage = gameConstants.arcDamageL2L3;
+                break;
+            case 3:
+                damage = gameConstants.arcDamageL2L3;
+                break;
+            default:
+                damage = gameConstants.arcDamageL1;
+                break;
+        }
+
         // Arc movement
         forwardMovement = new Vector2(-Mathf.Sin(Mathf.Deg2Rad * (aimAngle+gameConstants.arcAngle)), Mathf.Cos(Mathf.Deg2Rad * (aimAngle+gameConstants.arcAngle)));
         arcBody.AddForce(forwardMovement * gameConstants.arcForwardSpeed, ForceMode2D.Impulse);
@@ -57,7 +70,9 @@ public class ArcController : MonoBehaviour
         if (other.gameObject.tag == "Player") {
             int dstPlayerID = other.gameObject.GetComponent<BattleController>().playerID;
             if (srcPlayerID != dstPlayerID) {
-                // Debug.Log("Collided with other player!");
+                if (!playersAreAlive.GetValue(dstPlayerID)) {
+                    return;
+                }
                 // TO-DO: the forwardmovement might be wrong but I can't math now - Jo
                 float knockback = playersKnockback.GetValue(dstPlayerID);
                 float forceMultiplier = gameConstants.arcForce * (gameConstants.knockbackInitial + gameConstants.knockbackMultiplier * Mathf.Log(knockback + 1));

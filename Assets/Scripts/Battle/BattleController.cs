@@ -161,11 +161,19 @@ public class BattleController : MonoBehaviour
                     spellIcons[i].GetComponent<RawImage>().texture = allSpellModels[(int) Spell.tornado].Icon;
                     break;
                 case Spell.rush:
-                    cooldownDurations[i] = gameConstants.rushCooldown;
+                    if (playersSpellLevels.GetSpellLevel(playerID, Spell.rush) >= 3) {
+                        cooldownDurations[i] = gameConstants.rushCooldownL3;
+                    } else {
+                        cooldownDurations[i] = gameConstants.rushCooldownL1L2;
+                    }
                     spellIcons[i].GetComponent<RawImage>().texture = allSpellModels[(int) Spell.rush].Icon;
                     break;
                 case Spell.arc:
-                    cooldownDurations[i] = gameConstants.arcCooldown;
+                    if (playersSpellLevels.GetSpellLevel(playerID, Spell.arc) >= 3) {
+                        cooldownDurations[i] = gameConstants.arcCooldownL3;
+                    } else {
+                        cooldownDurations[i] = gameConstants.arcCooldownL1L2;
+                    }
                     spellIcons[i].GetComponent<RawImage>().texture = allSpellModels[(int) Spell.arc].Icon;
                     break;
                 case Spell.splitter:
@@ -181,11 +189,19 @@ public class BattleController : MonoBehaviour
                     spellIcons[i].GetComponent<RawImage>().texture = allSpellModels[(int) Spell.laser].Icon;
                     break;
                 case Spell.cloud:
-                    cooldownDurations[i] = gameConstants.cloudCooldown;
+                    if (playersSpellLevels.GetSpellLevel(playerID, Spell.cloud) >= 3) {
+                        cooldownDurations[i] = gameConstants.cloudCooldownL3;
+                    } else {
+                        cooldownDurations[i] = gameConstants.cloudCooldownL1L2;
+                    }
                     spellIcons[i].GetComponent<RawImage>().texture = allSpellModels[(int) Spell.cloud].Icon;
                     break;
                 case Spell.minethrow:
-                    cooldownDurations[i] = gameConstants.mineThrowCooldown;
+                    if (playersSpellLevels.GetSpellLevel(playerID, Spell.minethrow) >= 3) {
+                        cooldownDurations[i] = gameConstants.mineThrowCooldownL3;
+                    } else {
+                        cooldownDurations[i] = gameConstants.mineThrowCooldownL1L2;
+                    }
                     spellIcons[i].GetComponent<RawImage>().texture = allSpellModels[(int) Spell.minethrow].Icon;
                     break;
                 case Spell.groundattack:
