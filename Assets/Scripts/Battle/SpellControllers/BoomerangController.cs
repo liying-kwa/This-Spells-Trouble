@@ -58,7 +58,7 @@ public class BoomerangController : MonoBehaviour, SpellController
         yield return new WaitForSeconds(gameConstants.boomerangForwardTime);
         isBoomerangFast = true;
         //Debug.Log("Fast: " + isBoomerangFast);
-        yield return new WaitForSeconds(gameConstants.boomerangForwardTime);
+        yield return new WaitForSeconds(gameConstants.boomerangForwardTime*4);
         Destroy(gameObject);
     }
 

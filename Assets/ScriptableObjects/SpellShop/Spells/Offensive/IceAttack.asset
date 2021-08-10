@@ -18,5 +18,5 @@ MonoBehaviour:
   Icon: {fileID: 2800000, guid: 2bccd332882fcd14b9e4c377e432c587, type: 3}
   Description: A single line of ice beam rapidly extends from the player and hits
     the ground in a straight line.
-  Cost: 300
+  Cost: 250
   Upgrade: L2 - Increased Damage\nL3 - Decreased Cooldown

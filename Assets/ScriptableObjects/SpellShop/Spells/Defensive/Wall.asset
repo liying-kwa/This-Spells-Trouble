@@ -17,5 +17,5 @@ MonoBehaviour:
   Prefab: {fileID: 2134297650543446196, guid: 0d298c86a1ae64b65ae5de9677377c87, type: 3}
   Icon: {fileID: 2800000, guid: ca6299f192d72b047a99c160e51a72d0, type: 3}
   Description: Summons a wall that blocks any projectiles.
-  Cost: 400
+  Cost: 150
   Upgrade: L2 - Increased Lifetime\nL3 - Decreased Cooldown
