@@ -31,4 +31,16 @@ public class MenuController : MonoBehaviour
     void OnClickButton() {
         menuManager.clickButton();
     }
+
+    void OnPreviousPage() {
+        menuManager.previousPage();
+    }
+
+    void OnNextPage() {
+        menuManager.nextPage();
+    }
+
+    void OnCloseHelp() {
+        menuManager.closeHelp();
+    }
 }

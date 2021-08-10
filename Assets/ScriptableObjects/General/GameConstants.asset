@@ -148,5 +148,5 @@ MonoBehaviour:
   wallCooldownL3: 11
   wallForce: 0.01
   shopCountdownTime: 30
-  goldIncrement: 1500
+  goldIncrement: 500
   showButtonsDuration: 5

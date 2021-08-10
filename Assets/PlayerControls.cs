@@ -407,6 +407,30 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""NextPage"",
+                    ""type"": ""Button"",
+                    ""id"": ""4ab021c8-c09b-45b6-a8c0-26c5a31beeff"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""PreviousPage"",
+                    ""type"": ""Button"",
+                    ""id"": ""89010769-775e-4155-ae9f-ab1bb0742c00"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""CloseHelp"",
+                    ""type"": ""Button"",
+                    ""id"": ""f9b2d4ee-f1dc-4a37-aac4-6f5a4e034a6f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -440,6 +464,39 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ClickButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ca5c972a-b4c2-4d48-9248-85600830c7c1"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextPage"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cdcee0e7-c99e-40bd-a58f-e966c981758d"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PreviousPage"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9f85bb39-809c-4aa5-8039-13be925ae7ec"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CloseHelp"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -477,6 +534,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_MainMenu_PreviousButton = m_MainMenu.FindAction("PreviousButton", throwIfNotFound: true);
         m_MainMenu_NextButton = m_MainMenu.FindAction("NextButton", throwIfNotFound: true);
         m_MainMenu_ClickButton = m_MainMenu.FindAction("ClickButton", throwIfNotFound: true);
+        m_MainMenu_NextPage = m_MainMenu.FindAction("NextPage", throwIfNotFound: true);
+        m_MainMenu_PreviousPage = m_MainMenu.FindAction("PreviousPage", throwIfNotFound: true);
+        m_MainMenu_CloseHelp = m_MainMenu.FindAction("CloseHelp", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -748,6 +808,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_MainMenu_PreviousButton;
     private readonly InputAction m_MainMenu_NextButton;
     private readonly InputAction m_MainMenu_ClickButton;
+    private readonly InputAction m_MainMenu_NextPage;
+    private readonly InputAction m_MainMenu_PreviousPage;
+    private readonly InputAction m_MainMenu_CloseHelp;
     public struct MainMenuActions
     {
         private @PlayerControls m_Wrapper;
@@ -755,6 +818,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @PreviousButton => m_Wrapper.m_MainMenu_PreviousButton;
         public InputAction @NextButton => m_Wrapper.m_MainMenu_NextButton;
         public InputAction @ClickButton => m_Wrapper.m_MainMenu_ClickButton;
+        public InputAction @NextPage => m_Wrapper.m_MainMenu_NextPage;
+        public InputAction @PreviousPage => m_Wrapper.m_MainMenu_PreviousPage;
+        public InputAction @CloseHelp => m_Wrapper.m_MainMenu_CloseHelp;
         public InputActionMap Get() { return m_Wrapper.m_MainMenu; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -773,6 +839,15 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @ClickButton.started -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnClickButton;
                 @ClickButton.performed -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnClickButton;
                 @ClickButton.canceled -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnClickButton;
+                @NextPage.started -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnNextPage;
+                @NextPage.performed -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnNextPage;
+                @NextPage.canceled -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnNextPage;
+                @PreviousPage.started -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnPreviousPage;
+                @PreviousPage.performed -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnPreviousPage;
+                @PreviousPage.canceled -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnPreviousPage;
+                @CloseHelp.started -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnCloseHelp;
+                @CloseHelp.performed -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnCloseHelp;
+                @CloseHelp.canceled -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnCloseHelp;
             }
             m_Wrapper.m_MainMenuActionsCallbackInterface = instance;
             if (instance != null)
@@ -786,6 +861,15 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @ClickButton.started += instance.OnClickButton;
                 @ClickButton.performed += instance.OnClickButton;
                 @ClickButton.canceled += instance.OnClickButton;
+                @NextPage.started += instance.OnNextPage;
+                @NextPage.performed += instance.OnNextPage;
+                @NextPage.canceled += instance.OnNextPage;
+                @PreviousPage.started += instance.OnPreviousPage;
+                @PreviousPage.performed += instance.OnPreviousPage;
+                @PreviousPage.canceled += instance.OnPreviousPage;
+                @CloseHelp.started += instance.OnCloseHelp;
+                @CloseHelp.performed += instance.OnCloseHelp;
+                @CloseHelp.canceled += instance.OnCloseHelp;
             }
         }
     }
@@ -822,5 +906,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnPreviousButton(InputAction.CallbackContext context);
         void OnNextButton(InputAction.CallbackContext context);
         void OnClickButton(InputAction.CallbackContext context);
+        void OnNextPage(InputAction.CallbackContext context);
+        void OnPreviousPage(InputAction.CallbackContext context);
+        void OnCloseHelp(InputAction.CallbackContext context);
     }
 }

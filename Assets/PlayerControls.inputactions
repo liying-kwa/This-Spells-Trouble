@@ -394,6 +394,30 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "NextPage",
+                    "type": "Button",
+                    "id": "4ab021c8-c09b-45b6-a8c0-26c5a31beeff",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "PreviousPage",
+                    "type": "Button",
+                    "id": "89010769-775e-4155-ae9f-ab1bb0742c00",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "CloseHelp",
+                    "type": "Button",
+                    "id": "f9b2d4ee-f1dc-4a37-aac4-6f5a4e034a6f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -427,6 +451,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "ClickButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ca5c972a-b4c2-4d48-9248-85600830c7c1",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NextPage",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cdcee0e7-c99e-40bd-a58f-e966c981758d",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PreviousPage",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9f85bb39-809c-4aa5-8039-13be925ae7ec",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CloseHelp",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

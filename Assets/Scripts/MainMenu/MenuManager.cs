@@ -17,6 +17,9 @@ public class MenuManager : MonoBehaviour
 
     // GameObjects
     public Button[] buttons;
+    public GameObject helpPopup;
+
+    public GameObject[] helpPages;
 
     // Sound Events
     [Header("Sound Events")]
@@ -25,6 +28,8 @@ public class MenuManager : MonoBehaviour
 
     // Game State
     int selectedButton = 0;
+    bool helpShown = false;
+    int pageIndex = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +37,8 @@ public class MenuManager : MonoBehaviour
         // Set frame rate to be 50 FPS
 	    Application.targetFrameRate =  50;
 
-        // Select first button
+        // Initialise: Close helpm, Select first button
+        helpPopup.SetActive(false);
         buttons[0].Select();
         buttons[0].transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
 
@@ -86,14 +92,58 @@ public class MenuManager : MonoBehaviour
     }
 
     public void clickButton() {
+        if (helpShown) {
+            return;
+        }
         ExecuteEvents.Execute(buttons[selectedButton].gameObject, new BaseEventData(EventSystem.current), ExecuteEvents.submitHandler);
         onReadyButtonPlaySound.Raise();
     }
 
+    public void previousPage() {
+        if (!helpShown) {
+            return;
+        }
+        if (pageIndex == 0) {
+            return;
+        }
+        helpPages[pageIndex].SetActive(false);
+        pageIndex -= 1;
+        helpPages[pageIndex].SetActive(true);
+    }
+
+    public void nextPage() {
+        if (!helpShown) {
+            return;
+        }
+        if (pageIndex == helpPages.Length-1) {
+            return;
+        }
+        helpPages[pageIndex].SetActive(false);
+        pageIndex += 1;
+        helpPages[pageIndex].SetActive(true);
+    }
+
+    public void closeHelp() {
+        if (!helpShown) {
+            return;
+        }
+        helpPopup.SetActive(false);
+        helpShown = false;
+    }
+
     public void PlayGame() {
-        // SceneManager.LoadScene("NAME_OF_SCENE_HERE");
         StartCoroutine(ChangeScene("CharSelectionScene"));
         Debug.Log("Loading Scene...");
+    }
+
+    public void HelpGame() {
+        helpPopup.SetActive(true);
+        helpShown = true;
+        for (int page = 0; page < helpPages.Length; page++) {
+            helpPages[page].SetActive(false);
+        }
+        helpPages[0].SetActive(true);
+        pageIndex = 0;
     }
 
     public void QuitGame() {
