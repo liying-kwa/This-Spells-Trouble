@@ -75,6 +75,10 @@ public class GroundAttackController : MonoBehaviour
                 if (!playersAreAlive.GetValue(dstPlayerID)) {
                     return;
                 }
+                if (other.gameObject.GetComponent<BattleController>().invulnerable) {
+                    onGroundAttackHitPlaySound.Raise();
+                    return;
+                }
                 float knockback = playersKnockback.GetValue(dstPlayerID);
                 float forceMultiplier = gameConstants.groundAttackForce * (gameConstants.knockbackInitial + gameConstants.knockbackMultiplier * Mathf.Log(knockback + 1));
                 knockbackPosition = other.transform.position - transform.position;

@@ -69,6 +69,11 @@ public class LaserController : MonoBehaviour, SpellController
                 if (!playersAreAlive.GetValue(dstPlayerID)) {
                     return;
                 }
+                if (other.gameObject.GetComponent<BattleController>().invulnerable) {
+                    onLaserHitPlaySound.Raise();
+                    Destroy(gameObject);
+                    return;
+                }
                 float knockback = playersKnockback.GetValue(dstPlayerID);
                 float forceMultiplier = force * (gameConstants.knockbackInitial + gameConstants.knockbackMultiplier * Mathf.Log(knockback + 1));
                 other.gameObject.GetComponent<Rigidbody2D>().AddForce(movement * forceMultiplier, ForceMode2D.Impulse);

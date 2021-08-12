@@ -66,6 +66,11 @@ public class SplitProjController : MonoBehaviour, SpellController
                 if (!playersAreAlive.GetValue(dstPlayerID)) {
                     return;
                 }
+                if (other.gameObject.GetComponent<BattleController>().invulnerable) {
+                    onSplitProjHitPlaySound.Raise();
+                    Destroy(gameObject);
+                    return;
+                }
                 other.gameObject.GetComponent<Rigidbody2D>().AddForce(movement * gameConstants.splitProjSpeed * gameConstants.splitProjForce, ForceMode2D.Impulse);
                 playersKnockback.ApplyChange(dstPlayerID, damage);
                 other.gameObject.GetComponent<BattleController>().Hurt();

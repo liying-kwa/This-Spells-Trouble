@@ -74,6 +74,11 @@ public class ArcController : MonoBehaviour, SpellController
                 if (!playersAreAlive.GetValue(dstPlayerID)) {
                     return;
                 }
+                if (other.gameObject.GetComponent<BattleController>().invulnerable) {
+                    onArcHitPlaySound.Raise();
+                    Destroy(gameObject);
+                    return;
+                }
                 // TO-DO: the forwardmovement might be wrong but I can't math now - Jo
                 float knockback = playersKnockback.GetValue(dstPlayerID);
                 float forceMultiplier = gameConstants.arcForce * (gameConstants.knockbackInitial + gameConstants.knockbackMultiplier * Mathf.Log(knockback + 1));

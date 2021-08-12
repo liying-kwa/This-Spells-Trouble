@@ -75,6 +75,10 @@ public class IceAttackController : MonoBehaviour
                 if (!playersAreAlive.GetValue(dstPlayerID)) {
                     return;
                 }
+                if (other.gameObject.GetComponent<BattleController>().invulnerable) {
+                    onIceAttackHitPlaySound.Raise();
+                    return;
+                }
                 float knockback = playersKnockback.GetValue(dstPlayerID);
                 float forceMultiplier = gameConstants.iceAttackForce * (gameConstants.knockbackInitial + gameConstants.knockbackMultiplier * Mathf.Log(knockback + 1));
                 knockbackPosition = other.transform.position - transform.position;

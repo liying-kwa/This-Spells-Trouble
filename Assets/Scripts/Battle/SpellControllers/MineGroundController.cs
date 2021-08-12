@@ -51,6 +51,12 @@ public class MineGroundController : MonoBehaviour, SpellController
                 if (!playersAreAlive.GetValue(dstPlayerID)) {
                     return;
                 }
+                if (other.gameObject.GetComponent<BattleController>().invulnerable) {
+                    Instantiate(explosion, transform.position, Quaternion.identity);
+                    onMineHitPlaySound.Raise();
+                    Destroy(gameObject);
+                    return;
+                }
                 float knockback = playersKnockback.GetValue(dstPlayerID);
                 float forceMultiplier = gameConstants.mineGroundForce * (gameConstants.knockbackInitial + gameConstants.knockbackMultiplier * Mathf.Log(knockback + 1));
                 other.gameObject.GetComponent<Rigidbody2D>().AddForce(movement * forceMultiplier, ForceMode2D.Impulse);

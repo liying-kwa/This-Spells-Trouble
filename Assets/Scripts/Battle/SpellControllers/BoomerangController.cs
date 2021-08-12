@@ -80,6 +80,11 @@ public class BoomerangController : MonoBehaviour, SpellController
                 if (!playersAreAlive.GetValue(dstPlayerID)) {
                     return;
                 }
+                if (other.gameObject.GetComponent<BattleController>().invulnerable) {
+                    onBoomerangHitPlaySound.Raise();
+                    Destroy(gameObject);
+                    return;
+                }
                 float knockback = playersKnockback.GetValue(dstPlayerID);
                 if (isBoomerangFast){
                     float forceMultiplier = gameConstants.boomerangFastForce * (gameConstants.knockbackInitial + gameConstants.knockbackMultiplier * Mathf.Log(knockback + 1));

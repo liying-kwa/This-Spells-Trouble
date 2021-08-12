@@ -62,6 +62,11 @@ public class LightningProjectileController : MonoBehaviour, SpellController
                 if (!playersAreAlive.GetValue(dstPlayerID)) {
                     return;
                 }
+                if (other.gameObject.GetComponent<BattleController>().invulnerable) {
+                    onLightningHitPlaySound.Raise();
+                    Destroy(gameObject);
+                    return;
+                }
                 float knockback = playersKnockback.GetValue(dstPlayerID);
                 float forceMultiplier = gameConstants.lightningProjectileForce * (gameConstants.knockbackInitial + gameConstants.knockbackMultiplier * Mathf.Log(knockback + 1));
                 other.gameObject.GetComponent<Rigidbody2D>().AddForce(movement * forceMultiplier, ForceMode2D.Impulse);

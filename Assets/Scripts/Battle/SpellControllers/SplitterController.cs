@@ -93,6 +93,11 @@ public class SplitterController : MonoBehaviour, SpellController
                 if (!playersAreAlive.GetValue(dstPlayerID)) {
                     return;
                 }
+                if (other.gameObject.GetComponent<BattleController>().invulnerable) {
+                    onSplitterHitPlaySound.Raise();
+                    Destroy(gameObject);
+                    return;
+                }
                 StopCoroutine(splitCoroutine);
                 other.gameObject.GetComponent<Rigidbody2D>().AddForce(movement * gameConstants.splitterSpeed * gameConstants.splitterForce, ForceMode2D.Impulse);
                 playersKnockback.ApplyChange(dstPlayerID, damage);

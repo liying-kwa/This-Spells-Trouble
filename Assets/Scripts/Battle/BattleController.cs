@@ -63,6 +63,7 @@ public class BattleController : MonoBehaviour
     float knockback;
     public bool onPlatform = true;
     bool isDead = false;
+    public bool invulnerable = false;
     IEnumerator damageCoroutine = null;     // For LAVA only
     IEnumerator checkRegenCoroutine = null;
     IEnumerator regenCoroutine = null;
@@ -122,6 +123,7 @@ public class BattleController : MonoBehaviour
         knockbackText.transform.gameObject.SetActive(true);
         // Initialise values
         isDead = false;
+        invulnerable = false;
         playersKnockback.SetValue(playerID, 0);
         for (int i = 0; i < 4; i++) {
             cooldownImages[i].fillAmount = 0;
@@ -584,6 +586,12 @@ public class BattleController : MonoBehaviour
         spellIcons[slot].GetComponent<RawImage>().color = new Color(1, 1, 1, 1);
     }
 
+    IEnumerator Invulnerable(float duration) {
+        invulnerable = true;
+        yield return new WaitForSeconds(duration);
+        invulnerable = false;
+    }
+
     void CastFireball(int slot) {
         GameObject fireballObject = Instantiate(allSpellModels[(int) Spell.fireball].Prefab, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
         fireballObject.GetComponent<FireballController>().srcPlayerID = playerID;
@@ -624,6 +632,7 @@ public class BattleController : MonoBehaviour
         rushObject.GetComponent<RushController>().aimAngle = moveAngle;
         rushObject.GetComponent<RushController>().spellLevel = playersSpellLevels.GetSpellLevel(playerID, Spell.rush);
         StartCoroutine(SpellCooldown(slot, cooldownDurations[slot]));
+        StartCoroutine(Invulnerable(gameConstants.rushDestroyTime));
     }
 
     void CastArc(int slot) {
