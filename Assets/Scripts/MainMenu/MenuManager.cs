@@ -18,13 +18,15 @@ public class MenuManager : MonoBehaviour
     // GameObjects
     public Button[] buttons;
     public GameObject helpPopup;
-
     public GameObject[] helpPages;
 
     // Sound Events
     [Header("Sound Events")]
     public GameEvent onReadyButtonPlaySound;
     public GameEvent onArrowButtonPlaySound;
+    public GameEvent onFlipPagePlaySound;
+    public GameEvent onOpenHelpPlaySound;
+    public GameEvent onCloseHelpPlaySound;
 
     // Game State
     int selectedButton = 0;
@@ -70,6 +72,9 @@ public class MenuManager : MonoBehaviour
     }
 
     public void previousButton() {
+        if (helpShown) {
+            return;
+        }
         buttons[selectedButton].transform.localScale = new Vector3(1, 1, 1);
         selectedButton -= 1;
         if (selectedButton < 0) {
@@ -81,6 +86,9 @@ public class MenuManager : MonoBehaviour
     }
 
     public void nextButton() {
+        if (helpShown) {
+            return;
+        }
         buttons[selectedButton].transform.localScale = new Vector3(1, 1, 1);
         selectedButton += 1;
         if (selectedButton >= buttons.Length) {
@@ -103,24 +111,26 @@ public class MenuManager : MonoBehaviour
         if (!helpShown) {
             return;
         }
-        if (pageIndex == 0) {
-            return;
-        }
         helpPages[pageIndex].SetActive(false);
         pageIndex -= 1;
+        if (pageIndex < 0) {
+            pageIndex += helpPages.Length;
+        }
         helpPages[pageIndex].SetActive(true);
+        onFlipPagePlaySound.Raise();
     }
 
     public void nextPage() {
         if (!helpShown) {
             return;
         }
-        if (pageIndex == helpPages.Length-1) {
-            return;
-        }
         helpPages[pageIndex].SetActive(false);
         pageIndex += 1;
+        if (pageIndex >= helpPages.Length) {
+            pageIndex -= helpPages.Length;
+        }
         helpPages[pageIndex].SetActive(true);
+        onFlipPagePlaySound.Raise();
     }
 
     public void closeHelp() {
@@ -129,6 +139,7 @@ public class MenuManager : MonoBehaviour
         }
         helpPopup.SetActive(false);
         helpShown = false;
+        onCloseHelpPlaySound.Raise();
     }
 
     public void PlayGame() {
@@ -144,6 +155,7 @@ public class MenuManager : MonoBehaviour
         }
         helpPages[0].SetActive(true);
         pageIndex = 0;
+        onOpenHelpPlaySound.Raise();
     }
 
     public void QuitGame() {

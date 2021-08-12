@@ -6,43 +6,29 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     public AudioSource masterSource;
-
     public AudioSource effectSource;
-
     public AudioSource UISource;
 
     // BGM Clips
-
     public AudioClip onCharacterSelectionMenuClip;
-
     public AudioClip onStageOneStartClip;
 
     // Player Clips
-
     public AudioClip onLavaClip;
-
     public AudioClip onRegenClip;
-
     public AudioClip onPlayerDeathClip;
-
     public AudioClip onVictoryClip;
 
     // Spells Clips
 
     public AudioClip onFireballCastClip;
-
     public AudioClip onFireballHitClip;
-
     public AudioClip onTeleportCastClip;
-
-    //public AudioClip onTeleportLandClip;
-
     public AudioClip onLightningCastClip;
     public AudioClip onLightningHitClip;
     public AudioClip onTornadoCastClip;
     public AudioClip onTornadoHitClip;
     public AudioClip onRushCastClip;
-
     public AudioClip onArcCastClip;
     public AudioClip onArcHitClip;
     public AudioClip onBoomerangCastClip;
@@ -67,21 +53,17 @@ public class SoundManager : MonoBehaviour
 
     // UI Clips 
     public AudioClip onArrowButtonClip;
-
     public AudioClip onReadyButtonClip;
-
     public AudioClip onBuySpellClip;
-    
     public AudioClip onSellSpellClip;
-
     public AudioClip onClockTickingClip;
-
     public AudioClip onJoinButtonClip;
-
     public AudioClip onLockSlotClip;
     public AudioClip onUnlockSlotClip;
-
     public AudioClip onNotAllowedClip;
+    public AudioClip onFlipPageClip;
+    public AudioClip onOpenHelpClip;
+    public AudioClip onCloseHelpClip;
     
     // BGM Methods
 
@@ -329,10 +311,20 @@ public class SoundManager : MonoBehaviour
         UISource.PlayOneShot(onNotAllowedClip);
     }
 
+    public void PlayFlipPage()
+    {
+        UISource.PlayOneShot(onFlipPageClip);
+    }
 
+    public void PlayOpenHelp()
+    {
+        UISource.PlayOneShot(onOpenHelpClip);
+    }
 
-  
-
+    public void PlayCloseHelp()
+    {
+        UISource.PlayOneShot(onCloseHelpClip);
+    }
 }
 
 
