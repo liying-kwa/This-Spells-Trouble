@@ -16,7 +16,7 @@ MonoBehaviour:
   Spell: 13
   Prefab: {fileID: 1627578010501597546, guid: 59cf7fdebab374db197177a3176e1050, type: 3}
   Icon: {fileID: 2800000, guid: e32aad571b880e549a22b1cc2f2f84a2, type: 3}
-  Description: A wave of force that ripples out from the player, causing damage in
-    a line.
+  Description: 'A wave of force that ripples out from the player, causing damage
+    in a line. '
   Cost: 200
   Upgrade: L2 - Increased Damage\nL3 - Decreased Cooldown

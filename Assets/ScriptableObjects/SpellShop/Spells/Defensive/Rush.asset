@@ -16,7 +16,7 @@ MonoBehaviour:
   Spell: 4
   Prefab: {fileID: 8173699006723731229, guid: ca92400774e2f431880335c4ecc99134, type: 3}
   Icon: {fileID: 2800000, guid: eb8729886059ff84199c473861f352b5, type: 3}
-  Description: 'Run quickly towards a fixed distance based on player''s aim direction.
-    Invulnerable to casting. '
+  Description: "Run quickly towards a fixed distance in the player\u2019s direction
+    of movement."
   Cost: 150
   Upgrade: L2 - Increased Distance\nL3 - Decreased Cooldown

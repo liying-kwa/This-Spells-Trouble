@@ -16,7 +16,7 @@ MonoBehaviour:
   Spell: 3
   Prefab: {fileID: 2728521609384493569, guid: 8546022ecffbf45428d05cdfca9351e6, type: 3}
   Icon: {fileID: 2800000, guid: 355081665ced371448177f064a3b18e5, type: 3}
-  Description: A slow-moving tornado which knocks back anything in its path and absorbs
-    all other projectiles.
+  Description: A slow and straight moving tornado which knocks back anything in its
+    path and absorbs enemy projectiles.
   Cost: 300
   Upgrade: L2 - Increased Lifetime\nL3 - Decreased Cooldown

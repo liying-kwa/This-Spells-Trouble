@@ -131,6 +131,8 @@ public class BattleController : MonoBehaviour
         playersKnockback.SetValue(playerID, 0);
         // knockbackObject.transform.localScale = new Vector3(0, knockbackObject.transform.localScale.y, knockbackObject.transform.localScale.z);
         for (int i = 0; i < 4; i++) {
+            cooldownImages[i].fillAmount = 0;
+            spellIcons[i].GetComponent<RawImage>().color = new Color(1, 1, 1, 1);
             switch(playersSpells.GetSpell(playerID, i)) {
                 case Spell.fireball:
                     cooldownDurations[i] = gameConstants.fireballCooldown;
@@ -588,8 +590,10 @@ public class BattleController : MonoBehaviour
     IEnumerator SpellCooldown(int slot, float duration) {
         spellsReady[slot] = false;
         cooldownImages[slot].fillAmount = 1;
+        spellIcons[slot].GetComponent<RawImage>().color = new Color(0.35156f, 0.35156f, 0.35156f, 1);
         yield return new WaitForSeconds(duration);
         spellsReady[slot] = true;
+        spellIcons[slot].GetComponent<RawImage>().color = new Color(1, 1, 1, 1);
     }
 
     void CastFireball(int slot) {

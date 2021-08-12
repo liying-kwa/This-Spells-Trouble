@@ -1079,7 +1079,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: OBJECTIVES
+  m_Text: Objectives
 --- !u!222 &530451957
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1180,8 +1180,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'veryone gets 200 gold after each round to buy & upgrade their spells.
-    Gain a point for each round won. The best of five wins the match! '
+  m_Text: Everyone gets 500 gold after each round to buy & upgrade their spells.
+    Gain a point for each round won. The player with the most points at the end of
+    the 5th round wins the match!
 --- !u!222 &561325162
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3381,7 +3382,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Points & GOLD
+  m_Text: Points & Gold
 --- !u!222 &1415224823
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4758,7 +4759,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: CONTROLS
+  m_Text: Controls
 --- !u!222 &1980470282
 CanvasRenderer:
   m_ObjectHideFlags: 0

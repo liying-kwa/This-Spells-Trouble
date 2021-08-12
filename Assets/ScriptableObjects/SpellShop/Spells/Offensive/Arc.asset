@@ -16,6 +16,6 @@ MonoBehaviour:
   Spell: 5
   Prefab: {fileID: 7993909449454147471, guid: d3593bcb1370cc74dae04abcb9c841b2, type: 3}
   Icon: {fileID: 2800000, guid: 7e4f77cb87b0acf46b76be12270f4e29, type: 3}
-  Description: 'A fast, precise projectile that travels in an arc-shaped to the target. '
+  Description: A fast, precise projectile that travels in an arc-shaped to the target.
   Cost: 300
   Upgrade: L2 - Increased Damage\nL3 - Decreased Cooldown

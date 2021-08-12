@@ -16,6 +16,7 @@ MonoBehaviour:
   Spell: 9
   Prefab: {fileID: 7754848613539352731, guid: 4ef1cbc1c19d45e478c18e8824f15876, type: 3}
   Icon: {fileID: 2800000, guid: 91debaf65ee5746b6b7bd0a3c715e85f, type: 3}
-  Description: Summons a cloud that blocks projectiles.
+  Description: Summons a cloud from the player that blocks enemy projectiles. Will
+    not block your own projectiles. Has a long cooldown.
   Cost: 200
   Upgrade: L2 - Increased Lifetime\nL3 - Decreased Cooldown
