@@ -43,10 +43,11 @@ public class BattleController : MonoBehaviour
     public static readonly string[] attackDirections = {"Attack_N", "Attack_W", "Attack_S", "Attack_E"};
     public static readonly string[] hurtDirections = {"Hurt_N", "Hurt_W", "Hurt_S", "Hurt_E"};
     public static readonly string[] deathDirections = {"Death_N", "Death_W", "Death_S", "Death_E"};
+    public static readonly string[] victoryDirections = {"Victory_N", "Victory_W", "Victory_S", "Victory_E"};
     int lastDirection = 0;
     bool castingSpell = false;
     IEnumerator spellAnimationCoroutine = null;
-    bool hurting = false;
+    bool hurting = false;   // This is for hurt by spell animation
     IEnumerator hurtAnimationCoroutine = null;
 
     // Physics
@@ -57,13 +58,12 @@ public class BattleController : MonoBehaviour
 
     // Game State
     public int playerID;
-    // float maxXScale;
     bool[] spellsReady = {true, true, true, true};
     float[] cooldownDurations = {-1, -1, -1, -1};
     float knockback;
     public bool onPlatform = true;
     bool isDead = false;
-    IEnumerator damageCoroutine = null;
+    IEnumerator damageCoroutine = null;     // For LAVA only
     IEnumerator checkRegenCoroutine = null;
     IEnumerator regenCoroutine = null;
 
@@ -75,6 +75,7 @@ public class BattleController : MonoBehaviour
     private void OnMove(InputValue value) {
         move = value.Get<Vector2>();
     }
+
     private void OnAim(InputValue value) {
         aim = value.Get<Vector2>();
     }
@@ -103,16 +104,10 @@ public class BattleController : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
     void Awake() {
         // Components
         rigidBody = GetComponent<Rigidbody2D>();
         animator = mageObject.GetComponent<Animator>();
-        // knockbackSpriteRenderer = knockbackObject.GetComponent<SpriteRenderer>();
-
-        // Initialise values
-        // maxXScale = knockbackObject.transform.localScale.x;
-        // knockbackObject.transform.localScale = new Vector3(0, knockbackObject.transform.localScale.y, knockbackObject.transform.localScale.z);
     }
 
     void OnEnable() {
@@ -124,12 +119,10 @@ public class BattleController : MonoBehaviour
         mapManager = FindObjectOfType<MapManager>();
         mageObject.SetActive(true);
         aimObject.SetActive(true);
-        // knockbackObject.SetActive(true);
         knockbackText.transform.gameObject.SetActive(true);
         // Initialise values
         isDead = false;
         playersKnockback.SetValue(playerID, 0);
-        // knockbackObject.transform.localScale = new Vector3(0, knockbackObject.transform.localScale.y, knockbackObject.transform.localScale.z);
         for (int i = 0; i < 4; i++) {
             cooldownImages[i].fillAmount = 0;
             spellIcons[i].GetComponent<RawImage>().color = new Color(1, 1, 1, 1);
@@ -248,7 +241,6 @@ public class BattleController : MonoBehaviour
     void onDisable() {
         mageObject.SetActive(true);
         aimObject.SetActive(true);
-        // knockbackObject.SetActive(true);
         knockbackText.transform.gameObject.SetActive(true);
     }
 
@@ -290,7 +282,8 @@ public class BattleController : MonoBehaviour
                 StopCoroutine(regenCoroutine);
                 regenCoroutine = null;
             }
-            // TODO: Victory animation
+            // Victory animation
+            animator.Play(victoryDirections[lastDirection]);
             return;
         }
 
@@ -306,7 +299,7 @@ public class BattleController : MonoBehaviour
             if (damageCoroutine == null) {
                 damageCoroutine = Damage();
                 StartCoroutine(damageCoroutine);
-            } 
+            }
         } else {
             // Stop damage coroutine, if running
             if (damageCoroutine != null) {
@@ -339,7 +332,7 @@ public class BattleController : MonoBehaviour
         }
 
         // Regen
-        if (!hurting && knockback != 0) {
+        if (!hurting && onPlatform && knockback != 0) {
             // Start checkregen coroutine, if check regen AND regen not running
             if (checkRegenCoroutine == null && regenCoroutine == null) {
                 checkRegenCoroutine = CheckRegen();
@@ -359,7 +352,7 @@ public class BattleController : MonoBehaviour
         }
 
         // Idle/Walk Animation
-        if (!castingSpell && !hurting) {
+        if (!castingSpell && !hurting && onPlatform) {
             string[] directionArray = null;
             if (move.x == 0 && move.y == 0) {
                 directionArray = idleDirections;
@@ -388,19 +381,7 @@ public class BattleController : MonoBehaviour
             aimObject.transform.rotation = Quaternion.AngleAxis(aimAngle, Vector3.forward);
         }
 
-        // Knockback bar / percentage
-        // float knockbackFloat = knockback / 100;
-        // knockbackObject.transform.localScale = new Vector3(knockbackFloat * maxXScale, knockbackObject.transform.localScale.y, knockbackObject.transform.localScale.z);
-        // if (knockbackFloat < 0.5f) {
-        //     // gold
-        //     knockbackSpriteRenderer.color = new Color(1, 0.8f, 0, 1);
-        // } else if (knockbackFloat < 0.99f) {
-        //     // orange
-        //     knockbackSpriteRenderer.color = new Color(1, 0.4f, 0, 1);
-        // } else {
-        //     // red
-        //     knockbackSpriteRenderer.color = new Color(1, 0, 0, 1);
-        // }
+        // Knockback Text
         knockbackText.text = "" + knockback + "%";
         if (knockback == 0) {
             // white
@@ -512,10 +493,17 @@ public class BattleController : MonoBehaviour
 
     // Knockback stuff
     public IEnumerator Damage() {
+        // Damage by lava ONLY
         while (true) {
-            onLavaPlaySound.Raise();
             playersKnockback.ApplyChange(playerID, gameConstants.lavaDamage);
-            Hurt();
+            onLavaPlaySound.Raise();
+            // Casting spells and hurt by spells animation takes precedence over hurt by lava animation
+            if (!castingSpell && !hurting) {
+                if (move.x != 0 || move.y != 0) {
+                    lastDirection = DirectionToIndex(new Vector2(move.x, move.y), 4);
+                }
+                animator.Play(hurtDirections[lastDirection]);
+            }
             yield return new WaitForSeconds(gameConstants.lavaDamageInverval);
         }
     }

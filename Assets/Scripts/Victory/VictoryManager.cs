@@ -139,6 +139,9 @@ public class VictoryManager : MonoBehaviour
             }
             Animator animator = spriteObjects[i].GetComponent<Animator>();
             animator.runtimeAnimatorController = animatorControllers[chosenChars[playerID]];
+            if (i == 0) {
+                animator.Play("Victory_End");
+            }
         }
         
         // Only show buttons after a fixed period of time

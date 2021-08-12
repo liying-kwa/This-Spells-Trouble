@@ -19,7 +19,7 @@ MonoBehaviour:
   regenWait: 5
   regenInterval: 1
   regenValue: 2
-  spellAnimationDuration: 0.53
+  spellAnimationDuration: 0.45
   hurtAnimationDuration: 0.53
   playerOffset: 1
   topLeftPosition: {x: -2.71, y: 2.71, z: 0}

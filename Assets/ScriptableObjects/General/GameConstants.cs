@@ -15,7 +15,7 @@ public class GameConstants : ScriptableObject
     public float regenWait = 5;
     public float regenInterval = 1;
     public float regenValue = 2;
-    public float spellAnimationDuration = 0.53f;
+    public float spellAnimationDuration = 0.45f;
     public float hurtAnimationDuration = 0.53f;
     public float playerOffset = 1;
     public Vector3 topLeftPosition = new Vector3(-2.71f, 2.71f, 0);

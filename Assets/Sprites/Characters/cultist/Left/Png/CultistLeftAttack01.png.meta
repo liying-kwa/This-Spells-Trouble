@@ -297,10 +297,10 @@ TextureImporter:
         serializedVersion: 2
         x: 384
         y: 0
-        width: 46
+        width: 47
         height: 48
       alignment: 9
-      pivot: {x: 0.5, y: 0.42254183}
+      pivot: {x: 0.5, y: 0.3314451}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -316,12 +316,12 @@ TextureImporter:
       name: CultistLeftAttack01_9
       rect:
         serializedVersion: 2
-        x: 430
+        x: 431
         y: 0
         width: 50
         height: 48
       alignment: 9
-      pivot: {x: 0.5, y: 0.3543899}
+      pivot: {x: 0.5, y: 0.3314451}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
