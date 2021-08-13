@@ -91,9 +91,9 @@ MonoBehaviour:
   boomerangDamageL3: 22
   boomerangForce: 20
   boomerangSpeedL1: 2
-  boomerangSpeedL2L3: 4
-  boomerangDestroyTime: 5
-  boomerangCooldown: 7
+  boomerangSpeedL2L3: 3
+  boomerangDestroyTime: 7
+  boomerangCooldown: 10
   laserDamageL1: 5
   laserDamageL2L3: 7
   laserForceL1L2: 0
@@ -114,8 +114,8 @@ MonoBehaviour:
   mineThrowColumnsL2L3: 4
   mineThrowCooldownL1L2: 15
   mineThrowCooldownL3: 12
-  mineGroundDamage: 10
-  mineGroundForce: 5
+  mineGroundDamage: 7
+  mineGroundForce: 4
   mineGroundSpeed: 1.5
   mineGroundDestroyTime: 5
   groundAttackDamageL1: 20

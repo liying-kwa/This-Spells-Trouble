@@ -97,9 +97,9 @@ public class GameConstants : ScriptableObject
     public float boomerangDamageL3 = 22;
     public float boomerangForce = 20;
     public float boomerangSpeedL1 = 2;
-    public float boomerangSpeedL2L3 = 4;
-    public float boomerangDestroyTime = 5; 
-    public float boomerangCooldown = 7;
+    public float boomerangSpeedL2L3 = 3;
+    public float boomerangDestroyTime = 7;
+    public float boomerangCooldown = 10;
     public int laserDamageL1 = 5;
     public int laserDamageL2L3 = 7;
     public float laserForceL1L2 = 0;
@@ -120,8 +120,8 @@ public class GameConstants : ScriptableObject
     public int mineThrowColumnsL2L3 = 4;
     public float mineThrowCooldownL1L2 = 15;
     public float mineThrowCooldownL3 = 12;
-    public int mineGroundDamage = 10;
-    public float mineGroundForce = 5;
+    public int mineGroundDamage = 7;
+    public float mineGroundForce = 4;
     public float mineGroundSpeed = 1.5f; //this is only used to detemine knockback
     public float mineGroundDestroyTime = 5;
     public float groundAttackDamageL1 = 20;
