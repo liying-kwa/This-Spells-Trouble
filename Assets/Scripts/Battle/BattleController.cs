@@ -439,7 +439,7 @@ public class BattleController : MonoBehaviour
         if (spellAnimationCoroutine != null) {
             StopCoroutine(spellAnimationCoroutine);
         }
-        spellAnimationCoroutine = SpellAnimation();
+        spellAnimationCoroutine = SpellAnimation(spell);
         StartCoroutine(spellAnimationCoroutine);
         // Cast spell
         switch (spell) {
@@ -549,10 +549,19 @@ public class BattleController : MonoBehaviour
         return Mathf.FloorToInt(stepCount);
     }
 
-    IEnumerator SpellAnimation() {
+    IEnumerator SpellAnimation(Spell spell) {
         Vector2 aimVector = new Vector2(-Mathf.Sin(Mathf.Deg2Rad * aimAngle), Mathf.Cos(Mathf.Deg2Rad * aimAngle));
-        int aimDirection = DirectionToIndex(aimVector, 4);
-        string clip = attackDirections[aimDirection];
+        string clip;
+        switch (spell) {
+            case Spell.teleport:
+            case Spell.rush:
+                clip = attackDirections[lastDirection];
+                break;
+            default:
+                int aimDirection = DirectionToIndex(aimVector, 4);
+                clip = attackDirections[aimDirection];
+                break;
+        }
         animator.Play(clip);
         yield return new WaitForSeconds(gameConstants.spellAnimationDuration);
         castingSpell = false;
