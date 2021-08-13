@@ -99,7 +99,9 @@ public class SplitterController : MonoBehaviour, SpellController
                     return;
                 }
                 StopCoroutine(splitCoroutine);
-                other.gameObject.GetComponent<Rigidbody2D>().AddForce(movement * gameConstants.splitterSpeed * gameConstants.splitterForce, ForceMode2D.Impulse);
+                float knockback = playersKnockback.GetValue(dstPlayerID);
+                float forceMultiplier = gameConstants.splitterForce * (gameConstants.knockbackInitial + gameConstants.knockbackMultiplier * Mathf.Log(knockback + 1));
+                other.gameObject.GetComponent<Rigidbody2D>().AddForce(movement * forceMultiplier, ForceMode2D.Impulse);
                 playersKnockback.ApplyChange(dstPlayerID, damage);
                 other.gameObject.GetComponent<BattleController>().Hurt();
                 onSplitterHitPlaySound.Raise();

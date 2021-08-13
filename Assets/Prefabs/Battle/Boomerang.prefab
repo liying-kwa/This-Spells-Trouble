@@ -106,7 +106,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 1
+  m_Constraints: 0
 --- !u!61 &3461571324411887416
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -151,9 +151,6 @@ MonoBehaviour:
   playersAreAlive: {fileID: 11400000, guid: dca732caad795cf45a5779f7a02e9058, type: 2}
   aimAngle: 0
   movement: {x: 0, y: 0}
-  isBoomerangFast: 0
-  isReturning: 0
-  srcPlayerID: 0
   spellLevel: 0
   onBoomerangCastPlaySound: {fileID: 11400000, guid: d3d4f180acdd942ec878d733698dd2e3, type: 2}
   onBoomerangHitPlaySound: {fileID: 11400000, guid: e682092c98e454d7e8c5dbe454089b2c, type: 2}

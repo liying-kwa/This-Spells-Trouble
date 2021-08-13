@@ -87,14 +87,12 @@ MonoBehaviour:
   splitProjForce: 8
   splitProjSpeed: 1.5
   splitProjDestroyTime: 1.5
-  boomerangDamage: 20
-  boomerangForce: 8
-  boomerangFastDamage: 40
-  boomerangFastForce: 20
-  boomerangForwardTime: 1
-  boomerangBackwardTime: 2
-  boomerangSpeed: 3
-  boomerangFastSpeed: 6
+  boomerangDamageL1L2: 15
+  boomerangDamageL3: 22
+  boomerangForce: 20
+  boomerangSpeedL1: 2
+  boomerangSpeedL2L3: 4
+  boomerangDestroyTime: 5
   boomerangCooldown: 7
   laserDamageL1: 5
   laserDamageL2L3: 7

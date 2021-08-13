@@ -758,6 +758,7 @@ MonoBehaviour:
   - {fileID: 9100000, guid: 3078456df88fbbf4499eaa781f09d764, type: 2}
   playerID: 0
   onPlatform: 1
+  invulnerable: 0
   allSpellModels:
   - {fileID: 11400000, guid: 1a6d4d35545aa7545bb3c5c8c68ba8d6, type: 2}
   - {fileID: 11400000, guid: c18a10a8203bf5b4788f85b828a0970b, type: 2}
@@ -774,7 +775,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 694219d4166e54f89ab20225e32ef57e, type: 2}
   - {fileID: 11400000, guid: e08dcaa5623394764a6483d631245421, type: 2}
   - {fileID: 11400000, guid: 576c39827ae7d4c49b06c771e08139b1, type: 2}
-  emptySprite: {fileID: 2800000, guid: 22c57c9034ab12a49a282af0f4164da1, type: 3}
+  emptySprite: {fileID: 2800000, guid: 794482ece2a42dc439a08c302668f130, type: 3}
 --- !u!61 &8451752079115469057
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -862,7 +863,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 694219d4166e54f89ab20225e32ef57e, type: 2}
   - {fileID: 11400000, guid: e08dcaa5623394764a6483d631245421, type: 2}
   - {fileID: 11400000, guid: 576c39827ae7d4c49b06c771e08139b1, type: 2}
-  emptyIcon: {fileID: 2800000, guid: 22c57c9034ab12a49a282af0f4164da1, type: 3}
+  emptyIcon: {fileID: 2800000, guid: 794482ece2a42dc439a08c302668f130, type: 3}
   slotIcons: []
   spellNameText: {fileID: 0}
   spellCostText: {fileID: 0}

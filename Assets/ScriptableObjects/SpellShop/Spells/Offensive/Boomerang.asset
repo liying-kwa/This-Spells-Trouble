@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Boomerang
   Spell: 7
   Prefab: {fileID: 838636956441470530, guid: 313024458c7978d44969ce9188f78657, type: 3}
-  Icon: {fileID: 2800000, guid: e9a8eb5d241ec4447bbf1586eec5ff4d, type: 3}
+  Icon: {fileID: 2800000, guid: f1af0b4a740ca754bbb6f497fca9dabc, type: 3}
   Description: Travels forward while accelerating backwards. If caught by the caster
     when flying backwards, can be thrown again.
   Cost: 200
