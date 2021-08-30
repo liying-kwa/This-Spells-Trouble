@@ -38,7 +38,7 @@ The player controls are as shown in the figure below.
 The mechanics of the game were mainly inspired by a map made for Warcraft 3, Warlock, which has been remade for both DotA2 and Warcraft 3 Reforged. The criteria for defeating players came from that of Nintendo’s Super Smash Brothers series. Player controls are loosely based on the controls in the popular MoBA mobile game, Brawl Stars.
 
 ## Asset Source Documentation
-**Sprites & Textures**
+**Sprites & Textures**<br />
 Characters:
 https://foozlecc.itch.io/lucifer-4-direction-sorceress
 https://foozlecc.itch.io/lucifer-4-direction-cultist-enemy
@@ -58,17 +58,17 @@ https://preview.redd.it/in73r6sbixz31.png?width=4096&format=png&auto=webp&s=810f
 https://www.artstation.com/artwork/nQ05E
 https://graceliu.artstation.com/projects/BKPBD?album_id=644503
 
-**Map Textures**
+**Map Textures**<br />
 https://assetstore.unity.com/packages/2d/environments/2d-magic-lands-set3-178895
 https://assetstore.unity.com/packages/2d/environments/rpg-worlds-strange-land-194506
 https://assetstore.unity.com/packages/2d/environments/rpg-worlds-snowy-lands-170339
 https://assetstore.unity.com/packages/2d/environments/2d-magic-lands-set4-180422
 https://assetstore.unity.com/packages/2d/environments/2d-magic-lands-dungeon-1-178896
 
-**Spell Effects**
+**Spell Effects**<br />
 https://assetstore.unity.com/packages/vfx/particles/spells/ky-magic-effects-free-21927
 
-**Sound Effects**
+**Sound Effects**<br />
 Maplestory:
 https://drive.google.com/drive/folders/1SdRYfCdASj4Nx1OubCO0qobXqPqb0y4n
 https://assetstore.unity.com/packages/audio/sound-fx/weapons/demo-ancient-magic-pack-free-175093
